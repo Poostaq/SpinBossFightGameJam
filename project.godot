@@ -11,9 +11,10 @@ config_version=5
 [application]
 
 config/name="SpinBossFightGameJam"
+run/main_scene="res://Scenes/main.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
-[autoload]
+[editor_plugins]
 
-CharacterManager="*res://Scripts/character_manager.gd"
+enabled=PackedStringArray("res://addons/script-ide/plugin.cfg")
