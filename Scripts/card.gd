@@ -2,6 +2,10 @@ extends Node2D
 
 signal hovered(card)
 signal hovered_off(card)
+
+var starting_position
+var card_slot_card_is_in
+var card_type
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://oxnrgopqomff"
-path="res://.godot/imported/example_card_background.png-eb7ca08ae6d49bbfec12b0a1aff2fbf6.ctex"
+uid="uid://pl8yd48mf8ua"
+path="res://.godot/imported/enemy_splash_art.png-8cfbb28c7c8999624266a646f0b2d7a5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/example_card_background.png"
-dest_files=["res://.godot/imported/example_card_background.png-eb7ca08ae6d49bbfec12b0a1aff2fbf6.ctex"]
+source_file="res://Images/enemy_splash_art.png"
+dest_files=["res://.godot/imported/enemy_splash_art.png-8cfbb28c7c8999624266a646f0b2d7a5.ctex"]
 
 [params]
 
