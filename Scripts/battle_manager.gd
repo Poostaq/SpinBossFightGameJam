@@ -2,11 +2,9 @@ extends Node
 
 signal battle_finished
 
-enum BATTLE_POSITION_PARAMS {POSITION, SCALE, ROTATION} 
-enum BATTLE_POSITIONS {SLOW_DOWN, LINE_UP, OVERTAKE}
+enum BATTLE_POSITION_PARAMS {POSITION, SCALE, ROTATION}
 enum ACTION_DATA {FUEL_COST, DESCRIPTION, ACTIONS_ARRAY, AFTER_PLAY}
 enum ACTION_ELEMENTS {MOVE_TYPE, VALUE, MOVE_TARGET_AREA, MOVE_INFO}
-
 const SLOW_DOWN = [Vector2(621,478), Vector2(0.27, 0.27),-7]
 const OVERTAKE = [Vector2(860, 451), Vector2(0.5,0.5),-3]
 const LINE_UP_PLAYER = [Vector2(648,492), Vector2(0.5,0.5),-4]
@@ -42,7 +40,7 @@ func start_battle(which_boss) -> void:
 	player.hand.update_hand_positions(player.hand.DEFAULT_CASSETTE_SPEED)
 	for i in range(len(enemy.hand.enemy_hand), enemy.hand.max_hand_cassettes):
 		enemy.deck.draw_cassette()
-	await enemy.select_cassettes()
+	enemy.select_cassettes_for_sequence()
 
 func _on_commit_sequence_pressed() -> void:
 	$"../CommitSequence".disabled = true
@@ -52,7 +50,7 @@ func _on_commit_sequence_pressed() -> void:
 	wait_completed = await clean_up_after_round()
 	wait_completed = await wait(BATTLE_SPEED,"After clean_up_after_round")
 	draw_cassettes()
-	wait_completed = await enemy.select_cassettes()
+	wait_completed = await enemy.select_cassettes_for_sequence()
 
 
 func prepare_participants_sequence_lists():
@@ -116,7 +114,7 @@ func perform_all_cassettes_actions():
 	var amount_of_actions = len(player.sequence.get_children())+len(enemy.sequence.get_children())
 	for x in range(0,amount_of_actions):
 		var next_cassette_owner = determine_next_cassette_to_play()
-		var wait_completed = await perform_cassette_actions(next_cassette_owner)
+		var wait_perform_completed = await perform_cassette_actions(next_cassette_owner)
 	var wait_completed = await wait(BATTLE_SPEED, "all cassettes performed")
 	if wait_completed:
 		return true
@@ -131,7 +129,6 @@ func perform_cassette_actions(actor):
 	var played_cassette
 	var acting_actor
 	var target
-	var mini_sequence
 	if actor == "player":
 		played_cassette = player_sequence_cassettes[player.current_cassette]
 		acting_actor = player
@@ -253,13 +250,13 @@ func perform_action(action_data, character, target):
 
 func check_if_in_correct_position(position_name,target):
 	match target.battle_position:
-		BATTLE_POSITIONS.SLOW_DOWN:
+		GlobalEnums.BATTLE_POSITIONS.SLOW_DOWN:
 			if "back" in position_name or position_name == "all_sides":
 				return true
-		BATTLE_POSITIONS.LINE_UP:
+		GlobalEnums.BATTLE_POSITIONS.LINE_UP:
 			if "side" in position_name or position_name == "all_sides":
 				return true
-		BATTLE_POSITIONS.OVERTAKE:
+		GlobalEnums.BATTLE_POSITIONS.OVERTAKE:
 			if "front" in position_name or position_name == "all_sides":
 				return true
 	return false
@@ -319,7 +316,7 @@ func draw_cassettes():
 
 func slow_down():
 	var speed = 2
-	if player.battle_position == BATTLE_POSITIONS.OVERTAKE:
+	if player.battle_position == GlobalEnums.BATTLE_POSITIONS.OVERTAKE:
 		speed = 1.5
 		await line_up(speed)
 	var tweener = create_tween()
@@ -330,14 +327,14 @@ func slow_down():
 	tweener.parallel().tween_property(enemy.battle_sprite, "position", OVERTAKE[BATTLE_POSITION_PARAMS.POSITION], speed).set_trans(Tween.TRANS_QUART)
 	tweener.parallel().tween_property(enemy.battle_sprite, "scale", OVERTAKE[BATTLE_POSITION_PARAMS.SCALE], speed).set_trans(Tween.TRANS_QUART)
 	tweener.parallel().tween_property(enemy.battle_sprite, "rotation_degrees", OVERTAKE[BATTLE_POSITION_PARAMS.ROTATION], speed).set_trans(Tween.TRANS_QUART)
-	player.battle_position = BATTLE_POSITIONS.SLOW_DOWN
-	enemy.battle_position = BATTLE_POSITIONS.OVERTAKE
+	player.battle_position = GlobalEnums.BATTLE_POSITIONS.SLOW_DOWN
+	enemy.battle_position = GlobalEnums.BATTLE_POSITIONS.OVERTAKE
 	await wait(speed, "waiting for slow down")
 	return true
 
 func overtake():
 	var speed = 2
-	if player.battle_position == BATTLE_POSITIONS.SLOW_DOWN:
+	if player.battle_position == GlobalEnums.BATTLE_POSITIONS.SLOW_DOWN:
 		speed = 1.5
 		await line_up(speed)
 	var tweener = create_tween()
@@ -349,8 +346,8 @@ func overtake():
 	tweener.parallel().tween_property(enemy.battle_sprite, "scale", SLOW_DOWN[BATTLE_POSITION_PARAMS.SCALE], speed).set_trans(Tween.TRANS_QUART)
 	tweener.parallel().tween_property(enemy.battle_sprite, "rotation_degrees", SLOW_DOWN[BATTLE_POSITION_PARAMS.ROTATION], speed).set_trans(Tween.TRANS_QUART)
 	
-	player.battle_position = BATTLE_POSITIONS.OVERTAKE
-	enemy.battle_position = BATTLE_POSITIONS.SLOW_DOWN
+	player.battle_position = GlobalEnums.BATTLE_POSITIONS.OVERTAKE
+	enemy.battle_position = GlobalEnums.BATTLE_POSITIONS.SLOW_DOWN
 	await wait(speed, "waiting for overtake")
 	return true
 
@@ -363,8 +360,8 @@ func line_up(speed=2):
 	tweener.parallel().tween_property(enemy.battle_sprite, "position", LINE_UP_ENEMY[BATTLE_POSITION_PARAMS.POSITION], speed).set_trans(Tween.TRANS_QUART)
 	tweener.parallel().tween_property(enemy.battle_sprite, "scale", LINE_UP_ENEMY[BATTLE_POSITION_PARAMS.SCALE], speed).set_trans(Tween.TRANS_QUART)
 	tweener.parallel().tween_property(enemy.battle_sprite, "rotation_degrees", LINE_UP_ENEMY[BATTLE_POSITION_PARAMS.ROTATION], speed).set_trans(Tween.TRANS_QUART)
-	player.battle_position = BATTLE_POSITIONS.LINE_UP
-	enemy.battle_position = BATTLE_POSITIONS.LINE_UP
+	player.battle_position = GlobalEnums.BATTLE_POSITIONS.LINE_UP
+	enemy.battle_position = GlobalEnums.BATTLE_POSITIONS.LINE_UP
 	await wait(speed, "waiting for lineup")
 	return true
 
@@ -378,9 +375,9 @@ func wait(duration, wait_name):
 	
 
 func get_attack_animation_name(move_type, target):
-	if target.battle_position == BATTLE_POSITIONS.SLOW_DOWN:
+	if target.battle_position == GlobalEnums.BATTLE_POSITIONS.SLOW_DOWN:
 		return move_type+"_back"
-	if target.battle_position == BATTLE_POSITIONS.LINE_UP:
+	if target.battle_position == GlobalEnums.BATTLE_POSITIONS.LINE_UP:
 		return move_type+"_side"
-	if target.battle_position == BATTLE_POSITIONS.OVERTAKE:
+	if target.battle_position == GlobalEnums.BATTLE_POSITIONS.OVERTAKE:
 		return move_type+"_front"

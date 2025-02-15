@@ -43,12 +43,13 @@ func play_story_one():
 	await animate_story_element(narration,"visible_characters",len(narration.text),3, 1)
 	narration.visible_characters = 0
 	narration.text = "Wife: Huh?! What's going on?! Honey?! Take your dirty hands off my husband!"
-	await animate_story_element(portrait,"modulate",Color(1, 1, 1, 1),2,0.1)
-	await animate_story_element(portrait_2,"modulate",Color(1, 1, 1, 1),2,0.1)
+	await animate_story_element(portrait,"modulate",Color(1, 1, 1, 1),2, 0.1)
+	await animate_story_element(portrait_2,"modulate",Color(1, 1, 1, 1),2, 0.1)
 	await animate_story_element(narration, "visible_characters", len(narration.text),3, 1)
 	narration.visible_characters = 0
 	narration.text = "Hound: Hahaha! I wish I could but I don't want to. It was nice to meet you ma'am. Cya!"
 	await animate_story_element(narration, "visible_characters", len(narration.text),3, 1)
+	await animate_story_element(portrait_2,"modulate",Color(1, 1, 1, 0),2, 0.1)
 	sfx_player.stream = CAR_ENGINE_START_AND_PULL_AWAY
 	sfx_player.play()
 	await sfx_player.finished

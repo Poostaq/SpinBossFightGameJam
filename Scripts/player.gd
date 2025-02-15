@@ -2,10 +2,10 @@ extends Node2D
 
 const DEBUFF_SCENE_PATH = "res://Scenes/buff_debuff_element.tscn"
 
-enum BATTLE_POSITIONS {SLOW_DOWN, LINE_UP, OVERTAKE}
+#enum BATTLE_POSITIONS {SLOW_DOWN, LINE_UP, OVERTAKE}
 enum DE_BUFF {DEBUFF_NAME, ICON_NAME, WHEN_ACTIVE, ANIMATION_TO_PLAY, DESCRIPTION, VALUE}
 
-var battle_position = BATTLE_POSITIONS.SLOW_DOWN
+var battle_position =  GlobalEnums.BATTLE_POSITIONS.SLOW_DOWN
 var life = 20
 var current_cassette = 0
 var total_fuel_spent = 0
@@ -21,6 +21,9 @@ var next_attack_buffs = []
 var permanent_buffs = []
 var debuffs = [this_turn_debuffs, next_cassette_debuffs, permanent_debuffs, next_attack_debuffs]
 var buffs = [this_turn_buffs, next_cassette_buffs, permanent_buffs, next_attack_buffs]
+var new_buffs = []
+var new_debuffs = []
+
 
 @onready var deck: Node2D = $Deck
 @onready var portrait_area: Node2D = $PortraitArea
@@ -35,6 +38,10 @@ var buffs = [this_turn_buffs, next_cassette_buffs, permanent_buffs, next_attack_
 @onready var animation_player: AnimationPlayer = $BattleSprite/AnimationPlayer
 @onready var buff_debuff_area: GridContainer = $BuffDebuffArea
 @onready var total_fuel_spent_label: Label = $"../FuelSpent/Sprite2D/FuelSpent"
+
+
+func add_effect(effect_data):
+	var effect_object = Effect.new(effect_data[GlobalEnums.EFFECT.WHEN_ACTIVE],effect_data[GlobalEnums.EFFECT.EFFECT_NAME,])
 
 func add_debuff(debuff_data):
 	var icon_scene = preload(DEBUFF_SCENE_PATH)
@@ -136,10 +143,10 @@ func update_current_turn_debuffs():
 		this_turn_debuffs.append(debuff)
 	for buff in next_turn_buffs:
 		next_turn_buffs.erase(buff)
-		if buff.de_buff_data[DE_BUFF.DEBUFF_NAME] == "next_turn_first_action_cost_less_if_you_start_in_slow_down" and battle_position == BATTLE_POSITIONS.SLOW_DOWN:
+		if buff.de_buff_data[DE_BUFF.DEBUFF_NAME] == "next_turn_first_action_cost_less_if_you_start_in_slow_down" and battle_position ==  GlobalEnums.BATTLE_POSITIONS.SLOW_DOWN:
 			var new_buff = add_buff(CassetteDatabase.BUFFS["next_cassette_cost_less"])
 			this_turn_buffs.append(new_buff)
-		elif buff.de_buff_data[DE_BUFF.DEBUFF_NAME] == "next_turn_cassettes_cost_less_if_you_stay_in_slow_down" and battle_position == BATTLE_POSITIONS.SLOW_DOWN:
+		elif buff.de_buff_data[DE_BUFF.DEBUFF_NAME] == "next_turn_cassettes_cost_less_if_you_stay_in_slow_down" and battle_position ==  GlobalEnums.BATTLE_POSITIONS.SLOW_DOWN:
 			var new_buff = add_buff(CassetteDatabase.BUFFS["this_turn_cassettes_cost_less"])
 			this_turn_buffs.append(new_buff)
 		else:
@@ -166,19 +173,19 @@ func get_target_damage_modifier():
 	for buff_list in buffs:
 		for buff in buff_list:
 			if buff.de_buff_data[DE_BUFF.DEBUFF_NAME] == "this_turn_damage_reduction_back_3":
-				if battle_position == BATTLE_POSITIONS.OVERTAKE:
+				if battle_position ==  GlobalEnums.BATTLE_POSITIONS.OVERTAKE:
 					current_modifier -= buff.de_buff_data[DE_BUFF.VALUE]
 			if buff.de_buff_data[DE_BUFF.DEBUFF_NAME] == "this_turn_damage_reduction_side_3":
-				if battle_position == BATTLE_POSITIONS.LINE_UP:
+				if battle_position ==  GlobalEnums.BATTLE_POSITIONS.LINE_UP:
 					current_modifier -= buff.de_buff_data[DE_BUFF.VALUE]
 			if buff.de_buff_data[DE_BUFF.DEBUFF_NAME] == "this_turn_damage_reduction_side_2":
-				if battle_position == BATTLE_POSITIONS.LINE_UP:
+				if battle_position ==  GlobalEnums.BATTLE_POSITIONS.LINE_UP:
 					current_modifier -= buff.de_buff_data[DE_BUFF.VALUE]
 			if buff.de_buff_data[DE_BUFF.DEBUFF_NAME] == "this_turn_damage_reduction_front_2":
-				if battle_position == BATTLE_POSITIONS.SLOW_DOWN:
+				if battle_position ==  GlobalEnums.BATTLE_POSITIONS.SLOW_DOWN:
 					current_modifier -= buff.de_buff_data[DE_BUFF.VALUE]
 			if buff.de_buff_data[DE_BUFF.DEBUFF_NAME] == "this_turn_damage_reduction_front_3":
-				if battle_position == BATTLE_POSITIONS.SLOW_DOWN:
+				if battle_position ==  GlobalEnums.BATTLE_POSITIONS.SLOW_DOWN:
 					current_modifier -= buff.de_buff_data[DE_BUFF.VALUE]
 			if buff.de_buff_data[DE_BUFF.DEBUFF_NAME] == "next_attack_damage_reduction_any_side_2":
 				current_modifier -= buff.de_buff_data[DE_BUFF.VALUE]

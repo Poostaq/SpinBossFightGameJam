@@ -8,18 +8,34 @@
 
 config_version=5
 
+[animation]
+
+warnings/check_invalid_track_paths=false
+
 [application]
 
-config/name="SpinBossFightGameJam"
+config/name="Im Coming, Hub"
 run/main_scene="res://Scenes/main.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+CassetteDatabase="*res://Scripts/cassette_database.gd"
+GlobalEnums="*res://Scripts/global_enums.gd"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/stretch/mode="viewport"
 
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/script-ide/plugin.cfg")
+
+[rendering]
+
+textures/vram_compression/import_etc2_astc=true
+anti_aliasing/quality/msaa_2d=2
+viewport/hdr_2d=true

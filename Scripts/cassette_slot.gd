@@ -6,6 +6,7 @@ const COLLISION_MASK_SLOT = 16
 var cassette_in_slot
 @onready var top_cover = $TopClosingCover
 @onready var bottom_cover = $BottomClosingCover
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func update_elements(is_active, side, fuel):
 	if is_active:
@@ -28,6 +29,7 @@ func set_cover_state(closed):
 		var cover_tweener = create_tween()
 		cover_tweener.tween_property(top_cover, "scale", Vector2(0.5,0),0.1)
 		cover_tweener.parallel().tween_property(bottom_cover, "scale", Vector2(0.5,0),0.1)
+
 
 
 func _on_area_2d_mouse_entered() -> void:

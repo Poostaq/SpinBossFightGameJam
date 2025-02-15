@@ -2,9 +2,9 @@ extends Node2D
 
 const DEBUFF_SCENE_PATH = "res://Scenes/buff_debuff_element.tscn"
 
-enum BATTLE_POSITIONS {SLOW_DOWN, LINE_UP, OVERTAKE}
+#enum BATTLE_POSITIONS {SLOW_DOWN, LINE_UP, OVERTAKE}
 enum DE_BUFF {DEBUFF_NAME, ICON_NAME, WHEN_ACTIVE, ANIMATION_TO_PLAY, DESCRIPTION,VALUE}
-var battle_position = BATTLE_POSITIONS.OVERTAKE
+var battle_position = GlobalEnums.BATTLE_POSITIONS.OVERTAKE
 var life = 20
 var current_cassette = 0
 var total_fuel_spent = 0
@@ -140,10 +140,10 @@ func update_current_turn_debuffs():
 		this_turn_debuffs.append(debuff)
 	for buff in next_turn_buffs:
 		next_turn_buffs.erase(buff)
-		if buff.de_buff_data[DE_BUFF.DEBUFF_NAME] == "next_turn_first_action_cost_less_if_you_start_in_slow_down" and battle_position == BATTLE_POSITIONS.SLOW_DOWN:
+		if buff.de_buff_data[DE_BUFF.DEBUFF_NAME] == "next_turn_first_action_cost_less_if_you_start_in_slow_down" and battle_position == GlobalEnums.BATTLE_POSITIONS.SLOW_DOWN:
 			var new_buff = add_buff(CassetteDatabase.BUFFS["next_cassette_cost_less"])
 			this_turn_buffs.append(new_buff)
-		elif buff.de_buff_data[DE_BUFF.DEBUFF_NAME] == "next_turn_cassettes_cost_less_if_you_stay_in_slow_down" and battle_position == BATTLE_POSITIONS.SLOW_DOWN:
+		elif buff.de_buff_data[DE_BUFF.DEBUFF_NAME] == "next_turn_cassettes_cost_less_if_you_stay_in_slow_down" and battle_position == GlobalEnums.BATTLE_POSITIONS.SLOW_DOWN:
 			var new_buff = add_buff(CassetteDatabase.BUFFS["this_turn_cassettes_cost_less"])
 			this_turn_buffs.append(new_buff)
 		else:
@@ -170,19 +170,19 @@ func get_target_damage_modifier():
 	for buff_list in buffs:
 		for buff in buff_list:
 			if buff.de_buff_data[DE_BUFF.DEBUFF_NAME] == "this_turn_damage_reduction_back_3":
-				if battle_position == BATTLE_POSITIONS.OVERTAKE:
+				if battle_position == GlobalEnums.BATTLE_POSITIONS.OVERTAKE:
 					current_modifier -= buff.de_buff_data[DE_BUFF.VALUE]
 			if buff.de_buff_data[DE_BUFF.DEBUFF_NAME] == "this_turn_damage_reduction_side_3":
-				if battle_position == BATTLE_POSITIONS.LINE_UP:
+				if battle_position ==  GlobalEnums.BATTLE_POSITIONS.LINE_UP:
 					current_modifier -= buff.de_buff_data[DE_BUFF.VALUE]
 			if buff.de_buff_data[DE_BUFF.DEBUFF_NAME] == "this_turn_damage_reduction_side_2":
-				if battle_position == BATTLE_POSITIONS.LINE_UP:
+				if battle_position ==  GlobalEnums.BATTLE_POSITIONS.LINE_UP:
 					current_modifier -= buff.de_buff_data[DE_BUFF.VALUE]
 			if buff.de_buff_data[DE_BUFF.DEBUFF_NAME] == "this_turn_damage_reduction_front_2":
-				if battle_position == BATTLE_POSITIONS.SLOW_DOWN:
+				if battle_position ==  GlobalEnums.BATTLE_POSITIONS.SLOW_DOWN:
 					current_modifier -= buff.de_buff_data[DE_BUFF.VALUE]
 			if buff.de_buff_data[DE_BUFF.DEBUFF_NAME] == "this_turn_damage_reduction_front_3":
-				if battle_position == BATTLE_POSITIONS.SLOW_DOWN:
+				if battle_position ==  GlobalEnums.BATTLE_POSITIONS.SLOW_DOWN:
 					current_modifier -= buff.de_buff_data[DE_BUFF.VALUE]
 			if buff.de_buff_data[DE_BUFF.DEBUFF_NAME] == "next_attack_damage_reduction_any_side_2":
 				current_modifier -= buff.de_buff_data[DE_BUFF.VALUE]
@@ -206,7 +206,7 @@ func get_fuel_modifier():
 	return current_modifier
 
 
-func select_cassettes():
+func select_cassettes_for_sequence():
 	for i in range(0, 3):
 		var selected_cassette_index = rng.randi_range(0, len(hand.enemy_hand)-1)
 		var selected_cassette = hand.enemy_hand[selected_cassette_index]

@@ -33,8 +33,8 @@ func create_cassette(cassette_name):
 	new_cassette.position = Vector2(1920, 100)
 	new_cassette.scale = new_cassette.SMALLER_CASSETTE_SIZE
 	new_cassette.name = cassette_data[0]
-	new_cassette.cassette_side_a = cassette_data[1]
-	new_cassette.cassette_side_b = cassette_data[2]
+	new_cassette.side_a_data = cassette_data[1]
+	new_cassette.side_b_data = cassette_data[2]
 	new_cassette.cassette_name = cassette_data[0]
 	new_cassette.current_side = "A"
 	new_cassette.whose_cassette = "enemy"
