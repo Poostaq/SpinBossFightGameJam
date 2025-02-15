@@ -1,0 +1,411 @@
+[gd_scene load_steps=38 format=3 uid="uid://caohjtvblyruq"]
+
+[ext_resource type="Texture2D" uid="uid://ceje7xsmrb60k" path="res://Images/Dashboard/1 dashboard base.png" id="1_sb8g8"]
+[ext_resource type="Script" path="res://Scripts/cassette_manager.gd" id="1_wc1ax"]
+[ext_resource type="Texture2D" uid="uid://cqpq5g4lqnkoo" path="res://Images/Dashboard/dashboard frame.png" id="2_elg4r"]
+[ext_resource type="Texture2D" uid="uid://yxmyxergpp5q" path="res://Images/portraits/enemy slots.png" id="3_0xj32"]
+[ext_resource type="PackedScene" uid="uid://bwxtebcpfcui5" path="res://Scenes/cassette_slot.tscn" id="3_u54n2"]
+[ext_resource type="Script" path="res://Scripts/player_hand.gd" id="4_pedye"]
+[ext_resource type="Script" path="res://Scripts/deck.gd" id="5_ixwic"]
+[ext_resource type="Texture2D" uid="uid://ipdxxm3j2xkt" path="res://Images/Deck.png" id="5_p4bm3"]
+[ext_resource type="Script" path="res://Scripts/input_manager.gd" id="7_tyulq"]
+[ext_resource type="Texture2D" uid="uid://bpujnut1raxcu" path="res://Images/Dashboard/lost icon flash.png" id="9_sk6rg"]
+[ext_resource type="PackedScene" uid="uid://c55o421u2q038" path="res://Scenes/button.tscn" id="10_8tbdh"]
+[ext_resource type="Script" path="res://Scripts/battle_manager.gd" id="11_iq4cn"]
+[ext_resource type="Script" path="res://Scripts/game_manager.gd" id="11_uclxx"]
+[ext_resource type="Script" path="res://Scripts/enemy_deck.gd" id="12_sxme4"]
+[ext_resource type="PackedScene" uid="uid://cbsxv7mdtoe1i" path="res://Scenes/cassette_preview.tscn" id="12_y16is"]
+[ext_resource type="PackedScene" uid="uid://tqimomqpuvis" path="res://Scenes/enemy_cassette_slot.tscn" id="15_2m8a8"]
+[ext_resource type="Script" path="res://Scripts/enemy_hand.gd" id="17_tansv"]
+[ext_resource type="Texture2D" uid="uid://crj3kwnky5ooj" path="res://Images/MainMenu/pngwing.com.png" id="18_iroji"]
+[ext_resource type="Texture2D" uid="uid://dnlvkxspp6a88" path="res://Images/MainMenu/background_car.png" id="18_l7140"]
+[ext_resource type="Texture2D" uid="uid://brqom1407r08x" path="res://Images/MainMenu/tire.png" id="19_5mqu3"]
+[ext_resource type="Texture2D" uid="uid://u501tg45mcaq" path="res://Images/MainMenu/Grayout_for_buttons.png" id="19_dpxto"]
+[ext_resource type="FontFile" uid="uid://dtn7qee5h51x5" path="res://Font/atwriter.ttf" id="19_j160d"]
+[ext_resource type="Texture2D" uid="uid://o5uublbe8bl6" path="res://Images/Dashboard/2 shifters.png" id="21_fxd7b"]
+[ext_resource type="Texture2D" uid="uid://c08e6hd43yl2a" path="res://Images/Dashboard/3 steering wheel.png" id="22_53i6f"]
+[ext_resource type="Texture2D" uid="uid://bnsq73ogv26i8" path="res://Images/portraits/portrait frame.png" id="23_j41rs"]
+[ext_resource type="Texture2D" uid="uid://bkhk6owlcglfo" path="res://Images/portraits/life gauge.png" id="24_jplfu"]
+[ext_resource type="Texture2D" uid="uid://dfex21ibvcvur" path="res://Images/portraits/enemy portrait frame.png" id="25_24q0p"]
+[ext_resource type="Texture2D" uid="uid://d4cm3tontqney" path="res://Images/portraits/enemy life gauge.png" id="26_gtlx8"]
+
+[sub_resource type="Animation" id="Animation_toinl"]
+resource_name = "BurntACard"
+step = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LostIconFlash:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(4, 4, 4, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_hyoen"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LostIconFlash:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nxrdd"]
+_data = {
+"BurntACard": SubResource("Animation_toinl"),
+"RESET": SubResource("Animation_hyoen")
+}
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_ta0px"]
+
+[sub_resource type="Animation" id="Animation_2s1m8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tire:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_loxjo"]
+resource_name = "spin_wheel"
+length = 0.25
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tire:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tdxxy"]
+_data = {
+"RESET": SubResource("Animation_2s1m8"),
+"spin_wheel": SubResource("Animation_loxjo")
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_kbo5g"]
+
+[sub_resource type="Environment" id="Environment_48qbg"]
+background_mode = 3
+glow_enabled = true
+glow_blend_mode = 1
+
+[node name="Main" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -3
+offset_left = 3.0
+offset_top = -4.0
+offset_right = 1923.0
+offset_bottom = 1076.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("1_sb8g8")
+expand_mode = 1
+
+[node name="BackgroundPlaceholder" type="TextureRect" parent="."]
+visible = false
+z_index = -2
+offset_top = 627.0
+offset_right = 1920.0
+offset_bottom = 1707.0
+texture = ExtResource("2_elg4r")
+expand_mode = 1
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="EnemySlotTexture" type="TextureRect" parent="."]
+offset_left = 1167.0
+offset_top = -179.0
+offset_right = 1679.0
+offset_bottom = 333.0
+texture = ExtResource("3_0xj32")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="PlayerSequence" type="Node2D" parent="."]
+
+[node name="CassetteSlot" parent="PlayerSequence" instance=ExtResource("3_u54n2")]
+z_index = -1
+position = Vector2(960, 706)
+
+[node name="CassetteSlot2" parent="PlayerSequence" instance=ExtResource("3_u54n2")]
+z_index = -1
+position = Vector2(960, 756)
+
+[node name="CassetteSlot3" parent="PlayerSequence" instance=ExtResource("3_u54n2")]
+z_index = -1
+position = Vector2(960, 806)
+
+[node name="PlayerDeck" type="Node2D" parent="."]
+position = Vector2(508, 860)
+scale = Vector2(0.6, 0.6)
+script = ExtResource("5_ixwic")
+
+[node name="PlayerHand" type="Node2D" parent="."]
+script = ExtResource("4_pedye")
+
+[node name="CassetteManager" type="Node2D" parent="."]
+script = ExtResource("1_wc1ax")
+
+[node name="InputManager" type="Node2D" parent="."]
+script = ExtResource("7_tyulq")
+
+[node name="Discard" type="Node2D" parent="."]
+light_mask = 16
+visibility_layer = 16
+
+[node name="Area2D" type="Area2D" parent="Discard"]
+light_mask = 65536
+visibility_layer = 65536
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Discard/Area2D"]
+light_mask = 256
+visibility_layer = 256
+position = Vector2(1, 0)
+polygon = PackedVector2Array(1395, 676, 1427, 888, 1845, 888, 1789, 677)
+
+[node name="Lost" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Lost"]
+visible = false
+position = Vector2(1521.88, 994.063)
+scale = Vector2(0.878999, 0.426333)
+texture = ExtResource("5_p4bm3")
+
+[node name="Label" type="Label" parent="Lost"]
+visible = false
+anchors_preset = -1
+anchor_left = -0.0120004
+anchor_top = 0.611999
+anchor_right = 0.64
+anchor_bottom = 0.947999
+offset_left = 1480.0
+offset_top = 961.0
+offset_right = 1568.0
+offset_bottom = 1011.0
+theme_override_colors/font_color = Color(1, 0.956863, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 36
+text = "LOST"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="LostIconFlash" type="Sprite2D" parent="Lost"]
+position = Vector2(1530, 989)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_sk6rg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Lost"]
+libraries = {
+"": SubResource("AnimationLibrary_nxrdd")
+}
+
+[node name="CommitSequence" parent="." instance=ExtResource("10_8tbdh")]
+offset_left = 1253.0
+offset_top = 679.0
+offset_right = 1343.0
+offset_bottom = 744.0
+
+[node name="GameManager" type="Node2D" parent="."]
+script = ExtResource("11_uclxx")
+
+[node name="PreviewCassette" parent="." instance=ExtResource("12_y16is")]
+position = Vector2(1633, 802)
+scale = Vector2(1.1, 1.1)
+
+[node name="BattleManager" type="Node" parent="."]
+script = ExtResource("11_iq4cn")
+
+[node name="EnemySequence" type="Node2D" parent="."]
+
+[node name="CassetteSlot" parent="EnemySequence" instance=ExtResource("15_2m8a8")]
+position = Vector2(1414, 40)
+
+[node name="CassetteSlot2" parent="EnemySequence" instance=ExtResource("15_2m8a8")]
+position = Vector2(1414, 78)
+
+[node name="CassetteSlot3" parent="EnemySequence" instance=ExtResource("15_2m8a8")]
+position = Vector2(1414, 116)
+
+[node name="EnemyDeck" type="Node2D" parent="."]
+script = ExtResource("12_sxme4")
+
+[node name="EnemyHand" type="Node" parent="."]
+script = ExtResource("17_tansv")
+
+[node name="MainMenu" type="Node2D" parent="."]
+visible = false
+
+[node name="TextureRect" type="TextureRect" parent="MainMenu"]
+modulate = Color(0.489622, 0.489622, 0.489622, 1)
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = SubResource("CanvasTexture_ta0px")
+
+[node name="Animation" type="Node2D" parent="MainMenu"]
+
+[node name="BackgroundCar" type="Sprite2D" parent="MainMenu/Animation"]
+position = Vector2(950, 332)
+scale = Vector2(1.65925, 1.831)
+texture = ExtResource("18_l7140")
+
+[node name="Tire" type="Sprite2D" parent="MainMenu/Animation"]
+position = Vector2(955, 328)
+scale = Vector2(1, 1.064)
+texture = ExtResource("19_5mqu3")
+offset = Vector2(-6, -5)
+
+[node name="Parallax2D" type="Parallax2D" parent="MainMenu/Animation"]
+repeat_size = Vector2(1935, 0)
+autoscroll = Vector2(-4500, 0)
+repeat_times = 2
+
+[node name="Gravel1" type="Sprite2D" parent="MainMenu/Animation/Parallax2D"]
+position = Vector2(1417, 636)
+texture = ExtResource("18_iroji")
+
+[node name="Gravel2" type="Sprite2D" parent="MainMenu/Animation/Parallax2D"]
+position = Vector2(444, 636)
+texture = ExtResource("18_iroji")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MainMenu/Animation"]
+libraries = {
+"": SubResource("AnimationLibrary_tdxxy")
+}
+autoplay = "spin_wheel"
+
+[node name="TextureRect2" type="TextureRect" parent="MainMenu"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("ImageTexture_kbo5g")
+
+[node name="GrayoutForButtons" type="Sprite2D" parent="MainMenu"]
+modulate = Color(1, 1, 1, 0.59)
+position = Vector2(958.5, 777.5)
+scale = Vector2(1.991, 0.397)
+texture = ExtResource("19_dpxto")
+
+[node name="Start" parent="MainMenu" instance=ExtResource("10_8tbdh")]
+offset_left = 211.0
+offset_top = 675.0
+offset_right = 611.0
+offset_bottom = 750.0
+theme_override_fonts/font = ExtResource("19_j160d")
+theme_override_font_sizes/font_size = 40
+text = "Start Game
+"
+
+[node name="Exit" parent="MainMenu" instance=ExtResource("10_8tbdh")]
+visible = false
+offset_left = 213.0
+offset_top = 781.0
+offset_right = 613.0
+offset_bottom = 856.0
+theme_override_fonts/font = ExtResource("19_j160d")
+theme_override_font_sizes/font_size = 40
+text = "Exit"
+
+[node name="Blinkers" type="TextureRect" parent="."]
+offset_top = 878.0
+offset_right = 565.0
+offset_bottom = 1705.0
+texture = ExtResource("21_fxd7b")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="SteeringWheel" type="TextureRect" parent="."]
+offset_left = -480.0
+offset_top = 623.0
+offset_right = 419.0
+offset_bottom = 1607.0
+texture = ExtResource("22_53i6f")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_48qbg")
+
+[node name="PlayerPortraitArea" type="Node2D" parent="."]
+
+[node name="GrayoutForButtons" type="Sprite2D" parent="PlayerPortraitArea"]
+position = Vector2(104, 234)
+scale = Vector2(0.1975, 0.0375)
+texture = ExtResource("19_dpxto")
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerPortraitArea"]
+position = Vector2(129, 128)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("23_j41rs")
+
+[node name="LifeGauge" type="Sprite2D" parent="PlayerPortraitArea"]
+position = Vector2(130, 129)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("24_jplfu")
+
+[node name="Label" type="Label" parent="PlayerPortraitArea"]
+offset_left = 16.0
+offset_top = 215.0
+offset_right = 106.0
+offset_bottom = 248.0
+theme_override_fonts/font = ExtResource("19_j160d")
+theme_override_font_sizes/font_size = 26
+text = "HP: 20"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EnemyPortraitArea" type="Node2D" parent="."]
+
+[node name="GrayoutForButtons" type="Sprite2D" parent="EnemyPortraitArea"]
+position = Vector2(1811, 240)
+scale = Vector2(0.1975, 0.0375)
+texture = ExtResource("19_dpxto")
+
+[node name="EnemyPortraitFrame" type="Sprite2D" parent="EnemyPortraitArea"]
+position = Vector2(1788, 134)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("25_24q0p")
+
+[node name="LifeGauge" type="Sprite2D" parent="EnemyPortraitArea"]
+position = Vector2(1789, 135)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("26_gtlx8")
+
+[node name="Label" type="Label" parent="EnemyPortraitArea"]
+offset_left = 1819.0
+offset_top = 221.0
+offset_right = 1909.0
+offset_bottom = 254.0
+theme_override_fonts/font = ExtResource("19_j160d")
+theme_override_font_sizes/font_size = 26
+text = "HP: 20"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="CommitSequence" to="BattleManager" method="_on_commit_sequence_pressed"]

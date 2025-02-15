@@ -1,0 +1,1086 @@
+[gd_scene load_steps=77 format=3 uid="uid://caohjtvblyruq"]
+
+[ext_resource type="Texture2D" uid="uid://b36edyx330wqq" path="res://Images/Dashboard/1 dashboard base v2.png" id="1_g2bnb"]
+[ext_resource type="Texture2D" uid="uid://4q7fi8x7isqo" path="res://Images/background/road_1.png" id="1_i8omo"]
+[ext_resource type="Texture2D" uid="uid://b5a8s5h0oecfi" path="res://Images/background/sky.png" id="1_lnter"]
+[ext_resource type="Script" path="res://Scripts/cassette_manager.gd" id="1_wc1ax"]
+[ext_resource type="Texture2D" uid="uid://dtqm6ax34a2tc" path="res://Images/background/city and hills.png" id="2_1x4o8"]
+[ext_resource type="Texture2D" uid="uid://cpdby0jjfhtbt" path="res://Images/background/road_2.png" id="2_sy637"]
+[ext_resource type="Texture2D" uid="uid://yxmyxergpp5q" path="res://Images/portraits/enemy slots.png" id="3_0xj32"]
+[ext_resource type="Texture2D" uid="uid://dj5h4lbie8u3w" path="res://Images/background/road_3.png" id="3_lylep"]
+[ext_resource type="Texture2D" uid="uid://erqhvecwfx3k" path="res://Images/background/desert.png" id="3_t30am"]
+[ext_resource type="PackedScene" uid="uid://bwxtebcpfcui5" path="res://Scenes/cassette_slot.tscn" id="3_u54n2"]
+[ext_resource type="Script" path="res://Scripts/player_hand.gd" id="4_pedye"]
+[ext_resource type="Texture2D" uid="uid://btk5ysc00eg44" path="res://Images/background/road_4.png" id="4_t6x6v"]
+[ext_resource type="Texture2D" uid="uid://dw0slwoycthdg" path="res://Images/background/road_5.png" id="5_0gwis"]
+[ext_resource type="Script" path="res://Scripts/deck.gd" id="5_ixwic"]
+[ext_resource type="Texture2D" uid="uid://c3bgtbcdysx8w" path="res://Images/background/road_6.png" id="6_v0y3g"]
+[ext_resource type="Script" path="res://Scripts/input_manager.gd" id="7_tyulq"]
+[ext_resource type="Script" path="res://Scripts/discard.gd" id="9_8w5uc"]
+[ext_resource type="Texture2D" uid="uid://bpujnut1raxcu" path="res://Images/Dashboard/lost icon flash.png" id="9_sk6rg"]
+[ext_resource type="PackedScene" uid="uid://c55o421u2q038" path="res://Scenes/button.tscn" id="10_8tbdh"]
+[ext_resource type="Texture2D" uid="uid://bopuaahs4nr88" path="res://Images/background/quidelines.png" id="10_fxhj2"]
+[ext_resource type="Script" path="res://Scripts/battle_manager.gd" id="11_iq4cn"]
+[ext_resource type="Script" path="res://Scripts/game_manager.gd" id="11_uclxx"]
+[ext_resource type="Script" path="res://Scripts/enemy_deck.gd" id="12_sxme4"]
+[ext_resource type="PackedScene" uid="uid://cbsxv7mdtoe1i" path="res://Scenes/cassette_preview.tscn" id="12_y16is"]
+[ext_resource type="PackedScene" uid="uid://tqimomqpuvis" path="res://Scenes/enemy_cassette_slot.tscn" id="15_2m8a8"]
+[ext_resource type="Texture2D" uid="uid://c73511xn3u0y3" path="res://Images/Placeholders/player_car.png" id="17_nap6l"]
+[ext_resource type="Script" path="res://Scripts/enemy_hand.gd" id="17_tansv"]
+[ext_resource type="Texture2D" uid="uid://crj3kwnky5ooj" path="res://Images/MainMenu/pngwing.com.png" id="18_iroji"]
+[ext_resource type="Texture2D" uid="uid://dnlvkxspp6a88" path="res://Images/MainMenu/background_car.png" id="18_l7140"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="18_si26d"]
+[ext_resource type="Texture2D" uid="uid://brqom1407r08x" path="res://Images/MainMenu/tire.png" id="19_5mqu3"]
+[ext_resource type="Texture2D" uid="uid://u501tg45mcaq" path="res://Images/MainMenu/Grayout_for_buttons.png" id="19_dpxto"]
+[ext_resource type="FontFile" uid="uid://dtn7qee5h51x5" path="res://Font/atwriter.ttf" id="19_j160d"]
+[ext_resource type="Script" path="res://Scripts/enemy_discard.gd" id="19_r3qly"]
+[ext_resource type="Texture2D" uid="uid://o5uublbe8bl6" path="res://Images/Dashboard/2 shifters.png" id="21_fxd7b"]
+[ext_resource type="Texture2D" uid="uid://c08e6hd43yl2a" path="res://Images/Dashboard/3 steering wheel.png" id="22_53i6f"]
+[ext_resource type="Texture2D" uid="uid://bnsq73ogv26i8" path="res://Images/portraits/portrait frame.png" id="23_j41rs"]
+[ext_resource type="Texture2D" uid="uid://cj5yrp14ea8p4" path="res://Images/Dashboard/separator.png" id="24_30dxu"]
+[ext_resource type="Texture2D" uid="uid://dfex21ibvcvur" path="res://Images/portraits/enemy portrait frame.png" id="25_24q0p"]
+[ext_resource type="Texture2D" uid="uid://1gljpnnvwy1m" path="res://Images/Placeholders/boss_1_placeholder.png" id="25_fyjo0"]
+[ext_resource type="Texture2D" uid="uid://oodvf6n8dpvb" path="res://Images/Dashboard/front panel.png" id="25_roy6f"]
+[ext_resource type="Texture2D" uid="uid://d4jfuwh4lntc6" path="res://Images/portraits/life gauge v2.png" id="26_4bk7t"]
+[ext_resource type="Texture2D" uid="uid://c7d46g83rm7qw" path="res://Images/portraits/enemy life gauge v2.png" id="28_roff6"]
+[ext_resource type="Script" path="res://Scripts/enemy.gd" id="30_07ik1"]
+[ext_resource type="PackedScene" uid="uid://bokhffkteotyi" path="res://Scenes/MenuButton.tscn" id="31_c7vku"]
+[ext_resource type="PackedScene" uid="uid://b8ha82jqux55" path="res://Scenes/mini_cassette.tscn" id="34_hyykb"]
+[ext_resource type="Texture2D" uid="uid://c0uii7mpdokot" path="res://Images/Placeholders/Logo.png" id="45_qhexb"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_xnwa8"]
+frames = 6
+speed_scale = 45.0
+frame_0/texture = ExtResource("1_i8omo")
+frame_1/texture = ExtResource("2_sy637")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("3_lylep")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("4_t6x6v")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("5_0gwis")
+frame_4/duration = 1.0
+frame_5/texture = ExtResource("6_v0y3g")
+frame_5/duration = 1.0
+
+[sub_resource type="Animation" id="Animation_v362c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackgroundTown:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(986, 118)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BackgroundTown:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 0.5)]
+}
+
+[sub_resource type="Animation" id="Animation_8qlit"]
+resource_name = "TownFadeOut"
+length = 300.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackgroundTown:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 300),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(986, 118), Vector2(986, 166)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BackgroundTown:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 300),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6jge5"]
+_data = {
+"RESET": SubResource("Animation_v362c"),
+"TownFadeOut": SubResource("Animation_8qlit")
+}
+
+[sub_resource type="Animation" id="Animation_j17ic"]
+resource_name = "BackgroundSway"
+length = 20.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackgroundFurtherRoad:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10, 20),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(992, 489), Vector2(1127, 489), Vector2(992, 489)]
+}
+
+[sub_resource type="Animation" id="Animation_kswln"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackgroundFurtherRoad:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1127, 489)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0y78m"]
+_data = {
+"BackgroundSway": SubResource("Animation_j17ic"),
+"RESET": SubResource("Animation_kswln")
+}
+
+[sub_resource type="Environment" id="Environment_48qbg"]
+background_mode = 3
+glow_enabled = true
+glow_blend_mode = 1
+
+[sub_resource type="Animation" id="Animation_toinl"]
+resource_name = "BurntACard"
+step = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LostIconFlash:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(4, 4, 4, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_hyoen"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LostIconFlash:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nxrdd"]
+_data = {
+"BurntACard": SubResource("Animation_toinl"),
+"RESET": SubResource("Animation_hyoen")
+}
+
+[sub_resource type="Animation" id="Animation_kshvn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/FrontWheel:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D2/BackWheel:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(613, 478)]
+}
+
+[sub_resource type="Animation" id="Animation_lsj1f"]
+resource_name = "idle"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(613, 478), Vector2(599, 481), Vector2(613, 478), Vector2(621, 474), Vector2(613, 478)]
+}
+
+[sub_resource type="Animation" id="Animation_4bvqx"]
+resource_name = "rotate_wheels"
+length = 0.25
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/FrontWheel:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D2/BackWheel:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a4m2y"]
+_data = {
+"RESET": SubResource("Animation_kshvn"),
+"idle": SubResource("Animation_lsj1f"),
+"rotate_wheels": SubResource("Animation_4bvqx")
+}
+
+[sub_resource type="Animation" id="Animation_im4ov"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(613, 478)]
+}
+
+[sub_resource type="Animation" id="Animation_saww2"]
+resource_name = "idle"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(613, 478), Vector2(604, 482), Vector2(613, 478), Vector2(623, 474), Vector2(613, 478)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fh4kg"]
+_data = {
+"RESET": SubResource("Animation_im4ov"),
+"idle": SubResource("Animation_saww2")
+}
+
+[sub_resource type="Animation" id="Animation_0xuwg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/Wheel:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D2/Wheel:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_s6h8t"]
+resource_name = "boss_rotate_wheels"
+length = 0.25
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/Wheel:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D2/Wheel:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xilms"]
+_data = {
+"RESET": SubResource("Animation_0xuwg"),
+"boss_rotate_wheels": SubResource("Animation_s6h8t")
+}
+
+[sub_resource type="Animation" id="Animation_wf1n5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(847, 453)]
+}
+
+[sub_resource type="Animation" id="Animation_f42kf"]
+resource_name = "idle"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(847, 453), Vector2(865, 450), Vector2(847, 453), Vector2(826, 459), Vector2(847, 453)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yyp70"]
+_data = {
+"RESET": SubResource("Animation_wf1n5"),
+"idle": SubResource("Animation_f42kf")
+}
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_ta0px"]
+
+[sub_resource type="Animation" id="Animation_2s1m8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tire:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_loxjo"]
+resource_name = "spin_wheel"
+length = 0.25
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tire:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tdxxy"]
+_data = {
+"RESET": SubResource("Animation_2s1m8"),
+"spin_wheel": SubResource("Animation_loxjo")
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_kbo5g"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Sky" type="Sprite2D" parent="Background"]
+texture = ExtResource("1_lnter")
+
+[node name="BackgroundTown" type="Sprite2D" parent="Background"]
+position = Vector2(986, 118)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_1x4o8")
+
+[node name="BackgroundFurtherRoad" type="Sprite2D" parent="Background"]
+position = Vector2(1127, 489)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_t30am")
+
+[node name="BackgroundRoad" type="Sprite2D" parent="Background"]
+position = Vector2(961, 699)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AnimatedTexture_xnwa8")
+
+[node name="BackgroundRoad2" type="Sprite2D" parent="Background"]
+position = Vector2(962, 545)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_fxhj2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Background"]
+libraries = {
+"": SubResource("AnimationLibrary_6jge5")
+}
+autoplay = "TownFadeOut"
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Background"]
+libraries = {
+"": SubResource("AnimationLibrary_0y78m")
+}
+autoplay = "BackgroundSway"
+
+[node name="CockPit" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_g2bnb")
+
+[node name="EnemySlotTexture" type="TextureRect" parent="."]
+offset_left = 1167.0
+offset_top = -179.0
+offset_right = 1679.0
+offset_bottom = 333.0
+texture = ExtResource("3_0xj32")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="CassetteManager" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_wc1ax")
+
+[node name="InputManager" type="Node2D" parent="."]
+script = ExtResource("7_tyulq")
+
+[node name="CommitSequence" parent="." instance=ExtResource("10_8tbdh")]
+offset_left = 693.0
+offset_top = 682.0
+offset_right = 783.0
+offset_bottom = 747.0
+disabled = true
+
+[node name="PreviewCassette" parent="." instance=ExtResource("12_y16is")]
+visible = false
+z_index = 14
+position = Vector2(1589, 839)
+scale = Vector2(1.1, 1.1)
+
+[node name="BattleManager" type="Node" parent="."]
+script = ExtResource("11_iq4cn")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_48qbg")
+
+[node name="Player" type="Node2D" parent="."]
+script = ExtResource("18_si26d")
+
+[node name="Deck" type="Node2D" parent="Player"]
+position = Vector2(525, 865)
+script = ExtResource("5_ixwic")
+
+[node name="Cassettes" type="Node2D" parent="Player/Deck"]
+
+[node name="PortraitArea" type="Node2D" parent="Player"]
+
+[node name="GrayoutForButtons" type="Sprite2D" parent="Player/PortraitArea"]
+position = Vector2(104, 234)
+scale = Vector2(0.1975, 0.0375)
+texture = ExtResource("19_dpxto")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player/PortraitArea"]
+position = Vector2(129, 128)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("23_j41rs")
+
+[node name="Label" type="Label" parent="Player/PortraitArea"]
+offset_left = 16.0
+offset_top = 215.0
+offset_right = 106.0
+offset_bottom = 248.0
+theme_override_fonts/font = ExtResource("19_j160d")
+theme_override_font_sizes/font_size = 26
+text = "HP: 20"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LifeGauge" type="TextureProgressBar" parent="Player/PortraitArea"]
+offset_left = 129.0
+offset_top = 23.0
+offset_right = 388.0
+offset_bottom = 464.0
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+max_value = 20.0
+value = 20.0
+fill_mode = 3
+texture_progress = ExtResource("26_4bk7t")
+
+[node name="Sequence" type="Node2D" parent="Player"]
+
+[node name="CassetteSlot" parent="Player/Sequence" instance=ExtResource("3_u54n2")]
+position = Vector2(955, 709)
+
+[node name="CassetteSlot2" parent="Player/Sequence" instance=ExtResource("3_u54n2")]
+position = Vector2(955, 759)
+
+[node name="CassetteSlot3" parent="Player/Sequence" instance=ExtResource("3_u54n2")]
+position = Vector2(955, 809)
+
+[node name="Hand" type="Node2D" parent="Player"]
+script = ExtResource("4_pedye")
+
+[node name="Discard" type="Node2D" parent="Player"]
+light_mask = 16
+visibility_layer = 16
+script = ExtResource("9_8w5uc")
+
+[node name="Area2D" type="Area2D" parent="Player/Discard"]
+light_mask = 65536
+visibility_layer = 65536
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player/Discard/Area2D"]
+light_mask = 256
+visibility_layer = 256
+position = Vector2(49, 7)
+polygon = PackedVector2Array(1395, 676, 1427, 888, 1845, 888, 1789, 677)
+
+[node name="Lost" type="Node2D" parent="Player"]
+
+[node name="LostIconFlash" type="Sprite2D" parent="Player/Lost"]
+position = Vector2(1577, 990)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_sk6rg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/Lost"]
+libraries = {
+"": SubResource("AnimationLibrary_nxrdd")
+}
+
+[node name="BattleSprite" type="Node2D" parent="Player"]
+position = Vector2(613, 478)
+rotation = -0.122173
+scale = Vector2(0.25, 0.25)
+
+[node name="CarSprite" type="Sprite2D" parent="Player/BattleSprite"]
+position = Vector2(179.367, -225.239)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("17_nap6l")
+
+[node name="Node2D" type="Node2D" parent="Player/BattleSprite"]
+position = Vector2(88.3673, -192.239)
+scale = Vector2(0.355, 1)
+
+[node name="FrontWheel" type="Sprite2D" parent="Player/BattleSprite/Node2D"]
+position = Vector2(-253.744, 91.0814)
+scale = Vector2(0.46, 0.48)
+texture = ExtResource("19_5mqu3")
+offset = Vector2(-6.41, -6.335)
+
+[node name="Node2D2" type="Node2D" parent="Player/BattleSprite"]
+position = Vector2(16.3673, -179.239)
+scale = Vector2(0.355, 1)
+
+[node name="BackWheel" type="Sprite2D" parent="Player/BattleSprite/Node2D2"]
+position = Vector2(-467.942, 82.4942)
+scale = Vector2(0.376157, 0.405516)
+texture = ExtResource("19_5mqu3")
+offset = Vector2(-6.41, -6.335)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/BattleSprite"]
+libraries = {
+"": SubResource("AnimationLibrary_a4m2y")
+}
+autoplay = "rotate_wheels"
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Player/BattleSprite"]
+libraries = {
+"": SubResource("AnimationLibrary_fh4kg")
+}
+autoplay = "idle"
+
+[node name="Enemy" type="Node2D" parent="."]
+script = ExtResource("30_07ik1")
+
+[node name="PortraitArea" type="Node2D" parent="Enemy"]
+
+[node name="GrayoutForButtons" type="Sprite2D" parent="Enemy/PortraitArea"]
+position = Vector2(1811, 240)
+scale = Vector2(0.1975, 0.0375)
+texture = ExtResource("19_dpxto")
+
+[node name="EnemyPortraitFrame" type="Sprite2D" parent="Enemy/PortraitArea"]
+position = Vector2(1788, 134)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("25_24q0p")
+
+[node name="Label" type="Label" parent="Enemy/PortraitArea"]
+offset_left = 1819.0
+offset_top = 221.0
+offset_right = 1909.0
+offset_bottom = 254.0
+theme_override_fonts/font = ExtResource("19_j160d")
+theme_override_font_sizes/font_size = 26
+text = "HP: 20"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LifeGauge" type="TextureProgressBar" parent="Enemy/PortraitArea"]
+offset_left = 1665.0
+offset_top = 25.0
+offset_right = 1924.0
+offset_bottom = 466.0
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+max_value = 20.0
+value = 20.0
+fill_mode = 3
+texture_progress = ExtResource("28_roff6")
+
+[node name="Sequence" type="Node2D" parent="Enemy"]
+
+[node name="CassetteSlot" parent="Enemy/Sequence" instance=ExtResource("15_2m8a8")]
+position = Vector2(1470, 40)
+
+[node name="CassetteSlot2" parent="Enemy/Sequence" instance=ExtResource("15_2m8a8")]
+position = Vector2(1470, 78)
+
+[node name="CassetteSlot3" parent="Enemy/Sequence" instance=ExtResource("15_2m8a8")]
+position = Vector2(1470, 116)
+
+[node name="Deck" type="Node2D" parent="Enemy"]
+script = ExtResource("12_sxme4")
+
+[node name="Hand" type="Node" parent="Enemy"]
+script = ExtResource("17_tansv")
+
+[node name="Discard" type="Node2D" parent="Enemy"]
+visible = false
+script = ExtResource("19_r3qly")
+
+[node name="BattleSprite" type="Node2D" parent="Enemy"]
+position = Vector2(847, 453)
+rotation = -0.0349066
+scale = Vector2(0.5, 0.5)
+
+[node name="CarSprite" type="Sprite2D" parent="Enemy/BattleSprite"]
+position = Vector2(139.24, -217.717)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("25_fyjo0")
+
+[node name="Node2D" type="Node2D" parent="Enemy/BattleSprite"]
+position = Vector2(48.2396, -184.717)
+scale = Vector2(0.355, 1)
+
+[node name="Wheel" type="Sprite2D" parent="Enemy/BattleSprite/Node2D"]
+position = Vector2(-171.842, 71.4449)
+scale = Vector2(0.539, 0.56)
+texture = ExtResource("19_5mqu3")
+offset = Vector2(-6.41, -6.335)
+
+[node name="Node2D2" type="Node2D" parent="Enemy/BattleSprite"]
+position = Vector2(-56.7604, -122.717)
+scale = Vector2(0.335, 1)
+
+[node name="Wheel" type="Sprite2D" parent="Enemy/BattleSprite/Node2D2"]
+position = Vector2(-545.176, 23.6308)
+scale = Vector2(0.442276, 0.437146)
+texture = ExtResource("19_5mqu3")
+offset = Vector2(-6.41, -6.335)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemy/BattleSprite"]
+libraries = {
+"": SubResource("AnimationLibrary_xilms")
+}
+autoplay = "boss_rotate_wheels"
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Enemy/BattleSprite"]
+libraries = {
+"": SubResource("AnimationLibrary_yyp70")
+}
+autoplay = "idle"
+
+[node name="Separator 4" type="TextureRect" parent="."]
+z_index = 2
+offset_left = 525.0
+offset_top = 664.0
+offset_right = 2445.0
+offset_bottom = 1744.0
+scale = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("24_30dxu")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Separator3" type="TextureRect" parent="."]
+z_index = 4
+offset_left = 520.0
+offset_top = 699.0
+offset_right = 2440.0
+offset_bottom = 1779.0
+scale = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("24_30dxu")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Separator2" type="TextureRect" parent="."]
+z_index = 6
+offset_left = 515.0
+offset_top = 734.0
+offset_right = 2435.0
+offset_bottom = 1814.0
+scale = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("24_30dxu")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Separator1" type="TextureRect" parent="."]
+z_index = 8
+offset_left = 510.0
+offset_top = 769.0
+offset_right = 2430.0
+offset_bottom = 1849.0
+scale = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("24_30dxu")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="FrontPanelCover" type="Sprite2D" parent="."]
+z_index = 12
+position = Vector2(979, 1091)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("25_roy6f")
+
+[node name="Blinkers" type="TextureRect" parent="."]
+offset_top = 882.0
+offset_right = 565.0
+offset_bottom = 1709.0
+texture = ExtResource("21_fxd7b")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="SteeringWheel" type="TextureRect" parent="."]
+offset_left = -480.0
+offset_top = 627.0
+offset_right = 419.0
+offset_bottom = 1611.0
+texture = ExtResource("22_53i6f")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="GameManager" type="Node2D" parent="."]
+script = ExtResource("11_uclxx")
+
+[node name="PlayerTurnSequence" type="Node2D" parent="."]
+
+[node name="ThirdCassette" parent="PlayerTurnSequence" instance=ExtResource("34_hyykb")]
+visible = false
+light_mask = 1024
+visibility_layer = 1024
+position = Vector2(140, 340)
+scale = Vector2(0.6, 0.6)
+
+[node name="SecondCassette" parent="PlayerTurnSequence" instance=ExtResource("34_hyykb")]
+visible = false
+light_mask = 1024
+visibility_layer = 1024
+position = Vector2(140, 390)
+scale = Vector2(0.6, 0.6)
+
+[node name="FirstCassette" parent="PlayerTurnSequence" instance=ExtResource("34_hyykb")]
+visible = false
+light_mask = 1024
+visibility_layer = 1024
+position = Vector2(140, 440)
+scale = Vector2(0.6, 0.6)
+
+[node name="EnemyTurnSequence" type="Node2D" parent="."]
+
+[node name="ThirdCassette" parent="EnemyTurnSequence" instance=ExtResource("34_hyykb")]
+visible = false
+light_mask = 1024
+visibility_layer = 1024
+position = Vector2(1773, 340)
+scale = Vector2(0.6, 0.6)
+
+[node name="SecondCassette" parent="EnemyTurnSequence" instance=ExtResource("34_hyykb")]
+visible = false
+light_mask = 1024
+visibility_layer = 1024
+position = Vector2(1773, 390)
+scale = Vector2(0.6, 0.6)
+
+[node name="FirstCassette" parent="EnemyTurnSequence" instance=ExtResource("34_hyykb")]
+visible = false
+light_mask = 1024
+visibility_layer = 1024
+position = Vector2(1773, 440)
+scale = Vector2(0.6, 0.6)
+
+[node name="MainMenu" type="Node2D" parent="."]
+visible = false
+z_index = 20
+
+[node name="TextureRect" type="TextureRect" parent="MainMenu"]
+modulate = Color(0.489622, 0.489622, 0.489622, 1)
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = SubResource("CanvasTexture_ta0px")
+
+[node name="Animation" type="Node2D" parent="MainMenu"]
+
+[node name="BackgroundCar" type="Sprite2D" parent="MainMenu/Animation"]
+position = Vector2(950, 332)
+scale = Vector2(1.65925, 1.831)
+texture = ExtResource("18_l7140")
+
+[node name="Tire" type="Sprite2D" parent="MainMenu/Animation"]
+position = Vector2(539, 328)
+scale = Vector2(1, 1.064)
+texture = ExtResource("19_5mqu3")
+offset = Vector2(-6, -5)
+
+[node name="Parallax2D" type="Parallax2D" parent="MainMenu/Animation"]
+repeat_size = Vector2(1935, 0)
+autoscroll = Vector2(-4500, 0)
+repeat_times = 2
+
+[node name="Gravel1" type="Sprite2D" parent="MainMenu/Animation/Parallax2D"]
+position = Vector2(1417, 636)
+texture = ExtResource("18_iroji")
+
+[node name="Gravel2" type="Sprite2D" parent="MainMenu/Animation/Parallax2D"]
+position = Vector2(444, 636)
+texture = ExtResource("18_iroji")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MainMenu/Animation"]
+libraries = {
+"": SubResource("AnimationLibrary_tdxxy")
+}
+autoplay = "spin_wheel"
+
+[node name="TextureRect2" type="TextureRect" parent="MainMenu"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("ImageTexture_kbo5g")
+
+[node name="GrayoutForButtons" type="Sprite2D" parent="MainMenu"]
+modulate = Color(0.121569, 0.121569, 0.121569, 0.905882)
+position = Vector2(958.5, 777.5)
+scale = Vector2(1.991, 0.397)
+texture = ExtResource("19_dpxto")
+
+[node name="Start" parent="MainMenu" instance=ExtResource("31_c7vku")]
+
+[node name="Exit2" parent="MainMenu" instance=ExtResource("31_c7vku")]
+offset_top = 779.0
+offset_bottom = 854.0
+text = "Exit
+"
+
+[node name="Logo" type="Sprite2D" parent="MainMenu"]
+position = Vector2(1360.63, 185.509)
+scale = Vector2(1.88803, 1.84191)
+texture = ExtResource("45_qhexb")
+
+[node name="PlayerBattleSprite" type="Node2D" parent="."]
+visible = false
+position = Vector2(613, 478)
+rotation = -0.122173
+scale = Vector2(0.27, 0.27)
+
+[node name="CarSprite" type="Sprite2D" parent="PlayerBattleSprite"]
+position = Vector2(172.658, -223.813)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("17_nap6l")
+
+[node name="Node2D" type="Node2D" parent="PlayerBattleSprite"]
+position = Vector2(81.658, -190.813)
+scale = Vector2(0.355, 1)
+
+[node name="FrontWheel" type="Sprite2D" parent="PlayerBattleSprite/Node2D"]
+position = Vector2(-253.744, 91.0814)
+scale = Vector2(0.46, 0.48)
+texture = ExtResource("19_5mqu3")
+offset = Vector2(-6.41, -6.335)
+
+[node name="Node2D2" type="Node2D" parent="PlayerBattleSprite"]
+position = Vector2(9.65799, -177.813)
+scale = Vector2(0.355, 1)
+
+[node name="BackWheel" type="Sprite2D" parent="PlayerBattleSprite/Node2D2"]
+position = Vector2(-467.942, 82.4942)
+scale = Vector2(0.376157, 0.405516)
+texture = ExtResource("19_5mqu3")
+offset = Vector2(-6.41, -6.335)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerBattleSprite"]
+libraries = {
+"": SubResource("AnimationLibrary_a4m2y")
+}
+autoplay = "rotate_wheels"
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="PlayerBattleSprite"]
+libraries = {
+"": SubResource("AnimationLibrary_fh4kg")
+}
+autoplay = "idle"
+
+[node name="EnemyBattleSprite" type="Node2D" parent="."]
+visible = false
+position = Vector2(847, 453)
+rotation = -0.0523599
+scale = Vector2(0.5, 0.5)
+
+[node name="CarSprite" type="Sprite2D" parent="EnemyBattleSprite"]
+position = Vector2(150.601, -220.711)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("25_fyjo0")
+
+[node name="Node2D" type="Node2D" parent="EnemyBattleSprite"]
+position = Vector2(59.6013, -187.711)
+scale = Vector2(0.355, 1)
+
+[node name="Wheel" type="Sprite2D" parent="EnemyBattleSprite/Node2D"]
+position = Vector2(-171.842, 71.4449)
+scale = Vector2(0.539, 0.56)
+texture = ExtResource("19_5mqu3")
+offset = Vector2(-6.41, -6.335)
+
+[node name="Node2D2" type="Node2D" parent="EnemyBattleSprite"]
+position = Vector2(-45.3987, -125.711)
+scale = Vector2(0.335, 1)
+
+[node name="Wheel" type="Sprite2D" parent="EnemyBattleSprite/Node2D2"]
+position = Vector2(-545.176, 23.6308)
+scale = Vector2(0.442276, 0.437146)
+texture = ExtResource("19_5mqu3")
+offset = Vector2(-6.41, -6.335)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="EnemyBattleSprite"]
+libraries = {
+"": SubResource("AnimationLibrary_xilms")
+}
+autoplay = "boss_rotate_wheels"
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="EnemyBattleSprite"]
+libraries = {
+"": SubResource("AnimationLibrary_yyp70")
+}
+autoplay = "idle"
+
+[node name="Overtake" type="Button" parent="."]
+offset_left = 285.0
+offset_top = 14.0
+offset_right = 432.0
+offset_bottom = 93.0
+text = "Overtake"
+
+[node name="LineUp" type="Button" parent="."]
+offset_left = 449.0
+offset_top = 16.0
+offset_right = 596.0
+offset_bottom = 95.0
+text = "Line Up"
+
+[node name="Slow Down" type="Button" parent="."]
+offset_left = 608.0
+offset_top = 15.0
+offset_right = 755.0
+offset_bottom = 94.0
+text = "Slow Down"
+
+[connection signal="pressed" from="CommitSequence" to="BattleManager" method="_on_commit_sequence_pressed"]
+[connection signal="pressed" from="Overtake" to="BattleManager" method="overtake"]
+[connection signal="pressed" from="LineUp" to="BattleManager" method="line_up"]
+[connection signal="pressed" from="Slow Down" to="BattleManager" method="slow_down"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ma4exexs5qp2"
+path="res://.godot/imported/single shot.ogg-b0690cac9255d646ac6081bbf6e88ac7.oggvorbisstr"
+
+[deps]
+
+source_file="res://sfx/single shot.ogg"
+dest_files=["res://.godot/imported/single shot.ogg-b0690cac9255d646ac6081bbf6e88ac7.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

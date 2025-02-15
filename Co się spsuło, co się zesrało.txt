@@ -1,0 +1,43 @@
+Co się spsuło, co się zesrało:
+
+1. Na początku pierwszej rundy mogę wchodzić w interakcję z kasetami w decku, przeciągać je do radia i tam znikają blokując możliwość włożenia kart z ręki. Mogę też przeciągać je na dowolne miejsce na ekranie gdzie zostają. <screen bug 1>
+
+2. Vfx (najczęściej animacja szczelania i miss, ale buff też się trafił) nie znika z ekranu po zakończonej akcji lub nie wyświetla się poprawnie. <screen bug 2>
+
+3. Poprawić opisy kaset. Tam gdzie jest "reduce all damage" i wartość redukcji "0", zmienić na "ignore/avoid all damage" i wywalić "0" z ikony tarczy.
+
+4. Walka trwa nadal po wyzerowaniu licznika hp
+
+5. Brak podziału na discardy i burny. Burny zawsze wracają do decku.
+
+6. Poprawić opisy kaset i wartości obrażeń/obrony na ikonkach akcji. Np. Ram B daje 3 redukcji obrażeń a wyświetla 0 na ikonce
+
+8. Podgląd kasety z ręki nie zawsze się aktywuje. Gdy najeżdżam, na jakąś, nadal widzę podgląd poprzedniej. To uniemożliwia grę, bo nie wiem co robią kasety.
+
+9. Nie widzę ikonek z aktywnymi buffami/debuffami
+
+10. Karty wyświetlane pod portretem mojej postaci są ucięte przez krawędź ekranu <screen>
+
+11. Obrót kasety nie zawsze zmienia wybranego skilla
+
+12. Może ja jestem głupi, ale informacja o zużytym paliwie nic mi nie mówi. Zamiast tego dodałbym jakiś wskaźnik, czy po prostu obwódkę wokół samochodu wykonującego akcję, bo nie mam pojęcia kto w danym momencie wykonuje swoją akcję. Wyświetlanie wybranych kart po bokach ekranu niewiele pomaga, bo nie jestem w stanie odczytać odpowiednio szybko kto i co będzie robił. Trzeba pomyśleć o wyświetlaniu jakiejś kolejki, jak w gloomie.
+
+13. "Hit me baby one more time" to za długa nazwa <screen bug 13>
+
+
+Koncert życzeń:
+
+1. Nie mogę wyjąć kasety z radia, jeśli chcę włożyć inną.
+
+2. Nie mam podglądu na kasety, które już włożyłem do radia
+
+3. Miasto na horyzoncie musi znikać wolniej
+
+4. Skrócić nazwę "Hit me baby one more time", bo wystaje poza kasetę.
+ 
+5. Panel z kasetami przeciwnika do przeróbki. Mało czytelne ikony.
+
+6. Zmniejszyć rozmiar cyfr na ikonach akcji
+
+7. Wartość buffa/debuffa wywalić z ikony specjal i przenieść do opisu.
+

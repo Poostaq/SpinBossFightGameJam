@@ -1,0 +1,41 @@
+[gd_scene load_steps=9 format=3 uid="uid://c55o421u2q038"]
+
+[ext_resource type="Texture2D" uid="uid://coqpwkdvpombl" path="res://Images/Dashboard/play button hover.png" id="2_qft04"]
+[ext_resource type="Texture2D" uid="uid://ckbhffqw6ynlp" path="res://Images/Dashboard/play button pressed.png" id="3_k5lem"]
+[ext_resource type="Texture2D" uid="uid://b8pd2hkpbgkl6" path="res://Images/Dashboard/play button.png" id="4_cph5f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4mno1"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_edu2d"]
+texture = ExtResource("4_cph5f")
+region_rect = Rect2(38, 65, 181, 126)
+modulate_color = Color(0.544974, 0.544974, 0.544974, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q78nj"]
+texture = ExtResource("2_qft04")
+region_rect = Rect2(38, 65, 181, 126)
+modulate_color = Color(1.2, 1.2, 1.2, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ichqw"]
+texture = ExtResource("3_k5lem")
+region_rect = Rect2(38, 65, 181, 126)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_36o6c"]
+texture = ExtResource("4_cph5f")
+region_rect = Rect2(38, 65, 181, 126)
+
+[node name="CommitSequence" type="Button"]
+anchors_preset = -1
+anchor_left = -6.24975e-05
+anchor_right = -6.24975e-05
+anchor_bottom = 0.0608926
+offset_left = 869.0
+offset_top = 636.0
+offset_right = 1033.12
+offset_bottom = 677.236
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4mno1")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_edu2d")
+theme_override_styles/hover = SubResource("StyleBoxTexture_q78nj")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ichqw")
+theme_override_styles/normal = SubResource("StyleBoxTexture_36o6c")
+metadata/_edit_use_anchors_ = true

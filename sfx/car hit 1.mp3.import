@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d04bau3y6822n"
+path="res://.godot/imported/car hit 1.mp3-bfefe6f1f33863b83a0ba8052ac8b6d5.mp3str"
+
+[deps]
+
+source_file="res://sfx/car hit 1.mp3"
+dest_files=["res://.godot/imported/car hit 1.mp3-bfefe6f1f33863b83a0ba8052ac8b6d5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

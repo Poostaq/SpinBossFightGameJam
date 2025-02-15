@@ -1,0 +1,131 @@
+[gd_resource type="Animation" load_steps=3 format=3 uid="uid://nin5vkjirty0"]
+
+[ext_resource type="Texture2D" uid="uid://b1gklkay27y7t" path="res://Images/vfx/bullet hit/bullet hit 1.png" id="4_e24c8"]
+[ext_resource type="Texture2D" uid="uid://cmhxr32rwjbi0" path="res://Images/vfx/bullet hit/bullet hit 2.png" id="5_2gs6n"]
+
+[resource]
+resource_name = "shoot_back"
+length = 1.4
+step = 0.0111
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VFX_Enemy:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.1332, 0.166667, 0.266667, 0.3, 0.4, 0.433333, 0.533333, 0.566667, 0.666667, 0.7, 0.8, 0.833333, 0.933333, 0.966667, 1.06667, 1.1, 1.2, 1.23333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("4_e24c8"), ExtResource("5_2gs6n"), ExtResource("4_e24c8"), ExtResource("5_2gs6n"), ExtResource("4_e24c8"), ExtResource("5_2gs6n"), ExtResource("4_e24c8"), ExtResource("5_2gs6n"), ExtResource("4_e24c8"), ExtResource("5_2gs6n"), ExtResource("4_e24c8"), ExtResource("5_2gs6n"), ExtResource("4_e24c8"), ExtResource("5_2gs6n"), ExtResource("4_e24c8"), ExtResource("5_2gs6n"), ExtResource("4_e24c8"), ExtResource("5_2gs6n"), ExtResource("4_e24c8"), ExtResource("5_2gs6n")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VFX_Enemy:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1332, 0.2664, 0.3996, 0.5328, 0.666, 0.7992, 0.9324, 1.0656, 1.1988),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(-395.177, -178.927), Vector2(-269.463, -208.388), Vector2(-291.826, -87.3928), Vector2(-401.797, -167.258), Vector2(-269.769, -164.344), Vector2(-378.336, -79.9101), Vector2(-404.64, -189.437), Vector2(-281.229, -174.958), Vector2(-285.931, -47.0289), Vector2(-373.949, -201.848)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VFX_Enemy:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.1, 0.1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VFX_Enemy_2:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.0666667, 0.1, 0.2, 0.233333, 0.333333, 0.366667, 0.466667, 0.5, 0.6, 0.633333, 0.733333, 0.766667, 0.866667, 0.9, 1, 1.03333, 1.13333, 1.16667, 1.26667, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("4_e24c8"), ExtResource("5_2gs6n"), ExtResource("4_e24c8"), ExtResource("5_2gs6n"), ExtResource("4_e24c8"), ExtResource("5_2gs6n"), ExtResource("4_e24c8"), ExtResource("5_2gs6n"), ExtResource("4_e24c8"), ExtResource("5_2gs6n"), ExtResource("4_e24c8"), ExtResource("5_2gs6n"), ExtResource("4_e24c8"), ExtResource("5_2gs6n"), ExtResource("4_e24c8"), ExtResource("5_2gs6n"), ExtResource("4_e24c8"), ExtResource("5_2gs6n"), ExtResource("4_e24c8"), ExtResource("5_2gs6n")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("VFX_Enemy_2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.0666, 0.0666667, 0.1998, 0.333, 0.4662, 0.466267, 0.5994, 0.7326, 0.8658, 0.865867, 0.999, 1.1322, 1.2654, 1.26547),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(-237.499, -168.661), Vector2(735.21, -421.742), Vector2(-329.033, -65.3098), Vector2(-392.029, -200.792), Vector2(-237.499, -168.661), Vector2(735.21, -421.742), Vector2(-329.033, -65.3098), Vector2(-392.029, -200.792), Vector2(-237.499, -168.661), Vector2(735.21, -421.742), Vector2(-329.033, -65.3098), Vector2(-392.029, -200.792), Vector2(-237.499, -168.661), Vector2(735.21, -421.742)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("VFX_Enemy_2:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.0666667),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.1, 0.1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("VFX_Enemy:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.0666, 0.1332, 0.2, 0.2666, 0.333, 0.3996, 0.4662, 0.5328, 0.5996, 0.666, 0.7326, 0.7992, 0.866, 0.9324, 0.999, 1.0656, 1.1324, 1.1988, 1.2656, 1.26667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("VFX_Enemy_2:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.0666333, 0.0666667, 0.133233, 0.199833, 0.266633, 0.333233, 0.399633, 0.466233, 0.532833, 0.599433, 0.666233, 0.732633, 0.733333, 0.799233, 0.865833, 0.932633, 0.999033, 1.06563, 1.13223, 1.19903, 1.26543, 1.33223, 1.3333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, true, false, true, false, true, false, true, false, true, false, true, false, false, true, false, true, false, true, false, true, false, false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CarSprite:position")
+tracks/8/interp = 2
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.688889, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(179.367, -225.239), Vector2(124.799, -207.801), Vector2(179.367, -225.239)]
+}
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../../Player/BattleSprite/AnimationPlayer")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(1.2765),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"getting_hit", -1, 1.0, false],
+"method": &"play"
+}]
+}

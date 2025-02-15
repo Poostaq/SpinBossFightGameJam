@@ -1,0 +1,294 @@
+[gd_scene load_steps=20 format=3 uid="uid://b8ha82jqux55"]
+
+[ext_resource type="Script" path="res://Scripts/mini_cassette.gd" id="1_g8ah0"]
+[ext_resource type="Texture2D" uid="uid://cvtclg7lpuej1" path="res://Images/cassette/cassette front/1 label.png" id="2_yl5dd"]
+[ext_resource type="Texture2D" uid="uid://bri5abvba2nda" path="res://Images/cassette/cassette front/2 case c v2.png" id="3_3gr8u"]
+[ext_resource type="Texture2D" uid="uid://1jexkvbes2ne" path="res://Images/cassette/cassette front/3 gears v2.png" id="4_im56x"]
+[ext_resource type="FontFile" uid="uid://bf27d738cuys7" path="res://Font/RockSalt-Regular.ttf" id="5_q8f5f"]
+[ext_resource type="Texture2D" uid="uid://bqvadmvpaliuo" path="res://Images/cassette/cassette front/text box.png" id="6_s7sl7"]
+[ext_resource type="FontFile" uid="uid://dtn7qee5h51x5" path="res://Font/atwriter.ttf" id="8_oylt4"]
+[ext_resource type="Texture2D" uid="uid://sv0sakk6sx8w" path="res://Images/cassette/cassette front/fuel.png" id="9_hqkpg"]
+[ext_resource type="Texture2D" uid="uid://x3fcdafib402" path="res://Images/cassette/cassette front/attack.png" id="10_7xfq8"]
+[ext_resource type="Texture2D" uid="uid://bcftnty1uwy66" path="res://Images/vfx/impact/impact v2 1.png" id="10_cwv4n"]
+[ext_resource type="Texture2D" uid="uid://lcwp3cphcr4u" path="res://Images/vfx/impact/impact v2 2.png" id="11_m8mpj"]
+[ext_resource type="Texture2D" uid="uid://bcf84idexm0d6" path="res://Images/vfx/impact/impact v2 3.png" id="12_5uecu"]
+[ext_resource type="Texture2D" uid="uid://gb2xgnije441" path="res://Images/vfx/impact/impact v2 4.png" id="13_7siri"]
+[ext_resource type="Texture2D" uid="uid://v64620hcumhb" path="res://Images/vfx/impact/impact v2 5.png" id="14_567wk"]
+[ext_resource type="Texture2D" uid="uid://bdmn1vxx6s7b7" path="res://Images/vfx/impact/impact v2 6.png" id="15_e36vm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0x1d7"]
+size = Vector2(442, 270)
+
+[sub_resource type="Animation" id="Animation_bcfg6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("10_cwv4n")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_jgxl4"]
+resource_name = "malfunction"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.832337, 0.0708999, 0.21202, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("10_cwv4n"), ExtResource("11_m8mpj"), ExtResource("12_5uecu"), ExtResource("13_7siri"), ExtResource("14_567wk"), ExtResource("15_e36vm")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.366667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pi1gs"]
+_data = {
+"RESET": SubResource("Animation_bcfg6"),
+"malfunction": SubResource("Animation_jgxl4")
+}
+
+[node name="Cassette" type="Node2D"]
+position = Vector2(427, 264)
+script = ExtResource("1_g8ah0")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Front" type="Node2D" parent="Node2D"]
+position = Vector2(0, 20)
+
+[node name="Label" type="Sprite2D" parent="Node2D/Front"]
+texture = ExtResource("2_yl5dd")
+
+[node name="Frame" type="Sprite2D" parent="Node2D/Front"]
+texture = ExtResource("3_3gr8u")
+
+[node name="Gears" type="Sprite2D" parent="Node2D/Front"]
+texture = ExtResource("4_im56x")
+
+[node name="CassetteName" type="Label" parent="Node2D/Front"]
+offset_left = -142.0
+offset_top = -124.0
+offset_right = 143.0
+offset_bottom = -52.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("5_q8f5f")
+theme_override_font_sizes/font_size = 30
+text = "SUPA DORIFTO"
+metadata/_edit_use_anchors_ = true
+
+[node name="Area2D" type="Area2D" parent="Node2D"]
+collision_layer = 256
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Area2D"]
+position = Vector2(0, 19)
+shape = SubResource("RectangleShape2D_0x1d7")
+
+[node name="CassetteMoveInfo" type="Node2D" parent="Node2D"]
+
+[node name="DescriptionBox" type="Sprite2D" parent="Node2D/CassetteMoveInfo"]
+position = Vector2(0.5, 49)
+scale = Vector2(1.66797, 0.65625)
+texture = ExtResource("6_s7sl7")
+
+[node name="AttackDirection" type="Sprite2D" parent="Node2D/CassetteMoveInfo"]
+position = Vector2(-132, 100)
+
+[node name="ManeouverDescription" type="Label" parent="Node2D/CassetteMoveInfo"]
+offset_left = -209.0
+offset_top = -41.0
+offset_right = 211.0
+offset_bottom = 79.0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("8_oylt4")
+theme_override_font_sizes/font_size = 20
+text = "This is but a very long description of move"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+justification_flags = 171
+
+[node name="PlayerIcons" type="Node2D" parent="Node2D/CassetteMoveInfo"]
+visible = false
+
+[node name="Fuel" type="Sprite2D" parent="Node2D/CassetteMoveInfo/PlayerIcons"]
+position = Vector2(280, -5)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("9_hqkpg")
+
+[node name="Label" type="Label" parent="Node2D/CassetteMoveInfo/PlayerIcons/Fuel"]
+anchors_preset = -1
+anchor_left = 0.195313
+anchor_top = 0.238281
+anchor_right = 0.765625
+anchor_bottom = 0.859375
+offset_left = -128.0
+offset_top = -128.0
+offset_right = -128.0
+offset_bottom = -128.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("8_oylt4")
+theme_override_font_sizes/font_size = 120
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Action" type="Sprite2D" parent="Node2D/CassetteMoveInfo/PlayerIcons"]
+position = Vector2(278, 103)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("10_7xfq8")
+
+[node name="Label" type="Label" parent="Node2D/CassetteMoveInfo/PlayerIcons/Action"]
+anchors_preset = -1
+anchor_left = 0.195313
+anchor_top = 0.238281
+anchor_right = 0.765625
+anchor_bottom = 0.859375
+offset_left = -124.667
+offset_top = -143.0
+offset_right = -124.667
+offset_bottom = -143.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("8_oylt4")
+theme_override_font_sizes/font_size = 120
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="EnemyIcons" type="Node2D" parent="Node2D/CassetteMoveInfo"]
+visible = false
+
+[node name="Fuel" type="Sprite2D" parent="Node2D/CassetteMoveInfo/EnemyIcons"]
+position = Vector2(-280, -5)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("9_hqkpg")
+
+[node name="Label" type="Label" parent="Node2D/CassetteMoveInfo/EnemyIcons/Fuel"]
+anchors_preset = -1
+anchor_left = 0.195313
+anchor_top = 0.234375
+anchor_right = 0.773438
+anchor_bottom = 0.859375
+offset_left = -128.0
+offset_top = -128.0
+offset_right = -128.0
+offset_bottom = -128.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("8_oylt4")
+theme_override_font_sizes/font_size = 120
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Action" type="Sprite2D" parent="Node2D/CassetteMoveInfo/EnemyIcons"]
+position = Vector2(-278, 103)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("10_7xfq8")
+
+[node name="Label" type="Label" parent="Node2D/CassetteMoveInfo/EnemyIcons/Action"]
+anchors_preset = -1
+anchor_left = 0.195313
+anchor_top = 0.238281
+anchor_right = 0.765625
+anchor_bottom = 0.859375
+offset_left = -124.667
+offset_top = -143.0
+offset_right = -124.667
+offset_bottom = -143.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("8_oylt4")
+theme_override_font_sizes/font_size = 120
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="AfterTurnIcon" type="Sprite2D" parent="Node2D/CassetteMoveInfo"]
+position = Vector2(186, 101)
+scale = Vector2(0.4, 0.4)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-6, -1.99997)
+scale = Vector2(0.324219, 0.265625)
+texture = ExtResource("10_cwv4n")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pi1gs")
+}
+
+[connection signal="mouse_entered" from="Node2D/Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Node2D/Area2D" to="." method="_on_area_2d_mouse_exited"]

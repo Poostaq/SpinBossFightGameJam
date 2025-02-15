@@ -1,0 +1,180 @@
+[gd_scene load_steps=13 format=3 uid="uid://caohjtvblyruq"]
+
+[ext_resource type="Script" path="res://Scripts/card_manager.gd" id="1_wc1ax"]
+[ext_resource type="PackedScene" uid="uid://bwxtebcpfcui5" path="res://Scenes/card_slot.tscn" id="3_u54n2"]
+[ext_resource type="Script" path="res://Scripts/player_hand.gd" id="4_pedye"]
+[ext_resource type="Script" path="res://Scripts/deck.gd" id="5_ixwic"]
+[ext_resource type="Texture2D" uid="uid://ipdxxm3j2xkt" path="res://Images/Deck.png" id="5_p4bm3"]
+[ext_resource type="Texture2D" uid="uid://b6vnen8rgpin3" path="res://Images/skillBox.png" id="6_ccvrb"]
+[ext_resource type="Texture2D" uid="uid://decyr2xqig2i6" path="res://Images/hero_splash_art.png" id="7_pp3bi"]
+[ext_resource type="Script" path="res://Scripts/input_manager.gd" id="7_tyulq"]
+[ext_resource type="Texture2D" uid="uid://pl8yd48mf8ua" path="res://Images/enemy_splash_art.png" id="8_ujyuy"]
+[ext_resource type="Texture2D" uid="uid://b2strocvcgg4s" path="res://Images/Trashbin.png" id="10_alpj3"]
+[ext_resource type="Script" path="res://Scripts/game_manager.gd" id="11_uclxx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_43ufq"]
+size = Vector2(250, 376)
+
+[node name="Main" type="Node2D"]
+
+[node name="CardManager" type="Node2D" parent="."]
+script = ExtResource("1_wc1ax")
+
+[node name="InputManager" type="Node2D" parent="."]
+script = ExtResource("7_tyulq")
+
+[node name="PlayerHand" type="Node2D" parent="."]
+script = ExtResource("4_pedye")
+
+[node name="PlayerDeck" type="Node2D" parent="."]
+z_index = -2
+position = Vector2(342, 890)
+scale = Vector2(0.6, 0.6)
+script = ExtResource("5_ixwic")
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerDeck"]
+texture = ExtResource("5_p4bm3")
+
+[node name="Area2D" type="Area2D" parent="PlayerDeck"]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDeck/Area2D"]
+shape = SubResource("RectangleShape2D_43ufq")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PlayerDeck"]
+modulate = Color(0, 0, 0, 1)
+offset_left = -10.0
+offset_top = -21.0
+offset_right = 55.0
+offset_bottom = 55.0
+theme_override_font_sizes/normal_font_size = 36
+text = "1"
+
+[node name="EnemyDeck" type="Node2D" parent="."]
+z_index = -2
+position = Vector2(1577, 129)
+scale = Vector2(0.6, 0.6)
+
+[node name="Sprite2D" type="Sprite2D" parent="EnemyDeck"]
+texture = ExtResource("5_p4bm3")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="EnemyDeck"]
+modulate = Color(0, 0, 0, 1)
+offset_left = -10.0
+offset_top = -21.0
+offset_right = 55.0
+offset_bottom = 55.0
+theme_override_font_sizes/normal_font_size = 36
+text = "1"
+
+[node name="HeroBox" type="Sprite2D" parent="."]
+position = Vector2(126, 897)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_ccvrb")
+
+[node name="SplashArt" type="Sprite2D" parent="HeroBox"]
+modulate = Color(0.0322553, 0.349872, 4.81308e-08, 1)
+position = Vector2(-1.66667, -13.3336)
+scale = Vector2(3.27451, 2.60355)
+texture = ExtResource("7_pp3bi")
+
+[node name="EnemyBox" type="Sprite2D" parent="."]
+position = Vector2(1787, 107)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_ccvrb")
+
+[node name="SplashArt" type="Sprite2D" parent="EnemyBox"]
+modulate = Color(0.0322553, 0.349872, 4.81308e-08, 1)
+position = Vector2(-1.66667, -13.3336)
+scale = Vector2(3.27451, 2.60355)
+texture = ExtResource("8_ujyuy")
+
+[node name="PlayerSequence" type="Node2D" parent="."]
+
+[node name="CardSlot" parent="PlayerSequence" instance=ExtResource("3_u54n2")]
+position = Vector2(1319, 895)
+scale = Vector2(0.5, 0.5)
+
+[node name="CardSlot2" parent="PlayerSequence" instance=ExtResource("3_u54n2")]
+position = Vector2(1453, 895)
+scale = Vector2(0.5, 0.5)
+
+[node name="CardSlot3" parent="PlayerSequence" instance=ExtResource("3_u54n2")]
+position = Vector2(1586, 895)
+scale = Vector2(0.5, 0.5)
+
+[node name="EnemySequence" type="Node2D" parent="."]
+
+[node name="CardSlot" parent="EnemySequence" instance=ExtResource("3_u54n2")]
+position = Vector2(156, 113)
+scale = Vector2(0.5, 0.5)
+
+[node name="CardSlot2" parent="EnemySequence" instance=ExtResource("3_u54n2")]
+position = Vector2(290, 113)
+scale = Vector2(0.5, 0.5)
+
+[node name="CardSlot3" parent="EnemySequence" instance=ExtResource("3_u54n2")]
+position = Vector2(423, 113)
+scale = Vector2(0.5, 0.5)
+
+[node name="Discard" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Discard"]
+clip_children = 2
+position = Vector2(1987, 835)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_p4bm3")
+
+[node name="Label" type="Label" parent="Discard/Sprite2D"]
+anchors_preset = -1
+anchor_top = 0.00666667
+anchor_right = 1.0
+anchor_bottom = 0.14
+offset_left = -125.0
+offset_top = -187.5
+offset_right = -125.0
+offset_bottom = -187.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 36
+text = "DISCARD"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Lost" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Lost"]
+position = Vector2(1813, 982)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_alpj3")
+
+[node name="Label" type="Label" parent="Lost/Sprite2D"]
+anchors_preset = -1
+anchor_left = -0.0120004
+anchor_top = 0.611999
+anchor_right = 0.988
+anchor_bottom = 0.745332
+offset_left = -125.0
+offset_top = -187.5
+offset_right = -125.0
+offset_bottom = -187.5
+theme_override_colors/font_color = Color(1, 0.956863, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 36
+text = "LOST"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="."]
+offset_left = 30.0
+offset_top = 492.0
+offset_right = 186.0
+offset_bottom = 529.0
+text = "Commit Sequences"
+metadata/_edit_use_anchors_ = true
+
+[node name="GameManager" type="Node2D" parent="."]
+script = ExtResource("11_uclxx")

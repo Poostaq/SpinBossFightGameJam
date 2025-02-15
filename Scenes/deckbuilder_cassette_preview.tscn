@@ -1,0 +1,260 @@
+[gd_scene load_steps=16 format=3 uid="uid://b6tjc5o53wubc"]
+
+[ext_resource type="Texture2D" uid="uid://cvtclg7lpuej1" path="res://Images/cassette/cassette front/1 label.png" id="1_7t1vr"]
+[ext_resource type="Script" path="res://Scripts/deckbuilder_cassette_preview.gd" id="1_oi5fq"]
+[ext_resource type="Texture2D" uid="uid://twdoybp2kuxh" path="res://Images/cassette/cassette front/2 case a v2.png" id="2_jr3si"]
+[ext_resource type="Texture2D" uid="uid://1jexkvbes2ne" path="res://Images/cassette/cassette front/3 gears v2.png" id="3_g6t37"]
+[ext_resource type="Texture2D" uid="uid://bqvadmvpaliuo" path="res://Images/cassette/cassette front/text box.png" id="4_oghmi"]
+[ext_resource type="FontFile" uid="uid://bf27d738cuys7" path="res://Font/RockSalt-Regular.ttf" id="5_e6lsh"]
+[ext_resource type="FontFile" uid="uid://dtn7qee5h51x5" path="res://Font/atwriter.ttf" id="5_ycvgs"]
+[ext_resource type="Texture2D" uid="uid://x3fcdafib402" path="res://Images/cassette/cassette front/attack.png" id="6_1thsv"]
+[ext_resource type="Texture2D" uid="uid://sv0sakk6sx8w" path="res://Images/cassette/cassette front/fuel.png" id="7_h0mk6"]
+[ext_resource type="Texture2D" uid="uid://kxtx4c32n67u" path="res://Images/action_icons/all_sides.png" id="10_4b4mm"]
+[ext_resource type="Texture2D" uid="uid://dj0hrj70cvvjy" path="res://Images/action_icons/discard.png" id="11_8kbuy"]
+[ext_resource type="Texture2D" uid="uid://bg1ttf1dayk3x" path="res://Images/action_icons/burn.png" id="12_4wn8q"]
+[ext_resource type="Texture2D" uid="uid://bc66jvhfkucid" path="res://Images/cassette/cassette front/A side.png" id="13_foxmk"]
+[ext_resource type="Texture2D" uid="uid://brmt4wph5umix" path="res://Images/cassette/cassette front/B side.png" id="14_kewyk"]
+
+[sub_resource type="FontVariation" id="FontVariation_fullr"]
+base_font = ExtResource("5_ycvgs")
+
+[node name="DeckbuilderCassettePreview" type="Node2D"]
+script = ExtResource("1_oi5fq")
+metadata/_edit_use_anchors_ = true
+
+[node name="FrontLabelTexture" type="Sprite2D" parent="."]
+texture = ExtResource("1_7t1vr")
+metadata/_edit_use_anchors_ = true
+
+[node name="CassetteCaseTexture" type="Sprite2D" parent="."]
+texture = ExtResource("2_jr3si")
+
+[node name="GearsTexture" type="Sprite2D" parent="."]
+texture = ExtResource("3_g6t37")
+
+[node name="CassetteName" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -123.0
+offset_right = 124.0
+offset_bottom = -59.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.281187, 0.281187, 0.281187, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("5_e6lsh")
+theme_override_font_sizes/font_size = 16
+text = "SUPA DORIFTO"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SideA" type="Node2D" parent="."]
+scale = Vector2(0.8, 0.8)
+metadata/_edit_use_anchors_ = true
+
+[node name="Background" type="Sprite2D" parent="SideA"]
+light_mask = 524288
+visibility_layer = 524288
+position = Vector2(-150, 80)
+texture = ExtResource("4_oghmi")
+
+[node name="Description" type="RichTextLabel" parent="SideA/Background"]
+light_mask = 524288
+visibility_layer = 524288
+anchors_preset = -1
+anchor_left = 0.0346232
+anchor_top = 0.0530973
+anchor_right = 0.968217
+anchor_bottom = 0.701535
+offset_left = -126.864
+offset_top = -128.593
+offset_right = -126.864
+offset_bottom = -128.593
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_fullr")
+theme_override_font_sizes/normal_font_size = 22
+text = "Example Text Dupa Dupa Dupa"
+metadata/_edit_use_anchors_ = true
+
+[node name="MoveTypeIcon" type="Sprite2D" parent="SideA"]
+position = Vector2(-320, 80)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("6_1thsv")
+metadata/_edit_use_anchors_ = true
+
+[node name="Value" type="Label" parent="SideA/MoveTypeIcon"]
+light_mask = 524288
+visibility_layer = 524288
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -128.0
+offset_right = -128.0
+offset_bottom = -128.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("5_ycvgs")
+theme_override_font_sizes/font_size = 140
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Fuel" type="Sprite2D" parent="SideA"]
+light_mask = 524288
+visibility_layer = 524288
+position = Vector2(-320, 165)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("7_h0mk6")
+metadata/_edit_use_anchors_ = true
+
+[node name="Value" type="Label" parent="SideA/Fuel"]
+light_mask = 524288
+visibility_layer = 524288
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -128.0
+offset_right = -128.0
+offset_bottom = -128.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("5_ycvgs")
+theme_override_font_sizes/font_size = 140
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="AttackTargets" type="Sprite2D" parent="SideA"]
+position = Vector2(-178, 167)
+texture = ExtResource("10_4b4mm")
+metadata/_edit_use_anchors_ = true
+
+[node name="AfterPlay" type="Sprite2D" parent="SideA"]
+position = Vector2(-56, 172)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("11_8kbuy")
+metadata/_edit_use_anchors_ = true
+
+[node name="SideB" type="Node2D" parent="."]
+scale = Vector2(0.8, 0.8)
+metadata/_edit_use_anchors_ = true
+
+[node name="Background" type="Sprite2D" parent="SideB"]
+light_mask = 524288
+visibility_layer = 524288
+position = Vector2(150, 80)
+texture = ExtResource("4_oghmi")
+
+[node name="Description" type="RichTextLabel" parent="SideB/Background"]
+light_mask = 524288
+visibility_layer = 524288
+anchors_preset = -1
+anchor_left = 0.0346232
+anchor_top = 0.0530973
+anchor_right = 0.968217
+anchor_bottom = 0.670285
+offset_left = -125.864
+offset_top = -126.593
+offset_right = -125.864
+offset_bottom = -126.593
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_fullr")
+theme_override_font_sizes/normal_font_size = 22
+text = "Example Text Dupa Dupa Dupa"
+metadata/_edit_use_anchors_ = true
+
+[node name="MoveTypeIcon" type="Sprite2D" parent="SideB"]
+position = Vector2(320, 80)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("6_1thsv")
+metadata/_edit_use_anchors_ = true
+
+[node name="Value" type="Label" parent="SideB/MoveTypeIcon"]
+light_mask = 524288
+visibility_layer = 524288
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -128.0
+offset_right = -128.0
+offset_bottom = -128.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("5_ycvgs")
+theme_override_font_sizes/font_size = 140
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Fuel" type="Sprite2D" parent="SideB"]
+light_mask = 524288
+visibility_layer = 524288
+position = Vector2(322, 165)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("7_h0mk6")
+metadata/_edit_use_anchors_ = true
+
+[node name="Value" type="Label" parent="SideB/Fuel"]
+light_mask = 524288
+visibility_layer = 524288
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -128.0
+offset_right = -128.0
+offset_bottom = -128.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("5_ycvgs")
+theme_override_font_sizes/font_size = 140
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="AttackTargets" type="Sprite2D" parent="SideB"]
+position = Vector2(136, 161)
+texture = ExtResource("10_4b4mm")
+metadata/_edit_use_anchors_ = true
+
+[node name="AfterPlay" type="Sprite2D" parent="SideB"]
+position = Vector2(246, 168)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("12_4wn8q")
+metadata/_edit_use_anchors_ = true
+
+[node name="ASide" type="Sprite2D" parent="."]
+position = Vector2(-151, -80)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("13_foxmk")
+
+[node name="BSide" type="Sprite2D" parent="."]
+position = Vector2(150, -81)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("14_kewyk")

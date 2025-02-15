@@ -1,0 +1,96 @@
+[gd_resource type="Animation" load_steps=4 format=3 uid="uid://bwxfri62lests"]
+
+[ext_resource type="Texture2D" uid="uid://bpuaf5yua2qkq" path="res://Images/vfx/muzzle flash/muzzle flash v2 1.png" id="1_s3ffk"]
+[ext_resource type="Texture2D" uid="uid://cipv750rdjobj" path="res://Images/vfx/muzzle flash/muzzle flash v2 2.png" id="2_ged08"]
+[ext_resource type="Texture2D" uid="uid://y6t2rdq3hvvc" path="res://Images/vfx/muzzle flash/muzzle flash v2 3.png" id="3_8l47s"]
+
+[resource]
+resource_name = "shoot_front"
+length = 1.4
+step = 0.0111
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VFX_Player:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0222222, 0.0444444, 0.0666, 0.0888222, 0.111044, 0.1332, 0.155422, 0.177644, 0.1998, 0.222022, 0.244244, 0.2664, 0.288622, 0.310844, 0.333, 0.355222, 0.377444, 0.3996, 0.421822, 0.444044, 0.4662, 0.488422, 0.510644, 0.5328, 0.555022, 0.577244, 0.5994, 0.621622, 0.643844, 0.666, 0.688222, 0.710444, 0.7326, 0.754822, 0.777044, 0.7992, 0.821422, 0.843644, 0.8658, 0.888022, 0.910244, 0.9324, 0.954622, 0.976844, 0.999, 1.02122, 1.04344, 1.0656, 1.08782, 1.11004, 1.1322, 1.15442, 1.17664, 1.1988, 1.22102, 1.24324, 1.2654, 1.28762, 1.30984, 1.332, 1.35422, 1.37644),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_s3ffk"), ExtResource("2_ged08"), ExtResource("3_8l47s"), ExtResource("1_s3ffk"), ExtResource("2_ged08"), ExtResource("3_8l47s"), ExtResource("1_s3ffk"), ExtResource("2_ged08"), ExtResource("3_8l47s"), ExtResource("1_s3ffk"), ExtResource("2_ged08"), ExtResource("3_8l47s"), ExtResource("1_s3ffk"), ExtResource("2_ged08"), ExtResource("3_8l47s"), ExtResource("1_s3ffk"), ExtResource("2_ged08"), ExtResource("3_8l47s"), ExtResource("1_s3ffk"), ExtResource("2_ged08"), ExtResource("3_8l47s"), ExtResource("1_s3ffk"), ExtResource("2_ged08"), ExtResource("3_8l47s"), ExtResource("1_s3ffk"), ExtResource("2_ged08"), ExtResource("3_8l47s"), ExtResource("1_s3ffk"), ExtResource("2_ged08"), ExtResource("3_8l47s"), ExtResource("1_s3ffk"), ExtResource("2_ged08"), ExtResource("3_8l47s"), ExtResource("1_s3ffk"), ExtResource("2_ged08"), ExtResource("3_8l47s"), ExtResource("1_s3ffk"), ExtResource("2_ged08"), ExtResource("3_8l47s"), ExtResource("1_s3ffk"), ExtResource("2_ged08"), ExtResource("3_8l47s"), ExtResource("1_s3ffk"), ExtResource("2_ged08"), ExtResource("3_8l47s"), ExtResource("1_s3ffk"), ExtResource("2_ged08"), ExtResource("3_8l47s"), ExtResource("1_s3ffk"), ExtResource("2_ged08"), ExtResource("3_8l47s"), ExtResource("1_s3ffk"), ExtResource("2_ged08"), ExtResource("3_8l47s"), ExtResource("1_s3ffk"), ExtResource("2_ged08"), ExtResource("3_8l47s"), ExtResource("1_s3ffk"), ExtResource("2_ged08"), ExtResource("3_8l47s"), ExtResource("1_s3ffk"), ExtResource("2_ged08"), ExtResource("3_8l47s")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VFX_Player:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6882, 1.3986),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(408.233, -285.712), Vector2(317.405, -275.435), Vector2(408.233, -285.712)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VFX_Player:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5708]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VFX_Player:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.3, 0.3)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("VFX_Player:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CarSprite:position")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.688889, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(179.367, -225.239), Vector2(124.799, -207.801), Vector2(179.367, -225.239)]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../../Player/BattleSprite/AnimationPlayer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1.3653),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"getting_hit", -1, 1.0, false],
+"method": &"play"
+}]
+}

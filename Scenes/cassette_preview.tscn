@@ -1,0 +1,562 @@
+[gd_scene load_steps=22 format=3 uid="uid://cbsxv7mdtoe1i"]
+
+[ext_resource type="Script" path="res://Scripts/cassette_preview.gd" id="1_a6oi7"]
+[ext_resource type="Texture2D" uid="uid://cvtclg7lpuej1" path="res://Images/cassette/cassette front/1 label.png" id="2_fqp6m"]
+[ext_resource type="Texture2D" uid="uid://bri5abvba2nda" path="res://Images/cassette/cassette front/2 case c v2.png" id="3_18sat"]
+[ext_resource type="Texture2D" uid="uid://1jexkvbes2ne" path="res://Images/cassette/cassette front/3 gears v2.png" id="4_j5y00"]
+[ext_resource type="Texture2D" uid="uid://bc66jvhfkucid" path="res://Images/cassette/cassette front/A side.png" id="6_gyv32"]
+[ext_resource type="FontFile" uid="uid://bf27d738cuys7" path="res://Font/RockSalt-Regular.ttf" id="6_i6tn8"]
+[ext_resource type="Texture2D" uid="uid://brmt4wph5umix" path="res://Images/cassette/cassette front/B side.png" id="7_m12hm"]
+[ext_resource type="Texture2D" uid="uid://bxu4re1jrhh2j" path="res://Images/cassette/cassette side/case side v2.png" id="8_cw5qh"]
+[ext_resource type="Texture2D" uid="uid://bd6fqsna3edu2" path="res://Images/cassette/cassette top/1 case top v2.png" id="9_35055"]
+[ext_resource type="Texture2D" uid="uid://dat1u8t86k05y" path="res://Images/cassette/cassette top/2 top label.png" id="10_k12gj"]
+[ext_resource type="Texture2D" uid="uid://bqvadmvpaliuo" path="res://Images/cassette/cassette front/text box.png" id="11_wtgrl"]
+[ext_resource type="Texture2D" uid="uid://x3fcdafib402" path="res://Images/cassette/cassette front/attack.png" id="14_3cism"]
+[ext_resource type="FontFile" uid="uid://dtn7qee5h51x5" path="res://Font/atwriter.ttf" id="14_cp6ge"]
+[ext_resource type="Texture2D" uid="uid://sv0sakk6sx8w" path="res://Images/cassette/cassette front/fuel.png" id="15_7xm0t"]
+
+[sub_resource type="FontVariation" id="FontVariation_avwf4"]
+base_font = ExtResource("6_i6tn8")
+
+[sub_resource type="FontVariation" id="FontVariation_0bgxh"]
+base_font = ExtResource("14_cp6ge")
+
+[sub_resource type="Animation" id="Animation_bdam2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CassetteSprites/Top:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CassetteSprites/Top:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CassetteSprites/Front:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CassetteSprites/Front:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CassetteSprites/Front/ASideLogo:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 0.5)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CassetteSprites/Front/BSideLogo:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.3, 0.3)]
+}
+
+[sub_resource type="Animation" id="Animation_1rwco"]
+resource_name = "SwitchToFront"
+length = 0.2
+step = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CassetteSprites/Top:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -139)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CassetteSprites/Top:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1e-05)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CassetteSprites/Front:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1e-05), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CassetteSprites/Front:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 20), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_75skt"]
+resource_name = "SwitchToOtherSide"
+length = 0.3
+step = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CassetteSprites/Front:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.149, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(20, 0), Vector2(-20, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CassetteSprites/Front:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.149, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 1), Vector2(0, 1), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CassetteSprites/Side:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-223, 0), Vector2(0, 3), Vector2(223, 3)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CassetteSprites/Side:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(0.840896, 1, 1.51572),
+"update": 0,
+"values": [Vector2(0, 1), Vector2(1, 1), Vector2(0, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CassetteSprites/Front/Gears:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.149, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1e-05),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(-1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CassetteSprites/Front/ASideLogo:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.149, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(0.3, 0.3)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CassetteSprites/Front/BSideLogo:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.149, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.3, 0.3), Vector2(0.5, 0.5)]
+}
+
+[sub_resource type="Animation" id="Animation_sagpx"]
+resource_name = "SwitchToTopSide"
+length = 0.2
+step = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CassetteSprites/Top:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -139), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CassetteSprites/Top:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 0), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CassetteSprites/Front:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 20)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CassetteSprites/Front:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o46m7"]
+_data = {
+"RESET": SubResource("Animation_bdam2"),
+"SwitchToFront": SubResource("Animation_1rwco"),
+"SwitchToOtherSide": SubResource("Animation_75skt"),
+"SwitchToTopSide": SubResource("Animation_sagpx")
+}
+
+[node name="CassettePreview" type="Node2D"]
+light_mask = 524288
+visibility_layer = 524288
+script = ExtResource("1_a6oi7")
+
+[node name="CassetteSprites" type="Node2D" parent="."]
+light_mask = 524288
+visibility_layer = 524288
+
+[node name="Front" type="Node2D" parent="CassetteSprites"]
+light_mask = 524288
+visibility_layer = 524288
+
+[node name="Label" type="Sprite2D" parent="CassetteSprites/Front"]
+light_mask = 524288
+visibility_layer = 524288
+texture = ExtResource("2_fqp6m")
+
+[node name="Frame" type="Sprite2D" parent="CassetteSprites/Front"]
+light_mask = 524288
+visibility_layer = 524288
+texture = ExtResource("3_18sat")
+
+[node name="Gears" type="Sprite2D" parent="CassetteSprites/Front"]
+light_mask = 524288
+visibility_layer = 524288
+texture = ExtResource("4_j5y00")
+
+[node name="CassetteName" type="Label" parent="CassetteSprites/Front"]
+light_mask = 524288
+visibility_layer = 524288
+offset_left = -122.0
+offset_top = -126.0
+offset_right = 128.0
+offset_bottom = -45.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -10
+theme_override_fonts/font = ExtResource("6_i6tn8")
+theme_override_font_sizes/font_size = 18
+text = "VERI LONG ATTACK NAME THAT FITS"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ASideLogo" type="Sprite2D" parent="CassetteSprites/Front"]
+light_mask = 524288
+visibility_layer = 524288
+position = Vector2(-154, -32)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_gyv32")
+
+[node name="BSideLogo" type="Sprite2D" parent="CassetteSprites/Front"]
+light_mask = 524288
+visibility_layer = 524288
+position = Vector2(153, -34)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("7_m12hm")
+
+[node name="Side" type="Node2D" parent="CassetteSprites"]
+light_mask = 524288
+visibility_layer = 524288
+position = Vector2(-223, 0)
+scale = Vector2(1e-05, 1)
+
+[node name="Case" type="Sprite2D" parent="CassetteSprites/Side"]
+light_mask = 524288
+visibility_layer = 524288
+texture = ExtResource("8_cw5qh")
+
+[node name="Top" type="Node2D" parent="CassetteSprites"]
+light_mask = 524288
+visibility_layer = 524288
+scale = Vector2(1, 1e-05)
+
+[node name="Case" type="Sprite2D" parent="CassetteSprites/Top"]
+light_mask = 524288
+visibility_layer = 524288
+texture = ExtResource("9_35055")
+
+[node name="Label" type="Sprite2D" parent="CassetteSprites/Top"]
+light_mask = 524288
+visibility_layer = 524288
+texture = ExtResource("10_k12gj")
+
+[node name="CassetteName" type="Label" parent="CassetteSprites/Top"]
+light_mask = 524288
+visibility_layer = 524288
+offset_left = -92.0
+offset_top = -12.0
+offset_right = 91.0
+offset_bottom = 12.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_avwf4")
+theme_override_font_sizes/font_size = 10
+text = "SUPA DORIFTO"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="SideA" type="Node2D" parent="CassetteSprites"]
+light_mask = 524288
+visibility_layer = 524288
+position = Vector2(8, 2.38419e-07)
+scale = Vector2(1.1, 1.1)
+
+[node name="Background" type="Sprite2D" parent="CassetteSprites/SideA"]
+light_mask = 524288
+visibility_layer = 524288
+position = Vector2(-102, 91)
+scale = Vector2(0.6875, 0.697266)
+texture = ExtResource("11_wtgrl")
+
+[node name="Fuel" type="Sprite2D" parent="CassetteSprites/SideA"]
+light_mask = 524288
+visibility_layer = 524288
+position = Vector2(-225.455, 144.545)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("15_7xm0t")
+
+[node name="Label" type="Label" parent="CassetteSprites/SideA/Fuel"]
+light_mask = 524288
+visibility_layer = 524288
+offset_left = -75.0
+offset_top = -77.5
+offset_right = 65.0
+offset_bottom = 93.5
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("14_cp6ge")
+theme_override_font_sizes/font_size = 140
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Description" type="RichTextLabel" parent="CassetteSprites/SideA"]
+light_mask = 524288
+visibility_layer = 524288
+offset_left = -184.0
+offset_top = 8.0
+offset_right = -17.0
+offset_bottom = 175.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_0bgxh")
+theme_override_font_sizes/normal_font_size = 16
+text = "Example Text Dupa Dupa Dupa"
+metadata/_edit_use_anchors_ = true
+
+[node name="Icon" type="Sprite2D" parent="CassetteSprites/SideA"]
+position = Vector2(-228.182, 70)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("14_3cism")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CassetteSprites/SideA/Icon"]
+light_mask = 524288
+visibility_layer = 524288
+anchors_preset = -1
+anchor_left = 0.207031
+anchor_top = 0.154652
+anchor_right = 0.753906
+anchor_bottom = 0.822621
+offset_left = -128.0
+offset_top = -128.0
+offset_right = -128.0
+offset_bottom = -128.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("14_cp6ge")
+theme_override_font_sizes/font_size = 140
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="SideB" type="Node2D" parent="CassetteSprites"]
+modulate = Color(1, 1, 1, 0.491)
+light_mask = 524288
+visibility_layer = 524288
+position = Vector2(-8, 0)
+scale = Vector2(0.8, 0.8)
+
+[node name="Background" type="Sprite2D" parent="CassetteSprites/SideB"]
+light_mask = 524288
+visibility_layer = 524288
+position = Vector2(102, 91)
+scale = Vector2(0.6875, 0.697266)
+texture = ExtResource("11_wtgrl")
+
+[node name="Description" type="RichTextLabel" parent="CassetteSprites/SideB"]
+light_mask = 524288
+visibility_layer = 524288
+offset_left = 18.75
+offset_top = 8.75
+offset_right = 185.75
+offset_bottom = 175.75
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_0bgxh")
+theme_override_font_sizes/normal_font_size = 16
+text = "Example Text Cycki Cycki Cycki"
+metadata/_edit_use_anchors_ = true
+
+[node name="Fuel" type="Sprite2D" parent="CassetteSprites/SideB"]
+light_mask = 524288
+visibility_layer = 524288
+position = Vector2(224.545, 148.182)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("15_7xm0t")
+
+[node name="Label" type="Label" parent="CassetteSprites/SideB/Fuel"]
+light_mask = 524288
+visibility_layer = 524288
+offset_left = -75.0
+offset_top = -77.5
+offset_right = 65.0
+offset_bottom = 93.5
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("14_cp6ge")
+theme_override_font_sizes/font_size = 140
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Icon" type="Sprite2D" parent="CassetteSprites/SideB"]
+position = Vector2(225.455, 76.1364)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("14_3cism")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CassetteSprites/SideB/Icon"]
+light_mask = 524288
+visibility_layer = 524288
+anchors_preset = -1
+anchor_left = 0.207031
+anchor_top = 0.154652
+anchor_right = 0.753906
+anchor_bottom = 0.822621
+offset_left = -128.0
+offset_top = -128.0
+offset_right = -128.0
+offset_bottom = -128.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("14_cp6ge")
+theme_override_font_sizes/font_size = 140
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_o46m7")
+}

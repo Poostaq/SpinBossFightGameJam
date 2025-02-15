@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://gr5dtk8hsu0x"]
+
+[ext_resource type="Texture2D" uid="uid://bh037udlnenrn" path="res://Images/cassette/cassette top/reference_top.png" id="1_6n7cu"]
+[ext_resource type="Script" path="res://Scripts/deckbuilder_cassette.gd" id="2_l4oow"]
+[ext_resource type="FontFile" uid="uid://bf27d738cuys7" path="res://Font/RockSalt-Regular.ttf" id="2_seaf1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_px7bs"]
+size = Vector2(442, 320)
+
+[node name="Cassette" type="Sprite2D"]
+texture = ExtResource("1_6n7cu")
+script = ExtResource("2_l4oow")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -222.0
+offset_top = -27.0
+offset_right = -222.0
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.180005, 0.180005, 0.180005, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_seaf1")
+theme_override_font_sizes/font_size = 14
+text = "SUPA DORIFTO"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Node2D" type="Node2D" parent="."]
+scale = Vector2(1, 0.15)
+
+[node name="Area2D" type="Area2D" parent="Node2D"]
+collision_layer = 65536
+collision_mask = 65536
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Area2D"]
+position = Vector2(3, 0)
+shape = SubResource("RectangleShape2D_px7bs")
+
+[connection signal="mouse_entered" from="Node2D/Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Node2D/Area2D" to="." method="_on_area_2d_mouse_exited"]
