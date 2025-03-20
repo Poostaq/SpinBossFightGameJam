@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=3 uid="uid://cbsxv7mdtoe1i"]
 
-[ext_resource type="Script" path="res://Scripts/cassette_preview.gd" id="1_a6oi7"]
+[ext_resource type="Script" uid="uid://cy46mbt34epsw" path="res://Scripts/cassette_preview.gd" id="1_a6oi7"]
 [ext_resource type="Texture2D" uid="uid://cvtclg7lpuej1" path="res://Images/cassette/cassette front/1 label.png" id="2_fqp6m"]
 [ext_resource type="Texture2D" uid="uid://bri5abvba2nda" path="res://Images/cassette/cassette front/2 case c v2.png" id="3_18sat"]
 [ext_resource type="Texture2D" uid="uid://1jexkvbes2ne" path="res://Images/cassette/cassette front/3 gears v2.png" id="4_j5y00"]
@@ -293,10 +293,10 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o46m7"]
 _data = {
-"RESET": SubResource("Animation_bdam2"),
-"SwitchToFront": SubResource("Animation_1rwco"),
-"SwitchToOtherSide": SubResource("Animation_75skt"),
-"SwitchToTopSide": SubResource("Animation_sagpx")
+&"RESET": SubResource("Animation_bdam2"),
+&"SwitchToFront": SubResource("Animation_1rwco"),
+&"SwitchToOtherSide": SubResource("Animation_75skt"),
+&"SwitchToTopSide": SubResource("Animation_sagpx")
 }
 
 [node name="CassettePreview" type="Node2D"]

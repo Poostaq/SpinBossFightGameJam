@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://b6tjc5o53wubc"]
 
 [ext_resource type="Texture2D" uid="uid://cvtclg7lpuej1" path="res://Images/cassette/cassette front/1 label.png" id="1_7t1vr"]
-[ext_resource type="Script" path="res://Scripts/deckbuilder_cassette_preview.gd" id="1_oi5fq"]
+[ext_resource type="Script" uid="uid://bpyhsbojlhpwx" path="res://Scripts/deckbuilder_cassette_preview.gd" id="1_oi5fq"]
 [ext_resource type="Texture2D" uid="uid://twdoybp2kuxh" path="res://Images/cassette/cassette front/2 case a v2.png" id="2_jr3si"]
 [ext_resource type="Texture2D" uid="uid://1jexkvbes2ne" path="res://Images/cassette/cassette front/3 gears v2.png" id="3_g6t37"]
 [ext_resource type="Texture2D" uid="uid://bqvadmvpaliuo" path="res://Images/cassette/cassette front/text box.png" id="4_oghmi"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://tqimomqpuvis"]
 
-[ext_resource type="Script" path="res://Scripts/enemy_cassette_slot.gd" id="1_2vha7"]
+[ext_resource type="Script" uid="uid://32361v6kom0p" path="res://Scripts/enemy_cassette_slot.gd" id="1_2vha7"]
 [ext_resource type="Texture2D" uid="uid://cif5jgxvucgdk" path="res://Images/Dashboard/open slot top.png" id="3_lbict"]
 [ext_resource type="Texture2D" uid="uid://cu2i7yq2pxv3j" path="res://Images/Dashboard/open slot bottom.png" id="4_e2lkx"]
 

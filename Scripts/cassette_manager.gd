@@ -7,7 +7,6 @@ const DEFAULT_CASSETTE_SPEED = 0.2
 
 var screen_size
 var cassette_being_dragged
-var cassette_deckbuild_being_dragged
 var is_hovering_on_cassette
 var cassette_hovered_on
 var draft_active = false
@@ -15,7 +14,6 @@ var draft_active = false
 @onready var player: Node2D = $"../Player"
 @onready var commit_sequence_button = $"../CommitSequence"
 @onready var audio_stream_player: AudioStreamPlayer = $"../SfxPlayer"
-@onready var cassette_draft: Node2D = $"../CassetteDraft"
 @onready var game_manager: Node2D = $"../GameManager"
 
 
@@ -34,23 +32,12 @@ func _process(_delta: float) -> void:
 			var mouse_pos = get_global_mouse_position()
 			cassette_being_dragged.global_position = Vector2(clamp(mouse_pos.x, 0, screen_size.x),
 			clamp(mouse_pos.y, 0, screen_size.y))
-	if game_manager.current_screen == game_manager.SCREEN.DRAFT:
-		if cassette_deckbuild_being_dragged:
-			var mouse_pos = get_global_mouse_position()
-			cassette_deckbuild_being_dragged.global_position = Vector2(clamp(mouse_pos.x, 0, screen_size.x),
-			clamp(mouse_pos.y, 0, screen_size.y))
 
 
 func raycast_check_for_cassette():
-	var space_state = get_world_2d().direct_space_state
-	var parameters = PhysicsPointQueryParameters2D.new()
-	parameters.position = get_global_mouse_position()
-	parameters.collide_with_areas = true
-	parameters.collision_mask = COLLISION_MASK_CASSETTE
-	var result = space_state.intersect_point(parameters)
-	if result.size() > 0:
-		print(result)
-		return get_cassette_with_highest_z_index(result)
+	var hits = _raycast_point(get_global_mouse_position(), COLLISION_MASK_CASSETTE)
+	if hits.size() > 0:
+		return get_cassette_with_highest_z_index(hits)
 	return null
 
 
@@ -107,6 +94,7 @@ func _on_cassette_hovered_off(cassette) -> void:
 
 func start_drag(cassette):
 	cassette_being_dragged = cassette
+	cassette.reparent($"../DragLayer")
 	cassette.animation_player.play_backwards("Hover_over")
 	print("Should play SwitchToTopSide")
 	cassette.animation_player.play("RESET")
@@ -139,54 +127,8 @@ func finish_drag():
 			slot.animation_player.play("RESET")
 
 
-func start_drag_deckbuild(cassette):
-	cassette_deckbuild_being_dragged = cassette
-
-
-func finish_drag_deckbuild():
-	var player_deck_area = raycast_check_for_player_deck_area() 
-	print(cassette_deckbuild_being_dragged.get_parent())
-	if player_deck_area and len(player_deck_area.get_children()) < 10:
-		cassette_draft.remove_from_available_cassettes(cassette_deckbuild_being_dragged)
-		cassette_draft.player_cassettes.add_child(cassette_deckbuild_being_dragged)
-		cassette_deckbuild_being_dragged.position = Vector2(0,0)
-		is_hovering_on_cassette = false
-		cassette_draft.deckbuilder_cassette_preview.visible = false
-		cassette_draft.update_player_cassettes_column_positions()
-	else:
-		if cassette_deckbuild_being_dragged.get_parent() == cassette_draft.player_cassettes:
-			cassette_draft.player_cassettes.remove_child(cassette_deckbuild_being_dragged)
-			cassette_draft.add_to_available_cassettes(cassette_deckbuild_being_dragged)
-		elif cassette_deckbuild_being_dragged.get_parent() == cassette_draft.available_cassettes_column or \
-		 cassette_deckbuild_being_dragged.get_parent() == cassette_draft.available_cassettes_column_2:
-			cassette_draft.update_available_cassettes_column_positions()
-		else:
-			cassette_draft.add_to_reward_cassettes(cassette_deckbuild_being_dragged)
-			cassette_draft.update_reward_cassettes_column_positions()
-	cassette_deckbuild_being_dragged = null
-	cassette_draft.update_player_cassette_count()
-	cassette_draft.check_if_select_deck_button_activate()
-
-
 func raycast_check_for_slot():
-	var space_state = get_world_2d().direct_space_state
-	var parameters = PhysicsPointQueryParameters2D.new()
-	parameters.position = get_global_mouse_position()
-	parameters.collide_with_areas = true
-	parameters.collision_mask = COLLISION_MASK_CASSETTE_SLOT
-	var result = space_state.intersect_point(parameters)
-	if result.size() > 0:
-		return result[0].collider.get_parent()
-	return null
-
-
-func raycast_check_for_player_deck_area():
-	var space_state = get_world_2d().direct_space_state
-	var parameters = PhysicsPointQueryParameters2D.new()
-	parameters.position = get_global_mouse_position()
-	parameters.collide_with_areas = true
-	parameters.collision_mask = COLLISION_MASK_PLAYER_DECK_AREA
-	var result = space_state.intersect_point(parameters)
+	var result = _raycast_point(get_global_mouse_position(), COLLISION_MASK_CASSETTE_SLOT)
 	if result.size() > 0:
 		return result[0].collider.get_parent()
 	return null
@@ -195,8 +137,6 @@ func raycast_check_for_player_deck_area():
 func on_left_click_released():
 	if cassette_being_dragged:
 		finish_drag()
-	if cassette_deckbuild_being_dragged:
-		finish_drag_deckbuild()
 
 
 func switch_sides(cassette):
@@ -214,3 +154,12 @@ func check_if_commit_sequence_button_should_be_activated():
 		if slot.cassette_in_slot == null:
 			return false
 	return should_be_activated
+
+
+func _raycast_point(pos: Vector2, collision_mask: int) -> Array:
+	var space_state = get_world_2d().direct_space_state
+	var parameters = PhysicsPointQueryParameters2D.new()
+	parameters.position = pos
+	parameters.collide_with_areas = true
+	parameters.collision_mask = collision_mask
+	return space_state.intersect_point(parameters)

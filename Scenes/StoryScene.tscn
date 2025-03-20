@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://ts3xkyiwakuo"]
+
+[ext_resource type="Script" uid="uid://y1fwowt32r58" path="res://Scripts/story.gd" id="1_odqby"]
+[ext_resource type="Texture2D" uid="uid://u501tg45mcaq" path="res://Images/MainMenu/Grayout_for_buttons.png" id="2_pf38m"]
+[ext_resource type="Texture2D" uid="uid://wnkq13qa4f14" path="res://Images/portraits/Her/her default.png" id="3_1gt3g"]
+[ext_resource type="Texture2D" uid="uid://c3x1d1u7q1grr" path="res://Images/portraits/hound/hound default.png" id="4_f2qyr"]
+[ext_resource type="FontFile" uid="uid://dtn7qee5h51x5" path="res://Font/atwriter.ttf" id="5_8xmme"]
+[ext_resource type="Texture2D" uid="uid://b42p8wgtxh7se" path="res://Images/Story/continue_tooltip.png" id="6_a5afw"]
+
+[node name="Story" type="Node2D"]
+z_index = 20
+script = ExtResource("1_odqby")
+
+[node name="BACKGROUND" type="Sprite2D" parent="."]
+position = Vector2(951.5, 529.5)
+scale = Vector2(1.951, 1.149)
+texture = ExtResource("2_pf38m")
+
+[node name="Portrait" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(240, 200)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("3_1gt3g")
+
+[node name="Portrait2" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(1648, 200)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("4_f2qyr")
+
+[node name="Narration" type="RichTextLabel" parent="."]
+offset_left = 445.0
+offset_top = 503.0
+offset_right = 1434.0
+offset_bottom = 1209.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("5_8xmme")
+theme_override_fonts/mono_font = ExtResource("5_8xmme")
+theme_override_fonts/italics_font = ExtResource("5_8xmme")
+theme_override_fonts/bold_italics_font = ExtResource("5_8xmme")
+theme_override_fonts/bold_font = ExtResource("5_8xmme")
+theme_override_font_sizes/normal_font_size = 48
+text = "TEST TEXT"
+
+[node name="StoryWaitTime" type="Timer" parent="."]
+
+[node name="ContinueTooltip" type="Sprite2D" parent="."]
+position = Vector2(1734, 1012)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("6_a5afw")

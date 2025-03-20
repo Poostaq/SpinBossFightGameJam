@@ -60,7 +60,7 @@ func set_cassette_data(current_icons):
 	fuel_label.text = str(action_data[CASSETTE_SIDE_DATA.FUEL_COST])
 	
 func set_icons_visibility():
-	if whose_cassette == "player":
+	if whose_cassette == GlobalEnums.PLAYER:
 		player_icons.visible = true
 		enemy_icons.visible = false
 	else:
@@ -71,7 +71,7 @@ func set_icons_visibility():
 func highlight_cassette(is_highlighted):
 	var tween = create_tween()
 	var vector
-	if whose_cassette == "player":
+	if whose_cassette == GlobalEnums.PLAYER:
 		if is_highlighted:
 			vector = Vector2(-40,0)
 		else:

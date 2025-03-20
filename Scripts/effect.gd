@@ -1,22 +1,30 @@
-extends Resource
-class_name Effect
+class_name StatusEffect
+extends Node2D
 
-
-enum DurationType {
-	UNTIL_NEXT_TURN,
-	UNTIL_NEXT_CARD,
-	UNTIL_NEXT_ACTION,
-	UNTIL_NEXT_ATTACK, 
-	PERMANENT
-}
-
-var duration_type : DurationType
-var effect_identifier : String
-var is_active: bool
+var effect_name: String
+var icon_name: String
+var when_active: String
+var animation_to_play: String
+var description: String
+var duration: int
 var value: int
-var description
+var affected_target: int
 
-func _init(duration_type: DurationType, effect_identifier: String = "", value: int = 0):
-	self.duration_type = duration_type
-	self.value = value
-	self.effect_identifier = effect_identifier
+func _init(
+	_name: String,
+	_icon: String,
+	_when: String,
+	_anim: String,
+	_desc: String,
+	_duration: int,
+	_value: int,
+	_target: int
+):
+	effect_name = _name
+	icon_name = _icon
+	when_active = _when
+	animation_to_play = _anim
+	description = _desc
+	duration = _duration
+	value = _value
+	affected_target = _target

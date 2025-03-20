@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://mq5808bnkhb8"]
 
-[ext_resource type="Script" path="res://Scripts/slider.gd" id="1_j4i8v"]
+[ext_resource type="Script" uid="uid://c470k6supa5rt" path="res://Scripts/slider.gd" id="1_j4i8v"]
 
 [node name="Slider" type="HSlider"]
 offset_right = 314.0

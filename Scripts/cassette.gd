@@ -1,7 +1,8 @@
 extends Node2D
+class_name Cassette
 
-signal hovered(cassette)
-signal hovered_off(cassette)
+signal hovered(cassette: Cassette)
+signal hovered_off(cassette: Cassette)
 
 const ENLARGED_CASSETTE_SIZE = Vector2(0.85,0.85)
 const REGULAR_CASSETTE_SIZE = Vector2(0.70,0.70)
@@ -12,6 +13,16 @@ const TOP_Y = 40
 enum CASSETTE_SIDE_DATA {FUEL_COST, DESCRIPTION, ACTIONS_LIST, AFTER_PLAY, ACTION_ICON}
 enum ACTION {MOVE_TYPE, VALUE, MOVE_AREA, MOVE_INFO}
 enum STATE {IN_DECK, IN_HAND_IDLE, HOVERED_OVER, DRAGGING, IN_SLOT}
+
+const ICON_BEHAVIORS = {
+	"attack": ["attack"],
+	"attack_special": ["attack", "special"],
+	"attack_defence": ["attack", "defence"],
+	"defence": ["defence"],
+	"defence_special": ["defence", "special"],
+	"special": ["special"]
+	# Add more if you need them
+}
 
 var position_in_hand
 var rotation_in_hand
@@ -44,6 +55,7 @@ var state
 @onready var side_a_after_play: Sprite2D = $Sprites/SideA/AfterPlay
 @onready var side_b_attack_targets: Sprite2D = $Sprites/SideB/AttackTargets
 @onready var side_b_after_play: Sprite2D = $Sprites/SideB/AfterPlay
+
 
 
 func _on_area_2d_mouse_entered() -> void:
@@ -93,56 +105,90 @@ func get_current_side_fuel():
 		return ""
 
 
-func set_icon_value(cassette_data, label):
-	if cassette_data[CASSETTE_SIDE_DATA.ACTION_ICON] == "attack":
-		var attack = 0
-		for action in cassette_data[CASSETTE_SIDE_DATA.ACTIONS_LIST]:
-			if action[ACTION.MOVE_TYPE] == "attack":
-				attack = action[ACTION.VALUE]
-		label.text = str(attack)
-	elif cassette_data[CASSETTE_SIDE_DATA.ACTION_ICON] == "attack_special":
-		var attack = 0
-		var special = 0
-		for action in cassette_data[CASSETTE_SIDE_DATA.ACTIONS_LIST]:
-			if action[ACTION.MOVE_TYPE] == "attack":
-				attack = action[ACTION.VALUE]
-		for action in cassette_data[CASSETTE_SIDE_DATA.ACTIONS_LIST]:
-			if action[ACTION.MOVE_TYPE] == "special":
-				special = action[ACTION.VALUE]
-		if attack == 0:
-			label.text = str(special)
-		if special == 0:
-			label.text = str(attack)
-	elif cassette_data[CASSETTE_SIDE_DATA.ACTION_ICON] == "attack_defence":
-		var attack = 0
-		var defence = 0
-		for action in cassette_data[CASSETTE_SIDE_DATA.ACTIONS_LIST]:
-			if action[ACTION.MOVE_TYPE] == "attack":
-				attack = action[ACTION.VALUE]
-			if action[ACTION.MOVE_TYPE] == "special":
-				defence += action[ACTION.VALUE]
-		label.text = str(attack)+"|"+str(defence)
-	elif cassette_data[CASSETTE_SIDE_DATA.ACTION_ICON] == "defence":
-		var defence = 0
-		for action in cassette_data[CASSETTE_SIDE_DATA.ACTIONS_LIST]:
-			if action[ACTION.MOVE_TYPE] == "special":
-				defence =action[ACTION.VALUE]
-		label.text = str(defence)
-	elif cassette_data[CASSETTE_SIDE_DATA.ACTION_ICON] == "defence_special":
-		var special = 0
-		for action in cassette_data[CASSETTE_SIDE_DATA.ACTIONS_LIST]:
-			if action[ACTION.MOVE_TYPE] == "special":
-				special = action[ACTION.VALUE]
-		label.text = str(special)
-	elif cassette_data[CASSETTE_SIDE_DATA.ACTION_ICON] == "special":
-		var special = 0
-		for action in cassette_data[CASSETTE_SIDE_DATA.ACTIONS_LIST]:
-			if action[ACTION.MOVE_TYPE] == "special":
-				special = action[ACTION.VALUE]
-		label.text = str(special)
-	else:
-		label = ""
+#func set_icon_value(cassette_data, label):
+	#if cassette_data[CASSETTE_SIDE_DATA.ACTION_ICON] == "attack":
+		#var attack = 0
+		#for action in cassette_data[CASSETTE_SIDE_DATA.ACTIONS_LIST]:
+			#if action[ACTION.MOVE_TYPE] == "attack":
+				#attack = action[ACTION.VALUE]
+		#label.text = str(attack)
+	#elif cassette_data[CASSETTE_SIDE_DATA.ACTION_ICON] == "attack_special":
+		#var attack = 0
+		#var special = 0
+		#for action in cassette_data[CASSETTE_SIDE_DATA.ACTIONS_LIST]:
+			#if action[ACTION.MOVE_TYPE] == "attack":
+				#attack = action[ACTION.VALUE]
+		#for action in cassette_data[CASSETTE_SIDE_DATA.ACTIONS_LIST]:
+			#if action[ACTION.MOVE_TYPE] == "special":
+				#special = action[ACTION.VALUE]
+		#if attack == 0:
+			#label.text = str(special)
+		#if special == 0:
+			#label.text = str(attack)
+	#elif cassette_data[CASSETTE_SIDE_DATA.ACTION_ICON] == "attack_defence":
+		#var attack = 0
+		#var defence = 0
+		#for action in cassette_data[CASSETTE_SIDE_DATA.ACTIONS_LIST]:
+			#if action[ACTION.MOVE_TYPE] == "attack":
+				#attack = action[ACTION.VALUE]
+			#if action[ACTION.MOVE_TYPE] == "special":
+				#defence += action[ACTION.VALUE]
+		#label.text = str(attack)+"|"+str(defence)
+	#elif cassette_data[CASSETTE_SIDE_DATA.ACTION_ICON] == "defence":
+		#var defence = 0
+		#for action in cassette_data[CASSETTE_SIDE_DATA.ACTIONS_LIST]:
+			#if action[ACTION.MOVE_TYPE] == "special":
+				#defence =action[ACTION.VALUE]
+		#label.text = str(defence)
+	#elif cassette_data[CASSETTE_SIDE_DATA.ACTION_ICON] == "defence_special":
+		#var special = 0
+		#for action in cassette_data[CASSETTE_SIDE_DATA.ACTIONS_LIST]:
+			#if action[ACTION.MOVE_TYPE] == "special":
+				#special = action[ACTION.VALUE]
+		#label.text = str(special)
+	#elif cassette_data[CASSETTE_SIDE_DATA.ACTION_ICON] == "special":
+		#var special = 0
+		#for action in cassette_data[CASSETTE_SIDE_DATA.ACTIONS_LIST]:
+			#if action[ACTION.MOVE_TYPE] == "special":
+				#special = action[ACTION.VALUE]
+		#label.text = str(special)
+	#else:
+		#label = ""
 
+func parse_cassette_actions(actions: Array) -> Dictionary:
+	var result = {
+		"attack": 0,
+		"defence": 0,
+		"special": 0
+	}
+
+	for action in actions:
+		var move_type = action[ACTION.MOVE_TYPE] if action.has(ACTION.MOVE_TYPE) else ""
+		var value = action[ACTION.VALUE] if action.has(ACTION.VALUE) else 0
+
+		match move_type:
+			"attack":
+				result["attack"] += value
+			"defence":
+				result["defence"] += value
+			"special":
+				result["special"] += value
+
+	return result
+
+
+func set_icon_value(cassette_data: Dictionary, label: Label) -> void:
+	var icon_type = cassette_data[CASSETTE_SIDE_DATA.ACTION_ICON]
+	var actions = cassette_data[CASSETTE_SIDE_DATA.ACTIONS_LIST]
+	if not ICON_BEHAVIORS.has(icon_type):
+		label.text = ""
+		return
+	var totals = parse_cassette_actions(actions)
+	var categories = ICON_BEHAVIORS[icon_type]
+	var values_str = []
+	for cat in categories:
+		values_str.append(str(totals[cat]))
+	label.text = values_str.join("|")
 
 func animate_cassette_to_position(new_position, speed, new_rotation=0):
 	var tween = get_tree().create_tween()
@@ -151,7 +197,7 @@ func animate_cassette_to_position(new_position, speed, new_rotation=0):
 	await tween.finished
 
 
-func get_current_action():
+func get_current_side_data():
 	if current_side == "A":
 		return side_a_data
 	else:

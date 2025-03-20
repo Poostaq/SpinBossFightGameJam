@@ -5,7 +5,7 @@ const HAND_Y_START_POSITION = 940
 const HAND_X_POSITION = 760
 const DEFAULT_CASSETTE_SPEED = 0.2
 const SLOT_POSITIONS = [Vector2(773,1085),
-						Vector2(775,1040),
+							Vector2(775,1040),
 						Vector2(777,995),
 						Vector2(779,950),
 						Vector2(781,905)]
@@ -45,6 +45,4 @@ func update_hand_positions(speed):
 		var cassette = player_hand[i]
 		cassette.position_in_hand = SLOT_POSITIONS[player_hand.size()-1-i]
 		cassette.scale_in_hand = CASSETTE_SCALES_IN_SLOTS[player_hand.size()-1-i]
-		#cassette.z_index = (SLOT_POSITIONS.size()-1-i)*2+1
-		#cassette.z_position_in_hand = cassette.z_index
 		cassette.animate_cassette_to_position(cassette.position_in_hand,speed)

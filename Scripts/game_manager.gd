@@ -1,15 +1,66 @@
-extends Node2D
+class_name GameManager
+extends Node
 
+enum GameState { MAIN_MENU, STORY, FIGHT }
 
-@onready var player_deck_reference = $"../PlayerDeck"
-@onready var player_hand_reference = $"../PlayerHand"
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	for i in range(len(player_hand_reference.player_hand), player_hand_reference.max_hand_cards):
-		player_deck_reference.draw_card()
-		await get_tree().create_timer(0.1).timeout
+var current_scene: Node = null
+var game_state: GameState = GameState.MAIN_MENU
 
+var current_story_index = 0  # This tracks which story to load next
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _ready():
+	load_main_menu()
+	Database.load_all_data()
+
+func load_scene(scene: Node):
+	if current_scene:
+		current_scene.queue_free()
+	current_scene = scene
+	add_child(current_scene)
+	connect_scene_signals(current_scene)
+
+func load_main_menu():
+	game_state = GameState.MAIN_MENU
+	load_scene(preload("res://Scenes/MainMenu.tscn").instantiate())
+
+func load_story_scene():
+	game_state = GameState.STORY
+	var story_scene = preload("res://Scenes/StoryScene.tscn").instantiate()
+	story_scene.current_story = current_story_index  # Pass the current story to the StoryScene
+	load_scene(story_scene)
+
+func load_fight_scene():
+	game_state = GameState.FIGHT
+	load_scene(preload("res://Scenes/FightScene.tscn").instantiate())
+
+func on_start_button_pressed():
+	load_story_scene()
+
+func on_exit_button_pressed():
+	get_tree().quit()
+
+func connect_scene_signals(scene: Node):
+	if scene.has_signal("start_game"):
+		scene.start_game.connect(_on_game_start)
+	if scene.has_signal("story_finished"):
+		scene.story_finished.connect(_on_story_complete)
+	if scene.has_signal("fight_complete"):
+		scene.fight_complete.connect(_on_fight_complete)
+
+func _on_story_complete(boss_name: String):
+	if game_state == GameState.STORY:
+		# Decide next story based on which boss was defeated
+		match boss_name:
+			"Hound":
+				current_story_index = 1
+			"Boner":
+				current_story_index = 2  # This is ready for future expansion if there are more stories
+		load_fight_scene()
+
+func _on_fight_complete():
+	if game_state == GameState.FIGHT:
+		load_story_scene()
+
+func _on_game_start():
+	if game_state == GameState.MAIN_MENU:
+		load_story_scene()

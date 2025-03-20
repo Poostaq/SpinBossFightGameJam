@@ -1,6 +1,6 @@
 [gd_scene load_steps=25 format=3 uid="uid://dw0n05mcits0x"]
 
-[ext_resource type="Script" path="res://Scripts/cassette.gd" id="1_vftii"]
+[ext_resource type="Script" uid="uid://c0g32ne6d7lqq" path="res://Scripts/cassette.gd" id="1_vftii"]
 [ext_resource type="Texture2D" uid="uid://bqvadmvpaliuo" path="res://Images/cassette/cassette front/text box.png" id="4_prap6"]
 [ext_resource type="Texture2D" uid="uid://sv0sakk6sx8w" path="res://Images/cassette/cassette front/fuel.png" id="5_6emyt"]
 [ext_resource type="FontFile" uid="uid://dtn7qee5h51x5" path="res://Font/atwriter.ttf" id="6_j52hp"]
@@ -152,10 +152,10 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o46m7"]
 _data = {
-"RESET": SubResource("Animation_bdam2"),
-"SwitchToFront": SubResource("Animation_1rwco"),
-"SwitchToOtherSide": SubResource("Animation_75skt"),
-"SwitchToTopSide": SubResource("Animation_sagpx")
+&"RESET": SubResource("Animation_bdam2"),
+&"SwitchToFront": SubResource("Animation_1rwco"),
+&"SwitchToOtherSide": SubResource("Animation_75skt"),
+&"SwitchToTopSide": SubResource("Animation_sagpx")
 }
 
 [node name="Cassette" type="Node2D"]

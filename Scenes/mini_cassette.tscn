@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://b8ha82jqux55"]
 
-[ext_resource type="Script" path="res://Scripts/mini_cassette.gd" id="1_g8ah0"]
+[ext_resource type="Script" uid="uid://citurvnablksk" path="res://Scripts/mini_cassette.gd" id="1_g8ah0"]
 [ext_resource type="Texture2D" uid="uid://cvtclg7lpuej1" path="res://Images/cassette/cassette front/1 label.png" id="2_yl5dd"]
 [ext_resource type="Texture2D" uid="uid://bri5abvba2nda" path="res://Images/cassette/cassette front/2 case c v2.png" id="3_3gr8u"]
 [ext_resource type="Texture2D" uid="uid://1jexkvbes2ne" path="res://Images/cassette/cassette front/3 gears v2.png" id="4_im56x"]
@@ -99,8 +99,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pi1gs"]
 _data = {
-"RESET": SubResource("Animation_bcfg6"),
-"malfunction": SubResource("Animation_jgxl4")
+&"RESET": SubResource("Animation_bcfg6"),
+&"malfunction": SubResource("Animation_jgxl4")
 }
 
 [node name="Cassette" type="Node2D"]

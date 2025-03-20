@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://nbhnyxb0w7us"]
+
+[ext_resource type="Script" uid="uid://5c85x17ptcnh" path="res://TEST_SANDBOX.gd" id="1_el2fn"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_el2fn")

@@ -1,0 +1,19 @@
+{
+	"this_turn_avoid_side_attacks": ["defence buff", "this_turn", "getting_buff", "Avoid Side Attacks this turn", ""],
+	"permanent_buff_all_attacks": ["attack buff", "permanent", "getting_buff", "%s to Attack Damage"],
+	"buff_next_attack": ["attack buff", "next_attack", "getting_buff", "+2 to Next Attack Damage", 2],
+	"this_turn_attacks_from_front_wont_work": ["defence buff", "this_turn", "getting_buff", "This Turn attacks enemy attacks from front wont work", ""],
+	"next_turn_first_action_cost_less_if_you_start_in_slow_down": ["special buff", "next_turn", "getting_buff", "Next Turn first action cost less if you start turn in SLOW DOWN", 1],
+	"next_cassette_cost_less": ["fuel buff", "next_cassette", "getting_buff", "Next cassette cost less", 1],
+	"next_turn_cassettes_cost_less_if_you_stay_in_slow_down": ["special buff", "next_turn", "getting_buff", "Next Turn actions cost less if you start turn in SLOW DOWN", 1],
+	"this_turn_cassettes_cost_less": ["fuel buff", "getting_buff", "This turn Cassettes cost less", 1],
+	"this_turn_damage_reduction_back": ["defence buff", "this turn", "getting_buff", "Reduce damage from Back attacks by %s"],
+	"this_turn_damage_reduction_front": ["defence buff", "this_turn", "getting_buff", "Reduce damage from Front attacks by %s"],
+	"this_turn_damage_reduction_side": ["defence buff", "this_turn", "getting_buff", "Reduce damage from Side attacks by %s"],
+	"next_attack_damage_reduction_any_side": ["defence buff", "next_attack", "getting_buff", "Reduce next attack damage by %s"],
+	"next_cassette_wont_work": ["cassette debuff", "next_cassette", "getting_debuff", "Next Cassette wont work."],
+	"next_turn_target_debuff_no_position_change": ["cassette debuff", "next_turn", "getting_debuff", "Next Turn move actions wont work"],
+	"this_turn_target_attacks_behind_wont_work": ["attack block", "this_turn", "getting_debuff", "This Turn attacks behind wont work"],
+	"next_card_target_costs_more_fuel": ["fuel debuff", "next_cassette", "getting_debuff", "Next Cassette actions costs %s more fuel."],
+	"next_turn_actions_cost_more_fuel": ["fuel debuff", "next_turn", "getting_debuff", "Next Turn actions cost more fuel"]
+}

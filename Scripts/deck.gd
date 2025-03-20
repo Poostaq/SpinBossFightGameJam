@@ -8,13 +8,14 @@ var player_deck_cassettes = ["EMP","EMP","Quick Attack","Emergency Brake","Regul
 @onready var deck_cassettes = []
 @onready var cassettes = $Cassettes
 @onready var cassette_manager: Node2D = %CassetteManager
-@onready var cassette_database_reference= CassetteDatabase
+@onready var cassette_database_reference = Database
 @onready var player_discard: Node2D = $"../Discard"
 @onready var player_hand: Node2D = $"../Hand"
 
 
 func _ready() -> void:
-	player_deck_cassettes = CassetteDatabase.hound_deck
+	player_deck_cassettes = cassette_database_reference.get_boss_deck("hound")
+	
 	player_deck_cassettes.shuffle()
 	create_deck_cassettes(player_deck_cassettes)
 
@@ -61,7 +62,7 @@ func create_cassette(cassette_name):
 	new_cassette.cassette_name = cassette_data[0]
 	new_cassette.current_side = "A"
 	new_cassette.update_elements()
-	new_cassette.whose_cassette = "player"
+	new_cassette.whose_cassette = GlobalEnums.Player
 	new_cassette.get_node("Node2D/Area2D").visible = false
 	cassette_manager.connect_cassette_signals(new_cassette)
 	deck_cassettes.append(new_cassette)

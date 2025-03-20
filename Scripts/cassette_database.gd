@@ -9,7 +9,7 @@ var CASSETTES = {
 	"Nitro" = ["Nitro", SIDE_A["Nitro"], SIDE_B["Nitro"]],
 	"Emergency Brake" = ["Emergency Brake", SIDE_A["Emergency Brake"], SIDE_B["Emergency Brake"]],
 	"Ram" = ["Ram", SIDE_A["Ram"], SIDE_B["Ram"]],
-	"Shoot'em up" = ["Shoot'em up", SIDE_A["Shoot'em up"], SIDE_B["Shoot'em up"]],
+	"Shoot em up" = ["Shoot em up", SIDE_A["Shoot em up"], SIDE_B["Shoot em up"]],
 	"Explosive Maneouver" = ["Explosive Maneouver", SIDE_A["Explosive Maneouver"], SIDE_B["Explosive Maneouver"]],
 	"Honk Honk" = ["Honk Honk", SIDE_A["Honk Honk"], SIDE_B["Honk Honk"]],
 	"Launcher Gallery" = ["Launcher Gallery", SIDE_A["Launcher Gallery"], SIDE_B["Launcher Gallery"]],
@@ -39,7 +39,7 @@ var CASSETTES = {
 # [FUEL_COST, DESCRIPTION, [[MOVE_TYPE, VALUE, MOVE_TARGET_AREA, (optional)MOVE_INFO], TARGET], AFTER_PLAY, ACTION_ICON]
 var SIDE_A = {
 	
-	"EMP" = [3, "Attak to the front. Disable enemy's next action.",
+	"EMP" = [3, "Attack to the front. Disable enemy next action.",
 	[[GlobalEnums.ACTION_TYPE.ATTACK,2,"front","shoot"],
 	[GlobalEnums.ACTION_TYPE.SPECIAL,"","front", "next_cassette_wont_work", GlobalEnums.AFFECTED_TARGET.TARGET]], 
 	"burn", 
@@ -60,7 +60,7 @@ var SIDE_A = {
 	"discard", 
 	"attack"],#DONE
 	
-	"Shoot'em up" = [5, "Attack in any direction.",
+	"Shoot em up" = [5, "Attack in any direction.",
 	[[GlobalEnums.ACTION_TYPE.ATTACK,2,"all sides","shoot"]], 
 	"discard", 
 	"attack"],#DONE
@@ -82,7 +82,7 @@ var SIDE_A = {
 	"discard", 
 	"attack_special"],
 	
-	"Hook, line and sinker" = [3, "LINE UP. Damage reduction this turn. Enemy can't move during their next action.",
+	"Hook, line and sinker" = [3, "LINE UP. Damage reduction this turn. Enemy cant move during their next action.",
 	[[GlobalEnums.ACTION_TYPE.MOVE,"line_up"],
 	[GlobalEnums.ACTION_TYPE.SPECIAL,1,"reduced_damage_taken_this_turn", "acting_actor"],
 	[GlobalEnums.ACTION_TYPE.SPECIAL,"", "all sides", "next_move_action_wont_work", GlobalEnums.AFFECTED_TARGET.TARGET]], 
@@ -115,7 +115,7 @@ var SIDE_A = {
 	"discard", 
 	"attack_special"],
 	
-	"Oil Spill" = [1, "OVERTAKE. Enemy can't move during their next action.",
+	"Oil Spill" = [1, "OVERTAKE. Enemy cant move during their next action.",
 	[[GlobalEnums.ACTION_TYPE.MOVE,"","overtake",""],
 	[GlobalEnums.ACTION_TYPE.SPECIAL,"","all sides","next_move_action_wont_work", GlobalEnums.AFFECTED_TARGET.TARGET]], 
 	"discard", 
@@ -132,7 +132,7 @@ var SIDE_A = {
 	"discard", 
 	"special"],
 	
-	"Rail the Tail" = [6, "Attack to the front. Enemy's next OVERTAKE becomes LINE UP or the next LINE UP is ignored",
+	"Rail the Tail" = [6, "Attack to the front. Enemy next OVERTAKE becomes LINE UP or the next LINE UP is ignored",
 	[[GlobalEnums.ACTION_TYPE.ATTACK,4,"front","ram"],
 	[GlobalEnums.ACTION_TYPE.SPECIAL,"","less_movement_to_back", GlobalEnums.AFFECTED_TARGET.TARGET]], 
 	"discard", 
@@ -144,7 +144,7 @@ var SIDE_A = {
 	"burn", 
 	"special"],#DONE
 	
-	"Pit Maneouver" = [6, "OVERTAKE. Damage reduction this turn. Enemy's next action fuel cost is increased by 2",
+	"Pit Maneouver" = [6, "OVERTAKE. Damage reduction this turn. Enemy next action fuel cost is increased by 2",
 	[[GlobalEnums.ACTION_TYPE.MOVE,"","overtake"],
 	[GlobalEnums.ACTION_TYPE.SPECIAL,2, "all sides","next_enemy_cassette_cost_more", GlobalEnums.AFFECTED_TARGET.TARGET]], 
 	"discard", 
@@ -214,13 +214,13 @@ var SIDE_A = {
 }
 
 var SIDE_B = {
-	"EMP" = [4, "Attack to the back. Enemy can't overtake next turn.",
+	"EMP" = [4, "Attack to the back. Enemy cant overtake next turn.",
 	[[GlobalEnums.ACTION_TYPE.ATTACK,1,"back", "shoot"], 
 	[GlobalEnums.ACTION_TYPE.SPECIAL, "","back", "next_turn_target_debuff_no_position_change"]], 
 	"discard", 
 	"attack_special"],#DONE
 	
-	"Nitro" = [3, "Overtake. Enemy can't overtake next turn.",
+	"Nitro" = [3, "Overtake. Enemy cant overtake next turn.",
 	[[GlobalEnums.ACTION_TYPE.MOVE,"","overtake"], 
 	[GlobalEnums.ACTION_TYPE.SPECIAL,"","all sides", "next_turn_target_debuff_no_position_change"]], 
 	"discard", 
@@ -237,7 +237,7 @@ var SIDE_B = {
 	"discard", 
 	"defence"],#DONE
 	
-	"Shoot'em up" = [3, "+1 damage to all attacks premanently. BURN",
+	"Shoot em up" = [3, "+1 damage to all attacks premanently. BURN",
 	[[GlobalEnums.ACTION_TYPE.SPECIAL,1,"all sides","permanent_buff_all_attacks"]], 
 	"burn", 
 	"special"],#DONE
@@ -304,7 +304,7 @@ var SIDE_B = {
 	"burn", 
 	"special"],
 	
-	"My name is Spike" = [3, "SLOW DOWN. Damage reduction from the attacks to the back this turn. Reflect 1 damage from enemy's next attack back to them.",
+	"My name is Spike" = [3, "SLOW DOWN. Damage reduction from the attacks to the back this turn. Reflect 1 damage from enemy next attack back to them.",
 	[[GlobalEnums.ACTION_TYPE.MOVE,"","slow_down"],
 	[GlobalEnums.ACTION_TYPE.SPECIAL,1,"front","this_turn_damage_reduction_front"],
 	[GlobalEnums.ACTION_TYPE.SPECIAL,1,"all sides","reflect_damage_on_next_attack"]], 
@@ -327,7 +327,7 @@ var SIDE_B = {
 	"attack_special"],
 	
 	"Bites the Dust" = [4, "Attack in any direction. Add fuel spent so far as additional damage to this attack.",
-	[[GlobalEnums.ACTION_TYPE.SPECIAL,1,"all sides","attack_deals_damage_plus_spent_fuel_as_bonus_damage_all sides"]], 
+	[[GlobalEnums.ACTION_TYPE.SPECIAL,1,"all sides","attack_deals_damage_plus_spent_fuel_as_bonus_damage_all_sides"]], 
 	"discard", 
 	"attack_special"],#DONE
 	
@@ -344,7 +344,7 @@ var SIDE_B = {
 	
 	"Kickdown" = [3, "LINE UP. Stay on the position this turn",
 	[[GlobalEnums.ACTION_TYPE.MOVE,"","line_up"],
-	[GlobalEnums.ACTION_TYPE.SPECIAL,"","all sides","this_turn_enemy_move_skills_don't_work"]], 
+	[GlobalEnums.ACTION_TYPE.SPECIAL,"","all sides","this_turn_enemy_move_skills_dont_work"]], 
 	"discard", 
 	"special"],
 	
@@ -363,7 +363,7 @@ var SIDE_B = {
 	[[GlobalEnums.ACTION_TYPE.MOVE,"","slow_down"],
 	[GlobalEnums.ACTION_TYPE.SPECIAL,1,"all sides","next_turn_first_action_cost_less_if_you_start_in_slow_down"]], 
 	"discard", 
-	GlobalEnums.ACTION_TYPE.SPECIAL],#DONE
+	"special"],#DONE
 	
 	"Offence is Defence" = [2, "LINE UP. Damage reduction form attacks to the side this turn.",
 	[[GlobalEnums.ACTION_TYPE.MOVE,"","line_up"],
@@ -392,7 +392,7 @@ const EFFECTS = {
 	"this_turn_avoid_side_attacks" = ["this_turn_you_avoid_side_attacks","defence buff", "this_turn", "getting_buff", "Avoid Side Attacks this turn", ""],
 	"permanent_buff_all_attacks" = ["permanent_buff_all_attacks","attack buff", "permanent", "getting_buff", "%s to Attack Damage"],
 	"buff_next_attack" = ["buff_next_attack","attack buff", "next_attack", "getting_buff", "+2 to Next Attack Damage", 2],
-	"this_turn_attacks_from_front_wont_work" = ["this_turn_attacks_from_front_wont_work", "defence buff", "this_turn", "getting_buff", "This Turn attacks enemy attacks from front won't work", ""],
+	"this_turn_attacks_from_front_wont_work" = ["this_turn_attacks_from_front_wont_work", "defence buff", "this_turn", "getting_buff", "This Turn attacks enemy attacks from front wont work", ""],
 	"next_turn_first_action_cost_less_if_you_start_in_slow_down" = ["next_turn_first_action_cost_less_if_you_start_in_slow_down", "special buff","next_turn", "getting_buff", "Next Turn first action cost less if you start turn in SLOW DOWN", 1],
 	"next_cassette_cost_less" = ["next_cassette_cost_less", "fuel buff","next_cassette", "getting_buff", "Next cassette cost less", 1],
 	"next_turn_cassettes_cost_less_if_you_stay_in_slow_down" = ["next_turn_cassettes_cost_less_if_you_start_in_slow_down","special buff","next_turn", "getting_buff", "Next Turn actions cost less if you start turn in SLOW DOWN", 1],
@@ -402,8 +402,8 @@ const EFFECTS = {
 	"this_turn_damage_reduction_side" = ["this_turn_damage_reduction_side","defence buff", "this_turn", "getting_buff", "Reduce damage from Side attacks by %s"],
 	"next_attack_damage_reduction_any_side" = ["next_attack_damage_reduction_any_side", "defence buff","next_attack", "getting_buff", "Reduce next attack damage by %s"],
 	"next_cassette_wont_work" = ["next_cassette_wont_work","cassette debuff", "next_cassette", "getting_debuff", "Next Cassette wont work."],
-	"next_turn_target_debuff_no_position_change" = ["next_turn_target_debuff_no_position_change","cassette debuff", "next_turn", "getting_debuff", "Next Turn move actions won't work"],
-	"this_turn_target_attacks_behind_wont_work" = ["this_turn_target_attacks_behind_wont_work", "attack block", "this_turn", "getting_debuff", "This Turn attacks behind won't work"],
+	"next_turn_target_debuff_no_position_change" = ["next_turn_target_debuff_no_position_change","cassette debuff", "next_turn", "getting_debuff", "Next Turn move actions wont work"],
+	"this_turn_target_attacks_behind_wont_work" = ["this_turn_target_attacks_behind_wont_work", "attack block", "this_turn", "getting_debuff", "This Turn attacks behind wont work"],
 	"next_card_target_costs_more_fuel" = ["next_card_target_costs_more_fuel","fuel debuff", "next_cassette", "getting_debuff", "Next Cassette actions costs %s more fuel."],
 	"next_turn_actions_cost_more_fuel" = ["next_turn_actions_cost_more_fuel","fuel debuff", "next_turn", "getting_debuff", "Next Turn actions cost more fuel"]
 }
@@ -427,13 +427,13 @@ var player_base_available_cards = [
 "Kickdown",
 "Offence is Defence",
 "Pew Pew",
-"Shoot'em up",
+"Shoot em up",
 "Perfectly Balanced"]
 
 var player_default_deck = [
 "Nitro",
 "Ram",
-"Shoot'em up",
+"Shoot em up",
 "Pew Pew",
 "Letter D",
 "Big Refill",
@@ -479,7 +479,7 @@ var evans_deck = [
 "Roadslinger",
 "Offence is Defence",
 "Perfectly balanced",
-"Shoot'em up",
+"Shoot em up",
 ]
 
 
@@ -493,7 +493,7 @@ var railgrinder_deck = [
 "Roadslinger",
 "Offence is Defence",
 "Perfectly balanced",
-"Shoot'em up",
+"Shoot em up",
 ]
 
 var boss_decks = {

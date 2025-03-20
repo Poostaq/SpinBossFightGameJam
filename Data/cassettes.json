@@ -1,0 +1,1224 @@
+{
+	"cassettes": {
+		"Regular Attack": {
+			"side_a": {
+				"fuel_cost": 2,
+				"description": "Example description for side A",
+				"actions": [
+					{
+						"action_type": 0,
+						"value": 2,
+						"target_area": "side",
+						"animation_name": "shoot"
+					}
+				],
+				"after_play": "discard",
+				"action_icon": "attack"
+			},
+			"side_b": {
+				"fuel_cost": 3,
+				"description": "Example description for side B",
+				"actions": [
+					{
+						"action_type": 1,
+						"value": "",
+						"target_area": "overtake",
+						"animation_name": ""
+					}
+				],
+				"after_play": "discard",
+				"action_icon": "defence"
+			}
+		},
+		"Quick Attack": {
+			"side_a": {
+				"fuel_cost": 2,
+				"description": "Example description for side A",
+				"actions": [
+					{
+						"action_type": 0,
+						"value": 2,
+						"target_area": "side",
+						"animation_name": "shoot"
+					}
+				],
+				"after_play": "discard",
+				"action_icon": "attack"
+			},
+			"side_b": {
+				"fuel_cost": 3,
+				"description": "Example description for side B",
+				"actions": [
+					{
+						"action_type": 1,
+						"value": "",
+						"target_area": "overtake",
+						"animation_name": ""
+					}
+				],
+				"after_play": "discard",
+				"action_icon": "defence"
+			}
+		},
+		"Heavy Attack": {
+			"side_a": {
+				"fuel_cost": 2,
+				"description": "Example description for side A",
+				"actions": [
+					{
+						"action_type": 0,
+						"value": 2,
+						"target_area": "side",
+						"animation_name": "shoot"
+					}
+				],
+				"after_play": "discard",
+				"action_icon": "attack"
+			},
+			"side_b": {
+				"fuel_cost": 3,
+				"description": "Example description for side B",
+				"actions": [
+					{
+						"action_type": 1,
+						"value": "",
+						"target_area": "overtake",
+						"animation_name": ""
+					}
+				],
+				"after_play": "discard",
+				"action_icon": "defence"
+			}
+		},
+		"EMP": {
+			"side_a": {
+				"fuel_cost": 3,
+				"description": "Attack to the front. Disable enemy next action.",
+				"actions": [
+					{
+						"action_type": 0,
+						"value": 2,
+						"target_area": "front",
+						"animation_name": "shoot"
+					},
+					{
+						"action_type": 2,
+						"value": "",
+						"target_area": "front",
+						"effect_name": "next_cassette_wont_work",
+						"affected_target": 0
+					}
+				],
+				"after_play": "burn",
+				"action_icon": "attack_special"
+			},
+			"side_b": {
+				"fuel_cost": 4,
+				"description": "Attack to the back. Enemy cant overtake next turn.",
+				"actions": [
+					{
+						"action_type": 0,
+						"value": 1,
+						"target_area": "back",
+						"animation_name": "shoot"
+					},
+					{
+						"action_type": 2,
+						"value": "",
+						"target_area": "back",
+						"effect_name": "next_turn_target_debuff_no_position_change",
+						"affected_target": 0
+					}
+				],
+				"after_play": "discard",
+				"action_icon": "attack_special"
+			}
+		},
+		"Nitro": {
+			"side_a": {
+				"fuel_cost": 5,
+				"description": "Attack to the back.",
+				"actions": [
+					{
+						"action_type": 0,
+						"value": 4,
+						"target_area": "back",
+						"animation_name": "ram"
+					}
+				],
+				"after_play": "discard",
+				"action_icon": "attack"
+			},
+			"side_b": {
+				"fuel_cost": 3,
+				"description": "Overtake. Enemy cant overtake next turn.",
+				"actions": [
+					{
+						"action_type": 1,
+						"value": "",
+						"target_area": "overtake"
+					},
+					{
+						"action_type": 2,
+						"value": "",
+						"target_area": "all sides",
+						"effect_name": "next_turn_target_debuff_no_position_change",
+						"affected_target": 0
+					}
+				],
+				"after_play": "discard",
+				"action_icon": "special"
+			}
+		},
+		"Emergency Brake": {
+			"side_a": {
+				"fuel_cost": 3,
+				"description": "Attack to the back.",
+				"actions": [
+					{
+						"action_type": 0,
+						"value": 2,
+						"target_area": "back",
+						"animation_name": "ram"
+					}
+				],
+				"after_play": "discard",
+				"action_icon": "attack"
+			},
+			"side_b": {
+				"fuel_cost": 4,
+				"description": "Avoid an attack to the side.",
+				"actions": [
+					{
+						"action_type": 2,
+						"value": "",
+						"target_area": "side",
+						"effect_name": "this_turn_you_avoid_side_attacks",
+						"affected_target": 1
+					}
+				],
+				"after_play": "discard",
+				"action_icon": "special"
+			}
+		},
+		"Ram": {
+			"side_a": {
+				"fuel_cost": 6,
+				"description": "Attack to the front or side.",
+				"actions": [
+					{
+						"action_type": 0,
+						"value": 4,
+						"target_area": "side and front",
+						"animation_name": "ram"
+					}
+				],
+				"after_play": "discard",
+				"action_icon": "attack"
+			},
+			"side_b": {
+				"fuel_cost": 4,
+				"description": "LINE UP. Damage reduction this turn.",
+				"actions": [
+					{
+						"action_type": 1,
+						"value": "",
+						"target_area": "line_up"
+					},
+					{
+						"action_type": 2,
+						"value": 3,
+						"target_area": "side",
+						"effect_name": "this_turn_damage_reduction_side",
+						"affected_target": 1
+					}
+				],
+				"after_play": "discard",
+				"action_icon": "defence"
+			}
+		},
+		"Shoot em up": {
+			"side_a": {
+				"fuel_cost": 5,
+				"description": "Attack in any direction.",
+				"actions": [
+					{
+						"action_type": 0,
+						"value": 2,
+						"target_area": "all sides",
+						"animation_name": "shoot"
+					}
+				],
+				"after_play": "discard",
+				"action_icon": "attack"
+			},
+			"side_b": {
+				"fuel_cost": 3,
+				"description": "+1 damage to all attacks permanently. BURN.",
+				"actions": [
+					{
+						"action_type": 2,
+						"value": 1,
+						"target_area": "all sides",
+						"effect_name": "permanent_buff_all_attacks",
+						"affected_target": 1
+					}
+				],
+				"after_play": "burn",
+				"action_icon": "special"
+			}
+		},
+		"Explosive Maneouver": {
+			"side_a": {
+				"fuel_cost": 14,
+				"description": "A devastating attack to the side and back. BURN.",
+				"actions": [
+					{
+						"action_type": 0,
+						"value": 12,
+						"target_area": "side and back",
+						"animation_name": "shoot"
+					}
+				],
+				"after_play": "burn",
+				"action_icon": "attack"
+			},
+			"side_b": {
+				"fuel_cost": 3,
+				"description": "OVERTAKE. +2 to the next attack.",
+				"actions": [
+					{
+						"action_type": 1,
+						"value": "",
+						"target_area": "overtake"
+					},
+					{
+						"action_type": 2,
+						"value": 2,
+						"target_area": "all sides",
+						"effect_name": "buff_next_attack",
+						"affected_target": 1
+					}
+				],
+				"after_play": "discard",
+				"action_icon": "special"
+			}
+		},
+		"Launcher Gallery": {
+			"side_a": {
+				"fuel_cost": 7,
+				"description": "Attack to the side. +2 damage to the next attack.",
+				"actions": [
+					{
+						"action_type": 0,
+						"value": 5,
+						"target_area": "side",
+						"animation_name": "shoot"
+					},
+					{
+						"action_type": 2,
+						"value": 2,
+						"target_area": "all sides",
+						"effect_name": "buff_next_attack",
+						"affected_target": 1
+					}
+				],
+				"after_play": "discard",
+				"action_icon": "attack_special"
+			},
+			"side_b": {
+				"fuel_cost": 6,
+				"description": "Attack to the back. +1 damage to the next attack.",
+				"actions": [
+					{
+						"action_type": 0,
+						"value": 4,
+						"target_area": "back",
+						"animation_name": "shoot"
+					},
+					{
+						"action_type": 2,
+						"value": 1,
+						"target_area": "all sides",
+						"effect_name": "buff_next_attack",
+						"affected_target": 1
+					}
+				],
+				"after_play": "discard",
+				"action_icon": "attack_special"
+			}
+		},
+		"Hook, line and sinker": {
+			"side_a": {
+				"fuel_cost": 3,
+				"description": "LINE UP. Damage reduction this turn. Enemy can't move during their next action.",
+				"actions": [
+					{
+						"action_type": 1,
+						"value": "",
+						"target_area": "line_up"
+					},
+					{
+						"action_type": 2,
+						"value": 1,
+						"target_area": "reduced_damage_taken_this_turn",
+						"effect_name": "acting_actor",
+						"affected_target": 1
+					},
+					{
+						"action_type": 2,
+						"value": "",
+						"target_area": "all sides",
+						"effect_name": "next_move_action_wont_work",
+						"affected_target": 0
+					}
+				],
+				"after_play": "discard",
+				"action_icon": "defence_special"
+			},
+			"side_b": {
+				"fuel_cost": 4,
+				"description": "OVERTAKE. Your next action will not change your position.",
+				"actions": [
+					{
+						"action_type": 1,
+						"value": "",
+						"target_area": "overtake"
+					},
+					{
+						"action_type": 2,
+						"value": "",
+						"target_area": "all sides",
+						"effect_name": "next_action_target_debuff_no_position_change",
+						"affected_target": 0
+					}
+				],
+				"after_play": "discard",
+				"action_icon": "defence_special"
+			}
+		},
+		"Pew Pew": {
+			"side_a": {
+				"fuel_cost": 2,
+				"description": "Attack to the side.",
+				"actions": [
+					{
+						"action_type": 0,
+						"value": 1,
+						"target_area": "side",
+						"animation_name": "shoot"
+					}
+				],
+				"after_play": "discard",
+				"action_icon": "attack"
+			},
+			"side_b": {
+				"fuel_cost": 2,
+				"description": "Attack to the front.",
+				"actions": [
+					{
+						"action_type": 0,
+						"value": 1,
+						"target_area": "front",
+						"animation_name": "shoot"
+					}
+				],
+				"after_play": "discard",
+				"action_icon": "attack"
+			}
+		},
+		"Letter D": {
+			"side_a": {
+				"fuel_cost": 3,
+				"description": "LINE UP. Avoid next enemy action against you.",
+				"actions": [
+					{
+						"action_type": 1,
+						"value": "",
+						"target_area": "line_up"
+					},
+					{
+						"action_type": 2,
+						"value": "",
+						"target_area": "all sides",
+						"effect_name": "next_attack_or_debuff_wont_work",
+						"affected_target": 0
+					}
+				],
+				"after_play": "discard",
+				"action_icon": "special"
+			},
+			"side_b": {
+				"fuel_cost": 1,
+				"description": "OVERTAKE. Avoid all enemy actions next turn and reduce your damage by 2. BURN.",
+				"actions": [
+					{
+						"action_type": 1,
+						"value": "",
+						"target_area": "overtake"
+					},
+					{
+						"action_type": 2,
+						"value": "",
+						"target_area": "all sides",
+						"effect_name": "next_turn_avoid_all_actions",
+						"affected_target": 0
+					},
+					{
+						"action_type": 2,
+						"value": 2,
+						"target_area": "all sides",
+						"effect_name": "next_turn_debuff_player_less_damage",
+						"affected_target": 1
+					}
+				],
+				"after_play": "burn",
+				"action_icon": "special"
+			}
+		},
+		"Whatever": {
+			"side_a": {
+				"fuel_cost": 1,
+				"description": "Get a random buff: +2 damage, -2 fuel cost or +2 damage reduction.",
+				"actions": [
+					{
+						"action_type": 2,
+						"value": 2,
+						"target_area": "all sides",
+						"effect_name": "random_buff_attack_fuel_defence",
+						"affected_target": 1
+					}
+				],
+				"after_play": "discard",
+				"action_icon": "special"
+			},
+			"side_b": {
+				"fuel_cost": 1,
+				"description": "Give a random debuff: enemy damage reduced by 2, fuel cost increased by 2.",
+				"actions": [
+					{
+						"action_type": 2,
+						"value": "",
+						"target_area": "all sides",
+						"effect_name": "random_debuff_attack_fuel",
+						"affected_target": 0
+					}
+				],
+				"after_play": "discard",
+				"action_icon": "special"
+			}
+		},
+		"Big Refill": {
+			"side_a": {
+				"fuel_cost": 1,
+				"description": "Reduce all fuel costs by 1 permanently.",
+				"actions": [
+					{
+						"action_type": 2,
+						"value": 1,
+						"target_area": "all sides",
+						"effect_name": "permanent_buff_fuel_cost_reduction",
+						"affected_target": 1
+					}
+				],
+				"after_play": "burn",
+				"action_icon": "special"
+			},
+			"side_b": {
+				"fuel_cost": 1,
+				"description": "Reduce the fuel cost of the next action by 3.",
+				"actions": [
+					{
+						"action_type": 2,
+						"value": 3,
+						"target_area": "all sides",
+						"effect_name": "next_card_reduce_fuel",
+						"affected_target": 1
+					}
+				],
+				"after_play": "discard",
+				"action_icon": "special"
+			}
+		},
+		"Gimme Fuel": {
+			"side_a": {
+				"fuel_cost": 7,
+				"description": "Attack to the front or side. Increase enemy fuel cost by 2 next turn.",
+				"actions": [
+					{
+						"action_type": 0,
+						"value": 3,
+						"target_area": "side and front",
+						"animation_name": "shoot"
+					},
+					{
+						"action_type": 2,
+						"value": 2,
+						"target_area": "all sides",
+						"effect_name": "next_turn_actions_cost_more_fuel",
+						"affected_target": 0
+					}
+				],
+				"after_play": "discard",
+				"action_icon": "attack_special"
+			},
+			"side_b": {
+				"fuel_cost": 5,
+				"description": "Attack to the front or side. Increase the fuel cost of the next enemy action by 5.",
+				"actions": [
+					{
+						"action_type": 0,
+						"value": 2,
+						"target_area": "side and front",
+						"animation_name": "shoot"
+					},
+					{
+						"action_type": 2,
+						"value": 5,
+						"target_area": "all sides",
+						"effect_name": "next_card_target_costs_more_fuel",
+						"affected_target": 0
+					}
+				],
+				"after_play": "discard",
+				"action_icon": "attack_special"
+			}
+		},
+		"Oil Spill": {
+			"side_a": {
+				"fuel_cost": 1,
+				"description": "OVERTAKE. Enemy can't move during their next action.",
+				"actions": [
+					{
+						"action_type": 1,
+						"target_area": "overtake"
+					},
+					{
+						"action_type": 2,
+						"target_area": "all sides",
+						"effect_name": "next_move_action_wont_work",
+						"affected_target": 0
+					}
+				],
+				"after_play": "discard",
+				"action_icon": "special"
+			},
+			"side_b": {
+				"fuel_cost": 3,
+				"description": "OVERTAKE. Damage reduction this turn.",
+				"actions": [
+					{
+						"action_type": 1,
+						"target_area": "overtake"
+					},
+					{
+						"action_type": 2,
+						"value": 2,
+						"target_area": "all sides",
+						"effect_name": "this_turn_damage_reduction",
+						"affected_target": 1
+					}
+				],
+				"after_play": "discard",
+				"action_icon": "defence"
+			}
+		},
+		"Gimme Fire": {
+			"side_a": {
+				"fuel_cost": 5,
+				"description": "Attack to the back. Enemy suffers +1 extra damage until they overtake.",
+				"actions": [
+					{
+						"action_type": 0,
+						"value": 2,
+						"target_area": "back",
+						"animation_name": "shoot"
+					},
+					{
+						"action_type": 2,
+						"value": 1,
+						"target_area": "side and back",
+						"effect_name": "damage_behind_and_line_up_every_cassette_this_turn",
+						"affected_target": 1
+					}
+				],
+				"after_play": "discard",
+				"action_icon": "attack_special"
+			},
+			"side_b": {
+				"fuel_cost": 1,
+				"description": "Next turn your actions cost less per point of damage received this turn. BURN.",
+				"actions": [
+					{
+						"action_type": 2,
+						"target_area": "all sides",
+						"effect_name": "next_turn_player_cassettes_cost_less_per_damage",
+						"affected_target": 1
+					}
+				],
+				"after_play": "burn",
+				"action_icon": "special"
+			}
+		},
+		"My name is Spike": {
+			"side_a": {
+				"fuel_cost": 4,
+				"description": "At the end of this turn reflect half of the damage taken back to the enemy.",
+				"actions": [
+					{
+						"action_type": 2,
+						"target_area": "side and back",
+						"effect_name": "reflect_half_damage_at_the_end",
+						"affected_target": 0
+					}
+				],
+				"after_play": "discard",
+				"action_icon": "special"
+			},
+			"side_b": {
+				"fuel_cost": 3,
+				"description": "SLOW DOWN. Damage reduction from the attacks to the back this turn. Reflect 1 damage from enemy next attack back to them.",
+				"actions": [
+					{
+						"action_type": 1,
+						"target_area": "slow_down"
+					},
+					{
+						"action_type": 2,
+						"value": 1,
+						"target_area": "front",
+						"effect_name": "this_turn_damage_reduction_front",
+						"affected_target": 1
+					},
+					{
+						"action_type": 2,
+						"value": 1,
+						"target_area": "all sides",
+						"effect_name": "reflect_damage_on_next_attack",
+						"affected_target": 0
+					}
+				],
+				"after_play": "discard",
+				"action_icon": "defence_special"
+			}
+		},
+		"Rail the Tail": {
+			"side_a": {
+				"fuel_cost": 6,
+				"description": "Attack to the front. Enemy next OVERTAKE becomes LINE UP or the next LINE UP is ignored.",
+				"actions": [
+					{
+						"action_type": 0,
+						"value": 4,
+						"target_area": "front",
+						"animation_name": "ram"
+					},
+					{
+						"action_type": 2,
+						"target_area": "all sides",
+						"effect_name": "less_movement_to_back",
+						"affected_target": 0
+					}
+				],
+				"after_play": "discard",
+				"action_icon": "attack_special"
+			},
+			"side_b": {
+				"fuel_cost": 3,
+				"description": "Attack to the front. Fuel cost of enemy actions increased by 1 permanently. BURN.",
+				"actions": [
+					{
+						"action_type": 0,
+						"value": 1,
+						"target_area": "front",
+						"animation_name": "ram"
+					},
+					{
+						"action_type": 2,
+						"value": 1,
+						"target_area": "all sides",
+						"effect_name": "until_end_all_cards_cost_more_fuel",
+						"affected_target": 0
+					}
+				],
+				"after_play": "burn",
+				"action_icon": "attack_special"
+			}
+		},
+		"Another One": {
+			"side_a": {
+				"fuel_cost": 3,
+				"description": "SLOW DOWN. Avoid attacks to the back this turn.",
+				"actions": [
+					{
+						"action_type": 1,
+						"target_area": "slow_down"
+					},
+					{
+						"action_type": 2,
+						"target_area": "back",
+						"effect_name": "this_turn_target_attacks_behind_wont_work",
+						"affected_target": 0
+					}
+				],
+				"after_play": "burn",
+				"action_icon": "special"
+			},
+			"side_b": {
+				"fuel_cost": 5,
+				"description": "Damage reduction from attacks from front.",
+				"actions": [
+					{
+						"action_type": 2,
+						"value": 3,
+						"target_area": "front",
+						"effect_name": "this_turn_attacks_from_front_wont_work",
+						"affected_target": 1
+					}
+				],
+				"after_play": "discard",
+				"action_icon": "defence"
+			}
+		},
+		"Pit Maneouver": {
+			"side_a": {
+				"fuel_cost": 6,
+				"description": "OVERTAKE. Damage reduction this turn. Enemy next action fuel cost is increased by 2.",
+				"actions": [
+					{
+						"action_type": 1,
+						"target_area": "overtake"
+					},
+					{
+						"action_type": 2,
+						"value": 2,
+						"target_area": "all sides",
+						"effect_name": "next_enemy_cassette_cost_more",
+						"affected_target": 0
+					}
+				],
+				"after_play": "discard",
+				"action_icon": "defence_special"
+			},
+			"side_b": {
+				"fuel_cost": 7,
+				"description": "Attack to the side. Increase the fuel cost of the next enemy action by 2.",
+				"actions": [
+					{
+						"action_type": 0,
+						"value": 5,
+						"target_area": "side",
+						"animation_name": "ram"
+					},
+					{
+						"action_type": 2,
+						"value": 2,
+						"target_area": "all sides",
+						"effect_name": "next_enemy_cassette_cost_more",
+						"affected_target": 0
+					}
+				],
+				"after_play": "discard",
+				"action_icon": "attack_special"
+			}
+		},
+		"Bites the Dust": {
+			"side_a": {
+				"fuel_cost": 2,
+				"description": "SLOW DOWN. Permanent +2 damage to attacks to the front. BURN.",
+				"actions": [
+					{
+						"action_type": 1,
+						"target_area": "slow_down"
+					},
+					{
+						"action_type": 2,
+						"value": 2,
+						"target_area": "all sides",
+						"effect_name": "permanent_buff_all_attacks",
+						"affected_target": 1
+					}
+				],
+				"after_play": "burn",
+				"action_icon": "special"
+			},
+			"side_b": {
+				"fuel_cost": 4,
+				"description": "Attack in any direction. Add fuel spent so far as additional damage to this attack.",
+				"actions": [
+					{
+						"action_type": 2,
+						"value": 1,
+						"target_area": "all sides",
+						"effect_name": "attack_deals_damage_plus_spent_fuel_as_bonus_damage_all_sides",
+						"affected_target": 0
+					}
+				],
+				"after_play": "discard",
+				"action_icon": "attack_special"
+			}
+		},
+		"Road Rage": {
+			"side_a": {
+				"fuel_cost": 8,
+				"description": "Attack in any direction. Damage reduction this turn.",
+				"actions": [
+					{
+						"action_type": 0,
+						"value": 4,
+						"target_area": "all sides",
+						"animation_name": "ram"
+					},
+					{
+						"action_type": 2,
+						"value": 2,
+						"target_area": "all sides",
+						"effect_name": "next_attack_damage_reduction_any_side",
+						"affected_target": 1
+					}
+				],
+				"after_play": "discard",
+				"action_icon": "attack_defence"
+			},
+			"side_b": {
+				"fuel_cost": 8,
+				"description": "Attack in any direction. Damage reduction this turn.",
+				"actions": [
+					{
+						"action_type": 0,
+						"value": 2,
+						"target_area": "all sides",
+						"animation_name": "ram"
+					},
+					{
+						"action_type": 2,
+						"value": 4,
+						"target_area": "all sides",
+						"effect_name": "next_attack_damage_reduction_any_side",
+						"affected_target": 1
+					}
+				],
+				"after_play": "discard",
+				"action_icon": "attack_defence"
+			}
+		},
+		"Burning Rubber": {
+			"side_a": {
+				"fuel_cost": 3,
+				"description": "Attack to the back.",
+				"actions": [
+					{
+						"action_type": 0,
+						"value": 5,
+						"target_area": "back",
+						"animation_name": "shoot"
+					}
+				],
+				"after_play": "burn",
+				"action_icon": "attack"
+			},
+			"side_b": {
+				"fuel_cost": 1,
+				"description": "OVERTAKE. Avoid next enemy attack. BURN.",
+				"actions": [
+					{
+						"action_type": 1,
+						"target_area": "overtake"
+					},
+					{
+						"action_type": 2,
+						"target_area": "all sides",
+						"effect_name": "next_attack_wont_work",
+						"affected_target": 1
+					}
+				],
+				"after_play": "burn",
+				"action_icon": "special"
+			}
+		},
+		"Kickdown": {
+			"side_a": {
+				"fuel_cost": 3,
+				"description": "OVERTAKE. Increase fuel cost and damage by 3 this turn.",
+				"actions": [
+					{
+						"action_type": 1,
+						"target_area": "overtake"
+					},
+					{
+						"action_type": 2,
+						"value": 3,
+						"target_area": "all sides",
+						"effect_name": "debuff_this_turn_more_fuel_cost_you",
+						"affected_target": 1
+					},
+					{
+						"action_type": 2,
+						"value": 3,
+						"effect_name": "+3_to_all_attacks",
+						"affected_target": 1
+					}
+				],
+				"after_play": "discard",
+				"action_icon": "special"
+			},
+			"side_b": {
+				"fuel_cost": 3,
+				"description": "LINE UP. Stay on the position this turn.",
+				"actions": [
+					{
+						"action_type": 1,
+						"target_area": "line_up"
+					},
+					{
+						"action_type": 2,
+						"target_area": "all sides",
+						"effect_name": "this_turn_enemy_move_skills_dont_work",
+						"affected_target": 1
+					}
+				],
+				"after_play": "discard",
+				"action_icon": "special"
+			}
+		},
+		"Hit me baby": {
+			"side_a": {
+				"fuel_cost": 3,
+				"description": "LINE UP. Damage reduction from all side attacks this turn.",
+				"actions": [
+					{
+						"action_type": 1,
+						"target_area": "line_up"
+					},
+					{
+						"action_type": 2,
+						"value": 2,
+						"target_area": "side",
+						"effect_name": "this_turn_damage_reduction_side",
+						"affected_target": 1
+					}
+				],
+				"after_play": "discard",
+				"action_icon": "special"
+			},
+			"side_b": {
+				"fuel_cost": 1,
+				"description": "SLOW DOWN. Damage reduction from the attacks to the back this turn.",
+				"actions": [
+					{
+						"action_type": 1,
+						"target_area": "slow_down"
+					},
+					{
+						"action_type": 2,
+						"value": 2,
+						"target_area": "back",
+						"effect_name": "this_turn_damage_reduction_back",
+						"affected_target": 1
+					}
+				],
+				"after_play": "discard",
+				"action_icon": "special"
+			}
+		},
+				"Roadslinger": {
+			"side_a": {
+				"fuel_cost": 5,
+				"description": "Attack to the front or back.",
+				"actions": [
+					{
+						"action_type": 0,
+						"value": 3,
+						"target_area": "back and front",
+						"animation_name": "ram"
+					}
+				],
+				"after_play": "discard",
+				"action_icon": "attack"
+			},
+			"side_b": {
+				"fuel_cost": 5,
+				"description": "Attack to the side or back.",
+				"actions": [
+					{
+						"action_type": 0,
+						"value": 3,
+						"target_area": "side and back",
+						"animation_name": "shoot"
+					}
+				],
+				"after_play": "discard",
+				"action_icon": "attack"
+			}
+		},
+		"Drafting": {
+			"side_a": {
+				"fuel_cost": 2,
+				"description": "SLOW DOWN. If you begin your next turn on a SLOW DOWN position, all actions cost 1 fuel.",
+				"actions": [
+					{
+						"action_type": 1,
+						"value": "",
+						"target_area": "slow_down",
+						"animation_name": "move"
+					},
+					{
+						"action_type": 2,
+						"value": 1,
+						"target_area": "behind",
+						"effect_name": "next_turn_reduce_all_action_cost",
+						"affected_target": 1
+					}
+				],
+				"after_play": "burn",
+				"action_icon": "special"
+			},
+			"side_b": {
+				"fuel_cost": 2,
+				"description": "SLOW DOWN. If you start your next turn in a SLOW DOWN position, reduce the next action's fuel cost by 1.",
+				"actions": [
+					{
+						"action_type": 1,
+						"value": "",
+						"target_area": "slow_down",
+						"animation_name": "move"
+					},
+					{
+						"action_type": 2,
+						"value": 1,
+						"target_area": "all sides",
+						"effect_name": "next_turn_first_action_cost_less",
+						"affected_target": 1
+					}
+				],
+				"after_play": "discard",
+				"action_icon": "special"
+			}
+		},
+		"Offence is Defence": {
+			"side_a": {
+				"fuel_cost": 5,
+				"description": "Attack to the side or back.",
+				"actions": [
+					{
+						"action_type": 0,
+						"value": 2,
+						"target_area": "side and back",
+						"animation_name": "shoot"
+					}
+				],
+				"after_play": "discard",
+				"action_icon": "attack"
+			},
+			"side_b": {
+				"fuel_cost": 2,
+				"description": "LINE UP. Damage reduction from attacks to the side this turn.",
+				"actions": [
+					{
+						"action_type": 1,
+						"value": "",
+						"target_area": "line_up",
+						"animation_name": "move"
+					},
+					{
+						"action_type": 2,
+						"value": 2,
+						"target_area": "side",
+						"effect_name": "this_turn_damage_reduction_side",
+						"affected_target": 1
+					}
+				],
+				"after_play": "discard",
+				"action_icon": "defence"
+			}
+		},
+		"Run to Live": {
+			"side_a": {
+				"fuel_cost": 4,
+				"description": "OVERTAKE. Damage reduction from attacks to the front this turn.",
+				"actions": [
+					{
+						"action_type": 1,
+						"value": "",
+						"target_area": "overtake",
+						"animation_name": "move"
+					},
+					{
+						"action_type": 2,
+						"value": 3,
+						"target_area": "back",
+						"effect_name": "this_turn_damage_reduction_back",
+						"affected_target": 1
+					}
+				],
+				"after_play": "discard",
+				"action_icon": "special"
+			},
+			"side_b": {
+				"fuel_cost": 4,
+				"description": "SLOW DOWN. Damage reduction from attacks to the back this turn.",
+				"actions": [
+					{
+						"action_type": 1,
+						"value": "",
+						"target_area": "slow_down",
+						"animation_name": "move"
+					},
+					{
+						"action_type": 2,
+						"value": 3,
+						"target_area": "front",
+						"effect_name": "this_turn_damage_reduction_front",
+						"affected_target": 1
+					}
+				],
+				"after_play": "discard",
+				"action_icon": "defence"
+			}
+		},
+		"Perfectly Balanced": {
+			"side_a": {
+				"fuel_cost": 6,
+				"description": "Attack to the side. Damage reduction.",
+				"actions": [
+					{
+						"action_type": 0,
+						"value": 3,
+						"target_area": "side",
+						"animation_name": "ram"
+					},
+					{
+						"action_type": 2,
+						"value": 3,
+						"target_area": "side",
+						"effect_name": "this_turn_reduce_damage_from_sides",
+						"affected_target": 1
+					}
+				],
+				"after_play": "discard",
+				"action_icon": "attack_defence"
+			},
+			"side_b": {
+				"fuel_cost": 3,
+				"description": "LINE UP. Reduce fuel cost of the action by 1 when you LINE UP.",
+				"actions": [
+					{
+						"action_type": 1,
+						"value": "",
+						"target_area": "line_up",
+						"animation_name": "move"
+					},
+					{
+						"action_type": 2,
+						"value": 1,
+						"target_area": "all sides",
+						"effect_name": "this_turn_reduce_fuel_cost_while_in_line_up",
+						"affected_target": 1
+					}
+				],
+				"after_play": "discard",
+				"action_icon": "special"
+			}
+		}
+	}
+}
