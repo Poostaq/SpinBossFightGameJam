@@ -21,13 +21,13 @@ var bonus_cassettes
 	#prepare_cassette_draft()
 
 func prepare_cassette_draft():
-	available_cassettes = CassetteDatabase.player_base_available_cards
-	for cassette in available_cassettes:
+	available_cassettes = Database.player_deck["player_deck"]
+	for key in available_cassettes.keys():
 		var new_cassette_object = DECKBUILDER_CASSETTE.instantiate()
-		new_cassette_object.cassette_data = CassetteDatabase.CASSETTES[cassette]
+		new_cassette_object.cassette_data = available_cassettes.CASSETTES[key]
 		add_to_available_cassettes(new_cassette_object)
-		new_cassette_object.label.text = cassette
-		new_cassette_object.name = cassette
+		new_cassette_object.label.text = key
+		new_cassette_object.name = key
 		new_cassette_object.cassette_hovered.connect(fill_tooltip_with_cassette_data.bind())
 		new_cassette_object.cassette_hovered_off.connect(hide_cassette_preview.bind())
 	

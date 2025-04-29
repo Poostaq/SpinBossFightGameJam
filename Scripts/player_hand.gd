@@ -27,7 +27,6 @@ func add_cassette_to_hand(cassette, speed):
 		player_hand.append(cassette)
 		cassette.z_index = 0
 		update_hand_positions(speed)
-		cassette.set_front_visible()
 		cassette.get_node("Node2D/Area2D").visible = true
 		
 	else:

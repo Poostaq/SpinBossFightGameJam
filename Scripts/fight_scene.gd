@@ -1,17 +1,18 @@
 extends Node
 
-@onready var player = $"../Player"    # Adjust path if needed
-@onready var enemy = $"../Enemy"
-@onready var ui_animator = $"../UIAnimator"
+@onready var player: Node = %Player
+@onready var enemy = $"Enemy"
+@onready var ui_animator = $"UIAnimator"
 
-@onready var player_ui = $"../UI/PlayerUI"
-@onready var enemy_ui = $"../UI/EnemyUI"
+@onready var player_ui = $"UI/PlayerUI"
+@onready var enemy_ui = $"UI/EnemyUI"
 
 enum BattlePhase { SELECTION, COMMIT, ACTING, RESOLUTION }
 var current_phase: BattlePhase = BattlePhase.SELECTION
 
 func _ready():
 	print("[BattleManager] Ready! Starting fight...")
+	player.prepare_hand()
 	start_selection_phase()
 
 #
@@ -23,15 +24,6 @@ func start_selection_phase():
 	
 	enemy.select_cassettes()
 
-	# Player picks cassettes manually (via UI). We assume the UI or player script emits a signal when done.
-	# For example: connect a "player_cassettes_selected" signal here if you want to know when player's done.
-
-	# Check if both sides are ready
-	check_if_ready()
-
-#
-# Called whenever either side updates their selection
-#
 func check_if_ready():
 	# If both sides have selected 3 cassettes (example), we enable COMMIT in the UI
 	if player.has_selected_required_cassettes() and enemy.has_selected_required_cassettes():

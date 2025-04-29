@@ -287,7 +287,7 @@ texture = ExtResource("10_cwv4n")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_pi1gs")
+&"": SubResource("AnimationLibrary_pi1gs")
 }
 
 [connection signal="mouse_entered" from="Node2D/Area2D" to="." method="_on_area_2d_mouse_entered"]

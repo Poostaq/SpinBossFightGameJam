@@ -141,11 +141,13 @@ func update_current_turn_debuffs():
 	for buff in next_turn_buffs:
 		next_turn_buffs.erase(buff)
 		if buff.de_buff_data[DE_BUFF.DEBUFF_NAME] == "next_turn_first_action_cost_less_if_you_start_in_slow_down" and battle_position ==  GlobalEnums.BATTLE_POSITIONS.SLOW_DOWN:
-			var new_buff = add_buff(CassetteDatabase.BUFFS["next_cassette_cost_less"])
-			this_turn_buffs.append(new_buff)
+			#var new_buff = add_buff(CassetteDatabase.BUFFS["next_cassette_cost_less"])
+			#this_turn_buffs.append(new_buff)
+			pass
 		elif buff.de_buff_data[DE_BUFF.DEBUFF_NAME] == "next_turn_cassettes_cost_less_if_you_stay_in_slow_down" and battle_position ==  GlobalEnums.BATTLE_POSITIONS.SLOW_DOWN:
-			var new_buff = add_buff(CassetteDatabase.BUFFS["this_turn_cassettes_cost_less"])
-			this_turn_buffs.append(new_buff)
+			#var new_buff = add_buff(CassetteDatabase.BUFFS["this_turn_cassettes_cost_less"])
+			#this_turn_buffs.append(new_buff)
+			pass
 		else:
 			this_turn_buffs.append(buff)
 			

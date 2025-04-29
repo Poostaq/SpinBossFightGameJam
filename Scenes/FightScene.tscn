@@ -1,4 +1,4 @@
-[gd_scene load_steps=105 format=3 uid="uid://fikkqra1yci7"]
+[gd_scene load_steps=91 format=3 uid="uid://fikkqra1yci7"]
 
 [ext_resource type="Texture2D" uid="uid://b5a8s5h0oecfi" path="res://Images/background/sky.png" id="1_1063y"]
 [ext_resource type="Script" uid="uid://fhix1yj1p6lr" path="res://Scripts/fight_scene.gd" id="1_cshab"]
@@ -11,20 +11,15 @@
 [ext_resource type="Texture2D" uid="uid://bul3t6vtcenei" path="res://Images/background/road_5 v2.png" id="8_ppljf"]
 [ext_resource type="Texture2D" uid="uid://optuwdbsc4jk" path="res://Images/background/road_6 v2.png" id="9_jnemw"]
 [ext_resource type="Texture2D" uid="uid://bopuaahs4nr88" path="res://Images/background/quidelines.png" id="10_ij751"]
-[ext_resource type="Texture2D" uid="uid://b36edyx330wqq" path="res://Images/Dashboard/1 dashboard base v2.png" id="11_5d8ye"]
 [ext_resource type="Texture2D" uid="uid://yxmyxergpp5q" path="res://Images/portraits/enemy slots.png" id="12_cf8y6"]
-[ext_resource type="Script" uid="uid://dy7sst8b72y6o" path="res://Scripts/character_logic.gd" id="13_ur4jo"]
 [ext_resource type="Script" uid="uid://bv0ejo2smlj3w" path="res://Scripts/status_effect_ui_handler.gd" id="14_vqyc6"]
 [ext_resource type="Texture2D" uid="uid://wnkq13qa4f14" path="res://Images/portraits/Her/her default.png" id="15_ps54w"]
 [ext_resource type="Texture2D" uid="uid://u501tg45mcaq" path="res://Images/MainMenu/Grayout_for_buttons.png" id="16_qyf2g"]
 [ext_resource type="Texture2D" uid="uid://bnsq73ogv26i8" path="res://Images/portraits/portrait frame.png" id="17_1x047"]
 [ext_resource type="FontFile" uid="uid://dtn7qee5h51x5" path="res://Font/atwriter.ttf" id="18_hkj3p"]
 [ext_resource type="Texture2D" uid="uid://d4jfuwh4lntc6" path="res://Images/portraits/life gauge v2.png" id="19_myus4"]
-[ext_resource type="Script" uid="uid://ddvrpncyw70ye" path="res://Scripts/deck.gd" id="20_o8pdy"]
+[ext_resource type="Texture2D" uid="uid://b52d7yiqjtdtb" path="res://Images/Dashboard/1 dashboard base v3.png" id="19_wgqke"]
 [ext_resource type="PackedScene" uid="uid://bwxtebcpfcui5" path="res://Scenes/cassette_slot.tscn" id="21_arvei"]
-[ext_resource type="Script" uid="uid://cmgm08nujcvsj" path="res://Scripts/player_hand.gd" id="22_kw5ui"]
-[ext_resource type="Script" uid="uid://e7wwrqsewqu6" path="res://Scripts/discard.gd" id="23_ocgte"]
-[ext_resource type="Texture2D" uid="uid://bpujnut1raxcu" path="res://Images/Dashboard/lost icon flash.png" id="24_qbd6b"]
 [ext_resource type="Texture2D" uid="uid://bpuaf5yua2qkq" path="res://Images/vfx/muzzle flash/muzzle flash v2 1.png" id="25_n3vno"]
 [ext_resource type="Texture2D" uid="uid://b1gklkay27y7t" path="res://Images/vfx/bullet hit/bullet hit 1.png" id="26_yjc7j"]
 [ext_resource type="Texture2D" uid="uid://dghrcrc1q86jq" path="res://Images/cars/her car 1.png" id="27_nbnri"]
@@ -47,14 +42,10 @@
 [ext_resource type="Animation" uid="uid://14ba80ruhc80" path="res://Animations/shoot_side_miss.tres" id="43_1fxgw"]
 [ext_resource type="FontFile" uid="uid://c6so5el4ru2ys" path="res://Font/Handjet-Regular.ttf" id="44_8w1xw"]
 [ext_resource type="PackedScene" uid="uid://b8ha82jqux55" path="res://Scenes/mini_cassette.tscn" id="45_gcmre"]
-[ext_resource type="Script" uid="uid://wvpymv61x1da" path="res://Scripts/OLD SCRIPTS/enemy_old.gd" id="46_owgm3"]
 [ext_resource type="Texture2D" uid="uid://c3x1d1u7q1grr" path="res://Images/portraits/hound/hound default.png" id="47_p3b6t"]
 [ext_resource type="Texture2D" uid="uid://dfex21ibvcvur" path="res://Images/portraits/enemy portrait frame.png" id="48_r4irq"]
 [ext_resource type="Texture2D" uid="uid://c7d46g83rm7qw" path="res://Images/portraits/enemy life gauge v2.png" id="49_qr1ph"]
 [ext_resource type="PackedScene" uid="uid://tqimomqpuvis" path="res://Scenes/enemy_cassette_slot.tscn" id="50_lajxr"]
-[ext_resource type="Script" uid="uid://b54uwj6p8y6pm" path="res://Scripts/enemy_deck.gd" id="51_46dp6"]
-[ext_resource type="Script" uid="uid://c0f34qw7251fs" path="res://Scripts/enemy_hand.gd" id="52_f8lwq"]
-[ext_resource type="Script" uid="uid://cn176prlfpmxh" path="res://Scripts/enemy_discard.gd" id="53_8fka8"]
 [ext_resource type="Texture2D" uid="uid://xwhyyemced0i" path="res://Images/cars/hound 1.png" id="54_32pqp"]
 [ext_resource type="Texture2D" uid="uid://b2481s8oc80u5" path="res://Images/cars/hound 2.png" id="55_uv8ck"]
 [ext_resource type="Texture2D" uid="uid://cwa375ry7xg0m" path="res://Images/cars/hound 3.png" id="56_6x212"]
@@ -63,7 +54,6 @@
 [ext_resource type="Animation" uid="uid://do2cgn78f8wh3" path="res://Animations/idle_boss.tres" id="59_6tfxe"]
 [ext_resource type="Texture2D" uid="uid://o5uublbe8bl6" path="res://Images/Dashboard/2 shifters.png" id="61_aeehw"]
 [ext_resource type="Texture2D" uid="uid://c08e6hd43yl2a" path="res://Images/Dashboard/3 steering wheel.png" id="62_7x2bs"]
-[ext_resource type="Script" uid="uid://cehgkfyal005b" path="res://Scenes/battle_manager.gd" id="64_3wn2b"]
 [ext_resource type="Script" uid="uid://jb4govduk4p7" path="res://Scripts/battle_animator.gd" id="64_4o6d4"]
 [ext_resource type="Script" uid="uid://bs15iou87ydk7" path="res://Scripts/cassette_manager.gd" id="65_jkr4c"]
 [ext_resource type="Script" uid="uid://bm0g5tqtot1hj" path="res://Scripts/input_manager.gd" id="66_5jbpx"]
@@ -184,111 +174,6 @@ tracks/0/keys = {
 _data = {
 &"BackgroundSway": SubResource("Animation_j17ic"),
 &"RESET": SubResource("Animation_kswln")
-}
-
-[sub_resource type="GDScript" id="GDScript_u6poq"]
-script/source = "extends Node
-
-# We keep purely data-driven logic here: deck, discard, lost, hand, selected.
-# UI or animation logic stays out.
-# This structure is already well separated.
-
-signal deck_changed(new_deck)   # Emitted whenever deck or hand changes
-signal selection_changed()      # Emitted when selected cassettes change
-
-var deck: Array = []            # Full deck of cassettes
-var discard: Array = []         # Discarded cassettes
-var lost: Array = []            # Completely lost cassettes
-var hand: Array = []            # Cassettes currently in the player's (logical) hand
-var selected_cassettes: Array = []  # Cassettes the player picked for the next action phase
-
-# Example stats
-var health: int = 100
-
-func _ready():
-	# Shuffle or do any initial deck setup here if needed
-	pass
-
-# Called when we want to draw a cassette from the deck
-func draw_cassette():
-	if deck.size() > 0:
-		var cassette = deck.pop_back()
-		hand.append(cassette)
-		# Emit 'deck_changed' so any UI can update
-		emit_signal(\"deck_changed\", deck)
-
-# Moves a cassette from hand to discard
-func discard_cassette(cassette):
-	if cassette in hand:
-		hand.erase(cassette)
-		discard.append(cassette)
-		emit_signal(\"deck_changed\", deck)
-
-# Moves a cassette from hand to lost
-func lose_cassette(cassette):
-	if cassette in hand:
-		hand.erase(cassette)
-		lost.append(cassette)
-		emit_signal(\"deck_changed\", deck)
-
-# Returns true if the player has the required cassettes selected
-func has_selected_required_cassettes() -> bool:
-	# For example, require exactly 3 cassettes
-	return selected_cassettes.size() == 3
-
-# Moves a cassette from hand to selected
-func select_cassette(cassette):
-	if cassette in hand and not has_selected_required_cassettes():
-		hand.erase(cassette)
-		selected_cassettes.append(cassette)
-		emit_signal(\"selection_changed\")
-
-# Moves a cassette from selected back to hand
-func deselect_cassette(cassette):
-	if cassette in selected_cassettes:
-		selected_cassettes.erase(cassette)
-		hand.append(cassette)
-		emit_signal(\"selection_changed\")
-
-func get_chosen_cassettes() -> Array:
-	return selected_cassettes
-"
-
-[sub_resource type="Animation" id="Animation_toinl"]
-resource_name = "BurntACard"
-step = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("LostIconFlash:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(4, 4, 4, 1), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_hyoen"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("LostIconFlash:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_nxrdd"]
-_data = {
-&"BurntACard": SubResource("Animation_toinl"),
-&"RESET": SubResource("Animation_hyoen")
 }
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_gj375"]
@@ -1310,239 +1195,6 @@ libraries = {
 }
 autoplay = "BackgroundSway"
 
-[node name="Player_old" type="Node2D" parent="."]
-script = SubResource("GDScript_u6poq")
-
-[node name="CharacterLogic" type="Node" parent="Player_old"]
-script = ExtResource("13_ur4jo")
-
-[node name="StatusEffectUIHandler" type="Node" parent="Player_old"]
-script = ExtResource("14_vqyc6")
-
-[node name="PortraitArea" type="Node2D" parent="Player_old"]
-visible = false
-
-[node name="Sprite2D2" type="Sprite2D" parent="Player_old/PortraitArea"]
-position = Vector2(134, 135)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("15_ps54w")
-
-[node name="GrayoutForButtons" type="Sprite2D" parent="Player_old/PortraitArea"]
-position = Vector2(104, 234)
-scale = Vector2(0.1975, 0.0375)
-texture = ExtResource("16_qyf2g")
-
-[node name="Sprite2D" type="Sprite2D" parent="Player_old/PortraitArea"]
-position = Vector2(129, 128)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("17_1x047")
-
-[node name="Label" type="Label" parent="Player_old/PortraitArea"]
-offset_left = 16.0
-offset_top = 215.0
-offset_right = 106.0
-offset_bottom = 248.0
-theme_override_fonts/font = ExtResource("18_hkj3p")
-theme_override_font_sizes/font_size = 26
-text = "HP: 20"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="LifeGauge" type="TextureProgressBar" parent="Player_old/PortraitArea"]
-offset_left = 129.0
-offset_top = 23.0
-offset_right = 388.0
-offset_bottom = 464.0
-scale = Vector2(0.5, 0.5)
-size_flags_horizontal = 3
-size_flags_vertical = 3
-max_value = 20.0
-value = 20.0
-fill_mode = 3
-texture_progress = ExtResource("19_myus4")
-
-[node name="Deck" type="Node2D" parent="Player_old"]
-position = Vector2(525, 865)
-script = ExtResource("20_o8pdy")
-
-[node name="Cassettes" type="Node2D" parent="Player_old/Deck"]
-
-[node name="Sequence" type="Node2D" parent="Player_old"]
-visible = false
-
-[node name="CassetteSlot" parent="Player_old/Sequence" instance=ExtResource("21_arvei")]
-position = Vector2(955, 709)
-
-[node name="CassetteSlot2" parent="Player_old/Sequence" instance=ExtResource("21_arvei")]
-position = Vector2(955, 759)
-
-[node name="CassetteSlot3" parent="Player_old/Sequence" instance=ExtResource("21_arvei")]
-position = Vector2(955, 809)
-
-[node name="Hand" type="Node2D" parent="Player_old"]
-script = ExtResource("22_kw5ui")
-
-[node name="Discard" type="Node2D" parent="Player_old"]
-light_mask = 16
-visibility_layer = 16
-script = ExtResource("23_ocgte")
-
-[node name="Area2D" type="Area2D" parent="Player_old/Discard"]
-light_mask = 65536
-visibility_layer = 65536
-collision_layer = 16
-collision_mask = 16
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player_old/Discard/Area2D"]
-light_mask = 256
-visibility_layer = 256
-position = Vector2(49, 7)
-polygon = PackedVector2Array(1395, 676, 1427, 888, 1845, 888, 1789, 677)
-
-[node name="Lost" type="Node2D" parent="Player_old"]
-
-[node name="LostIconFlash" type="Sprite2D" parent="Player_old/Lost"]
-position = Vector2(1577, 990)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("24_qbd6b")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Player_old/Lost"]
-libraries = {
-&"": SubResource("AnimationLibrary_nxrdd")
-}
-
-[node name="MiniCassetteSequence" type="Node2D" parent="Player_old"]
-
-[node name="ThirdCassette" parent="Player_old/MiniCassetteSequence" instance=ExtResource("45_gcmre")]
-visible = false
-light_mask = 1024
-visibility_layer = 1024
-position = Vector2(140, 340)
-scale = Vector2(0.6, 0.6)
-
-[node name="SecondCassette" parent="Player_old/MiniCassetteSequence" instance=ExtResource("45_gcmre")]
-visible = false
-light_mask = 1024
-visibility_layer = 1024
-position = Vector2(140, 390)
-scale = Vector2(0.6, 0.6)
-
-[node name="FirstCassette" parent="Player_old/MiniCassetteSequence" instance=ExtResource("45_gcmre")]
-visible = false
-light_mask = 1024
-visibility_layer = 1024
-position = Vector2(140, 440)
-scale = Vector2(0.6, 0.6)
-
-[node name="StatusEffectsPosition" type="GridContainer" parent="Player_old"]
-offset_left = 277.0
-offset_top = 10.0
-offset_right = 646.0
-offset_bottom = 60.0
-theme_override_constants/h_separation = -20
-theme_override_constants/v_separation = 0
-columns = 8
-
-[node name="Enemy_old" type="Node2D" parent="."]
-script = ExtResource("46_owgm3")
-
-[node name="PortraitArea" type="Node2D" parent="Enemy_old"]
-
-[node name="Sprite2D" type="Sprite2D" parent="Enemy_old/PortraitArea"]
-position = Vector2(1792, 137)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("47_p3b6t")
-
-[node name="GrayoutForButtons" type="Sprite2D" parent="Enemy_old/PortraitArea"]
-position = Vector2(1811, 240)
-scale = Vector2(0.1975, 0.0375)
-texture = ExtResource("16_qyf2g")
-
-[node name="EnemyPortraitFrame" type="Sprite2D" parent="Enemy_old/PortraitArea"]
-position = Vector2(1788, 134)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("48_r4irq")
-
-[node name="Label" type="Label" parent="Enemy_old/PortraitArea"]
-offset_left = 1819.0
-offset_top = 221.0
-offset_right = 1909.0
-offset_bottom = 254.0
-theme_override_fonts/font = ExtResource("18_hkj3p")
-theme_override_font_sizes/font_size = 26
-text = "HP: 20"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="LifeGauge" type="TextureProgressBar" parent="Enemy_old/PortraitArea"]
-offset_left = 1665.0
-offset_top = 25.0
-offset_right = 1924.0
-offset_bottom = 466.0
-scale = Vector2(0.5, 0.5)
-size_flags_horizontal = 3
-size_flags_vertical = 3
-max_value = 20.0
-value = 20.0
-fill_mode = 3
-texture_progress = ExtResource("49_qr1ph")
-
-[node name="Sequence" type="Node2D" parent="Enemy_old"]
-position = Vector2(40, 0)
-
-[node name="CassetteSlot" parent="Enemy_old/Sequence" instance=ExtResource("50_lajxr")]
-position = Vector2(1470, 40)
-
-[node name="CassetteSlot2" parent="Enemy_old/Sequence" instance=ExtResource("50_lajxr")]
-position = Vector2(1470, 78)
-
-[node name="CassetteSlot3" parent="Enemy_old/Sequence" instance=ExtResource("50_lajxr")]
-position = Vector2(1470, 116)
-
-[node name="Deck" type="Node2D" parent="Enemy_old"]
-script = ExtResource("51_46dp6")
-
-[node name="Hand" type="Node" parent="Enemy_old"]
-script = ExtResource("52_f8lwq")
-
-[node name="Discard" type="Node2D" parent="Enemy_old"]
-visible = false
-script = ExtResource("53_8fka8")
-
-[node name="MiniCassetteSequence" type="Node2D" parent="Enemy_old"]
-
-[node name="ThirdCassette" parent="Enemy_old/MiniCassetteSequence" instance=ExtResource("45_gcmre")]
-visible = false
-light_mask = 1024
-visibility_layer = 1024
-position = Vector2(1773, 340)
-scale = Vector2(0.6, 0.6)
-
-[node name="SecondCassette" parent="Enemy_old/MiniCassetteSequence" instance=ExtResource("45_gcmre")]
-visible = false
-light_mask = 1024
-visibility_layer = 1024
-position = Vector2(1773, 390)
-scale = Vector2(0.6, 0.6)
-
-[node name="FirstCassette" parent="Enemy_old/MiniCassetteSequence" instance=ExtResource("45_gcmre")]
-visible = false
-light_mask = 1024
-visibility_layer = 1024
-position = Vector2(1773, 440)
-scale = Vector2(0.6, 0.6)
-
-[node name="BuffDebuffArea" type="GridContainer" parent="Enemy_old"]
-layout_direction = 3
-offset_left = -1645.0
-offset_top = 150.0
-offset_right = -1279.0
-offset_bottom = 200.0
-theme_override_constants/h_separation = -5
-columns = 8
-
-[node name="Lost" type="Node" parent="Enemy_old"]
-
 [node name="DEBUG_BUTTONS" type="Node" parent="."]
 
 [node name="DEBUG_Overtake" type="Button" parent="DEBUG_BUTTONS"]
@@ -1593,14 +1245,14 @@ offset_right = 915.0
 offset_bottom = 611.0
 text = "CLEAN UP"
 
-[node name="BattleManager" type="Node" parent="."]
-script = ExtResource("64_3wn2b")
-
 [node name="Player" type="Node" parent="."]
+unique_name_in_owner = true
 script = ExtResource("69_nx6ck")
 
 [node name="Enemy" type="Node" parent="."]
 script = ExtResource("35_cshab")
+
+[node name="BattleManager" type="Node" parent="."]
 
 [node name="StatusEffectManager" type="Node" parent="."]
 script = ExtResource("70_3wn2b")
@@ -1622,127 +1274,24 @@ offset_right = 783.0
 offset_bottom = 747.0
 disabled = true
 
-[node name="FuelSpent" type="TextureRect" parent="."]
-self_modulate = Color(0, 0, 0, 0.690196)
-offset_left = 845.0
-offset_top = 493.0
-offset_right = 1025.0
-offset_bottom = 631.0
-texture = SubResource("PlaceholderTexture2D_gj375")
-
-[node name="Sprite2D" type="Sprite2D" parent="FuelSpent"]
-position = Vector2(40, 70)
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("68_8puek")
-
-[node name="FuelSpent" type="Label" parent="FuelSpent/Sprite2D"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -128.0
-offset_top = -128.0
-offset_right = -128.0
-offset_bottom = -128.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 25
-theme_override_fonts/font = ExtResource("18_hkj3p")
-theme_override_font_sizes/font_size = 96
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Sprite2D2" type="Sprite2D" parent="FuelSpent"]
-position = Vector2(140, 70)
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("68_8puek")
-
-[node name="FuelSpent" type="Label" parent="FuelSpent/Sprite2D2"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -128.0
-offset_top = -128.0
-offset_right = -128.0
-offset_bottom = -128.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 25
-theme_override_fonts/font = ExtResource("18_hkj3p")
-theme_override_font_sizes/font_size = 96
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label" type="Label" parent="FuelSpent"]
-layout_mode = 0
-offset_right = 178.0
-offset_bottom = 38.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("18_hkj3p")
-theme_override_font_sizes/font_size = 26
-text = "FUEL SPENT"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label3" type="Label" parent="FuelSpent"]
-layout_mode = 0
-offset_left = -32.0
-offset_top = 101.0
-offset_right = 117.0
-offset_bottom = 139.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("18_hkj3p")
-theme_override_font_sizes/font_size = 20
-text = "PLAYER"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label4" type="Label" parent="FuelSpent"]
-layout_mode = 0
-offset_left = 65.0
-offset_top = 100.0
-offset_right = 214.0
-offset_bottom = 138.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("18_hkj3p")
-theme_override_font_sizes/font_size = 20
-text = "ENEMY"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="VSeparator" type="VSeparator" parent="FuelSpent"]
-layout_mode = 0
-offset_left = 68.0
-offset_top = 34.0
-offset_right = 107.0
-offset_bottom = 108.0
-theme_override_constants/separation = 20
-
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 1
 
 [node name="Cockpit" type="Control" parent="UI"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 1
 
 [node name="CockPit" type="TextureRect" parent="UI/Cockpit"]
 layout_mode = 0
 offset_right = 3840.0
 offset_bottom = 2160.0
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("11_5d8ye")
+texture = ExtResource("19_wgqke")
 
 [node name="Blinkers" type="TextureRect" parent="UI/Cockpit"]
 layout_mode = 0
@@ -1766,6 +1315,18 @@ stretch_mode = 4
 [node name="PlayerUI" type="Control" parent="UI"]
 layout_mode = 3
 anchors_preset = 0
+mouse_filter = 1
+
+[node name="Sequence" type="Node2D" parent="UI/PlayerUI"]
+
+[node name="CassetteSlot" parent="UI/PlayerUI/Sequence" instance=ExtResource("21_arvei")]
+position = Vector2(955, 709)
+
+[node name="CassetteSlot2" parent="UI/PlayerUI/Sequence" instance=ExtResource("21_arvei")]
+position = Vector2(955, 759)
+
+[node name="CassetteSlot3" parent="UI/PlayerUI/Sequence" instance=ExtResource("21_arvei")]
+position = Vector2(955, 809)
 
 [node name="Hand" type="Node2D" parent="UI/PlayerUI"]
 
@@ -1814,17 +1375,6 @@ value = 20.0
 fill_mode = 3
 texture_progress = ExtResource("19_myus4")
 
-[node name="Sequence" type="Node2D" parent="UI/PlayerUI"]
-
-[node name="CassetteSlot" parent="UI/PlayerUI/Sequence" instance=ExtResource("21_arvei")]
-position = Vector2(955, 709)
-
-[node name="CassetteSlot2" parent="UI/PlayerUI/Sequence" instance=ExtResource("21_arvei")]
-position = Vector2(955, 759)
-
-[node name="CassetteSlot3" parent="UI/PlayerUI/Sequence" instance=ExtResource("21_arvei")]
-position = Vector2(955, 809)
-
 [node name="MiniCassetteSequence" type="Node2D" parent="UI/PlayerUI"]
 
 [node name="ThirdCassette" parent="UI/PlayerUI/MiniCassetteSequence" instance=ExtResource("45_gcmre")]
@@ -1858,6 +1408,13 @@ theme_override_constants/h_separation = -20
 theme_override_constants/v_separation = 0
 columns = 8
 script = ExtResource("14_vqyc6")
+
+[node name="CommitSequence" parent="UI/PlayerUI" instance=ExtResource("67_6yvqn")]
+layout_mode = 1
+offset_left = 692.0
+offset_top = 684.0
+offset_right = 783.0
+offset_bottom = 747.0
 
 [node name="EnemyUI" type="Control" parent="UI"]
 layout_mode = 3
@@ -1934,6 +1491,7 @@ columns = 8
 script = ExtResource("14_vqyc6")
 
 [node name="EnemySlotTexture" type="TextureRect" parent="UI"]
+layout_mode = 0
 offset_left = 1207.0
 offset_top = -179.0
 offset_right = 1719.0
@@ -1941,6 +1499,114 @@ offset_bottom = 333.0
 texture = ExtResource("12_cf8y6")
 expand_mode = 1
 stretch_mode = 4
+
+[node name="FuelSpent" type="TextureRect" parent="UI"]
+self_modulate = Color(0, 0, 0, 0.690196)
+layout_mode = 0
+offset_left = 845.0
+offset_top = 493.0
+offset_right = 1025.0
+offset_bottom = 631.0
+texture = SubResource("PlaceholderTexture2D_gj375")
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/FuelSpent"]
+position = Vector2(40, 70)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("68_8puek")
+
+[node name="FuelSpent" type="Label" parent="UI/FuelSpent/Sprite2D"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -128.0
+offset_right = -128.0
+offset_bottom = -128.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 25
+theme_override_fonts/font = ExtResource("18_hkj3p")
+theme_override_font_sizes/font_size = 96
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D2" type="Sprite2D" parent="UI/FuelSpent"]
+position = Vector2(140, 70)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("68_8puek")
+
+[node name="FuelSpent" type="Label" parent="UI/FuelSpent/Sprite2D2"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -128.0
+offset_right = -128.0
+offset_bottom = -128.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 25
+theme_override_fonts/font = ExtResource("18_hkj3p")
+theme_override_font_sizes/font_size = 96
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="UI/FuelSpent"]
+layout_mode = 0
+offset_right = 178.0
+offset_bottom = 38.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("18_hkj3p")
+theme_override_font_sizes/font_size = 26
+text = "FUEL SPENT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="UI/FuelSpent"]
+layout_mode = 0
+offset_left = -32.0
+offset_top = 101.0
+offset_right = 117.0
+offset_bottom = 139.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("18_hkj3p")
+theme_override_font_sizes/font_size = 20
+text = "PLAYER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="UI/FuelSpent"]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 100.0
+offset_right = 214.0
+offset_bottom = 138.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("18_hkj3p")
+theme_override_font_sizes/font_size = 20
+text = "ENEMY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="UI/FuelSpent"]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 34.0
+offset_right = 107.0
+offset_bottom = 108.0
+theme_override_constants/separation = 20
 
 [node name="CarLayer" type="Node2D" parent="."]
 

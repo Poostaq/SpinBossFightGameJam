@@ -144,21 +144,21 @@ func apply_special_effect(action, character, target):
 	if effect_data == null:
 		push_error("Missing status effect data for: " + effect_name)
 		return
-
-	var effect = StatusEffect.new(
-		effect_data[0],
-		map_when_happens_to_duration(effect_data[1]),
-		effect_data[3],
-		effect_name,
-		action[ACTION_ELEMENTS.VALUE]
-	)
-
-	if action[GlobalEnums.SPECIAL.AFFECTED_TARGET] == GlobalEnums.AFFECTED_TARGET.TARGET:
-		target.character_logic.add_status_effect(effect)
-	else:
-		character.character_logic.add_status_effect(effect)
-
-	await battle_animator.play_special_animation(character, effect_data[2])
+#
+	#var effect = StatusEffect.new(
+		#effect_data[0],
+		#map_when_happens_to_duration(effect_data[1]),
+		#effect_data[3],
+		#effect_name,
+		#action[ACTION_ELEMENTS.VALUE]
+	#)
+#
+	#if action[GlobalEnums.SPECIAL.AFFECTED_TARGET] == GlobalEnums.AFFECTED_TARGET.TARGET:
+		#target.character_logic.add_status_effect(effect)
+	#else:
+		#character.character_logic.add_status_effect(effect)
+#
+	#await battle_animator.play_special_animation(character, effect_data[2])
 
 func map_when_happens_to_duration(when_happens: String) -> int:
 	return GlobalEnums.DurationTypes.get(when_happens, GlobalEnums.DurationTypes.THIS_TURN)

@@ -2,7 +2,6 @@ class_name StoryScene
 extends Node2D
 
 signal story_finished
-signal next_fight_boss
 
 var story_tween: Tween
 var current_tween: Tween = null
@@ -38,12 +37,6 @@ func skip_current_tween():
 		SfxManager.stop_sfx()
 	if current_tween and current_tween.is_running():
 		current_tween.custom_step(9999)
-
-	#if currently_animated_node and currently_animated_property:
-		#if currently_animated_node == narration and currently_animated_property == "visible_characters":
-			#narration.visible_characters = len(narration.text)
-		#elif currently_animated_property == "modulate":
-			#currently_animated_node.modulate = target_modulate_color
 
 func play_story():
 	set_process_input(true)

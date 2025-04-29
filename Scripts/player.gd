@@ -1,9 +1,12 @@
 extends Node
 
+
+const CASSETTE_SCENE = "res://Scenes/cassette.tscn"
 # Signals to notify others of changes
 signal deck_changed(new_deck)  # deck or hand changed
-signal selection_changed()     # selected cassettes changed
-signal slots_changed()         # slot cassettes changed
+signal selection_changed       # selected cassettes changed
+signal slots_changed           # slot cassettes changed
+signal cassette_created(cassette)
 
 # Core cassette containers
 var deck: Array = []            # Full deck of cassettes
@@ -11,24 +14,37 @@ var discard: Array = []         # Discarded cassettes
 var lost: Array = []            # Completely lost cassettes
 var hand: Array = []            # Cassettes currently in the player's (logical) hand
 
+@onready var cassette_manager: Node2D = %CassetteManager
 
 var slot_cassettes: Array = [null, null, null]
-
 var health: int = 20
-
 var selected_cassettes: Array = []
 
 func _ready():
 	# Shuffle or do any initial deck setup here
 	pass
 
+func prepare_hand():
+	var player_cassettes = Database.player_deck["player_deck"]
+	for cassette in player_cassettes:
+		var new_cassette = create_cassette(cassette)
+		hand.append(new_cassette)
+		cassette_created.emit(new_cassette)
+		new_cassette.set_state(new_cassette.STATE.IN_HAND)
 
-# --- Deck/Hand Logic ---
-func draw_cassette():
-	if deck.size() > 0:
-		var cassette = deck.pop_back()
-		hand.append(cassette)
-		emit_signal("deck_changed", deck)
+
+func create_cassette(cassette_name):
+	var cassette_scene = preload(CASSETTE_SCENE)
+	var new_cassette = cassette_scene.instantiate()
+	new_cassette.scale = new_cassette.REGULAR_CASSETTE_SIZE
+	new_cassette.name = cassette_name
+	new_cassette.side_a_data = Database.cassettes["cassettes"][cassette_name]["side_a"]
+	new_cassette.side_b_data = Database.cassettes["cassettes"][cassette_name]["side_b"]
+	new_cassette.cassette_name = cassette_name
+	new_cassette.current_side = "A"
+	new_cassette.whose_cassette = GlobalEnums.PLAYER
+	cassette_manager.connect_cassette_signals(new_cassette)
+	return new_cassette
 
 func discard_cassette(cassette):
 	if cassette in hand:
@@ -93,3 +109,6 @@ func deselect_cassette(cassette):
 
 func get_chosen_cassettes() -> Array:
 	return selected_cassettes
+
+func remove_cassette_from_hand(cassette):
+	hand.remove_at(hand.find(cassette))

@@ -3,6 +3,7 @@ extends Node
 var cassettes = {}       # Holds all cassette definitions (replacing CassetteDatabase.cassettes)
 var effects = {}         # Holds all status effect definitions (replacing StatusEffectDatabase.effects)
 var boss_decks = {}      # Holds boss decks if needed (can pull from your existing boss_decks)
+var player_deck = {}      # Holds boss decks if needed (can pull from your existing boss_decks)
 
 func _ready():
 	load_all_data()
@@ -11,6 +12,7 @@ func load_all_data():
 	load_cassettes()
 	load_status_effects()
 	load_boss_decks()
+	load_player_deck()
 
 func load_cassettes():
 	var file = FileAccess.open("res://Data/cassettes.json", FileAccess.READ)
@@ -32,6 +34,13 @@ func load_boss_decks():
 	else:
 		push_error("Failed to load boss_decks.json")
 
+func load_player_deck():
+	var file = FileAccess.open("res://Data/player_deck.json", FileAccess.READ)
+	if file:
+		player_deck = JSON.parse_string(file.get_as_text())
+	else:
+		push_error("Failed to load player_deck.json")
+
 # Convenience methods
 func get_cassette(cassette_name: String):
 	return cassettes.get(cassette_name)
@@ -41,3 +50,6 @@ func get_effect(effect_name: String):
 
 func get_boss_deck(boss_name: String):
 	return boss_decks.get(boss_name)
+
+func get_player_deck(player_deck_key: String):
+	return player_deck.get(player_deck_key)

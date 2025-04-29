@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bn3mjgri6s005" path="res://Scripts/game_manager.gd" id="11_uclxx"]
 [ext_resource type="Texture2D" uid="uid://u501tg45mcaq" path="res://Images/MainMenu/Grayout_for_buttons.png" id="19_dpxto"]
-[ext_resource type="Script" uid="uid://vv60mqwjendf" path="res://Scenes/music_player.gd" id="88_3hpcd"]
-[ext_resource type="AudioStream" uid="uid://c0yerkgj2r7oe" path="res://Music/MENU MUSIC 2 pod loop.wav" id="90_y173c"]
+[ext_resource type="Script" uid="uid://vv60mqwjendf" path="res://Scripts/music_player.gd" id="88_3hpcd"]
+[ext_resource type="AudioStream" uid="uid://d3j3jugolyevf" path="res://Music/Im coming hub new and better title screen.wav" id="90_y173c"]
 
 [sub_resource type="Environment" id="Environment_48qbg"]
 background_mode = 3

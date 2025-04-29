@@ -37,6 +37,7 @@ enabled=PackedStringArray("res://addons/script-ide/plugin.cfg")
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=3
+textures/canvas_textures/default_texture_repeat=1
 textures/vram_compression/import_etc2_astc=true
 viewport/hdr_2d=true
-anti_aliasing/quality/msaa_2d=2

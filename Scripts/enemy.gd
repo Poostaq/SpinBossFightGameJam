@@ -1,15 +1,19 @@
 extends Node
 class_name Enemy
 
+const CASSETTE_SCENE = "res://Scenes/enemy_cassette.tscn"
 # Signals to notify others of changes
 signal deck_changed(new_deck)  # deck or hand changed
 signal slots_changed()         # slot cassettes changed
+signal cassette_created
 
 # Core cassette containers
 var deck: Array = []           # Full deck of cassettes
 var discard: Array = []        # Discarded cassettes
 var lost: Array = []           # Completely lost cassettes
 var hand: Array = []           # Cassettes currently in the enemy's (logical) hand
+
+@onready var cassette_manager: Node2D = %CassetteManager
 
 var slot_cassettes: Array = [null, null, null]
 
@@ -71,3 +75,28 @@ func remove_cassette_from_slot(slot_index: int) -> void:
 		hand.append(cassette)
 		slot_cassettes[slot_index] = null
 		emit_signal("slots_changed")
+
+func select_cassettes():
+	pass
+
+
+func prepare_hand(enemy_name):
+	var enemy_cassettes = Database.player_deck[enemy_name]
+	for cassette in enemy_cassettes:
+		var new_cassette = create_cassette(cassette)
+		hand.append(new_cassette)
+		cassette_created.emit()
+
+func create_cassette(cassette_name):
+	var cassette_scene = preload(CASSETTE_SCENE)
+	var new_cassette = cassette_scene.instantiate()
+	new_cassette.scale = new_cassette.REGULAR_CASSETTE_SIZE
+	new_cassette.name = cassette_name
+	new_cassette.side_a_data = Database.cassettes["cassettes"][cassette_name]["side_a"]
+	new_cassette.side_b_data = Database.cassettes["cassettes"][cassette_name]["side_b"]
+	new_cassette.cassette_name = cassette_name
+	new_cassette.current_side = "A"
+	new_cassette.whose_cassette = GlobalEnums.PLAYER
+	cassette_manager.connect_cassette_signals(new_cassette)
+	new_cassette.state = new_cassette.STATE.IN_HAND
+	return new_cassette

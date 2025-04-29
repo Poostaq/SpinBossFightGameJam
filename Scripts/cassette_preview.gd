@@ -12,7 +12,6 @@ enum CASSETTE_SIDE_DATA {FUEL_COST, DESCRIPTION, ACTIONS_LIST, AFTER_PLAY, ACTIO
 enum ACTION {MOVE_TYPE, VALUE, MOVE_AREA}
 var position_in_hand
 var rotation_in_hand
-var cassette_slot_cassette_is_in
 var cassette_side_a
 var cassette_side_b
 var cassette_name
