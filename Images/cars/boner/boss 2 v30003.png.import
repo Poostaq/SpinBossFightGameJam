@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bakfvfevg4lj8"
-path="res://.godot/imported/her car 2.png-a9bfd61c91d06bcd62a2c47b6e8936b1.ctex"
+uid="uid://bygnm1oebd1ow"
+path="res://.godot/imported/boss 2 v30003.png-d803702d3590a4ebf326e31d536c81d4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/cars/her car 2.png"
-dest_files=["res://.godot/imported/her car 2.png-a9bfd61c91d06bcd62a2c47b6e8936b1.ctex"]
+source_file="res://Images/cars/boner/boss 2 v30003.png"
+dest_files=["res://.godot/imported/boss 2 v30003.png-d803702d3590a4ebf326e31d536c81d4.ctex"]
 
 [params]
 

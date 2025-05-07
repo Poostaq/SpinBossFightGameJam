@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0cy1nlh6dabw"
-path="res://.godot/imported/railgrinder 3.png-c4c7a8e182f6cebe84ae9cdb360461b6.ctex"
+uid="uid://b14ncrym226ek"
+path="res://.godot/imported/her car v30002.png-d40678777b432888689684b0429df6a3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/cars/railgrinder 3.png"
-dest_files=["res://.godot/imported/railgrinder 3.png-c4c7a8e182f6cebe84ae9cdb360461b6.ctex"]
+source_file="res://Images/cars/her_car/her car v30002.png"
+dest_files=["res://.godot/imported/her car v30002.png-d40678777b432888689684b0429df6a3.ctex"]
 
 [params]
 

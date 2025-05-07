@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7fn8s61ah8po"
-path="res://.godot/imported/smoke 3.png-73344bec7c89f276cfcf9a551df5b4b4.ctex"
+uid="uid://bacnyhj5d4ps6"
+path="res://.godot/imported/boner 2.png-d53d888ac2e1cbbcdca45bdbf2847662.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/cars/smoke 3.png"
-dest_files=["res://.godot/imported/smoke 3.png-73344bec7c89f276cfcf9a551df5b4b4.ctex"]
+source_file="res://Images/cars/boner/boner 2.png"
+dest_files=["res://.godot/imported/boner 2.png-d53d888ac2e1cbbcdca45bdbf2847662.ctex"]
 
 [params]
 

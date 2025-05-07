@@ -13,6 +13,7 @@ var current_phase: BattlePhase = BattlePhase.SELECTION
 
 func _ready():
 	print("[BattleManager] Ready! Starting fight...")
+	ui_animator.prepare_screen()
 	player.prepare_hand()
 	enemy.prepare_hand(enemy_name)
 	start_selection_phase()

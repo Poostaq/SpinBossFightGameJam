@@ -1,21 +1,22 @@
 extends Node
 
 
-#signal presentation_finished
+signal ui_ready_for_battle
 
 @onready var player: Node = $"../Player"
 @onready var enemy: Enemy = $"../Enemy"
 @onready var player_ui: Control = $"../UI/PlayerUI"
 @onready var hand: Node2D = $"../UI/PlayerUI/Hand"
 @onready var sequence: Node2D = $"../UI/PlayerUI/Sequence"
+@onready var animation_player: AnimationPlayer = $"../AnimationPlayer"
 
 const DEFAULT_CASSETTE_SPEED = 0.2
 const SLOT_POSITIONS = [
-						Vector2(1081,1085),
-						Vector2(1079,1040),
-						Vector2(1077,995),
-						Vector2(1075,950),
-						Vector2(1073,905),
+						Vector2(1185,1085),
+						Vector2(1183,1040),
+						Vector2(1181,995),
+						Vector2(1179,950),
+						Vector2(1177,905),
 						Vector2(773,1085),
 						Vector2(775,1040),
 						Vector2(777,995),
@@ -51,6 +52,7 @@ const BATTLE_POSITIONS = {
 
 func _ready() -> void:
 	player.cassette_created.connect(move_cassette_to_hand)
+	animation_player.play("ShowCockpit")
 
 
 func animate_move_to_position(position_key: String, speed := 2.0) -> void:
@@ -105,7 +107,6 @@ func _get_position_suffix(battle_position):
 
 
 func move_cassette_to_hand(cassette):
-	print("MOVING CASSETTE TO HAND")
 	if cassette not in hand.get_children():
 		if cassette.get_parent() == null:
 			hand.add_child(cassette)
@@ -118,7 +119,6 @@ func move_cassette_to_hand(cassette):
 		cassette.animate_cassette_to_position(cassette.position_in_hand, DEFAULT_CASSETTE_SPEED)
 
 func update_hand_positions(speed):
-	print(player.hand.size())
 	for i in range(player.hand.size()):
 		var cassette = player.hand[i]
 		cassette.position_in_hand = SLOT_POSITIONS[player.hand.size()-1-i]
@@ -139,3 +139,20 @@ func deactivate_player_slots():
 func make_cassette_colliders(disabled: bool) -> void:
 	for cassette in hand.get_children():
 		cassette.collision_shape_2d.disabled = disabled
+
+func prepare_screen():
+	pass
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	match anim_name:
+		"ShowCars":
+			animation_player.play("ShowFuelCounter")
+		"ShowCockpit":
+			animation_player.play("ShowPortraits")
+		"ShowPortraits":
+			animation_player.play("ShowCars")
+		"ShowFuelCounter":
+			animation_player.play("ShowCassettes")
+		"ShowCassettes":
+			ui_ready_for_battle.emit()

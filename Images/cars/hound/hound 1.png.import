@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xpyrpw0mtq0n"
-path="res://.godot/imported/boner 1.png-f85884ef166f448d467531c3f12a8c57.ctex"
+uid="uid://b4yulpskvtw4t"
+path="res://.godot/imported/hound 1.png-d9ffee609d0fcfa4214d4f0827185a28.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/cars/boner 1.png"
-dest_files=["res://.godot/imported/boner 1.png-f85884ef166f448d467531c3f12a8c57.ctex"]
+source_file="res://Images/cars/hound/hound 1.png"
+dest_files=["res://.godot/imported/hound 1.png-d9ffee609d0fcfa4214d4f0827185a28.ctex"]
 
 [params]
 

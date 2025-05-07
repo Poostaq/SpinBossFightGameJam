@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvt5ehdr3pao0"
-path="res://.godot/imported/smoke 1.png-eda773a755b13b80e03758274e499b4e.ctex"
+uid="uid://dsqoyrh1ed64c"
+path="res://.godot/imported/front panel v2.png-4edcfa9e6f936edb6628a9cbd01507e7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/cars/smoke 1.png"
-dest_files=["res://.godot/imported/smoke 1.png-eda773a755b13b80e03758274e499b4e.ctex"]
+source_file="res://Images/Dashboard/front panel v2.png"
+dest_files=["res://.godot/imported/front panel v2.png-4edcfa9e6f936edb6628a9cbd01507e7.ctex"]
 
 [params]
 

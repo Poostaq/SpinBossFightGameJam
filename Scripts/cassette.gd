@@ -167,19 +167,26 @@ func get_current_side_data():
 func play_animation(anim_name: String, reversed: bool = false) -> void:
 	if animation_player.is_playing():
 		var old_name = animation_player.current_animation
+		print(cassette_name + " stops old animation " + old_name)
 		if old_name != "":
-			var old_data = animation_player.get_animation(old_name)
+			var old_data: Animation = animation_player.get_animation(old_name)
 			if old_data:
-				if animation_player.speed_scale < 0:
+				if animation_player.get_playing_speed() < 0:
+					print("Skipping it to the start")
 					animation_player.seek(0, true)
-				else:
+				elif animation_player.get_playing_speed() > 0:
+					print("Skipping it to the end")
 					animation_player.seek(old_data.length, true)
-		animation_player.stop()
 	if reversed:
+		print(cassette_name + " plays backward animation " + anim_name)
 		animation_player.play_backwards(anim_name)
+		print("Speed Scale = " + str(animation_player.get_playing_speed()))
 	else:
+		print(cassette_name + " plays animation " + anim_name)
 		animation_player.play(anim_name)
+		print("Speed Scale = " + str(animation_player.get_playing_speed()))
 
+		
 func skip_animation(anim_name: String, reversed: bool = false) -> void:
 	if animation_player.is_playing():
 		var old_name = animation_player.current_animation
@@ -303,28 +310,33 @@ func _exit_initializing():
 	
 
 func _enter_in_hand():
+	print(cassette_name + " Enters Hand")
 	z_index = 0
-	play_animation("SwitchToFront")
 
 func _exit_in_hand():
+	print(cassette_name + " Exits Hand")
 	pass
 
 func _enter_hovered_over():
+	print(cassette_name + " Enters Hover Over")
 	flip_tooltip.visible = true
 	z_index = 2
 	play_animation("Hover_over")
 
 func _exit_hovered_over():
+	print(cassette_name + " Exits Hover Over")
 	flip_tooltip.visible = false
-	skip_animation("Hover_over", true)
+	play_animation("Hover_over", true)
 
 func _enter_dragging():
+	print(cassette_name + " Enters Dragging")
 	z_index = 3
-	skip_animation("SwitchToFront", true)
+	play_animation("SwitchToFront", true)
 
 func _exit_dragging():
+	print(cassette_name + " Exits Dragging")
+	play_animation("SwitchToFront")
 	self.get_parent().remove_child(self)
-	self.z_index = 0
 	
 
 func _enter_in_slot():
@@ -334,3 +346,11 @@ func _enter_in_slot():
 
 func _exit_in_slot():
 	self.get_parent().remove_child(self)
+
+
+func print_start_animation():
+	print("START OF ANIMATION " + animation_player.current_animation)
+
+
+func print_end_animation():
+	print("END OF ANIMATION " + animation_player.current_animation)

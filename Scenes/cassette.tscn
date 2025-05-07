@@ -89,6 +89,23 @@ tracks/4/keys = {
 "update": 0,
 "values": [Vector2(-390, -95), Vector2(-596, -485)]
 }
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.001, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"print_start_animation"
+}, {
+"args": [],
+"method": &"print_end_animation"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_bdam2"]
 length = 0.001
@@ -114,7 +131,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [Vector2(1, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -126,7 +143,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1e-05)]
+"values": [Vector2(1, 1)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -264,6 +281,23 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0, 20), Vector2(0, 0)]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.001, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"print_start_animation"
+}, {
+"args": [],
+"method": &"print_end_animation"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_75skt"]
@@ -405,7 +439,6 @@ visibility_layer = 524288
 
 [node name="Front" type="Node2D" parent="Sprites"]
 position = Vector2(0, 20)
-scale = Vector2(1, 1e-05)
 
 [node name="Label" type="Sprite2D" parent="Sprites/Front"]
 texture = ExtResource("2_0vxk3")
@@ -451,6 +484,7 @@ scale = Vector2(1e-05, 1)
 texture = ExtResource("6_ujjbk")
 
 [node name="Top" type="Node2D" parent="Sprites"]
+scale = Vector2(1, 1e-05)
 
 [node name="Frame" type="Sprite2D" parent="Sprites/Top"]
 texture = ExtResource("8_vj15e")

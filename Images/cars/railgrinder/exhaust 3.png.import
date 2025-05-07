@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cuyyf8e1mcgad"
-path="res://.godot/imported/smoke 2.png-64efbfc247281698bd3c247566902d18.ctex"
+uid="uid://c80sh7pp4hx28"
+path="res://.godot/imported/exhaust 3.png-28698d31ff5c642c0eeb29282b5da542.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/cars/smoke 2.png"
-dest_files=["res://.godot/imported/smoke 2.png-64efbfc247281698bd3c247566902d18.ctex"]
+source_file="res://Images/cars/railgrinder/exhaust 3.png"
+dest_files=["res://.godot/imported/exhaust 3.png-28698d31ff5c642c0eeb29282b5da542.ctex"]
 
 [params]
 

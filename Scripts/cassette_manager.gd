@@ -55,11 +55,11 @@ func connect_cassette_signals(cassette: Cassette):
 
 func _on_cassette_hovered(cassette: Cassette) -> void:
 	if is_hovering_on_cassette:
-		print(cassette.cassette_name + " hovered on, but another one is already hovered on")
+		#print(cassette.cassette_name + " hovered on, but another one is already hovered on")
 		return
 	elif !is_hovering_on_cassette and !cassette_being_dragged:
 		cassette.z_index = 2
-		print(cassette.cassette_name + " hovered on")
+		#print(cassette.cassette_name + " hovered on")
 		is_hovering_on_cassette = true
 		cassette.update_elements()
 		cassette.set_state(cassette.STATE.HOVERED_OVER)
@@ -73,8 +73,10 @@ func _on_cassette_hovered_off(cassette: Cassette) -> void:
 	cassette.set_state(cassette.STATE.IN_HAND)
 	cassette.z_index = 0
 	var new_cassette_hovered = raycast_check_for_cassette()
+	
 	if new_cassette_hovered:
-		print(cassette.cassette_name + " hovered off, " + new_cassette_hovered.cassette_name + " hovered on")
+		#print(new_cassette_hovered)
+		#print(cassette.cassette_name + " hovered off, " + new_cassette_hovered.cassette_name + " hovered on")
 		_on_cassette_hovered(new_cassette_hovered)
 
 
@@ -87,7 +89,7 @@ func start_drag(cassette: Cassette):
 	cassette.set_state(cassette.STATE.DRAGGING)
 	for other_cassette: Cassette in ui_animator.hand.get_children():
 		if other_cassette.state == other_cassette.STATE.HOVERED_OVER:
-			other_cassette.skip_animation("Hover_over", true)
+			other_cassette.set_state(other_cassette.STATE.IN_HAND)
 	
 
 

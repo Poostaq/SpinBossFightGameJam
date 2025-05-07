@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdas8jdueej34"
-path="res://.godot/imported/exhaust 1.png-8afd82b0a501836548bc0151d29d4cc2.ctex"
+uid="uid://belcgieti0oia"
+path="res://.godot/imported/exhaust 2.png-ae838bf61fc8fb53afebec1bf21c484d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/cars/exhaust 1.png"
-dest_files=["res://.godot/imported/exhaust 1.png-8afd82b0a501836548bc0151d29d4cc2.ctex"]
+source_file="res://Images/cars/railgrinder/exhaust 2.png"
+dest_files=["res://.godot/imported/exhaust 2.png-ae838bf61fc8fb53afebec1bf21c484d.ctex"]
 
 [params]
 
