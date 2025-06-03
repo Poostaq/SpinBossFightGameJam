@@ -74,7 +74,6 @@ func populate_mini_cassettes(actor, cassettes, owner):
 		mini_cassette.cassette_name.text = original.cassette_name
 		mini_cassette.set_cassette_data(mini_cassette.player_icons if owner == GlobalEnums.PLAYER else mini_cassette.enemy_icons)
 
-	mini_cassettes.back().set_icons_visibility()
 
 func determine_next_cassette_to_play():
 	if player.current_cassette >= 3:

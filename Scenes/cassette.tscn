@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cvtlgyph5fw86"]
+[gd_scene load_steps=29 format=3 uid="uid://cvtlgyph5fw86"]
 
 [ext_resource type="Script" uid="uid://c0g32ne6d7lqq" path="res://Scripts/cassette.gd" id="1_ip0rb"]
 [ext_resource type="Texture2D" uid="uid://cvtclg7lpuej1" path="res://Images/cassette/cassette front/1 label.png" id="2_0vxk3"]
@@ -15,15 +15,32 @@
 [ext_resource type="Texture2D" uid="uid://sv0sakk6sx8w" path="res://Images/cassette/cassette front/fuel.png" id="11_lwei8"]
 [ext_resource type="FontFile" uid="uid://dtn7qee5h51x5" path="res://Font/atwriter.ttf" id="12_bxlj3"]
 [ext_resource type="Texture2D" uid="uid://x3fcdafib402" path="res://Images/cassette/cassette front/attack.png" id="13_ln0mr"]
-[ext_resource type="Texture2D" uid="uid://kxtx4c32n67u" path="res://Images/action_icons/all_sides.png" id="14_1f16e"]
-[ext_resource type="Texture2D" uid="uid://dj0hrj70cvvjy" path="res://Images/action_icons/discard.png" id="15_r13cf"]
-[ext_resource type="Texture2D" uid="uid://bg1ttf1dayk3x" path="res://Images/action_icons/burn.png" id="16_moslp"]
+[ext_resource type="Texture2D" uid="uid://g1yrgovlyh73" path="res://Images/action_icons/all_sides.png" id="14_1f16e"]
+[ext_resource type="Texture2D" uid="uid://c64671rylr8jv" path="res://Images/action_icons/discard.png" id="15_r13cf"]
+[ext_resource type="Texture2D" uid="uid://dbu4otahu4w27" path="res://Images/action_icons/burn icon.png" id="17_5rfmn"]
 
 [sub_resource type="FontVariation" id="FontVariation_avwf4"]
 base_font = ExtResource("6_aebhr")
 
 [sub_resource type="FontVariation" id="FontVariation_fei8v"]
 base_font = ExtResource("12_bxlj3")
+
+[sub_resource type="Animation" id="Animation_5rfmn"]
+resource_name = "Cassette_vanish"
+length = 0.3
+step = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_6jk51"]
 resource_name = "Hover_over"
@@ -155,7 +172,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 20)]
+"values": [Vector2(0, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -229,6 +246,42 @@ tracks/9/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Sprites:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Area2D/CollisionShape2D:shape:size")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(442, 563.333)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Area2D/CollisionShape2D:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -640)]
+}
 
 [sub_resource type="Animation" id="Animation_1rwco"]
 resource_name = "SwitchToFront"
@@ -298,6 +351,30 @@ tracks/4/keys = {
 "args": [],
 "method": &"print_end_animation"
 }]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Area2D/CollisionShape2D:shape:size")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(442, 353.333), Vector2(442, 563.333)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Area2D/CollisionShape2D:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 0), Vector2(0, -640)]
 }
 
 [sub_resource type="Animation" id="Animation_75skt"]
@@ -420,6 +497,7 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o46m7"]
 _data = {
+&"Cassette_vanish": SubResource("Animation_5rfmn"),
 &"Hover_over": SubResource("Animation_6jk51"),
 &"RESET": SubResource("Animation_bdam2"),
 &"SwitchToFront": SubResource("Animation_1rwco"),
@@ -428,7 +506,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_axh4p"]
-size = Vector2(442, 560)
+size = Vector2(442, 563.333)
 
 [node name="Cassette" type="Node2D"]
 script = ExtResource("1_ip0rb")
@@ -438,7 +516,6 @@ light_mask = 524288
 visibility_layer = 524288
 
 [node name="Front" type="Node2D" parent="Sprites"]
-position = Vector2(0, 20)
 
 [node name="Label" type="Sprite2D" parent="Sprites/Front"]
 texture = ExtResource("2_0vxk3")
@@ -700,7 +777,7 @@ light_mask = 524288
 visibility_layer = 524288
 position = Vector2(170, 150)
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("16_moslp")
+texture = ExtResource("17_5rfmn")
 metadata/_edit_use_anchors_ = true
 
 [node name="FlipTooltip" type="Sprite2D" parent="."]
@@ -715,11 +792,12 @@ libraries = {
 }
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 scale = Vector2(1, 0.15)
 priority = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -620)
+position = Vector2(0, -640)
 shape = SubResource("RectangleShape2D_axh4p")
 one_way_collision_margin = 3.0
 

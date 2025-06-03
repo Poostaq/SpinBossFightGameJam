@@ -28,7 +28,6 @@ func add_cassette_to_hand(cassette, speed):
 		cassette.z_index = 0
 		update_hand_positions(speed)
 		cassette.get_node("Node2D/Area2D").visible = true
-		
 	else:
 		cassette.animate_cassette_to_position(cassette.position_in_hand,
 											  DEFAULT_CASSETTE_SPEED)

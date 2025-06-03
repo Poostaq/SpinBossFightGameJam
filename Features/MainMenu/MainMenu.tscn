@@ -1,0 +1,279 @@
+[gd_scene load_steps=22 format=3 uid="uid://basbt252t041a"]
+
+[ext_resource type="Script" uid="uid://bqg0oe3b0n1wo" path="res://Features/MainMenu/main_menu.gd" id="1_hw7sd"]
+[ext_resource type="Texture2D" uid="uid://cdevedgkhsjrl" path="res://Images/MainMenu/frame 1.png" id="2_7n3s7"]
+[ext_resource type="Texture2D" uid="uid://b2b5ep3uk6axn" path="res://Images/MainMenu/frame 2.png" id="3_pp4sb"]
+[ext_resource type="Texture2D" uid="uid://d38onlp4si3u2" path="res://Images/MainMenu/frame 3.png" id="4_oquq3"]
+[ext_resource type="Texture2D" uid="uid://cw67u86r34tm7" path="res://Images/MainMenu/frame 4.png" id="5_5xaoq"]
+[ext_resource type="Texture2D" uid="uid://cqbgc7q4qj3ng" path="res://Images/MainMenu/frame 5.png" id="6_8sc0l"]
+[ext_resource type="Texture2D" uid="uid://d12knjk3fg827" path="res://Images/MainMenu/frame 6.png" id="7_j2y7c"]
+[ext_resource type="Texture2D" uid="uid://u501tg45mcaq" path="res://Images/MainMenu/Grayout_for_buttons.png" id="8_c2lfq"]
+[ext_resource type="Texture2D" uid="uid://qi8dtyiumhq7" path="res://Images/MainMenu/logo.png" id="9_i0a4v"]
+[ext_resource type="PackedScene" uid="uid://bokhffkteotyi" path="res://Scenes/MenuButton.tscn" id="10_iguil"]
+[ext_resource type="Texture2D" uid="uid://0evk38pg4170" path="res://Images/CardDraft/button idle.png" id="11_oquq3"]
+[ext_resource type="PackedScene" uid="uid://mq5808bnkhb8" path="res://Scenes/slider.tscn" id="11_wmbnk"]
+[ext_resource type="Texture2D" uid="uid://c64xjxwbxc6jc" path="res://Images/CardDraft/button hover.png" id="12_5xaoq"]
+[ext_resource type="FontFile" uid="uid://dtn7qee5h51x5" path="res://Font/atwriter.ttf" id="12_xj0b2"]
+[ext_resource type="Texture2D" uid="uid://62cbu36ewefd" path="res://Images/CardDraft/button pressed.png" id="13_8sc0l"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_ucy24"]
+frames = 6
+speed_scale = 24.0
+frame_0/texture = ExtResource("2_7n3s7")
+frame_1/texture = ExtResource("3_pp4sb")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("4_oquq3")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("5_5xaoq")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("6_8sc0l")
+frame_4/duration = 1.0
+frame_5/texture = ExtResource("7_j2y7c")
+frame_5/duration = 1.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_42kni"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ye56w"]
+texture = ExtResource("11_oquq3")
+texture_margin_left = 8.55162
+texture_margin_top = 8.36986
+texture_margin_right = 8.59722
+texture_margin_bottom = 7.72134
+region_rect = Rect2(99.1235, 207.009, 313.838, 98.3843)
+modulate_color = Color(0.370364, 0.370364, 0.370364, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bvfjj"]
+texture = ExtResource("12_5xaoq")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(108, 211, 297, 90)
+modulate_color = Color(1.2, 1.2, 1.2, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jiecx"]
+texture = ExtResource("13_8sc0l")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(108, 211, 297, 90)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qyqye"]
+texture = ExtResource("11_oquq3")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(108, 211, 297, 90)
+
+[node name="MainMenu" type="Node2D"]
+z_index = 20
+script = ExtResource("1_hw7sd")
+
+[node name="Animated Background" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = SubResource("AnimatedTexture_ucy24")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="GrayoutForButtons" type="TextureRect" parent="."]
+modulate = Color(0.121569, 0.121569, 0.121569, 0.317647)
+offset_left = -39.0
+offset_top = 774.0
+offset_right = 961.0
+offset_bottom = 1774.0
+scale = Vector2(1.991, 0.397)
+texture = ExtResource("8_c2lfq")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+offset_left = 331.0
+offset_top = 355.0
+offset_right = 1664.0
+offset_bottom = 576.0
+texture = ExtResource("9_i0a4v")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="MainMenuButtons" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = 776.0
+offset_right = 1918.0
+offset_bottom = 1079.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Start" type="Button" parent="MainMenuButtons"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -6.24975e-05
+anchor_right = -6.24975e-05
+anchor_bottom = 0.0608926
+offset_left = 122.12
+offset_top = 87.0
+offset_right = 522.12
+offset_bottom = 162.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("12_xj0b2")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_42kni")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_ye56w")
+theme_override_styles/hover = SubResource("StyleBoxTexture_bvfjj")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_jiecx")
+theme_override_styles/normal = SubResource("StyleBoxTexture_qyqye")
+text = "Start Game
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="Options" type="Button" parent="MainMenuButtons"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -6.24975e-05
+anchor_right = -6.24975e-05
+anchor_bottom = 0.0608926
+offset_left = 764.12
+offset_top = 89.0
+offset_right = 1164.12
+offset_bottom = 164.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("12_xj0b2")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_42kni")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_ye56w")
+theme_override_styles/hover = SubResource("StyleBoxTexture_bvfjj")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_jiecx")
+theme_override_styles/normal = SubResource("StyleBoxTexture_qyqye")
+text = "Options"
+metadata/_edit_use_anchors_ = true
+
+[node name="Exit" type="Button" parent="MainMenuButtons"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -6.24975e-05
+anchor_right = -6.24975e-05
+anchor_bottom = 0.0608926
+offset_left = 1364.12
+offset_top = 84.0
+offset_right = 1764.12
+offset_bottom = 159.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("12_xj0b2")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_42kni")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_ye56w")
+theme_override_styles/hover = SubResource("StyleBoxTexture_bvfjj")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_jiecx")
+theme_override_styles/normal = SubResource("StyleBoxTexture_qyqye")
+text = "Exit
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="OptionsMenu" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = 776.0
+offset_right = 1918.0
+offset_bottom = 1079.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MasterSlider" parent="OptionsMenu" instance=ExtResource("11_wmbnk")]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 150.0
+offset_right = 424.0
+offset_bottom = 237.0
+bus_name = "Master"
+
+[node name="Label" type="Label" parent="OptionsMenu"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 50.0
+offset_right = 430.0
+offset_bottom = 110.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("12_xj0b2")
+theme_override_font_sizes/font_size = 48
+text = "Master Volume"
+horizontal_alignment = 1
+
+[node name="MusicSlider" parent="OptionsMenu" instance=ExtResource("11_wmbnk")]
+layout_mode = 0
+offset_left = 610.0
+offset_top = 150.0
+offset_right = 924.0
+offset_bottom = 237.0
+bus_name = "Music"
+
+[node name="Label2" type="Label" parent="OptionsMenu"]
+layout_mode = 0
+offset_left = 600.0
+offset_top = 50.0
+offset_right = 930.0
+offset_bottom = 110.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("12_xj0b2")
+theme_override_font_sizes/font_size = 48
+text = "Music Volume
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SFXSlider" parent="OptionsMenu" instance=ExtResource("11_wmbnk")]
+layout_mode = 0
+offset_left = 1110.0
+offset_top = 150.0
+offset_right = 1424.0
+offset_bottom = 237.0
+bus_name = "Effects"
+
+[node name="Label3" type="Label" parent="OptionsMenu"]
+layout_mode = 0
+offset_left = 1100.0
+offset_top = 50.0
+offset_right = 1430.0
+offset_bottom = 110.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("12_xj0b2")
+theme_override_font_sizes/font_size = 48
+text = "SFX Volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackToMenu" parent="OptionsMenu" instance=ExtResource("10_iguil")]
+layout_mode = 1
+anchor_left = 0.0707708
+anchor_top = 0.118812
+anchor_right = 0.0707708
+anchor_bottom = 0.179704
+offset_left = 1364.12
+offset_top = 84.0
+offset_right = 1764.12
+offset_bottom = 159.0
+text = "Back to menu"
+
+[connection signal="pressed" from="MainMenuButtons/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="MainMenuButtons/Options" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MainMenuButtons/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="OptionsMenu/BackToMenu" to="." method="_on_back_button_pressed"]

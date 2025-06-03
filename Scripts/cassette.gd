@@ -7,6 +7,7 @@ signal hovered_off(cassette: Cassette)
 const ENLARGED_CASSETTE_SIZE = Vector2(0.85,0.85)
 const REGULAR_CASSETTE_SIZE = Vector2(0.70,0.70)
 const SMALLER_CASSETTE_SIZE = Vector2(0.5,0.5)
+const DEFAULT_CASSETTE_SPEED = 0.2
 const TOP_Y = 40
 
 
@@ -38,21 +39,14 @@ var state = STATE.INITIALIZING
 @onready var animation_player = $AnimationPlayer
 @onready var flip_tooltip: Sprite2D = $FlipTooltip
 @onready var side_a: Node2D = $Sprites/SideA
-@onready var side_b: Node2D = $Sprites/SideB
 @onready var front_cassette_name_label: Label = $Sprites/Front/CassetteName
 @onready var top_cassette_name_label: Label = $Sprites/Top/CassetteName
 @onready var side_a_fuel_label: Label = $Sprites/SideA/Fuel/Label
-@onready var side_b_fuel_label: Label = $Sprites/SideB/Fuel/Label
 @onready var side_a_description: RichTextLabel = $Sprites/SideA/Description
-@onready var side_b_description: RichTextLabel = $Sprites/SideB/Description
 @onready var side_a_move_type_icon: Sprite2D = $Sprites/SideA/MoveType
-@onready var side_b_move_type_icon: Sprite2D = $Sprites/SideB/MoveType
 @onready var side_a_move_type_label: Label = $Sprites/SideA/MoveType/Label
-@onready var side_b_move_type_label: Label = $Sprites/SideB/MoveType/Label
 @onready var side_a_attack_targets: Sprite2D = $Sprites/SideA/AttackTargets
 @onready var side_a_after_play: Sprite2D = $Sprites/SideA/AfterPlay
-@onready var side_b_attack_targets: Sprite2D = $Sprites/SideB/AttackTargets
-@onready var side_b_after_play: Sprite2D = $Sprites/SideB/AfterPlay
 @onready var collision_shape_2d: CollisionShape2D = $Area2D/CollisionShape2D
 
 func _ready() -> void:
@@ -81,18 +75,10 @@ func update_elements():
 	else:
 		side_a_attack_targets.visible = false
 	set_icon(side_a_data["after_play"],side_a_after_play)
-	#SIDE B
-	side_b_fuel_label.text = str(side_b_data["fuel_cost"])
-	side_b_description.text = side_b_data["description"]
-	side_b_move_type_icon.texture = load("res://Images/action_icons/"+side_b_data["action_icon"]+".png")
-	set_icon_value(side_b_data, side_b_move_type_label)
-	if is_show_target_icon(side_b_data["actions"]):
-		side_b_attack_targets.visible = true
-		set_icon(get_icon_name(side_b_data["actions"]),side_b_attack_targets)
-	else:
-		side_a_attack_targets.visible = false
-	set_icon(side_b_data["after_play"],side_b_after_play)
 
+
+func prepare_actions():
+	pass
 
 func get_current_side_fuel():
 	if current_side == "A":
@@ -126,9 +112,9 @@ func parse_cassette_actions(actions: Array) -> Dictionary:
 	return result
 
 
-func set_icon_value(cassette_data: Dictionary, label: Label) -> void:
-	var icon_type = cassette_data["action_icon"]
-	var actions = cassette_data["actions"]
+func set_icon_value(action_data: Dictionary, label: Label) -> void:
+	var icon_type = action_data["action_icon"]
+	var actions = action_data["actions"]
 	if not ICON_BEHAVIORS.has(icon_type):
 		label.text = ""
 		return
@@ -149,7 +135,7 @@ func array_join(arr: Array, sep: String) -> String:
 	return result
 	
 
-func animate_cassette_to_position(new_position, speed):
+func animate_cassette_to_position(new_position, speed = DEFAULT_CASSETTE_SPEED):
 	collision_shape_2d.disabled = true
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "position", new_position, speed)
@@ -197,7 +183,6 @@ func skip_animation(anim_name: String, reversed: bool = false) -> void:
 					animation_player.seek(0, true)
 				else:
 					animation_player.seek(old_data.length, true)
-		animation_player.stop()
 	var new_data = animation_player.get_animation(anim_name)
 	if new_data == null:
 		push_error("Animation '%s' not found!" % anim_name)
@@ -208,7 +193,6 @@ func skip_animation(anim_name: String, reversed: bool = false) -> void:
 	else:
 		animation_player.play(anim_name)
 		animation_player.seek(new_data.length, true)
-	animation_player.stop()
 
 func switch_sides(current_preview_side):
 	var tween = create_tween()
@@ -306,12 +290,12 @@ func _can_transition(from: STATE, to: STATE) -> bool:
 # 5) Enter/Exit hooks
 
 func _exit_initializing():
-	z_index = 0
+	pass
 	
 
 func _enter_in_hand():
+	z_index = 2
 	print(cassette_name + " Enters Hand")
-	z_index = 0
 
 func _exit_in_hand():
 	print(cassette_name + " Exits Hand")
@@ -320,17 +304,18 @@ func _exit_in_hand():
 func _enter_hovered_over():
 	print(cassette_name + " Enters Hover Over")
 	flip_tooltip.visible = true
-	z_index = 2
+	z_index = 4
 	play_animation("Hover_over")
 
 func _exit_hovered_over():
 	print(cassette_name + " Exits Hover Over")
+	
 	flip_tooltip.visible = false
 	play_animation("Hover_over", true)
 
 func _enter_dragging():
 	print(cassette_name + " Enters Dragging")
-	z_index = 3
+	z_index = 4
 	play_animation("SwitchToFront", true)
 
 func _exit_dragging():
@@ -340,12 +325,14 @@ func _exit_dragging():
 	
 
 func _enter_in_slot():
-	z_index = 1
+	print(cassette_name + " Enters In Slot")
 	flip_tooltip.visible = false
+	z_index = 0
+	skip_animation("SwitchToFront", true)
 	self.position = Vector2(0,0)
 
 func _exit_in_slot():
-	self.get_parent().remove_child(self)
+	play_animation("SwitchToFront")
 
 
 func print_start_animation():

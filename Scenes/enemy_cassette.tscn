@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dw0n05mcits0x"]
+[gd_scene load_steps=26 format=3 uid="uid://dw0n05mcits0x"]
 
 [ext_resource type="Script" uid="uid://c0g32ne6d7lqq" path="res://Scripts/cassette.gd" id="1_vftii"]
 [ext_resource type="Texture2D" uid="uid://bqvadmvpaliuo" path="res://Images/cassette/cassette front/text box.png" id="4_prap6"]
@@ -23,6 +23,22 @@ base_font = ExtResource("6_j52hp")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0x1d7"]
 size = Vector2(442, 40)
+
+[sub_resource type="Animation" id="Animation_7u67c"]
+resource_name = "CassetteVanish"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_bdam2"]
 length = 0.001
@@ -61,6 +77,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(442, 40)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprites:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_1rwco"]
@@ -152,6 +180,7 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o46m7"]
 _data = {
+&"CassetteVanish": SubResource("Animation_7u67c"),
 &"RESET": SubResource("Animation_bdam2"),
 &"SwitchToFront": SubResource("Animation_1rwco"),
 &"SwitchToOtherSide": SubResource("Animation_75skt"),
@@ -159,9 +188,12 @@ _data = {
 }
 
 [node name="Cassette" type="Node2D"]
+light_mask = 524288
+visibility_layer = 524288
 script = ExtResource("1_vftii")
 
 [node name="Sprites" type="Node2D" parent="."]
+scale = Vector2(0.75, 0.75)
 
 [node name="Top" type="Node2D" parent="Sprites"]
 
@@ -426,6 +458,8 @@ texture = ExtResource("17_xsyxj")
 visible = false
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8388608
+collision_mask = 8388608
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_0x1d7")

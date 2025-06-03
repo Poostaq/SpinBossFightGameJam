@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://caohjtvblyruq"]
+
+[ext_resource type="Script" uid="uid://bn3mjgri6s005" path="res://Features/game_manager.gd" id="1_nnhmg"]
+[ext_resource type="AudioStream" uid="uid://d3j3jugolyevf" path="res://Music/Im coming hub new and better title screen.wav" id="2_7fm5x"]
+[ext_resource type="Script" uid="uid://vv60mqwjendf" path="res://Features/music_player.gd" id="3_ryfpj"]
+[ext_resource type="Texture2D" uid="uid://u501tg45mcaq" path="res://Images/MainMenu/Grayout_for_buttons.png" id="4_pjeri"]
+
+[sub_resource type="Environment" id="Environment_48qbg"]
+background_mode = 3
+glow_enabled = true
+glow_blend_mode = 1
+
+[node name="Main" type="Node2D"]
+
+[node name="GameManager" type="Node2D" parent="."]
+script = ExtResource("1_nnhmg")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_7fm5x")
+volume_db = -60.0
+bus = &"Music"
+script = ExtResource("3_ryfpj")
+
+[node name="FadeOut" type="Sprite2D" parent="."]
+visible = false
+z_index = 20
+position = Vector2(932.5, 510)
+scale = Vector2(2.125, 1.298)
+texture = ExtResource("4_pjeri")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_48qbg")

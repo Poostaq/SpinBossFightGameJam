@@ -1,0 +1,263 @@
+[gd_scene load_steps=20 format=3 uid="uid://fx04ttno2vnu"]
+
+[ext_resource type="Script" uid="uid://citurvnablksk" path="res://Features/FightScene/MiniCassette/mini_cassette.gd" id="1_rtd3k"]
+[ext_resource type="Texture2D" uid="uid://cvtclg7lpuej1" path="res://Images/cassette/cassette front/1 label.png" id="2_hs8h2"]
+[ext_resource type="Texture2D" uid="uid://bri5abvba2nda" path="res://Images/cassette/cassette front/2 case c v2.png" id="3_g4q71"]
+[ext_resource type="Texture2D" uid="uid://1jexkvbes2ne" path="res://Images/cassette/cassette front/3 gears v2.png" id="4_osl6m"]
+[ext_resource type="FontFile" uid="uid://bf27d738cuys7" path="res://Font/RockSalt-Regular.ttf" id="5_r0d8t"]
+[ext_resource type="Texture2D" uid="uid://bqvadmvpaliuo" path="res://Images/cassette/cassette front/text box.png" id="6_0wma1"]
+[ext_resource type="FontFile" uid="uid://dtn7qee5h51x5" path="res://Font/atwriter.ttf" id="7_gbcgt"]
+[ext_resource type="Texture2D" uid="uid://sv0sakk6sx8w" path="res://Images/cassette/cassette front/fuel.png" id="8_41hgg"]
+[ext_resource type="Texture2D" uid="uid://dbu4otahu4w27" path="res://Images/action_icons/burn icon.png" id="9_rtd3k"]
+[ext_resource type="Texture2D" uid="uid://bcftnty1uwy66" path="res://Images/vfx/impact/impact v2 1.png" id="10_rogrs"]
+[ext_resource type="Texture2D" uid="uid://lcwp3cphcr4u" path="res://Images/vfx/impact/impact v2 2.png" id="11_u8bri"]
+[ext_resource type="Texture2D" uid="uid://bcf84idexm0d6" path="res://Images/vfx/impact/impact v2 3.png" id="12_btoo1"]
+[ext_resource type="Texture2D" uid="uid://gb2xgnije441" path="res://Images/vfx/impact/impact v2 4.png" id="13_2q36e"]
+[ext_resource type="Texture2D" uid="uid://v64620hcumhb" path="res://Images/vfx/impact/impact v2 5.png" id="14_aeuf7"]
+[ext_resource type="Texture2D" uid="uid://bdmn1vxx6s7b7" path="res://Images/vfx/impact/impact v2 6.png" id="15_55kwg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0x1d7"]
+size = Vector2(442, 270)
+
+[sub_resource type="Animation" id="Animation_bcfg6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VFX:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("10_rogrs")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VFX:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Node2D:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_jgxl4"]
+resource_name = "malfunction"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.832337, 0.0708999, 0.21202, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VFX:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0667, 0.1333, 0.2, 0.2667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("10_rogrs"), ExtResource("11_u8bri"), ExtResource("12_btoo1"), ExtResource("13_2q36e"), ExtResource("14_aeuf7"), ExtResource("15_55kwg")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VFX:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.366667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.0666667, 0.0966667, 0.126667, 0.156667, 0.186667, 0.216667, 0.246667, 0.276667, 0.306667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(20, 2), Vector2(0, 0), Vector2(-20, 2), Vector2(0, 0), Vector2(20, 2), Vector2(0, 0), Vector2(-20, 2), Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Node2D:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.0666667, 0.0966667, 0.126667, 0.156667, 0.186667, 0.216667, 0.246667, 0.276667, 0.306667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.10472, 0.0, 0.10472, 0.0, -0.10472, 0.0, 0.10472, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pi1gs"]
+_data = {
+&"RESET": SubResource("Animation_bcfg6"),
+&"malfunction": SubResource("Animation_jgxl4")
+}
+
+[node name="Cassette" type="Node2D"]
+script = ExtResource("1_rtd3k")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Front" type="Node2D" parent="Node2D"]
+position = Vector2(0, 20)
+
+[node name="Label" type="Sprite2D" parent="Node2D/Front"]
+texture = ExtResource("2_hs8h2")
+
+[node name="Frame" type="Sprite2D" parent="Node2D/Front"]
+texture = ExtResource("3_g4q71")
+
+[node name="Gears" type="Sprite2D" parent="Node2D/Front"]
+texture = ExtResource("4_osl6m")
+
+[node name="CassetteName" type="Label" parent="Node2D/Front"]
+offset_left = -142.0
+offset_top = -124.0
+offset_right = 143.0
+offset_bottom = -52.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("5_r0d8t")
+theme_override_font_sizes/font_size = 30
+text = "SUPA DORIFTO"
+metadata/_edit_use_anchors_ = true
+
+[node name="Area2D" type="Area2D" parent="Node2D"]
+collision_layer = 256
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Area2D"]
+position = Vector2(0, 19)
+shape = SubResource("RectangleShape2D_0x1d7")
+
+[node name="CassetteMoveInfo" type="Node2D" parent="Node2D"]
+
+[node name="DescriptionBox" type="Sprite2D" parent="Node2D/CassetteMoveInfo"]
+position = Vector2(0.5, 49)
+scale = Vector2(1.66797, 0.65625)
+texture = ExtResource("6_0wma1")
+
+[node name="AttackDirection" type="Sprite2D" parent="Node2D/CassetteMoveInfo"]
+position = Vector2(-132, 100)
+
+[node name="ManeouverDescription" type="Label" parent="Node2D/CassetteMoveInfo"]
+offset_left = -209.0
+offset_top = -41.0
+offset_right = 211.0
+offset_bottom = 79.0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("7_gbcgt")
+theme_override_font_sizes/font_size = 20
+text = "This is but a very long description of move"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+justification_flags = 171
+
+[node name="Icons" type="Node2D" parent="Node2D/CassetteMoveInfo"]
+
+[node name="Fuel" type="Sprite2D" parent="Node2D/CassetteMoveInfo/Icons"]
+position = Vector2(-280, -5)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("8_41hgg")
+
+[node name="Label" type="Label" parent="Node2D/CassetteMoveInfo/Icons/Fuel"]
+anchors_preset = -1
+anchor_left = 0.195313
+anchor_top = 0.234375
+anchor_right = 0.773438
+anchor_bottom = 0.859375
+offset_left = -128.0
+offset_top = -128.0
+offset_right = -128.0
+offset_bottom = -128.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("7_gbcgt")
+theme_override_font_sizes/font_size = 120
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="AfterTurnIcon" type="Sprite2D" parent="Node2D/CassetteMoveInfo"]
+position = Vector2(186, 101)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("9_rtd3k")
+
+[node name="VFX" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-6, -1.99997)
+scale = Vector2(0.324219, 0.265625)
+texture = ExtResource("10_rogrs")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_pi1gs")
+}
+
+[connection signal="mouse_entered" from="Node2D/Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Node2D/Area2D" to="." method="_on_area_2d_mouse_exited"]

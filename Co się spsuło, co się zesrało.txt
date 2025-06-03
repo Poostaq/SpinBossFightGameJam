@@ -40,4 +40,3 @@ Koncert życzeń:
 6. Zmniejszyć rozmiar cyfr na ikonach akcji
 
 7. Wartość buffa/debuffa wywalić z ikony specjal i przenieść do opisu.
-
