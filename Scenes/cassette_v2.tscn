@@ -581,14 +581,14 @@ text = "5"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Fuel2" type="Sprite2D" parent="Sprites/SideA"]
+[node name="Icon1" type="Sprite2D" parent="Sprites/SideA"]
 light_mask = 524288
 visibility_layer = 524288
 position = Vector2(-205, 0)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("12_a0hmf")
 
-[node name="Label" type="Label" parent="Sprites/SideA/Fuel2"]
+[node name="Label" type="Label" parent="Sprites/SideA/Icon1"]
 light_mask = 524288
 visibility_layer = 524288
 anchors_preset = 15
@@ -609,14 +609,14 @@ text = "5"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Fuel3" type="Sprite2D" parent="Sprites/SideA"]
+[node name="Icon2" type="Sprite2D" parent="Sprites/SideA"]
 light_mask = 524288
 visibility_layer = 524288
 position = Vector2(-205, 100)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("13_qa70k")
 
-[node name="Label" type="Label" parent="Sprites/SideA/Fuel3"]
+[node name="Label" type="Label" parent="Sprites/SideA/Icon2"]
 light_mask = 524288
 visibility_layer = 524288
 anchors_preset = 15
@@ -645,7 +645,7 @@ scale = Vector2(0.75, 0.75)
 texture = ExtResource("16_q1l3l")
 metadata/_edit_use_anchors_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Sprites/SideA"]
+[node name="Actions" type="Sprite2D" parent="Sprites/SideA"]
 position = Vector2(0, 50)
 texture = ExtResource("15_lurm7")
 

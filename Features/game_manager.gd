@@ -22,7 +22,7 @@ func load_scene(scene: Node):
 
 func load_main_menu():
 	game_state = GameState.MAIN_MENU
-	load_scene(preload("res://Scenes/MainMenu.tscn").instantiate())
+	load_scene(preload("res://Features/MainMenu/MainMenu.tscn").instantiate())
 
 func load_story_scene():
 	await music_player.fade_out_music()
@@ -35,7 +35,7 @@ func load_story_scene():
 func load_fight_scene():
 	await music_player.fade_out_music()
 	game_state = GameState.FIGHT
-	load_scene(preload("res://Scenes/FightScene.tscn").instantiate())
+	load_scene(preload("res://Features/FightScene/FightScene.tscn").instantiate())
 	await music_player.fade_in_music(music_player.FIGHT_1)
 
 func on_start_button_pressed():
