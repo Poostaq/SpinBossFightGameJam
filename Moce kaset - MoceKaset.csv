@@ -1,0 +1,71 @@
+,Strona kasety,,,,,,,,,,
+,"Jak obliczać koszt:
+- jeśli to atak w tylko jednym kierunku za 1-2 obrażeń, to koszt 1 (analogicznie z redukcją obrażeń)
+- za każdy kolejny kierunek +1 punkt do kosztu
+- za każdy kolejny punkt obrażeń +1 do kosztu
+- jeśli to specjal lub kombinacja ze specjalem działającym na akcję, to +1 do kosztu, na turę to +2, a na walkę to +3.
+- każdy manewr to też +1 do kosztu
+- uniknięcie jakiejkolwiek akcji przeciwnika +2 do kosztu
+- negatywne właściwości umiejętności zmniejszają koszt analogicznie do specjali, -1 na akcję, -2 na turę, -3 na walkę
+- burn zmniejsza koszt o połowę, zaokrąglone w górę",,,,,,kasety unikatowe dla bossów,kasety unikatowe dla gracza,,,"Słowniczek: akcja - pojedyńcze działanie takie jak atak, redukcja obrażeń, specjal (buff/debuff), lub manewr; buff - wzmocnienie gracza; debuff - osłabienie przeciwnika; manewr - zmiana pozycji na overtake, line up, slow down; kaseta - akcja i/lub manewr; tura - rozegranie wszystkich kaset gracza i przeciwnika"
+,Nazwa i strona kasety,,discard/burn,typ akcji,koszt,manewr,kierunek ataku,obrażenia,redukcja obrażeń,czas działania buffa/debuffa,opis
+evans,EMP A,A,burn,atak/specjal,3,n/a,w przód,2,,w tej turze,wyłącz kolejną kasetę przeciwnika
+evans,EMP B,B,discard,atak/specjal,4,n/a,w tył,1,,w kolejnej turze,wyłącza overtake przeciwnika
+,Nitro A,A,discard,atak,5,n/a,w tył,4,,,
+,Nitro B,B,discard,specjal,3,overtake,n/a,n/a,,w kolejnej turze,wyłącza overtake przeciwnika
+,Emergency brake A,A,discard,atak,3,n/a,w tył,2,,,
+,Emergency brake B,B,discard,specjal,4,n/a,n/a,n/a,,w tej turze,wyłącza atak przeciwnika w bok
+,Ram A,A,discard,atak,6,n/a,w bok/w przód,4,,,
+,Ram B,B,discard,obrona,4,line up,n/a,n/a,3,,
+,Shoot'em up A,A,discard,atak,5,n/a,dowolny,2,,,
+,Shoot'em up B,B,burn,specjal,3,n/a,n/a,n/a,n/a,do końca walki,atak +1
+boss pociąg ,Explosive Manoeuvre A,A,burn,atak ,14,n/a,w bok i w tył,12,,,
+boss pociąg ,Explosive Manoeuvre B,B,discard,specjal,3,overtake,,,,w tej turze,kolejny atak +2
+boss pociąg ,Honk Honk A,A,discard,specjal,2,n/a,n/a,,,w tej turze,kolejny atak +1 we wszystkich kierunkach
+boss pociąg ,Honk Honk B,B,discard,atak/specjal,4,overtake,w tył,1,,,
+boss pociąg ,Launcher Gallery A,A,discard,atak/specjal,7,n/a,w bok,5,,w tej turze,kolejny atak +2
+boss pociąg ,Launcher Gallery B,B,discard,atak/specjal,6,n/a,w tył,4,,w tej turze,kolejny atak +1
+boss pociąg ,"Hook, line and sinker A",A,discard,obrona/specjal,3,line up,n/a,,1,w tej turze,wyłącz kolejny manewr przeciwnika
+boss pociąg ,"Hook, line and sinker B",B,discard,obrona/specjal,4,overtake,,,2,w tej turze,wyłącz swój kolejny manewr
+,Pew Pew A,A,discard,atak,2,n/a,w bok,1,,,
+,Pew Pew B,B,discard,atak,2,,w przód,1,,,
+,Letter D A,A,discard,specjal,3,line up,n/a,,,w tej turze,wyłącz kolejny atak lub debuff przeciwnika - manewry i buffy przeciwnika bez zmian
+,Letter D B,B,burn,specjal,1,overtake,,,,w kolejnej turze,"atak -2, wyłącz wszystkie kasety przeciwnika"
+,Whatever A,A,discard,special ,1,n/a,n/a,,,w tej turze,Losowy buff następnej kasety: atak +2 / koszt paliwa -2 / redukcja obrażeń +2
+,Whatever B,B,discard,special ,1,n/a,n/a,n/a,,w tej turze,Losowy debuff: następny atak -2 / koszt paliwa+2
+,Big Refill A,A,burn,special ,1,n/a,n/a,,,do końca walki,koszt paliwa -1
+,Big Refill B,B,discard,special ,1,n/a,n/a,n/a,,w tej turze,koszt paliwa następnej kasety -3
+,Gimme Fuel A,A,discard,atak/special,7,n/a,w bok/w przód,3,,w kolejnej turze,przez całą turę koszt paliwa przeciwnika +2
+,Gimme Fuel B,B,discard,atak/special,5,n/a,w bok/w przód,2,,w tej turze,koszt paliwa pierwszej kasety przeciwnika +5
+,Oil Spill A,A,discard,specjal,1,overtake,n/a,,,w tej turze,wyłącz kolejny manewr przeciwnika
+,Oil Spill B,B,discard,obrona,3,overtake,n/a,n/a,2,,
+,Gimme Fire A,A,discard,atak/special,5,n/a,w tył,2,,w tej turze,"Przez całą turę jeśli przeciwnik pozostaje na Slow Down lub Line Up, to otrzymuje 1 punkt obrażeń"
+,Gimme Fire B,B,burn,special ,1,n/a,n/a,n/a,,w tej turze,Wszystkie potencjalnie otrzymane w tej turze obrażenia zamień w redukcję kosztu paliwa w kolejnej turze
+boss boner,My name is Spike A,A,discard,special ,4,n/a,n/a,,,w tej turze,Odbij połowę otrzymanych w turze obrażeń z powrotem do przeciwnika (zaokrąglone w górę)
+boss boner,My name is Spike B,B,discard,obrona/specjal,3,slowdown,n/a,n/a,1,w tej turze,Odbij jednen punkt obrażeń z powrotem do przeciwnika
+boss boner,Rail the Tail A,A,discard,attack/specjal,6,n/a,w przód,4,,w tej turze,"Slow Down przeciwnika zmienia się w Line Up, Line Up nie ma efektu w tej turze"
+boss boner,Rail the Tail B,B,burn,attack/specjal,3,n/a,w przód,1,,do końca walki,koszt paliwa przeciwnika +1
+boss hound,Another One A,A,burn,special ,3,slow down,n/a,,,w tej turze,wyłącz atak przeciwnika w tył na całą turę
+boss hound,Another One B,B,discard,obrona,5,n/a,n/a,,3,,
+boss evans,Pit Manoeuvre A,A,discard,defence/specjal,6,overtake,n/a,,2,w tej turze,koszt paliwa następnej akcji przeciwnika +2
+boss evans,Pit Manoeuvre B,B,discard,attack/special,7,n/a,w bok,5,,w tej turze,koszt paliwa następnej akcji przeciwnika +2
+boss hound,Bites the Dust A,A,burn,special,2,slowdown,n/a,,,do końca walki,ataki w przód +2
+boss hound,Bites the Dust B,B,discard,atak/special,4,n/a,dowolny,1,,w tej turze,Zadaj obrażenia zwiększone o koszt zużytego w tej turze paliwa
+,Road Rage A,A,discard,atak/obrona,8,n/a,dowolny,4,2,,
+,Road Rage B,B,discard,atak/obrona,8,n/a,dowolny,2,4,,
+,Burning Rubber A,A,burn,atak,3,n/a,w tył,5,,,
+,Burning Rubber B,B,burn,specjal,1,overtake,,,,w tej turze,wyłącza kolejną kasetę przeciwnika
+,Kickdown A,A,discard,specjal,3,overtake,n/a,,,w tej turze,koszt paliwa i atak +3
+,Kickdown B,B,discard,specjal,3,line up,,,,w tej turze,na całą turę wyłącz manewry przeciwnika
+,Hit me baby one more time A,A,discard,obrona,3,line up,n/a,,2,,
+,Hit me baby one more time B,B,discard,obrona,1,slow down,,,2,,
+,Roadslinger A,A,discard,atak,5,n/a,w przód/w tył,3,,,
+,Roadslinger B,B,discard,atak,5,n/a,w bok/ w tył,3,,,
+,Drafting A,A,burn,special,2,slow down,n/a,,,w kolejnej turze,koszt paliwa 1 przez całą następną turę jeśli zaczniesz ją na pozycji slowdown
+,Drafting B,B,discard,special,2,slow down,,,,w kolejnej turze,koszt pierwszej kasety 1 jeśli rozpoczniesz na pozycji slowdown
+,Offence is Defence A,A,discard,atak,5,n/a,w bok/w tył,2,,,
+,Offence is Defence B,B,discard,obrona,2,line up,n/a,,2,,
+,Run to Live A,A,discard,obrona,4,overtake,n/a,,3,,
+,Run to Live B,B,discard,obrona,4,slowdown,n/a,,3,,
+,Perfectly Balanced A,A,discard,atak/obrona,6,n/a,w bok,3,3,,
+,Perfectly Balanced B,B,discard,special,3,line up,n/a,,,w kolejnej turze,przez całą turę koszt paliwa -1 gdy jesteś w pozycji line up
