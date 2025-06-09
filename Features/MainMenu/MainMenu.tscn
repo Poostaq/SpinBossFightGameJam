@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://basbt252t041a"]
+[gd_scene load_steps=21 format=3 uid="uid://basbt252t041a"]
 
 [ext_resource type="Script" uid="uid://bqg0oe3b0n1wo" path="res://Features/MainMenu/main_menu.gd" id="1_hw7sd"]
 [ext_resource type="Texture2D" uid="uid://cdevedgkhsjrl" path="res://Images/MainMenu/frame 1.png" id="2_7n3s7"]
@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://d12knjk3fg827" path="res://Images/MainMenu/frame 6.png" id="7_j2y7c"]
 [ext_resource type="Texture2D" uid="uid://u501tg45mcaq" path="res://Images/MainMenu/Grayout_for_buttons.png" id="8_c2lfq"]
 [ext_resource type="Texture2D" uid="uid://qi8dtyiumhq7" path="res://Images/MainMenu/logo.png" id="9_i0a4v"]
-[ext_resource type="PackedScene" uid="uid://bokhffkteotyi" path="res://Scenes/MenuButton.tscn" id="10_iguil"]
 [ext_resource type="Texture2D" uid="uid://0evk38pg4170" path="res://Images/CardDraft/button idle.png" id="11_oquq3"]
 [ext_resource type="PackedScene" uid="uid://mq5808bnkhb8" path="res://Scenes/slider.tscn" id="11_wmbnk"]
 [ext_resource type="Texture2D" uid="uid://c64xjxwbxc6jc" path="res://Images/CardDraft/button hover.png" id="12_5xaoq"]
@@ -97,6 +96,7 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="MainMenuButtons" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -180,7 +180,6 @@ text = "Exit
 metadata/_edit_use_anchors_ = true
 
 [node name="OptionsMenu" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -261,19 +260,32 @@ text = "SFX Volume"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BackToMenu" parent="OptionsMenu" instance=ExtResource("10_iguil")]
+[node name="Back" type="Button" parent="OptionsMenu"]
 layout_mode = 1
-anchor_left = 0.0707708
-anchor_top = 0.118812
-anchor_right = 0.0707708
-anchor_bottom = 0.179704
-offset_left = 1364.12
-offset_top = 84.0
-offset_right = 1764.12
-offset_bottom = 159.0
-text = "Back to menu"
+anchors_preset = -1
+anchor_left = 0.718687
+anchor_top = -0.0990099
+anchor_right = 0.718687
+anchor_bottom = -0.0381173
+offset_left = 122.12
+offset_top = 87.0
+offset_right = 522.12
+offset_bottom = 162.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("12_xj0b2")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_42kni")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_ye56w")
+theme_override_styles/hover = SubResource("StyleBoxTexture_bvfjj")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_jiecx")
+theme_override_styles/normal = SubResource("StyleBoxTexture_qyqye")
+text = "Back To Menu
+"
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="MainMenuButtons/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="MainMenuButtons/Options" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="MainMenuButtons/Exit" to="." method="_on_exit_pressed"]
-[connection signal="pressed" from="OptionsMenu/BackToMenu" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="OptionsMenu/Back" to="." method="_on_back_button_pressed"]

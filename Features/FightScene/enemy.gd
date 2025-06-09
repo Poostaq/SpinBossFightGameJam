@@ -1,7 +1,7 @@
 extends Node
 class_name Enemy
 
-const CASSETTE_SCENE = "res://Scenes/enemy_cassette.tscn"
+const CASSETTE_SCENE = "res://Features/FightScene/EnemyCassette/enemy_cassette.tscn"
 # Signals to notify others of changes
 signal deck_changed(new_deck)  # deck or hand changed
 signal slots_changed()         # slot cassettes changed

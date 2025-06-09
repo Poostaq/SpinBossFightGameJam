@@ -1,7 +1,7 @@
 extends Node2D
 
 
-const CARD_SCENE_PATH = "res://Scenes/enemy_cassette.tscn"
+const CARD_SCENE_PATH = "res://Features/FightScene/EnemyCassette/enemy_cassette.tscn"
 
 
 var enemy_deck = ["Regular Attack","Regular Attack","Regular Attack","Regular Attack","Quick Attack","Quick Attack","Quick Attack","Heavy Attack","Heavy Attack","Heavy Attack",]

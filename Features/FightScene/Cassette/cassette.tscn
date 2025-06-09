@@ -1,29 +1,29 @@
 [gd_scene load_steps=29 format=3 uid="uid://cvtlgyph5fw86"]
 
-[ext_resource type="Script" uid="uid://c0g32ne6d7lqq" path="res://Scripts/cassette.gd" id="1_ip0rb"]
-[ext_resource type="Texture2D" uid="uid://cvtclg7lpuej1" path="res://Images/cassette/cassette front/1 label.png" id="2_0vxk3"]
-[ext_resource type="Texture2D" uid="uid://bri5abvba2nda" path="res://Images/cassette/cassette front/2 case c v2.png" id="3_6ja6y"]
-[ext_resource type="Texture2D" uid="uid://1jexkvbes2ne" path="res://Images/cassette/cassette front/3 gears v2.png" id="4_i4qpf"]
-[ext_resource type="FontFile" uid="uid://bf27d738cuys7" path="res://Font/RockSalt-Regular.ttf" id="6_aebhr"]
-[ext_resource type="Texture2D" uid="uid://bc66jvhfkucid" path="res://Images/cassette/cassette front/A side.png" id="6_nneag"]
-[ext_resource type="Texture2D" uid="uid://bxu4re1jrhh2j" path="res://Images/cassette/cassette side/case side v2.png" id="6_ujjbk"]
-[ext_resource type="Texture2D" uid="uid://brmt4wph5umix" path="res://Images/cassette/cassette front/B side.png" id="7_hama7"]
-[ext_resource type="Texture2D" uid="uid://bd6fqsna3edu2" path="res://Images/cassette/cassette top/1 case top v2.png" id="8_vj15e"]
-[ext_resource type="Texture2D" uid="uid://dat1u8t86k05y" path="res://Images/cassette/cassette top/2 top label.png" id="9_hy171"]
-[ext_resource type="Texture2D" uid="uid://d2jiuwd0gc6pj" path="res://Images/cassette/cassette front/flip cassette tooltip.png" id="9_kbgvb"]
-[ext_resource type="Texture2D" uid="uid://bqvadmvpaliuo" path="res://Images/cassette/cassette front/text box.png" id="10_i6v2i"]
-[ext_resource type="Texture2D" uid="uid://sv0sakk6sx8w" path="res://Images/cassette/cassette front/fuel.png" id="11_lwei8"]
-[ext_resource type="FontFile" uid="uid://dtn7qee5h51x5" path="res://Font/atwriter.ttf" id="12_bxlj3"]
-[ext_resource type="Texture2D" uid="uid://x3fcdafib402" path="res://Images/cassette/cassette front/attack.png" id="13_ln0mr"]
-[ext_resource type="Texture2D" uid="uid://g1yrgovlyh73" path="res://Images/action_icons/all_sides.png" id="14_1f16e"]
-[ext_resource type="Texture2D" uid="uid://c64671rylr8jv" path="res://Images/action_icons/discard.png" id="15_r13cf"]
-[ext_resource type="Texture2D" uid="uid://dbu4otahu4w27" path="res://Images/action_icons/burn icon.png" id="17_5rfmn"]
+[ext_resource type="Script" uid="uid://c0g32ne6d7lqq" path="res://Features/FightScene/Cassette/cassette.gd" id="1_xsw87"]
+[ext_resource type="Texture2D" uid="uid://cvtclg7lpuej1" path="res://Images/cassette/cassette front/1 label.png" id="2_3rqko"]
+[ext_resource type="Texture2D" uid="uid://bri5abvba2nda" path="res://Images/cassette/cassette front/2 case c v2.png" id="3_sl3tt"]
+[ext_resource type="Texture2D" uid="uid://1jexkvbes2ne" path="res://Images/cassette/cassette front/3 gears v2.png" id="4_qse78"]
+[ext_resource type="FontFile" uid="uid://bf27d738cuys7" path="res://Font/RockSalt-Regular.ttf" id="5_1lp6a"]
+[ext_resource type="Texture2D" uid="uid://bc66jvhfkucid" path="res://Images/cassette/cassette front/A side.png" id="6_d12t6"]
+[ext_resource type="Texture2D" uid="uid://brmt4wph5umix" path="res://Images/cassette/cassette front/B side.png" id="7_v64ge"]
+[ext_resource type="Texture2D" uid="uid://bxu4re1jrhh2j" path="res://Images/cassette/cassette side/case side v2.png" id="8_4o2xx"]
+[ext_resource type="Texture2D" uid="uid://bd6fqsna3edu2" path="res://Images/cassette/cassette top/1 case top v2.png" id="9_7of6l"]
+[ext_resource type="Texture2D" uid="uid://dat1u8t86k05y" path="res://Images/cassette/cassette top/2 top label.png" id="10_lwadu"]
+[ext_resource type="Texture2D" uid="uid://bqvadmvpaliuo" path="res://Images/cassette/cassette front/text box.png" id="11_n2orq"]
+[ext_resource type="Texture2D" uid="uid://sv0sakk6sx8w" path="res://Images/cassette/cassette front/fuel.png" id="12_ml3w0"]
+[ext_resource type="FontFile" uid="uid://dtn7qee5h51x5" path="res://Font/atwriter.ttf" id="13_ktcnw"]
+[ext_resource type="Texture2D" uid="uid://x3fcdafib402" path="res://Images/cassette/cassette front/attack.png" id="14_4ra7x"]
+[ext_resource type="Texture2D" uid="uid://g1yrgovlyh73" path="res://Images/action_icons/all_sides.png" id="15_nncfg"]
+[ext_resource type="Texture2D" uid="uid://c64671rylr8jv" path="res://Images/action_icons/discard.png" id="16_3k2jr"]
+[ext_resource type="Texture2D" uid="uid://dbu4otahu4w27" path="res://Images/action_icons/burn icon.png" id="17_ufsfw"]
+[ext_resource type="Texture2D" uid="uid://d2jiuwd0gc6pj" path="res://Images/cassette/cassette front/flip cassette tooltip.png" id="18_rcduj"]
 
 [sub_resource type="FontVariation" id="FontVariation_avwf4"]
-base_font = ExtResource("6_aebhr")
+base_font = ExtResource("5_1lp6a")
 
 [sub_resource type="FontVariation" id="FontVariation_fei8v"]
-base_font = ExtResource("12_bxlj3")
+base_font = ExtResource("13_ktcnw")
 
 [sub_resource type="Animation" id="Animation_5rfmn"]
 resource_name = "Cassette_vanish"
@@ -509,7 +509,7 @@ _data = {
 size = Vector2(442, 563.333)
 
 [node name="Cassette" type="Node2D"]
-script = ExtResource("1_ip0rb")
+script = ExtResource("1_xsw87")
 
 [node name="Sprites" type="Node2D" parent="."]
 light_mask = 524288
@@ -518,13 +518,13 @@ visibility_layer = 524288
 [node name="Front" type="Node2D" parent="Sprites"]
 
 [node name="Label" type="Sprite2D" parent="Sprites/Front"]
-texture = ExtResource("2_0vxk3")
+texture = ExtResource("2_3rqko")
 
 [node name="Frame" type="Sprite2D" parent="Sprites/Front"]
-texture = ExtResource("3_6ja6y")
+texture = ExtResource("3_sl3tt")
 
 [node name="Gears" type="Sprite2D" parent="Sprites/Front"]
-texture = ExtResource("4_i4qpf")
+texture = ExtResource("4_qse78")
 
 [node name="CassetteName" type="Label" parent="Sprites/Front"]
 offset_left = -139.0
@@ -532,7 +532,7 @@ offset_top = -124.0
 offset_right = 146.0
 offset_bottom = -51.9999
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("6_aebhr")
+theme_override_fonts/font = ExtResource("5_1lp6a")
 theme_override_font_sizes/font_size = 26
 text = "SUPA DORIFTO"
 horizontal_alignment = 1
@@ -544,30 +544,30 @@ light_mask = 524288
 visibility_layer = 524288
 position = Vector2(-154, -40)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("6_nneag")
+texture = ExtResource("6_d12t6")
 
 [node name="BSideLogo" type="Sprite2D" parent="Sprites/Front"]
 light_mask = 524288
 visibility_layer = 524288
 position = Vector2(153, -42)
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("7_hama7")
+texture = ExtResource("7_v64ge")
 
 [node name="Side" type="Node2D" parent="Sprites"]
 position = Vector2(-223, 0)
 scale = Vector2(1e-05, 1)
 
 [node name="Frame" type="Sprite2D" parent="Sprites/Side"]
-texture = ExtResource("6_ujjbk")
+texture = ExtResource("8_4o2xx")
 
 [node name="Top" type="Node2D" parent="Sprites"]
 scale = Vector2(1, 1e-05)
 
 [node name="Frame" type="Sprite2D" parent="Sprites/Top"]
-texture = ExtResource("8_vj15e")
+texture = ExtResource("9_7of6l")
 
 [node name="Label" type="Sprite2D" parent="Sprites/Top"]
-texture = ExtResource("9_hy171")
+texture = ExtResource("10_lwadu")
 
 [node name="CassetteName" type="Label" parent="Sprites/Top"]
 offset_left = -92.0
@@ -595,14 +595,14 @@ light_mask = 524288
 visibility_layer = 524288
 position = Vector2(-102, 91)
 scale = Vector2(0.6875, 0.697266)
-texture = ExtResource("10_i6v2i")
+texture = ExtResource("11_n2orq")
 
 [node name="Fuel" type="Sprite2D" parent="Sprites/SideA"]
 light_mask = 524288
 visibility_layer = 524288
 position = Vector2(-225.455, 144.545)
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("11_lwei8")
+texture = ExtResource("12_ml3w0")
 
 [node name="Label" type="Label" parent="Sprites/SideA/Fuel"]
 light_mask = 524288
@@ -614,7 +614,7 @@ offset_bottom = 93.5
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 20
-theme_override_fonts/font = ExtResource("12_bxlj3")
+theme_override_fonts/font = ExtResource("13_ktcnw")
 theme_override_font_sizes/font_size = 140
 text = "5"
 horizontal_alignment = 1
@@ -640,7 +640,7 @@ light_mask = 524288
 visibility_layer = 524288
 position = Vector2(-228.182, 70)
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("13_ln0mr")
+texture = ExtResource("14_4ra7x")
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="Sprites/SideA/MoveType"]
@@ -658,7 +658,7 @@ offset_bottom = -128.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 20
-theme_override_fonts/font = ExtResource("12_bxlj3")
+theme_override_fonts/font = ExtResource("13_ktcnw")
 theme_override_font_sizes/font_size = 140
 text = "5"
 horizontal_alignment = 1
@@ -670,7 +670,7 @@ light_mask = 524288
 visibility_layer = 524288
 position = Vector2(-123.636, 149.091)
 scale = Vector2(0.8, 0.8)
-texture = ExtResource("14_1f16e")
+texture = ExtResource("15_nncfg")
 metadata/_edit_use_anchors_ = true
 
 [node name="AfterPlay" type="Sprite2D" parent="Sprites/SideA"]
@@ -678,7 +678,7 @@ light_mask = 524288
 visibility_layer = 524288
 position = Vector2(-35, 150)
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("15_r13cf")
+texture = ExtResource("16_3k2jr")
 metadata/_edit_use_anchors_ = true
 
 [node name="SideB" type="Node2D" parent="Sprites"]
@@ -694,7 +694,7 @@ light_mask = 524288
 visibility_layer = 524288
 position = Vector2(102, 91)
 scale = Vector2(0.6875, 0.697266)
-texture = ExtResource("10_i6v2i")
+texture = ExtResource("11_n2orq")
 
 [node name="Description" type="RichTextLabel" parent="Sprites/SideB"]
 light_mask = 524288
@@ -715,7 +715,7 @@ light_mask = 524288
 visibility_layer = 524288
 position = Vector2(224.545, 148.182)
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("11_lwei8")
+texture = ExtResource("12_ml3w0")
 
 [node name="Label" type="Label" parent="Sprites/SideB/Fuel"]
 light_mask = 524288
@@ -727,7 +727,7 @@ offset_bottom = 93.5
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 20
-theme_override_fonts/font = ExtResource("12_bxlj3")
+theme_override_fonts/font = ExtResource("13_ktcnw")
 theme_override_font_sizes/font_size = 140
 text = "5"
 horizontal_alignment = 1
@@ -739,7 +739,7 @@ light_mask = 524288
 visibility_layer = 524288
 position = Vector2(225.455, 76.1364)
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("13_ln0mr")
+texture = ExtResource("14_4ra7x")
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="Sprites/SideB/MoveType"]
@@ -757,7 +757,7 @@ offset_bottom = -128.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 20
-theme_override_fonts/font = ExtResource("12_bxlj3")
+theme_override_fonts/font = ExtResource("13_ktcnw")
 theme_override_font_sizes/font_size = 140
 text = "5"
 horizontal_alignment = 1
@@ -769,7 +769,7 @@ light_mask = 524288
 visibility_layer = 524288
 position = Vector2(83.75, 148.75)
 scale = Vector2(0.8, 0.8)
-texture = ExtResource("14_1f16e")
+texture = ExtResource("15_nncfg")
 metadata/_edit_use_anchors_ = true
 
 [node name="AfterPlay" type="Sprite2D" parent="Sprites/SideB"]
@@ -777,14 +777,14 @@ light_mask = 524288
 visibility_layer = 524288
 position = Vector2(170, 150)
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("17_5rfmn")
+texture = ExtResource("17_ufsfw")
 metadata/_edit_use_anchors_ = true
 
 [node name="FlipTooltip" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(-390, -95)
 scale = Vector2(0.6, 0.6)
-texture = ExtResource("9_kbgvb")
+texture = ExtResource("18_rcduj")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

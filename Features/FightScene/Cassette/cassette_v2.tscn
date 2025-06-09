@@ -1,24 +1,24 @@
 [gd_scene load_steps=26 format=3 uid="uid://bv0hep3nj7s5i"]
 
-[ext_resource type="Script" uid="uid://c0g32ne6d7lqq" path="res://Scripts/cassette.gd" id="1_lurm7"]
-[ext_resource type="Texture2D" uid="uid://cvtclg7lpuej1" path="res://Images/cassette/cassette front/1 label.png" id="2_cibml"]
-[ext_resource type="Texture2D" uid="uid://bri5abvba2nda" path="res://Images/cassette/cassette front/2 case c v2.png" id="3_gr3wr"]
-[ext_resource type="Texture2D" uid="uid://1jexkvbes2ne" path="res://Images/cassette/cassette front/3 gears v2.png" id="4_po4b5"]
-[ext_resource type="FontFile" uid="uid://bf27d738cuys7" path="res://Font/RockSalt-Regular.ttf" id="5_2maxw"]
-[ext_resource type="Texture2D" uid="uid://bc66jvhfkucid" path="res://Images/cassette/cassette front/A side.png" id="6_80ctp"]
-[ext_resource type="Texture2D" uid="uid://bxu4re1jrhh2j" path="res://Images/cassette/cassette side/case side v2.png" id="8_8gkdm"]
-[ext_resource type="Texture2D" uid="uid://bd6fqsna3edu2" path="res://Images/cassette/cassette top/1 case top v2.png" id="9_jjisy"]
-[ext_resource type="Texture2D" uid="uid://dat1u8t86k05y" path="res://Images/cassette/cassette top/2 top label.png" id="10_dvxr3"]
-[ext_resource type="Texture2D" uid="uid://vc3k7cuctp21" path="res://Images/action_icons/attack.png" id="12_a0hmf"]
-[ext_resource type="Texture2D" uid="uid://sv0sakk6sx8w" path="res://Images/cassette/cassette front/fuel.png" id="12_e2jji"]
-[ext_resource type="FontFile" uid="uid://dtn7qee5h51x5" path="res://Font/atwriter.ttf" id="13_k18ir"]
-[ext_resource type="Texture2D" uid="uid://dnbv1ykq1xen0" path="res://Images/action_icons/defence.png" id="13_qa70k"]
-[ext_resource type="Texture2D" uid="uid://bx1gp3qdyw08t" path="res://Images/CardsPremade/boner/my_name_is_spike_a_side.png" id="15_lurm7"]
-[ext_resource type="Texture2D" uid="uid://c64671rylr8jv" path="res://Images/action_icons/discard.png" id="16_q1l3l"]
-[ext_resource type="Texture2D" uid="uid://d2jiuwd0gc6pj" path="res://Images/cassette/cassette front/flip cassette tooltip.png" id="18_88y17"]
+[ext_resource type="Script" uid="uid://c0g32ne6d7lqq" path="res://Features/FightScene/Cassette/cassette.gd" id="1_sndn0"]
+[ext_resource type="Texture2D" uid="uid://cvtclg7lpuej1" path="res://Images/cassette/cassette front/1 label.png" id="2_o2424"]
+[ext_resource type="Texture2D" uid="uid://bri5abvba2nda" path="res://Images/cassette/cassette front/2 case c v2.png" id="3_fk2f7"]
+[ext_resource type="Texture2D" uid="uid://1jexkvbes2ne" path="res://Images/cassette/cassette front/3 gears v2.png" id="4_dm7ik"]
+[ext_resource type="FontFile" uid="uid://bf27d738cuys7" path="res://Font/RockSalt-Regular.ttf" id="5_ir5hr"]
+[ext_resource type="Texture2D" uid="uid://bc66jvhfkucid" path="res://Images/cassette/cassette front/A side.png" id="6_mmpey"]
+[ext_resource type="Texture2D" uid="uid://bxu4re1jrhh2j" path="res://Images/cassette/cassette side/case side v2.png" id="7_xm1pe"]
+[ext_resource type="Texture2D" uid="uid://bd6fqsna3edu2" path="res://Images/cassette/cassette top/1 case top v2.png" id="8_6ahv7"]
+[ext_resource type="Texture2D" uid="uid://dat1u8t86k05y" path="res://Images/cassette/cassette top/2 top label.png" id="9_17ljl"]
+[ext_resource type="Texture2D" uid="uid://sv0sakk6sx8w" path="res://Images/cassette/cassette front/fuel.png" id="10_2suj0"]
+[ext_resource type="FontFile" uid="uid://dtn7qee5h51x5" path="res://Font/atwriter.ttf" id="11_i25h6"]
+[ext_resource type="Texture2D" uid="uid://vc3k7cuctp21" path="res://Images/action_icons/attack.png" id="12_74lal"]
+[ext_resource type="Texture2D" uid="uid://dnbv1ykq1xen0" path="res://Images/action_icons/defence.png" id="13_u2054"]
+[ext_resource type="Texture2D" uid="uid://c64671rylr8jv" path="res://Images/action_icons/discard.png" id="14_ocsrf"]
+[ext_resource type="Texture2D" uid="uid://bx1gp3qdyw08t" path="res://Images/CardsPremade/boner/my_name_is_spike_a_side.png" id="15_k86ah"]
+[ext_resource type="Texture2D" uid="uid://d2jiuwd0gc6pj" path="res://Images/cassette/cassette front/flip cassette tooltip.png" id="16_bm5ih"]
 
 [sub_resource type="FontVariation" id="FontVariation_avwf4"]
-base_font = ExtResource("5_2maxw")
+base_font = ExtResource("5_ir5hr")
 
 [sub_resource type="Animation" id="Animation_5rfmn"]
 resource_name = "Cassette_vanish"
@@ -480,7 +480,7 @@ _data = {
 size = Vector2(442, 563.333)
 
 [node name="Cassette" type="Node2D"]
-script = ExtResource("1_lurm7")
+script = ExtResource("1_sndn0")
 
 [node name="Sprites" type="Node2D" parent="."]
 light_mask = 524288
@@ -489,13 +489,13 @@ visibility_layer = 524288
 [node name="Front" type="Node2D" parent="Sprites"]
 
 [node name="Label" type="Sprite2D" parent="Sprites/Front"]
-texture = ExtResource("2_cibml")
+texture = ExtResource("2_o2424")
 
 [node name="Frame" type="Sprite2D" parent="Sprites/Front"]
-texture = ExtResource("3_gr3wr")
+texture = ExtResource("3_fk2f7")
 
 [node name="Gears" type="Sprite2D" parent="Sprites/Front"]
-texture = ExtResource("4_po4b5")
+texture = ExtResource("4_dm7ik")
 
 [node name="CassetteName" type="Label" parent="Sprites/Front"]
 offset_left = -166.0
@@ -503,7 +503,7 @@ offset_top = -125.0
 offset_right = 119.0
 offset_bottom = -52.9999
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("5_2maxw")
+theme_override_fonts/font = ExtResource("5_ir5hr")
 theme_override_font_sizes/font_size = 26
 text = "SUPA DORIFTO"
 horizontal_alignment = 1
@@ -515,23 +515,23 @@ light_mask = 524288
 visibility_layer = 524288
 position = Vector2(161, -90)
 scale = Vector2(0.390625, 0.359375)
-texture = ExtResource("6_80ctp")
+texture = ExtResource("6_mmpey")
 
 [node name="Side" type="Node2D" parent="Sprites"]
 position = Vector2(-223, 0)
 scale = Vector2(1e-05, 1)
 
 [node name="Frame" type="Sprite2D" parent="Sprites/Side"]
-texture = ExtResource("8_8gkdm")
+texture = ExtResource("7_xm1pe")
 
 [node name="Top" type="Node2D" parent="Sprites"]
 scale = Vector2(1, 1e-05)
 
 [node name="Frame" type="Sprite2D" parent="Sprites/Top"]
-texture = ExtResource("9_jjisy")
+texture = ExtResource("8_6ahv7")
 
 [node name="Label" type="Sprite2D" parent="Sprites/Top"]
-texture = ExtResource("10_dvxr3")
+texture = ExtResource("9_17ljl")
 
 [node name="CassetteName" type="Label" parent="Sprites/Top"]
 offset_left = -92.0
@@ -558,7 +558,7 @@ light_mask = 524288
 visibility_layer = 524288
 position = Vector2(-205, -95)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("12_e2jji")
+texture = ExtResource("10_2suj0")
 
 [node name="Label" type="Label" parent="Sprites/SideA/Fuel"]
 light_mask = 524288
@@ -575,7 +575,7 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 20
-theme_override_fonts/font = ExtResource("13_k18ir")
+theme_override_fonts/font = ExtResource("11_i25h6")
 theme_override_font_sizes/font_size = 140
 text = "5"
 horizontal_alignment = 1
@@ -586,7 +586,7 @@ light_mask = 524288
 visibility_layer = 524288
 position = Vector2(-205, 0)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("12_a0hmf")
+texture = ExtResource("12_74lal")
 
 [node name="Label" type="Label" parent="Sprites/SideA/Icon1"]
 light_mask = 524288
@@ -603,7 +603,7 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 20
-theme_override_fonts/font = ExtResource("13_k18ir")
+theme_override_fonts/font = ExtResource("11_i25h6")
 theme_override_font_sizes/font_size = 140
 text = "5"
 horizontal_alignment = 1
@@ -614,7 +614,7 @@ light_mask = 524288
 visibility_layer = 524288
 position = Vector2(-205, 100)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("13_qa70k")
+texture = ExtResource("13_u2054")
 
 [node name="Label" type="Label" parent="Sprites/SideA/Icon2"]
 light_mask = 524288
@@ -631,7 +631,7 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 20
-theme_override_fonts/font = ExtResource("13_k18ir")
+theme_override_fonts/font = ExtResource("11_i25h6")
 theme_override_font_sizes/font_size = 140
 text = "5"
 horizontal_alignment = 1
@@ -642,18 +642,18 @@ light_mask = 524288
 visibility_layer = 524288
 position = Vector2(181.818, 98.1818)
 scale = Vector2(0.75, 0.75)
-texture = ExtResource("16_q1l3l")
+texture = ExtResource("14_ocsrf")
 metadata/_edit_use_anchors_ = true
 
 [node name="Actions" type="Sprite2D" parent="Sprites/SideA"]
 position = Vector2(0, 50)
-texture = ExtResource("15_lurm7")
+texture = ExtResource("15_k86ah")
 
 [node name="FlipTooltip" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(-390, -95)
 scale = Vector2(0.6, 0.6)
-texture = ExtResource("18_88y17")
+texture = ExtResource("16_bm5ih")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

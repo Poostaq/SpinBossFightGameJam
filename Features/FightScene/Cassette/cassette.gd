@@ -35,6 +35,8 @@ var current_side
 var tween_hover
 var whose_cassette
 var state = STATE.INITIALIZING
+var image_a
+var image_b
 
 @onready var animation_player = $AnimationPlayer
 @onready var flip_tooltip: Sprite2D = $FlipTooltip
@@ -42,10 +44,11 @@ var state = STATE.INITIALIZING
 @onready var front_cassette_name_label: Label = $Sprites/Front/CassetteName
 @onready var top_cassette_name_label: Label = $Sprites/Top/CassetteName
 @onready var side_a_fuel_label: Label = $Sprites/SideA/Fuel/Label
-@onready var side_a_description: RichTextLabel = $Sprites/SideA/Description
-@onready var side_a_move_type_icon: Sprite2D = $Sprites/SideA/MoveType
-@onready var side_a_move_type_label: Label = $Sprites/SideA/MoveType/Label
-@onready var side_a_attack_targets: Sprite2D = $Sprites/SideA/AttackTargets
+@onready var actions: Sprite2D = $Sprites/SideA/Actions
+@onready var side_a_move_type_icon1: Sprite2D = $Sprites/SideA/Icon1
+@onready var icon1_label: Label = $Sprites/SideA/Icon1/Label
+@onready var side_a_move_type_icon2: Sprite2D = $Sprites/SideA/Icon2
+@onready var icon2_label: Label = $Sprites/SideA/Icon2/Label
 @onready var side_a_after_play: Sprite2D = $Sprites/SideA/AfterPlay
 @onready var collision_shape_2d: CollisionShape2D = $Area2D/CollisionShape2D
 
@@ -66,7 +69,6 @@ func update_elements():
 	top_cassette_name_label.text = cassette_name
 	#SIDE A
 	side_a_fuel_label.text = str(side_a_data["fuel_cost"])
-	side_a_description.text = side_a_data["description"]
 	side_a_move_type_icon.texture = load("res://Images/action_icons/"+side_a_data["action_icon"]+".png")
 	set_icon_value(side_a_data, side_a_move_type_label)
 	if is_show_target_icon(side_a_data["actions"]):
