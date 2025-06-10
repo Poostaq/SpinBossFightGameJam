@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://gr5dtk8hsu0x"]
 
 [ext_resource type="Texture2D" uid="uid://bh037udlnenrn" path="res://Images/cassette/cassette top/reference_top.png" id="1_6n7cu"]
-[ext_resource type="Script" uid="uid://dwb31cydv30x" path="res://Scripts/deckbuilder_cassette.gd" id="2_l4oow"]
+[ext_resource type="Script" uid="uid://dwb31cydv30x" path="res://Features/DeckBuilder/deckbuilder_cassette.gd" id="2_l4oow"]
 [ext_resource type="FontFile" uid="uid://bf27d738cuys7" path="res://Font/RockSalt-Regular.ttf" id="2_seaf1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_px7bs"]

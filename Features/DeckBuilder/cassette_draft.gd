@@ -1,6 +1,6 @@
 extends Node2D
 
-const DECKBUILDER_CASSETTE = preload("res://Scenes/deckbuilder_cassette.tscn")
+const DECKBUILDER_CASSETTE = preload("res://Features/DeckBuilder/deckbuilder_cassette.tscn")
 const REGULAR_CASSETTE_SCALE = Vector2(1,1)
 const ENLARGED_CASSETTE_SCALE = Vector2(1.1,1.1)
 const SPEED = 0.1

@@ -60,29 +60,29 @@ func _on_area_2d_mouse_exited() -> void:
 
 
 func update_elements():
-        front_cassette_name_label.text = cassette_name
-        top_cassette_name_label.text = cassette_name
-        var side_data = get_current_side_data()
-        side_a_fuel_label.text = str(side_data["fuel_cost"])
-        _display_action_icons(side_data, action_icon1, icon1_label, action_icon2, icon2_label)
-        set_icon(side_data["after_play"], side_a_after_play)
-        update_actions_texture()
+	front_cassette_name_label.text = cassette_name
+	top_cassette_name_label.text = cassette_name
+	var side_data = get_current_side_data()
+	side_a_fuel_label.text = str(side_data["fuel_cost"])
+	_display_action_icons(side_data, action_icon1, icon1_label, action_icon2, icon2_label)
+	set_icon(side_data["after_play"], side_a_after_play)
+	update_actions_texture()
 
 
 
 func get_current_side_fuel():
-        if current_side == "A":
-                return side_a_data["fuel_cost"]
-        elif current_side == "B":
-                return side_b_data["fuel_cost"]
-        else:
-                return ""
+	if current_side == "A":
+			return side_a_data["fuel_cost"]
+	elif current_side == "B":
+			return side_b_data["fuel_cost"]
+	else:
+			return ""
 
 func update_actions_texture() -> void:
-        if current_side == "A" and side_a_actions_path:
-                actions_sprite.texture = load(side_a_actions_path)
-        elif current_side == "B" and side_b_actions_path:
-                actions_sprite.texture = load(side_b_actions_path)
+	if current_side == "A" and side_a_actions_path:
+			actions_sprite.texture = load(side_a_actions_path)
+	elif current_side == "B" and side_b_actions_path:
+			actions_sprite.texture = load(side_b_actions_path)
 
 
 func parse_cassette_actions(actions: Array) -> Dictionary:
@@ -109,47 +109,47 @@ func parse_cassette_actions(actions: Array) -> Dictionary:
 
 
 func set_icon_value(icon_info: Dictionary, label: Label) -> void:
-        label.text = _get_value_text(icon_info)
+	label.text = _get_value_text(icon_info)
 
 # Display up to two action icons and their values
 func _get_filtered_icons(action_data: Dictionary) -> Array:
-        var icons = action_data.get("action_icons", [])
-        var result: Array = []
-        for info in icons:
-                var icon_name = str(info.get("icon", ""))
-                if icon_name in ["slow_down", "line_up", "overtake"]:
-                        continue
-                result.append(info)
-                if result.size() >= 2:
-                        break
-        return result
+	var icons = action_data.get("action_icons", [])
+	var result: Array = []
+	for info in icons:
+			var icon_name = str(info.get("icon", ""))
+			if icon_name in ["slow_down", "line_up", "overtake"]:
+					continue
+			result.append(info)
+			if result.size() >= 2:
+					break
+	return result
 
 func _get_value_text(info: Dictionary) -> String:
-        if not info.has("value"):
-                return ""
-        var val = info["value"]
-        if val == 0 or str(val) == "":
-                return ""
-        return str(val)
+	if not info.has("value"):
+			return ""
+	var val = info["value"]
+	if val == 0 or str(val) == "":
+			return ""
+	return str(val)
 
 func _display_action_icons(action_data: Dictionary, icon1: Sprite2D, label1: Label, icon2: Sprite2D, label2: Label) -> void:
-        var icons = _get_filtered_icons(action_data)
-        if icons.size() > 0:
-                var info = icons[0]
-                icon1.texture = load("res://Images/action_icons/%s.png" % info.get("icon", ""))
-                label1.text = _get_value_text(info)
-                icon1.visible = true
-        else:
-                icon1.visible = false
-                label1.text = ""
-        if icons.size() > 1:
-                var info2 = icons[1]
-                icon2.texture = load("res://Images/action_icons/%s.png" % info2.get("icon", ""))
-                label2.text = _get_value_text(info2)
-                icon2.visible = true
-        else:
-                icon2.visible = false
-                label2.text = ""
+	var icons = _get_filtered_icons(action_data)
+	if icons.size() > 0:
+			var info = icons[0]
+			icon1.texture = load("res://Images/action_icons/%s.png" % info.get("icon", ""))
+			label1.text = _get_value_text(info)
+			icon1.visible = true
+	else:
+			icon1.visible = false
+			label1.text = ""
+	if icons.size() > 1:
+			var info2 = icons[1]
+			icon2.texture = load("res://Images/action_icons/%s.png" % info2.get("icon", ""))
+			label2.text = _get_value_text(info2)
+			icon2.visible = true
+	else:
+			icon2.visible = false
+			label2.text = ""
 
 
 func array_join(arr: Array, sep: String) -> String:
@@ -177,79 +177,79 @@ func get_current_side_data():
 
 
 func play_animation(anim_name: String, reversed: bool = false) -> void:
-    if animation_player.is_playing():
-        var old_name = animation_player.current_animation
-        if old_name != "":
-            var old_data: Animation = animation_player.get_animation(old_name)
-            if old_data:
-                if animation_player.get_playing_speed() < 0:
-                    animation_player.seek(0, true)
-                elif animation_player.get_playing_speed() > 0:
-                    animation_player.seek(old_data.length, true)
-    if reversed:
-        animation_player.play_backwards(anim_name)
-    else:
-        animation_player.play(anim_name)
+	if animation_player.is_playing():
+		var old_name = animation_player.current_animation
+		if old_name != "":
+			var old_data: Animation = animation_player.get_animation(old_name)
+			if old_data:
+				if animation_player.get_playing_speed() < 0:
+					animation_player.seek(0, true)
+				elif animation_player.get_playing_speed() > 0:
+					animation_player.seek(old_data.length, true)
+	if reversed:
+		animation_player.play_backwards(anim_name)
+	else:
+		animation_player.play(anim_name)
 
 func skip_animation(anim_name: String, reversed: bool = false) -> void:
-    if animation_player.is_playing():
-        var old_name = animation_player.current_animation
-        if old_name != "":
-            var old_data = animation_player.get_animation(old_name)
-            if old_data:
-                if animation_player.speed_scale < 0:
-                    animation_player.seek(0, true)
-                else:
-                    animation_player.seek(old_data.length, true)
-    var new_data = animation_player.get_animation(anim_name)
-    if new_data == null:
-        push_error("Animation '%s' not found!" % anim_name)
-        return
-    if reversed:
-        animation_player.play_backwards(anim_name)
-        animation_player.seek(0, true)
-    else:
-        animation_player.play(anim_name)
-        animation_player.seek(new_data.length, true)
+	if animation_player.is_playing():
+		var old_name = animation_player.current_animation
+		if old_name != "":
+			var old_data = animation_player.get_animation(old_name)
+			if old_data:
+				if animation_player.speed_scale < 0:
+					animation_player.seek(0, true)
+				else:
+					animation_player.seek(old_data.length, true)
+	var new_data = animation_player.get_animation(anim_name)
+	if new_data == null:
+		push_error("Animation '%s' not found!" % anim_name)
+		return
+	if reversed:
+		animation_player.play_backwards(anim_name)
+		animation_player.seek(0, true)
+	else:
+		animation_player.play(anim_name)
+		animation_player.seek(new_data.length, true)
 
 func switch_sides(current_preview_side):
-        var tween = create_tween()
-        if current_preview_side == "A":
-                play_animation("SwitchToOtherSide", true)
-                if side_b_actions_path:
-                        actions_sprite.texture = load(side_b_actions_path)
-                tween.tween_property(side_a, "scale", Vector2(1.1, 1.1), 0.1)
-                tween.parallel().tween_property(side_a, "modulate", Color(1,1,1,1),0.1)
-                tween.parallel().tween_property($Sprites/SideB, "scale", Vector2(0.8,0.8), 0.1)
-                tween.parallel().tween_property($Sprites/SideB, "modulate", Color(1,1,1,0.5),0.1)
+	var tween = create_tween()
+	if current_preview_side == "A":
+			play_animation("SwitchToOtherSide", true)
+			if side_b_actions_path:
+					actions_sprite.texture = load(side_b_actions_path)
+			tween.tween_property(side_a, "scale", Vector2(1.1, 1.1), 0.1)
+			tween.parallel().tween_property(side_a, "modulate", Color(1,1,1,1),0.1)
+			tween.parallel().tween_property($Sprites/SideB, "scale", Vector2(0.8,0.8), 0.1)
+			tween.parallel().tween_property($Sprites/SideB, "modulate", Color(1,1,1,0.5),0.1)
 
-        else:
-                play_animation("SwitchToOtherSide")
-                if side_a_actions_path:
-                        actions_sprite.texture = load(side_a_actions_path)
-                tween.tween_property($Sprites/SideB, "scale", Vector2(1.1, 1.1), 0.1)
-                tween.parallel().tween_property($Sprites/SideB, "modulate", Color(1,1,1,1),0.1)
-                tween.parallel().tween_property(side_a, "scale", Vector2(0.8,0.8), 0.1)
-                tween.parallel().tween_property(side_a, "modulate", Color(1,1,1,0.5),0.1)
+	else:
+			play_animation("SwitchToOtherSide")
+			if side_a_actions_path:
+					actions_sprite.texture = load(side_a_actions_path)
+			tween.tween_property($Sprites/SideB, "scale", Vector2(1.1, 1.1), 0.1)
+			tween.parallel().tween_property($Sprites/SideB, "modulate", Color(1,1,1,1),0.1)
+			tween.parallel().tween_property(side_a, "scale", Vector2(0.8,0.8), 0.1)
+			tween.parallel().tween_property(side_a, "modulate", Color(1,1,1,0.5),0.1)
 
 
 func set_side(cassette_current_side):
-        if cassette_current_side == "A":
-                side_a.scale= Vector2(1.1, 1.1)
-                side_a.modulate = Color(1,1,1,1)
-                $Sprites/SideB.scale = Vector2(0.8,0.8)
-                $Sprites/SideB.modulate = Color(1,1,1,0.5)
-                $Sprites/Front/ASideLogo.scale = Vector2(0.5,0.5)
-                $Sprites/Front/BSideLogo.scale = Vector2(0.3,0.3)
-        else:
-                $Sprites/SideB.scale= Vector2(1.1, 1.1)
-                $Sprites/SideB.modulate = Color(1,1,1,1)
-                side_a.scale = Vector2(0.8,0.8)
-                side_a.modulate = Color(1,1,1,0.5)
-                $Sprites/Front/ASideLogo.scale = Vector2(0.3,0.3)
-                $Sprites/Front/BSideLogo.scale = Vector2(0.5,0.5)
+		if cassette_current_side == "A":
+				side_a.scale= Vector2(1.1, 1.1)
+				side_a.modulate = Color(1,1,1,1)
+				$Sprites/SideB.scale = Vector2(0.8,0.8)
+				$Sprites/SideB.modulate = Color(1,1,1,0.5)
+				$Sprites/Front/ASideLogo.scale = Vector2(0.5,0.5)
+				$Sprites/Front/BSideLogo.scale = Vector2(0.3,0.3)
+		else:
+				$Sprites/SideB.scale= Vector2(1.1, 1.1)
+				$Sprites/SideB.modulate = Color(1,1,1,1)
+				side_a.scale = Vector2(0.8,0.8)
+				side_a.modulate = Color(1,1,1,0.5)
+				$Sprites/Front/ASideLogo.scale = Vector2(0.3,0.3)
+				$Sprites/Front/BSideLogo.scale = Vector2(0.5,0.5)
 
-        update_actions_texture()
+		update_actions_texture()
 
 
 func set_icon(icon_name, element):
@@ -337,5 +337,3 @@ func _enter_in_slot():
 
 func _exit_in_slot():
 	play_animation("SwitchToFront")
-
-

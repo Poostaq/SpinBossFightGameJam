@@ -27,7 +27,7 @@ func load_main_menu():
 func load_story_scene():
 	await music_player.fade_out_music()
 	game_state = GameState.STORY
-	var story_scene = preload("res://Scenes/StoryScene.tscn").instantiate()
+	var story_scene = preload("res://Features/StoryScene/StoryScene.tscn").instantiate()
 	story_scene.current_story = current_story_index  # Pass the current story to the StoryScene
 	load_scene(story_scene)
 	await music_player.fade_in_music(music_player.STORY_MUSIC)
