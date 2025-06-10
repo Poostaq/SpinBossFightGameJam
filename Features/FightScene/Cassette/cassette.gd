@@ -27,16 +27,14 @@ const ICON_BEHAVIORS = {
 
 var position_in_hand
 var scale_in_hand
-var cassette_slot_cassette_is_in
 var side_a_data
 var side_b_data
 var cassette_name
 var current_side
-var tween_hover
 var whose_cassette
-var state = STATE.INITIALIZING
 var image_a
 var image_b
+var state = STATE.INITIALIZING
 
 @onready var animation_player = $AnimationPlayer
 @onready var flip_tooltip: Sprite2D = $FlipTooltip
@@ -51,9 +49,6 @@ var image_b
 @onready var icon2_label: Label = $Sprites/SideA/Icon2/Label
 @onready var side_a_after_play: Sprite2D = $Sprites/SideA/AfterPlay
 @onready var collision_shape_2d: CollisionShape2D = $Area2D/CollisionShape2D
-
-func _ready() -> void:
-	pass
 
 func _on_area_2d_mouse_entered() -> void:
 	hovered.emit(self)
@@ -75,19 +70,24 @@ func update_elements():
                 set_icon(get_icon_name(side_a_data["actions"]),side_a_attack_targets)
         else:
                 side_a_attack_targets.visible = false
-	set_icon(side_a_data["after_play"],side_a_after_play)
+        set_icon(side_a_data["after_play"],side_a_after_play)
+        update_actions_texture()
 
 
-func prepare_actions():
-	pass
 
 func get_current_side_fuel():
-	if current_side == "A":
-		return side_a_data["fuel_cost"]
-	elif current_side == "B":
-		return side_b_data["fuel_cost"]
-	else:
-		return ""
+        if current_side == "A":
+                return side_a_data["fuel_cost"]
+        elif current_side == "B":
+                return side_b_data["fuel_cost"]
+        else:
+                return ""
+
+func update_actions_texture() -> void:
+        if current_side == "A" and image_a:
+                actions.texture = load(image_a)
+        elif current_side == "B" and image_b:
+                actions.texture = load(image_b)
 
 
 func parse_cassette_actions(actions: Array) -> Dictionary:
@@ -192,81 +192,77 @@ func get_current_side_data():
 
 
 func play_animation(anim_name: String, reversed: bool = false) -> void:
-	if animation_player.is_playing():
-		var old_name = animation_player.current_animation
-		print(cassette_name + " stops old animation " + old_name)
-		if old_name != "":
-			var old_data: Animation = animation_player.get_animation(old_name)
-			if old_data:
-				if animation_player.get_playing_speed() < 0:
-					print("Skipping it to the start")
-					animation_player.seek(0, true)
-				elif animation_player.get_playing_speed() > 0:
-					print("Skipping it to the end")
-					animation_player.seek(old_data.length, true)
-	if reversed:
-		print(cassette_name + " plays backward animation " + anim_name)
-		animation_player.play_backwards(anim_name)
-		print("Speed Scale = " + str(animation_player.get_playing_speed()))
-	else:
-		print(cassette_name + " plays animation " + anim_name)
-		animation_player.play(anim_name)
-		print("Speed Scale = " + str(animation_player.get_playing_speed()))
+    if animation_player.is_playing():
+        var old_name = animation_player.current_animation
+        if old_name != "":
+            var old_data: Animation = animation_player.get_animation(old_name)
+            if old_data:
+                if animation_player.get_playing_speed() < 0:
+                    animation_player.seek(0, true)
+                elif animation_player.get_playing_speed() > 0:
+                    animation_player.seek(old_data.length, true)
+    if reversed:
+        animation_player.play_backwards(anim_name)
+    else:
+        animation_player.play(anim_name)
 
-		
 func skip_animation(anim_name: String, reversed: bool = false) -> void:
-	if animation_player.is_playing():
-		var old_name = animation_player.current_animation
-		if old_name != "":
-			var old_data = animation_player.get_animation(old_name)
-			if old_data:
-				if animation_player.speed_scale < 0:
-					animation_player.seek(0, true)
-				else:
-					animation_player.seek(old_data.length, true)
-	var new_data = animation_player.get_animation(anim_name)
-	if new_data == null:
-		push_error("Animation '%s' not found!" % anim_name)
-		return
-	if reversed:
-		animation_player.play_backwards(anim_name)
-		animation_player.seek(0, true)
-	else:
-		animation_player.play(anim_name)
-		animation_player.seek(new_data.length, true)
+    if animation_player.is_playing():
+        var old_name = animation_player.current_animation
+        if old_name != "":
+            var old_data = animation_player.get_animation(old_name)
+            if old_data:
+                if animation_player.speed_scale < 0:
+                    animation_player.seek(0, true)
+                else:
+                    animation_player.seek(old_data.length, true)
+    var new_data = animation_player.get_animation(anim_name)
+    if new_data == null:
+        push_error("Animation '%s' not found!" % anim_name)
+        return
+    if reversed:
+        animation_player.play_backwards(anim_name)
+        animation_player.seek(0, true)
+    else:
+        animation_player.play(anim_name)
+        animation_player.seek(new_data.length, true)
 
 func switch_sides(current_preview_side):
-	var tween = create_tween()
-	if current_preview_side == "A":
-		play_animation("SwitchToOtherSide", true)
-		tween.tween_property(side_a, "scale", Vector2(1.1, 1.1), 0.1)
-		tween.parallel().tween_property(side_a, "modulate", Color(1,1,1,1),0.1)
-		tween.parallel().tween_property($Sprites/SideB, "scale", Vector2(0.8,0.8), 0.1)
-		tween.parallel().tween_property($Sprites/SideB, "modulate", Color(1,1,1,0.5),0.1)
-		
-	else:
-		play_animation("SwitchToOtherSide")
-		tween.tween_property($Sprites/SideB, "scale", Vector2(1.1, 1.1), 0.1)
-		tween.parallel().tween_property($Sprites/SideB, "modulate", Color(1,1,1,1),0.1)
-		tween.parallel().tween_property(side_a, "scale", Vector2(0.8,0.8), 0.1)
-		tween.parallel().tween_property(side_a, "modulate", Color(1,1,1,0.5),0.1)
+        var tween = create_tween()
+        if current_preview_side == "A":
+                play_animation("SwitchToOtherSide", true)
+                update_actions_texture()
+                tween.tween_property(side_a, "scale", Vector2(1.1, 1.1), 0.1)
+                tween.parallel().tween_property(side_a, "modulate", Color(1,1,1,1),0.1)
+                tween.parallel().tween_property($Sprites/SideB, "scale", Vector2(0.8,0.8), 0.1)
+                tween.parallel().tween_property($Sprites/SideB, "modulate", Color(1,1,1,0.5),0.1)
+
+        else:
+                play_animation("SwitchToOtherSide")
+                update_actions_texture()
+                tween.tween_property($Sprites/SideB, "scale", Vector2(1.1, 1.1), 0.1)
+                tween.parallel().tween_property($Sprites/SideB, "modulate", Color(1,1,1,1),0.1)
+                tween.parallel().tween_property(side_a, "scale", Vector2(0.8,0.8), 0.1)
+                tween.parallel().tween_property(side_a, "modulate", Color(1,1,1,0.5),0.1)
 
 
 func set_side(cassette_current_side):
-	if cassette_current_side == "A":
-		side_a.scale= Vector2(1.1, 1.1)
-		side_a.modulate = Color(1,1,1,1)
-		$Sprites/SideB.scale = Vector2(0.8,0.8)
-		$Sprites/SideB.modulate = Color(1,1,1,0.5)
-		$Sprites/Front/ASideLogo.scale = Vector2(0.5,0.5)
-		$Sprites/Front/BSideLogo.scale = Vector2(0.3,0.3)
-	else:
-		$Sprites/SideB.scale= Vector2(1.1, 1.1)
-		$Sprites/SideB.modulate = Color(1,1,1,1)
-		side_a.scale = Vector2(0.8,0.8)
-		side_a.modulate = Color(1,1,1,0.5)
-		$Sprites/Front/ASideLogo.scale = Vector2(0.3,0.3)
-		$Sprites/Front/BSideLogo.scale = Vector2(0.5,0.5)
+        if cassette_current_side == "A":
+                side_a.scale= Vector2(1.1, 1.1)
+                side_a.modulate = Color(1,1,1,1)
+                $Sprites/SideB.scale = Vector2(0.8,0.8)
+                $Sprites/SideB.modulate = Color(1,1,1,0.5)
+                $Sprites/Front/ASideLogo.scale = Vector2(0.5,0.5)
+                $Sprites/Front/BSideLogo.scale = Vector2(0.3,0.3)
+        else:
+                $Sprites/SideB.scale= Vector2(1.1, 1.1)
+                $Sprites/SideB.modulate = Color(1,1,1,1)
+                side_a.scale = Vector2(0.8,0.8)
+                side_a.modulate = Color(1,1,1,0.5)
+                $Sprites/Front/ASideLogo.scale = Vector2(0.3,0.3)
+                $Sprites/Front/BSideLogo.scale = Vector2(0.5,0.5)
+
+        update_actions_texture()
 
 
 func set_icon(icon_name, element):
@@ -336,37 +332,30 @@ func _exit_initializing():
 
 func _enter_in_hand():
 	z_index = 2
-	print(cassette_name + " Enters Hand")
 
 func _exit_in_hand():
-	print(cassette_name + " Exits Hand")
 	pass
 
 func _enter_hovered_over():
-	print(cassette_name + " Enters Hover Over")
 	flip_tooltip.visible = true
 	z_index = 4
 	play_animation("Hover_over")
 
 func _exit_hovered_over():
-	print(cassette_name + " Exits Hover Over")
 	
 	flip_tooltip.visible = false
 	play_animation("Hover_over", true)
 
 func _enter_dragging():
-	print(cassette_name + " Enters Dragging")
 	z_index = 4
 	play_animation("SwitchToFront", true)
 
 func _exit_dragging():
-	print(cassette_name + " Exits Dragging")
 	play_animation("SwitchToFront")
 	self.get_parent().remove_child(self)
 	
 
 func _enter_in_slot():
-	print(cassette_name + " Enters In Slot")
 	flip_tooltip.visible = false
 	z_index = 0
 	skip_animation("SwitchToFront", true)
