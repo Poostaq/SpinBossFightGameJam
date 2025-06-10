@@ -30,9 +30,9 @@
                     {
                         "action_type": 2,
                         "affected_target": 1,
-                        "description": "this",
-                        "effect_name": "this_turn_attacks_from_front_wont_work",
-                        "target_area": "front",
+                        "description": "Damage reduction this turn.",
+                        "effect_name": "this_turn_damage_reduction",
+                        "target_area": "all sides",
                         "value": 3
                     }
                 ],
