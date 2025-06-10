@@ -38,16 +38,14 @@ func highlight_cassette(should_highlight):
 		tween_hover.tween_property($CassetteSprites, "scale", REGULAR_CASSETTE_SIZE, 0.1)
 
 func update_elements():
-	$CassetteSprites/Front/CassetteName.text = cassette_name
-	$CassetteSprites/Top/CassetteName.text = cassette_name
-	$CassetteSprites/SideA/Fuel/Label.text = str(cassette_side_a[CASSETTE_SIDE_DATA.FUEL_COST])
-	$CassetteSprites/SideA/Description.text = cassette_side_a[CASSETTE_SIDE_DATA.DESCRIPTION]
-	$CassetteSprites/SideB/Fuel/Label.text = str(cassette_side_b[CASSETTE_SIDE_DATA.FUEL_COST])
-	$CassetteSprites/SideB/Description.text = cassette_side_b[CASSETTE_SIDE_DATA.DESCRIPTION]
-	$CassetteSprites/SideA/Icon.texture = load("res://Images/action_icons/"+cassette_side_a[CASSETTE_SIDE_DATA.ACTION_ICON]+".png")
-	set_icon_value(cassette_side_a, $CassetteSprites/SideA/Icon/Label)
-	$CassetteSprites/SideB/Icon.texture = load("res://Images/action_icons/"+cassette_side_b[CASSETTE_SIDE_DATA.ACTION_ICON]+".png")
-	set_icon_value(cassette_side_b, $CassetteSprites/SideB/Icon/Label)
+        $CassetteSprites/Front/CassetteName.text = cassette_name
+        $CassetteSprites/Top/CassetteName.text = cassette_name
+        $CassetteSprites/SideA/Fuel/Label.text = str(cassette_side_a[CASSETTE_SIDE_DATA.FUEL_COST])
+        $CassetteSprites/SideA/Description.text = cassette_side_a[CASSETTE_SIDE_DATA.DESCRIPTION]
+        $CassetteSprites/SideB/Fuel/Label.text = str(cassette_side_b[CASSETTE_SIDE_DATA.FUEL_COST])
+        $CassetteSprites/SideB/Description.text = cassette_side_b[CASSETTE_SIDE_DATA.DESCRIPTION]
+        _display_icon(cassette_side_a, $CassetteSprites/SideA/Icon, $CassetteSprites/SideA/Icon/Label)
+        _display_icon(cassette_side_b, $CassetteSprites/SideB/Icon, $CassetteSprites/SideB/Icon/Label)
 
 func get_current_side_fuel():
 	if current_side == "A":
@@ -61,55 +59,20 @@ func set_name_labels():
 	$CassetteSprites/Front/CassetteName.text = cassette_name
 	$CassetteSprites/Top/CassetteName.text = cassette_name
 
-func set_icon_value(cassette_data, label):
-	if cassette_data[CASSETTE_SIDE_DATA.ACTION_ICON] == "attack":
-		var attack = 0
-		for action in cassette_data[CASSETTE_SIDE_DATA.ACTIONS_LIST]:
-			if action[ACTION.MOVE_TYPE] == "attack":
-				attack = action[ACTION.VALUE]
-		label.text = str(attack)
-	elif cassette_data[CASSETTE_SIDE_DATA.ACTION_ICON] == "attack_special":
-		var attack = 0
-		var special = 0
-		for action in cassette_data[CASSETTE_SIDE_DATA.ACTIONS_LIST]:
-			if action[ACTION.MOVE_TYPE] == "attack":
-				attack = action[ACTION.VALUE]
-		for action in cassette_data[CASSETTE_SIDE_DATA.ACTIONS_LIST]:
-			if action[ACTION.MOVE_TYPE] == "special":
-				special = action[ACTION.VALUE]
-		if attack == 0:
-			label.text = str(special)
-		if special == 0:
-			label.text = str(attack)
-	elif cassette_data[CASSETTE_SIDE_DATA.ACTION_ICON] == "attack_defence":
-		var attack = 0
-		var defence = 0
-		for action in cassette_data[CASSETTE_SIDE_DATA.ACTIONS_LIST]:
-			if action[ACTION.MOVE_TYPE] == "attack":
-				attack = action[ACTION.VALUE]
-			if action[ACTION.MOVE_TYPE] == "special":
-				defence += action[ACTION.VALUE]
-		label.text = str(attack)+"|"+str(defence)
-	elif cassette_data[CASSETTE_SIDE_DATA.ACTION_ICON] == "defence":
-		var defence = 0
-		for action in cassette_data[CASSETTE_SIDE_DATA.ACTIONS_LIST]:
-			if action[ACTION.MOVE_TYPE] == "special":
-				defence =action[ACTION.VALUE]
-		label.text = str(defence)
-	elif cassette_data[CASSETTE_SIDE_DATA.ACTION_ICON] == "defence_special":
-		var special = 0
-		for action in cassette_data[CASSETTE_SIDE_DATA.ACTIONS_LIST]:
-			if action[ACTION.MOVE_TYPE] == "special":
-				special = action[ACTION.VALUE]
-		label.text = str(special)
-	elif cassette_data[CASSETTE_SIDE_DATA.ACTION_ICON] == "special":
-		var special = 0
-		for action in cassette_data[CASSETTE_SIDE_DATA.ACTIONS_LIST]:
-			if action[ACTION.MOVE_TYPE] == "special":
-				special = action[ACTION.VALUE]
-		label.text = str(special)
-	else:
-		label = ""
+func _display_icon(cassette_data, icon_node, label_node):
+        var icons = cassette_data.get("action_icons", [])
+        for info in icons:
+                var icon_name = str(info.get("icon", ""))
+                if icon_name in ["slow_down", "line_up", "overtake"]:
+                        continue
+                icon_node.texture = load("res://Images/action_icons/%s.png" % icon_name)
+                var value = info.get("value", "")
+                if value == 0 or str(value) == "":
+                        label_node.text = ""
+                else:
+                        label_node.text = str(value)
+                return
+        label_node.text = ""
 	
 
 func switch_preview_sides(current_preview_side):

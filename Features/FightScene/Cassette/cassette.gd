@@ -65,17 +65,16 @@ func _on_area_2d_mouse_exited() -> void:
 
 
 func update_elements():
-	front_cassette_name_label.text = cassette_name
-	top_cassette_name_label.text = cassette_name
-	#SIDE A
-	side_a_fuel_label.text = str(side_a_data["fuel_cost"])
-	side_a_move_type_icon.texture = load("res://Images/action_icons/"+side_a_data["action_icon"]+".png")
-	set_icon_value(side_a_data, side_a_move_type_label)
-	if is_show_target_icon(side_a_data["actions"]):
-		side_a_attack_targets.visible = true
-		set_icon(get_icon_name(side_a_data["actions"]),side_a_attack_targets)
-	else:
-		side_a_attack_targets.visible = false
+        front_cassette_name_label.text = cassette_name
+        top_cassette_name_label.text = cassette_name
+        #SIDE A
+        side_a_fuel_label.text = str(side_a_data["fuel_cost"])
+        _display_action_icons(side_a_data, side_a_move_type_icon1, icon1_label, side_a_move_type_icon2, icon2_label)
+        if is_show_target_icon(side_a_data["actions"]):
+                side_a_attack_targets.visible = true
+                set_icon(get_icon_name(side_a_data["actions"]),side_a_attack_targets)
+        else:
+                side_a_attack_targets.visible = false
 	set_icon(side_a_data["after_play"],side_a_after_play)
 
 
@@ -125,7 +124,47 @@ func set_icon_value(action_data: Dictionary, label: Label) -> void:
 	var values_str = []
 	for cat in categories:
 		values_str.append(str(totals[cat]))
-	label.text = array_join(values_str, "|")
+        label.text = array_join(values_str, "|")
+
+# Display up to two action icons and their values
+func _get_filtered_icons(action_data: Dictionary) -> Array:
+        var icons = action_data.get("action_icons", [])
+        var result: Array = []
+        for info in icons:
+                var icon_name = str(info.get("icon", ""))
+                if icon_name in ["slow_down", "line_up", "overtake"]:
+                        continue
+                result.append(info)
+                if result.size() >= 2:
+                        break
+        return result
+
+func _get_value_text(info: Dictionary) -> String:
+        if not info.has("value"):
+                return ""
+        var val = info["value"]
+        if val == 0 or str(val) == "":
+                return ""
+        return str(val)
+
+func _display_action_icons(action_data: Dictionary, icon1: Sprite2D, label1: Label, icon2: Sprite2D, label2: Label) -> void:
+        var icons = _get_filtered_icons(action_data)
+        if icons.size() > 0:
+                var info = icons[0]
+                icon1.texture = load("res://Images/action_icons/%s.png" % info.get("icon", ""))
+                label1.text = _get_value_text(info)
+                icon1.visible = true
+        else:
+                icon1.visible = false
+                label1.text = ""
+        if icons.size() > 1:
+                var info2 = icons[1]
+                icon2.texture = load("res://Images/action_icons/%s.png" % info2.get("icon", ""))
+                label2.text = _get_value_text(info2)
+                icon2.visible = true
+        else:
+                icon2.visible = false
+                label2.text = ""
 
 
 func array_join(arr: Array, sep: String) -> String:
