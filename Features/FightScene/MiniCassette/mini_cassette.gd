@@ -15,49 +15,27 @@ var action_data = []
 var whose_cassette
 
 func set_cassette_data(current_icons):
-	#set_icons_data()
-	var action_label = current_icons.get_node("Action/Label")
-	if action_data[CASSETTE_SIDE_DATA.ACTION_ICON] == "attack" or action_data[CASSETTE_SIDE_DATA.ACTION_ICON] == "attack_special":
-		var attack = 0
-		for action in action_data[CASSETTE_SIDE_DATA.ACTIONS_LIST]:
-			if action[ACTION.MOVE_TYPE] == "attack":
-				attack = action[ACTION.VALUE]
-		action_label.text = str(attack)
-	elif action_data[CASSETTE_SIDE_DATA.ACTION_ICON] == "attack_defence":
-		var attack = 0
-		var defence = 0
-		for action in action_data[CASSETTE_SIDE_DATA.ACTIONS_LIST]:
-			if action[ACTION.MOVE_TYPE] == "attack":
-				attack = action[ACTION.VALUE]
-			if action[ACTION.MOVE_TYPE] == "special":
-				defence =action[ACTION.VALUE]
-		action_label.text = str(attack)+"|"+str(defence)
-	elif action_data[CASSETTE_SIDE_DATA.ACTION_ICON] == "defence":
-		var defence = 0
-		for action in action_data[CASSETTE_SIDE_DATA.ACTIONS_LIST]:
-			if action[ACTION.MOVE_TYPE] == "special":
-				defence =action[ACTION.VALUE]
-		action_label.text = str(defence)
-	elif action_data[CASSETTE_SIDE_DATA.ACTION_ICON] == "defence_special":
-		var special = 0
-		for action in action_data[CASSETTE_SIDE_DATA.ACTIONS_LIST]:
-			if action[ACTION.MOVE_TYPE] == "special":
-				special = action[ACTION.VALUE]
-		if special == "":
-			action_label.text = str(special)
-	elif action_data[CASSETTE_SIDE_DATA.ACTION_ICON] == "special":
-		var special = 0
-		for action in action_data[CASSETTE_SIDE_DATA.ACTIONS_LIST]:
-			if action[ACTION.MOVE_TYPE] == "special":
-				special = action[ACTION.VALUE]
-		action_label.text = str(special)
-	else:
-		action_label = ""
-	maneouver_description.text = action_data[CASSETTE_SIDE_DATA.DESCRIPTION]
-	current_icons.get_node("Action").texture = load("res://Images/action_icons/"+action_data[CASSETTE_SIDE_DATA.ACTION_ICON]+".png")
-	after_turn_icon.texture = load("res://Images/action_icons/"+action_data[CASSETTE_SIDE_DATA.AFTER_PLAY]+".png")
-	var fuel_label =  current_icons.get_node("Fuel/Label")
-	fuel_label.text = str(action_data[CASSETTE_SIDE_DATA.FUEL_COST])
+        var action_label = current_icons.get_node("Action/Label")
+        var icons = action_data.get("action_icons", [])
+        var shown = false
+        for info in icons:
+                var icon_name = str(info.get("icon", ""))
+                if icon_name in ["slow_down", "line_up", "overtake"]:
+                        continue
+                current_icons.get_node("Action").texture = load("res://Images/action_icons/%s.png" % icon_name)
+                var value = info.get("value", "")
+                if value == 0 or str(value) == "":
+                        action_label.text = ""
+                else:
+                        action_label.text = str(value)
+                shown = true
+                break
+        if not shown:
+                action_label.text = ""
+        after_turn_icon.texture = load("res://Images/action_icons/%s.png" % action_data[CASSETTE_SIDE_DATA.AFTER_PLAY])
+        var fuel_label = current_icons.get_node("Fuel/Label")
+        fuel_label.text = str(action_data[CASSETTE_SIDE_DATA.FUEL_COST])
+        maneouver_description.text = action_data[CASSETTE_SIDE_DATA.DESCRIPTION]
 	
 #func set_icons_visibility():
 	#if whose_cassette == GlobalEnums.PLAYER:
