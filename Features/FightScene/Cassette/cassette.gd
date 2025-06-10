@@ -32,8 +32,8 @@ var side_b_data
 var cassette_name
 var current_side
 var whose_cassette
-var image_a
-var image_b
+var side_a_actions_path
+var side_b_actions_path
 var state = STATE.INITIALIZING
 
 @onready var animation_player = $AnimationPlayer
@@ -42,10 +42,10 @@ var state = STATE.INITIALIZING
 @onready var front_cassette_name_label: Label = $Sprites/Front/CassetteName
 @onready var top_cassette_name_label: Label = $Sprites/Top/CassetteName
 @onready var side_a_fuel_label: Label = $Sprites/SideA/Fuel/Label
-@onready var actions: Sprite2D = $Sprites/SideA/Actions
-@onready var side_a_move_type_icon1: Sprite2D = $Sprites/SideA/Icon1
+@onready var actions_sprite: Sprite2D = $Sprites/SideA/Actions
+@onready var action_icon1: Sprite2D = $Sprites/SideA/Icon1
 @onready var icon1_label: Label = $Sprites/SideA/Icon1/Label
-@onready var side_a_move_type_icon2: Sprite2D = $Sprites/SideA/Icon2
+@onready var action_icon2: Sprite2D = $Sprites/SideA/Icon2
 @onready var icon2_label: Label = $Sprites/SideA/Icon2/Label
 @onready var side_a_after_play: Sprite2D = $Sprites/SideA/AfterPlay
 @onready var collision_shape_2d: CollisionShape2D = $Area2D/CollisionShape2D
@@ -62,15 +62,10 @@ func _on_area_2d_mouse_exited() -> void:
 func update_elements():
         front_cassette_name_label.text = cassette_name
         top_cassette_name_label.text = cassette_name
-        #SIDE A
-        side_a_fuel_label.text = str(side_a_data["fuel_cost"])
-        _display_action_icons(side_a_data, side_a_move_type_icon1, icon1_label, side_a_move_type_icon2, icon2_label)
-        if is_show_target_icon(side_a_data["actions"]):
-                side_a_attack_targets.visible = true
-                set_icon(get_icon_name(side_a_data["actions"]),side_a_attack_targets)
-        else:
-                side_a_attack_targets.visible = false
-        set_icon(side_a_data["after_play"],side_a_after_play)
+        var side_data = get_current_side_data()
+        side_a_fuel_label.text = str(side_data["fuel_cost"])
+        _display_action_icons(side_data, action_icon1, icon1_label, action_icon2, icon2_label)
+        set_icon(side_data["after_play"], side_a_after_play)
         update_actions_texture()
 
 
@@ -84,10 +79,10 @@ func get_current_side_fuel():
                 return ""
 
 func update_actions_texture() -> void:
-        if current_side == "A" and image_a:
-                actions.texture = load(image_a)
-        elif current_side == "B" and image_b:
-                actions.texture = load(image_b)
+        if current_side == "A" and side_a_actions_path:
+                actions_sprite.texture = load(side_a_actions_path)
+        elif current_side == "B" and side_b_actions_path:
+                actions_sprite.texture = load(side_b_actions_path)
 
 
 func parse_cassette_actions(actions: Array) -> Dictionary:
@@ -113,18 +108,8 @@ func parse_cassette_actions(actions: Array) -> Dictionary:
 	return result
 
 
-func set_icon_value(action_data: Dictionary, label: Label) -> void:
-	var icon_type = action_data["action_icon"]
-	var actions = action_data["actions"]
-	if not ICON_BEHAVIORS.has(icon_type):
-		label.text = ""
-		return
-	var totals = parse_cassette_actions(actions)
-	var categories = ICON_BEHAVIORS[icon_type]
-	var values_str = []
-	for cat in categories:
-		values_str.append(str(totals[cat]))
-        label.text = array_join(values_str, "|")
+func set_icon_value(icon_info: Dictionary, label: Label) -> void:
+        label.text = _get_value_text(icon_info)
 
 # Display up to two action icons and their values
 func _get_filtered_icons(action_data: Dictionary) -> Array:
@@ -231,7 +216,8 @@ func switch_sides(current_preview_side):
         var tween = create_tween()
         if current_preview_side == "A":
                 play_animation("SwitchToOtherSide", true)
-                update_actions_texture()
+                if side_b_actions_path:
+                        actions_sprite.texture = load(side_b_actions_path)
                 tween.tween_property(side_a, "scale", Vector2(1.1, 1.1), 0.1)
                 tween.parallel().tween_property(side_a, "modulate", Color(1,1,1,1),0.1)
                 tween.parallel().tween_property($Sprites/SideB, "scale", Vector2(0.8,0.8), 0.1)
@@ -239,7 +225,8 @@ func switch_sides(current_preview_side):
 
         else:
                 play_animation("SwitchToOtherSide")
-                update_actions_texture()
+                if side_a_actions_path:
+                        actions_sprite.texture = load(side_a_actions_path)
                 tween.tween_property($Sprites/SideB, "scale", Vector2(1.1, 1.1), 0.1)
                 tween.parallel().tween_property($Sprites/SideB, "modulate", Color(1,1,1,1),0.1)
                 tween.parallel().tween_property(side_a, "scale", Vector2(0.8,0.8), 0.1)
@@ -269,19 +256,6 @@ func set_icon(icon_name, element):
 	element.texture = load("res://Images/action_icons/"+icon_name+".png")
 
 
-func get_icon_name(action_moves):
-	var action_target = action_moves[0]["target_area"]
-	return "attack to the "+ action_target
-
-
-func is_show_target_icon(action_moves):
-	for action in action_moves:
-		if action["action_type"] == GlobalEnums.ACTION_TYPE.ATTACK:
-			return true
-		if action["action_type"] == GlobalEnums.ACTION_TYPE.SPECIAL:
-			if action["effect_name"] == "attack_deals_damage_plus_spent_fuel_as_bonus_damage_all_sides":
-				return true
-	return false
 
 
 # 3) Single setter method
@@ -365,9 +339,3 @@ func _exit_in_slot():
 	play_animation("SwitchToFront")
 
 
-func print_start_animation():
-	print("START OF ANIMATION " + animation_player.current_animation)
-
-
-func print_end_animation():
-	print("END OF ANIMATION " + animation_player.current_animation)

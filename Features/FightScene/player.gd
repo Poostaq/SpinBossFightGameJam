@@ -35,9 +35,9 @@ func create_cassette(cassette_name):
 	var cassette_info = Database.cassettes["cassettes"][cassette_name]
 	new_cassette.side_a_data = cassette_info["side_a"]
 	new_cassette.side_b_data = cassette_info["side_b"]
-	if "image_a" in cassette_info:
-		new_cassette.image_a = cassette_info["image_a"]
-		new_cassette.image_b = cassette_info["image_b"]
+        if "image_a" in cassette_info:
+                new_cassette.side_a_actions_path = cassette_info["image_a"]
+                new_cassette.side_b_actions_path = cassette_info["image_b"]
 	new_cassette.cassette_name = cassette_name
 	new_cassette.current_side = "A"
 	new_cassette.whose_cassette = GlobalEnums.PLAYER
