@@ -65,9 +65,8 @@ func select_cassettes_for_sequence():
 		# Animate cassette placement
 		hand.animate_cassette_to_position(selected_cassette, Vector2.ZERO)
 
-		# Set action icon
-		var icon_path = "res://Images/action_icons/%s.png" % selected_cassette.get_current_action()[selected_cassette.CASSETTE_SIDE_DATA.ACTION_ICON]
-		current_slot.icon.texture = load(icon_path)
+                # Set action icons
+                current_slot.fill_icons(selected_cassette.get_current_side_data())
 
 		# Simulate decision delay for more realistic AI behavior
 		await get_tree().create_timer(0.5).timeout
@@ -76,9 +75,9 @@ func select_cassettes_for_sequence():
 
 func _calculate_total_fuel_cost() -> int:
 	var total_cost = 0
-	for slot in sequence.get_children():
-		if slot.cassette_in_slot:
-			total_cost += slot.cassette_in_slot.get_current_action()[selected_cassette.CASSETTE_SIDE_DATA.FUEL_COST]
+        for slot in sequence.get_children():
+                if slot.cassette_in_slot:
+                        total_cost += slot.cassette_in_slot.get_current_side_data()[selected_cassette.CASSETTE_SIDE_DATA.FUEL_COST]
 	return total_cost
 
 func _maybe_apply_status_effects() -> Array:
