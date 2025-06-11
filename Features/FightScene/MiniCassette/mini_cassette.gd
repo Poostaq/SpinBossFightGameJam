@@ -15,24 +15,24 @@ var action_data
 var whose_cassette
 
 func set_cassette_data():
-    var action_label: Label = icons.get_node("Action/Label")
-    var icons = action_data.get("action_icons", [])
-    var shown = false
-    for info in icons:
-        var icon_name = str(info.get("icon", ""))
-        if icon_name in ["slow_down", "line_up", "overtake"]:
-            continue
-        icons.get_node("Action").texture = load("res://Images/action_icons/%s.png" % icon_name)
-        var value = info.get("value", "")
-        action_label.text = str(value) if value != 0 and str(value) != "" else ""
-        shown = true
-        break
-    if not shown:
-        action_label.text = ""
-    after_turn_icon.texture = load("res://Images/action_icons/%s.png" % action_data[CASSETTE_SIDE_DATA.AFTER_PLAY])
-    var fuel_label: Label = icons.get_node("Fuel/Label")
-    fuel_label.text = str(action_data[CASSETTE_SIDE_DATA.FUEL_COST])
-    maneouver_description.text = action_data[CASSETTE_SIDE_DATA.DESCRIPTION]
+	var action_label: Label = icons.get_node("Action/Label")
+	var icons = action_data.get("action_icons", [])
+	var shown = false
+	for info in icons:
+		var icon_name = str(info.get("icon", ""))
+		if icon_name in ["slow_down", "line_up", "overtake"]:
+			continue
+		icons.get_node("Action").texture = load("res://Images/action_icons/%s.png" % icon_name)
+		var value = info.get("value", "")
+		action_label.text = str(value) if value != 0 and str(value) != "" else ""
+		shown = true
+		break
+	if not shown:
+		action_label.text = ""
+	after_turn_icon.texture = load("res://Images/action_icons/%s.png" % action_data[CASSETTE_SIDE_DATA.AFTER_PLAY])
+	var fuel_label: Label = icons.get_node("Fuel/Label")
+	fuel_label.text = str(action_data[CASSETTE_SIDE_DATA.FUEL_COST])
+	maneouver_description.text = action_data[CASSETTE_SIDE_DATA.DESCRIPTION]
 	
 #func set_icons_visibility():
 	#if whose_cassette == GlobalEnums.PLAYER:
