@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dub8iyna426y"
-path="res://.godot/imported/burn icon.png-67bbc827f31469a09ef94b789fd6c1d6.ctex"
+uid="uid://dbu4otahu4w27"
+path="res://.godot/imported/burn.png-e382e91a0fc73b80a59e10991c805770.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/action_icons/burn icon.png"
-dest_files=["res://.godot/imported/burn icon.png-67bbc827f31469a09ef94b789fd6c1d6.ctex"]
+source_file="res://Images/action_icons/burn.png"
+dest_files=["res://.godot/imported/burn.png-e382e91a0fc73b80a59e10991c805770.ctex"]
 
 [params]
 
