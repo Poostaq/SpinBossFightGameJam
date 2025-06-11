@@ -72,7 +72,7 @@ func populate_mini_cassettes(actor, cassettes, owner):
 		mini_cassette.action_data = original.get_current_action()
 		mini_cassette.whose_cassette = owner
 		mini_cassette.cassette_name.text = original.cassette_name
-		mini_cassette.set_cassette_data(mini_cassette.player_icons if owner == GlobalEnums.PLAYER else mini_cassette.enemy_icons)
+                mini_cassette.set_cassette_data()
 
 
 func determine_next_cassette_to_play():
