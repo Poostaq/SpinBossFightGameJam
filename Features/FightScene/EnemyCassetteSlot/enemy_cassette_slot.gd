@@ -13,28 +13,40 @@ func remove_icons():
 			child.queue_free()
 
 func fill_icons(side_data: Dictionary) -> void:
-	remove_icons()
-	var icons = side_data.get("action_icons", [])
-	var spacing = 30
-	var idx = 0
-	for info in icons:
-			var icon_name = str(info.get("icon", ""))
-			if icon_name == "":
-					continue
-			var sprite := Sprite2D.new()
-			sprite.texture = load("res://Images/action_icons/%s.png" % icon_name)
-			sprite.scale = Vector2(0.15, 0.15)
-			sprite.position = Vector2(idx * spacing, 0)
-			if info.has("value"):
-					var val = info["value"]
-					if val != 0 and str(val) != "":
-							var label := Label.new()
-							label.text = str(val)
-							label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-							label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-							sprite.add_child(label)
-			icons_container.add_child(sprite)
-			idx += 1
+       remove_icons()
+       var raw_icons = side_data.get("action_icons", [])
+       var spacing = 30
+       var icons: Array = []
+       for info in raw_icons:
+               var icon_name = str(info.get("icon", ""))
+               if icon_name == "":
+                       continue
+               icons.append(info)
+
+       var icon_count = icons.size()
+       if icon_count == 0:
+               return
+
+       var start_offset = -(icon_count - 1) * spacing / 2.0
+       var idx = 0
+       for info in icons:
+               var icon_name = str(info.get("icon", ""))
+               var sprite := Sprite2D.new()
+               sprite.texture = load("res://Images/action_icons/%s.png" % icon_name)
+               sprite.scale = Vector2(0.15, 0.15)
+               sprite.position = Vector2(start_offset + idx * spacing, 0)
+
+               if info.has("value"):
+                       var val = info["value"]
+                       if val != 0 and str(val) != "":
+                               var label := Label.new()
+                               label.text = str(val)
+                               label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+                               label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+                               sprite.add_child(label)
+
+               icons_container.add_child(sprite)
+               idx += 1
 
 
 func set_cover_state(closed):
