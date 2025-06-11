@@ -1,6 +1,8 @@
 extends Node
 
-const STATUS_EFFECT_ICON_SCENE_PATH = "res://Scenes/StatusEffectIcon.tscn"
+const STATUS_EFFECT_ICON_SCENE_PATH = "res://Features/FightScene/StatusEffects/StatusEffectIcon.tscn"
+
+
 func _on_status_effect_added(effect: StatusEffect):
 	var icon = preload(STATUS_EFFECT_ICON_SCENE_PATH).instantiate()
 	icon.setup(effect)

@@ -90,7 +90,7 @@ func select_cassettes_for_sequence():
 		current_slot.set_cover_state(false)
 		current_slot.cassette_in_slot = selected_cassette
 		selected_cassette.animate_cassette_to_position(Vector2(0,0))
-		var icon_name = selected_cassette.get_current_side_data()["action_icon"]
-		current_slot.icon.texture = load("res://Images/action_icons/"+icon_name+".png")
+		var side_data = selected_cassette.get_current_side_data()
+		current_slot.fill_icons(side_data)
 		await get_tree().create_timer(0.5).timeout
 	return true

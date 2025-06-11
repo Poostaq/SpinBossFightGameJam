@@ -256,8 +256,6 @@ func set_icon(icon_name, element):
 	element.texture = load("res://Images/action_icons/"+icon_name+".png")
 
 
-
-
 # 3) Single setter method
 func set_state(new_state: STATE) -> void:
 	if new_state == state:
