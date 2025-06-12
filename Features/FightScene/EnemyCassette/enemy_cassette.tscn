@@ -17,6 +17,10 @@
 [ext_resource type="Texture2D" uid="uid://bc66jvhfkucid" path="res://Images/cassette/cassette front/A side.png" id="15_ck6wr"]
 [ext_resource type="Texture2D" uid="uid://brmt4wph5umix" path="res://Images/cassette/cassette front/B side.png" id="16_eplrv"]
 [ext_resource type="Texture2D" uid="uid://bxu4re1jrhh2j" path="res://Images/cassette/cassette side/case side v2.png" id="17_xsyxj"]
+[ext_resource type="Texture2D" uid="uid://vc3k7cuctp21" path="res://Images/action_icons/attack.png" id="18_74lal"]
+[ext_resource type="Texture2D" uid="uid://dnbv1ykq1xen0" path="res://Images/action_icons/defence.png" id="19_u2054"]
+[ext_resource type="Texture2D" uid="uid://c64671rylr8jv" path="res://Images/action_icons/discard.png" id="20_ocsrf"]
+[ext_resource type="Texture2D" uid="uid://bx1gp3qdyw08t" path="res://Images/CardsPremade/boner/my_name_is_spike_a_side.png" id="21_k86ah"]
 
 [sub_resource type="FontVariation" id="FontVariation_xan1t"]
 base_font = ExtResource("6_j52hp")
@@ -305,6 +309,62 @@ position = Vector2(-123.636, 149.091)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("8_y3dw0")
 metadata/_edit_use_anchors_ = true
+
+[node name="Icon1" type="Sprite2D" parent="Sprites/SideA"]
+position = Vector2(-205, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("18_74lal")
+
+[node name="Label" type="Label" parent="Sprites/SideA/Icon1"]
+light_mask = 524288
+visibility_layer = 524288
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -128.0
+offset_right = -128.0
+offset_bottom = -128.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("6_j52hp")
+theme_override_font_sizes/font_size = 140
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Icon2" type="Sprite2D" parent="Sprites/SideA"]
+position = Vector2(-205, 100)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("19_u2054")
+
+[node name="Label" type="Label" parent="Sprites/SideA/Icon2"]
+light_mask = 524288
+visibility_layer = 524288
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -128.0
+offset_right = -128.0
+offset_bottom = -128.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("6_j52hp")
+theme_override_font_sizes/font_size = 140
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Actions" type="Sprite2D" parent="Sprites/SideA"]
+position = Vector2(0, 50)
+texture = ExtResource("21_k86ah")
 
 [node name="AfterPlay" type="Sprite2D" parent="Sprites/SideA"]
 position = Vector2(-35, 150)

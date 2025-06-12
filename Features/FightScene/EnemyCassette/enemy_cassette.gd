@@ -1,4 +1,4 @@
-extends "res://Scripts/cassette.gd"
+extends "res://Features/FightScene/Cassette/cassette.gd"
 
 
 # Called when the node enters the scene tree for the first time.
