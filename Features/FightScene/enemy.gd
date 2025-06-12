@@ -67,7 +67,7 @@ func create_cassette(cassette_name):
 	new_cassette.side_b_data = Database.cassettes["cassettes"][cassette_name]["side_b"]
 	new_cassette.cassette_name = cassette_name
 	new_cassette.current_side = "A"
-	new_cassette.whose_cassette = GlobalEnums.PLAYER
+       new_cassette.whose_cassette = GlobalEnums.ENEMY
 	cassette_manager.connect_cassette_signals(new_cassette)
 	new_cassette.state = new_cassette.STATE.IN_HAND
 	return new_cassette
