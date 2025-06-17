@@ -479,7 +479,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_axh4p"]
 size = Vector2(442, 563.333)
 
-[node name="Cassette" type="Node2D"]
+[node name="Cassette3" type="Node2D"]
 script = ExtResource("1_sndn0")
 
 [node name="Sprites" type="Node2D" parent="."]
@@ -668,8 +668,8 @@ priority = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -640)
 shape = SubResource("RectangleShape2D_axh4p")
-one_way_collision_margin = 3.0
 disabled = true
+one_way_collision_margin = 3.0
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

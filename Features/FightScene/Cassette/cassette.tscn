@@ -508,7 +508,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_axh4p"]
 size = Vector2(442, 563.333)
 
-[node name="Cassette" type="Node2D"]
+[node name="Cassette2" type="Node2D"]
 script = ExtResource("1_xsw87")
 
 [node name="Sprites" type="Node2D" parent="."]
