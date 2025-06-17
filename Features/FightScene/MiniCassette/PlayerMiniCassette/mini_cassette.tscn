@@ -151,7 +151,7 @@ _data = {
 &"malfunction": SubResource("Animation_jgxl4")
 }
 
-[node name="Cassette3" type="Node2D"]
+[node name="Cassette" type="Node2D"]
 script = ExtResource("1_mgj2g")
 
 [node name="Node2D" type="Node2D" parent="."]
