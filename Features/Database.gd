@@ -17,10 +17,9 @@ func load_all_data():
 func load_cassettes():
 	var file = FileAccess.open("res://Data/cassettes_db.json", FileAccess.READ)
 	if file:
-			cassettes = JSON.parse_string(file.get_as_text())
+		cassettes = JSON.parse_string(file.get_as_text())
 	else:
-			push_error("Failed to load cassettes_db.json")
-
+		push_error("Failed to load cassettes_db.json")
 
 func load_status_effects():
 	var file = FileAccess.open("res://Data/status_effect.json", FileAccess.READ)
@@ -28,7 +27,6 @@ func load_status_effects():
 		effects = JSON.parse_string(file.get_as_text())
 	else:
 		push_error("Failed to load status_effects.json")
-
 
 func load_boss_decks():
 	var file = FileAccess.open("res://Data/boss_decks.json", FileAccess.READ)
