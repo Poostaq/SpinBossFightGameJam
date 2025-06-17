@@ -268,7 +268,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-
 [node name="AfterTurnIcon" type="Sprite2D" parent="Node2D/CassetteMoveInfo"]
 position = Vector2(186, 101)
 scale = Vector2(0.4, 0.4)

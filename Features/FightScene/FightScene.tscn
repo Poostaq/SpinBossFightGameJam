@@ -1667,8 +1667,9 @@ script = ExtResource("1_vtqcu")
 [node name="Scenery" type="Node2D" parent="."]
 
 [node name="Sky" type="Sprite2D" parent="Scenery"]
+visible = false
 z_index = -2
-position = Vector2(1211, -95)
+position = Vector2(1213, -95)
 texture = ExtResource("2_mfl0i")
 
 [node name="BackgroundTown" type="Sprite2D" parent="Scenery"]
