@@ -151,7 +151,7 @@ _data = {
 &"malfunction": SubResource("Animation_jgxl4")
 }
 
-[node name="Cassette" type="Node2D"]
+[node name="Cassette3" type="Node2D"]
 script = ExtResource("1_mgj2g")
 
 [node name="Node2D" type="Node2D" parent="."]
@@ -267,7 +267,6 @@ text = "5"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
-
 
 [node name="AfterTurnIcon" type="Sprite2D" parent="Node2D/CassetteMoveInfo"]
 position = Vector2(186, 101)
