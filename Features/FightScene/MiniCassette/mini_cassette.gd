@@ -16,9 +16,9 @@ var whose_cassette
 
 func set_cassette_data():
 	var action_label: Label = icons.get_node("Action/Label")
-	var icons = action_data.get("action_icons", [])
+	var action_icons = action_data.get("action_icons", [])
 	var shown = false
-	for info in icons:
+	for info in action_icons:
 		var icon_name = str(info.get("icon", ""))
 		if icon_name in ["slow_down", "line_up", "overtake"]:
 			continue

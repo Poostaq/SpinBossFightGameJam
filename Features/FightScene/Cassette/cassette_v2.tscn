@@ -89,22 +89,17 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(-390, -95), Vector2(-596, -485)]
 }
-tracks/4/type = "method"
+tracks/4/type = "value"
 tracks/4/imported = false
-tracks/4/enabled = false
-tracks/4/path = NodePath(".")
+tracks/4/enabled = true
+tracks/4/path = NodePath("FlipTooltip:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.001, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [],
-"method": &"print_start_animation"
-}, {
-"args": [],
-"method": &"print_end_animation"
-}]
+"times": PackedFloat32Array(0, 0.0992162, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_bdam2"]
@@ -480,6 +475,7 @@ _data = {
 size = Vector2(442, 563.333)
 
 [node name="Cassette" type="Node2D"]
+position = Vector2(-1, 0)
 script = ExtResource("1_sndn0")
 
 [node name="Sprites" type="Node2D" parent="."]
@@ -652,7 +648,7 @@ texture = ExtResource("15_k86ah")
 [node name="FlipTooltip" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(-390, -95)
-scale = Vector2(0.6, 0.6)
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("16_bm5ih")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -661,7 +657,6 @@ libraries = {
 }
 
 [node name="Area2D" type="Area2D" parent="."]
-visible = false
 scale = Vector2(1, 0.15)
 priority = 1
 

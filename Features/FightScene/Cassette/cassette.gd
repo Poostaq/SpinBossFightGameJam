@@ -55,7 +55,6 @@ func _on_area_2d_mouse_entered() -> void:
 
 
 func _on_area_2d_mouse_exited() -> void:
-	flip_tooltip.visible = false
 	hovered_off.emit(self)
 
 
@@ -309,13 +308,10 @@ func _exit_in_hand():
 	pass
 
 func _enter_hovered_over():
-	flip_tooltip.visible = true
 	z_index = 4
 	play_animation("Hover_over")
 
 func _exit_hovered_over():
-	
-	flip_tooltip.visible = false
 	play_animation("Hover_over", true)
 
 func _enter_dragging():
