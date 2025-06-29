@@ -78,10 +78,8 @@ func connect_cassette_signals(cassette: Cassette):
 
 func _on_cassette_hovered(cassette: Cassette) -> void:
 	if is_hovering_on_cassette:
-		#print(cassette.cassette_name + " hovered on, but another one is already hovered on")
 		return
 	elif !is_hovering_on_cassette and !cassette_being_dragged:
-		#print(cassette.cassette_name + " hovered on")
 		is_hovering_on_cassette = true
 		cassette.update_elements()
 		cassette.set_state(cassette.STATE.HOVERED_OVER)
