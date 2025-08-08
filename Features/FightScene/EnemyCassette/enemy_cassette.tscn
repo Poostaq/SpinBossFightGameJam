@@ -56,46 +56,34 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprites/SideA:visible")
+tracks/1/path = NodePath("Sprites:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.09, 0.1),
+"times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [false, true]
+"values": [Vector2(1, 1), Vector2(1.5, 1.5)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprites:scale")
+tracks/2/path = NodePath("FlipTooltip:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(1.5, 1.5)]
+"values": [Vector2(-390, -95), Vector2(-596, -485)]
 }
-tracks/3/type = "value"
+tracks/3/type = "method"
 tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("FlipTooltip:position")
+tracks/3/enabled = false
+tracks/3/path = NodePath(".")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-390, -95), Vector2(-596, -485)]
-}
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = false
-tracks/4/path = NodePath(".")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0.001, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
@@ -160,94 +148,82 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Sprites/SideA:visible")
+tracks/4/path = NodePath("Sprites:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [false]
+"values": [Vector2(1, 1)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Sprites:scale")
+tracks/5/path = NodePath("FlipTooltip:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [Vector2(-390, -95)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("FlipTooltip:position")
+tracks/6/path = NodePath("FlipTooltip:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-390, -95)]
+"update": 1,
+"values": [false]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("FlipTooltip:visible")
+tracks/7/path = NodePath("Sprites:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Vector2(0, 0)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Sprites:position")
+tracks/8/path = NodePath("Sprites:modulate")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Sprites:modulate")
+tracks/9/path = NodePath("Area2D/CollisionShape2D:shape:size")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Vector2(442, 563.333)]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("Area2D/CollisionShape2D:shape:size")
+tracks/10/path = NodePath("Area2D/CollisionShape2D:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(442, 563.333)]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("Area2D/CollisionShape2D:position")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -480,6 +456,7 @@ _data = {
 size = Vector2(442, 563.333)
 
 [node name="Cassette" type="Node2D"]
+scale = Vector2(0.8, 0.8)
 script = ExtResource("1_sndn0")
 
 [node name="Sprites" type="Node2D" parent="."]
@@ -511,7 +488,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="ASideLogo" type="Sprite2D" parent="Sprites/Front"]
+[node name="SideLogo" type="Sprite2D" parent="Sprites/Front"]
 light_mask = 524288
 visibility_layer = 524288
 position = Vector2(161, -90)
@@ -543,24 +520,23 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = SubResource("FontVariation_avwf4")
 theme_override_font_sizes/font_size = 16
-text = "SUPA DORIFTO"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SideA" type="Node2D" parent="Sprites"]
+[node name="ActionData" type="Node2D" parent="Sprites"]
 visible = false
 light_mask = 262144
 visibility_layer = 262144
 scale = Vector2(1.1, 1.1)
 
-[node name="Fuel" type="Sprite2D" parent="Sprites/SideA"]
+[node name="Fuel" type="Sprite2D" parent="Sprites/ActionData"]
 light_mask = 524288
 visibility_layer = 524288
 position = Vector2(-205, -95)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("10_2suj0")
 
-[node name="Label" type="Label" parent="Sprites/SideA/Fuel"]
+[node name="Label" type="Label" parent="Sprites/ActionData/Fuel"]
 light_mask = 524288
 visibility_layer = 524288
 anchors_preset = 15
@@ -581,14 +557,14 @@ text = "5"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Icon1" type="Sprite2D" parent="Sprites/SideA"]
+[node name="Icon1" type="Sprite2D" parent="Sprites/ActionData"]
 light_mask = 524288
 visibility_layer = 524288
 position = Vector2(-205, 0)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("12_74lal")
 
-[node name="Label" type="Label" parent="Sprites/SideA/Icon1"]
+[node name="Label" type="Label" parent="Sprites/ActionData/Icon1"]
 light_mask = 524288
 visibility_layer = 524288
 anchors_preset = 15
@@ -609,14 +585,14 @@ text = "5"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Icon2" type="Sprite2D" parent="Sprites/SideA"]
+[node name="Icon2" type="Sprite2D" parent="Sprites/ActionData"]
 light_mask = 524288
 visibility_layer = 524288
 position = Vector2(-205, 100)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("13_u2054")
 
-[node name="Label" type="Label" parent="Sprites/SideA/Icon2"]
+[node name="Label" type="Label" parent="Sprites/ActionData/Icon2"]
 light_mask = 524288
 visibility_layer = 524288
 anchors_preset = 15
@@ -637,7 +613,7 @@ text = "5"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AfterPlay" type="Sprite2D" parent="Sprites/SideA"]
+[node name="AfterPlay" type="Sprite2D" parent="Sprites/ActionData"]
 light_mask = 524288
 visibility_layer = 524288
 position = Vector2(181.818, 98.1818)
@@ -645,7 +621,7 @@ scale = Vector2(0.75, 0.75)
 texture = ExtResource("14_ocsrf")
 metadata/_edit_use_anchors_ = true
 
-[node name="Actions" type="Sprite2D" parent="Sprites/SideA"]
+[node name="Actions" type="Sprite2D" parent="Sprites/ActionData"]
 position = Vector2(0, 50)
 texture = ExtResource("15_k86ah")
 
@@ -666,10 +642,8 @@ scale = Vector2(1, 0.15)
 priority = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
 position = Vector2(0, -640)
 shape = SubResource("RectangleShape2D_axh4p")
 disabled = true
 one_way_collision_margin = 3.0
-
-[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
-[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

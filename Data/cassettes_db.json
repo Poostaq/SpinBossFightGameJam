@@ -64,8 +64,13 @@
 				"fuel_cost": 1,
 				"action_icons": [
 					{
-						"icon": "defence",
-						"value": 1
+						"icon": "special",
+						"value": -1,
+						"icon_parameters":{
+							"x_position": -5,
+							"y_position":  10,
+							"scale": 0.3
+						}
 					}
 				]
 			},

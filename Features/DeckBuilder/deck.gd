@@ -1,6 +1,6 @@
 extends Node2D
 
-const CARD_SCENE_PATH = "res://Scenes/cassette.tscn"
+#const CARD_SCENE_PATH = "res://Scenes/cassette.tscn"
 const CASSETTE_DRAW_SPEED = 0.1
 
 var player_deck_cassettes = ["EMP","EMP","Quick Attack","Emergency Brake","Regular Attack","Regular Attack","Nitro","Heavy Attack","Shoot'em up","Ram",]
@@ -52,21 +52,21 @@ func create_deck_cassettes(deck_cassette_names):
 
 func create_cassette(cassette_name):
 	var cassette_data = cassette_database_reference.CASSETTES[cassette_name]
-	var cassette_scene = preload(CARD_SCENE_PATH)
-	var new_cassette = cassette_scene.instantiate()
-	new_cassette.scale = new_cassette.REGULAR_CASSETTE_SIZE
-	cassettes.add_child(new_cassette)
-	new_cassette.name = cassette_data[0]
-	new_cassette.side_a_data = cassette_data[1]
-	new_cassette.side_b_data = cassette_data[2]
-	new_cassette.cassette_name = cassette_data[0]
-	new_cassette.current_side = "A"
-	new_cassette.update_elements()
-	new_cassette.whose_cassette = GlobalEnums.Player
-	new_cassette.get_node("Node2D/Area2D").visible = false
-	cassette_manager.connect_cassette_signals(new_cassette)
-	deck_cassettes.append(new_cassette)
-	new_cassette.state(new_cassette.STATE.IN_DECK)
+	#var cassette_scene = preload(CARD_SCENE_PATH)
+	#var new_cassette = cassette_scene.instantiate()
+	#new_cassette.scale = new_cassette.REGULAR_CASSETTE_SIZE
+	#cassettes.add_child(new_cassette)
+	#new_cassette.name = cassette_data[0]
+	#new_cassette.side_a_data = cassette_data[1]
+	#new_cassette.side_b_data = cassette_data[2]
+	#new_cassette.cassette_name = cassette_data[0]
+	#new_cassette.current_side = "A"
+	#new_cassette.update_elements()
+	#new_cassette.whose_cassette = GlobalEnums.Player
+	#new_cassette.get_node("Node2D/Area2D").visible = false
+	#cassette_manager.connect_cassette_signals(new_cassette)
+	#deck_cassettes.append(new_cassette)
+	#new_cassette.state(new_cassette.STATE.IN_DECK)
 
 	
 func update_deck_positions(speed):

@@ -61,15 +61,9 @@ func prepare_hand(enemy_name):
 func create_cassette(cassette_name):
 	var cassette_scene = preload(CASSETTE_SCENE)
 	var new_cassette = cassette_scene.instantiate()
-	new_cassette.scale = new_cassette.REGULAR_CASSETTE_SIZE
-	new_cassette.name = cassette_name
-	new_cassette.side_a_data = Database.cassettes["cassettes"][cassette_name]["side_a"]
-	new_cassette.side_b_data = Database.cassettes["cassettes"][cassette_name]["side_b"]
-	new_cassette.cassette_name = cassette_name
-	new_cassette.current_side = "A"
-	new_cassette.whose_cassette = GlobalEnums.ENEMY
+	var cassette_info = Database.cassettes["cassettes"][cassette_name]
+	new_cassette.setup_enemy_cassette(cassette_name, cassette_info)
 	cassette_manager.connect_cassette_signals(new_cassette)
-	new_cassette.state = new_cassette.STATE.IN_HAND
 	return new_cassette
 
 func remove_cassette_from_hand(cassette):

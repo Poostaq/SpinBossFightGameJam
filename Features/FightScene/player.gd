@@ -14,9 +14,6 @@ var hand: Array = []            # Cassettes currently in the player's (logical) 
 @onready var sequence: Node2D = $"../UI/PlayerUI/Sequence"
 
 var health: int = 20
-func _ready():
-	# Shuffle or do any initial deck setup here
-	pass
 
 func prepare_hand():
 	var player_cassettes = Database.player_deck["player_deck"]
@@ -30,22 +27,15 @@ func prepare_hand():
 func create_cassette(cassette_name):
 	var cassette_scene = preload(CASSETTE_SCENE)
 	var new_cassette = cassette_scene.instantiate()
-	new_cassette.scale = new_cassette.REGULAR_CASSETTE_SIZE
-	new_cassette.name = cassette_name
 	var cassette_info = Database.cassettes["cassettes"][cassette_name]
-	new_cassette.side_a_data = cassette_info["side_a"]
-	new_cassette.side_b_data = cassette_info["side_b"]
-	if "image_a" in cassette_info:
-			new_cassette.side_a_actions_path = cassette_info["image_a"]
-			new_cassette.side_b_actions_path = cassette_info["image_b"]
-	new_cassette.cassette_name = cassette_name
-	new_cassette.current_side = "A"
-	new_cassette.whose_cassette = GlobalEnums.PLAYER
+	new_cassette.setup_player_cassette(cassette_name, cassette_info)
 	cassette_manager.connect_cassette_signals(new_cassette)
 	return new_cassette
 
+
 func remove_cassette_from_hand(cassette):
 	hand.remove_at(hand.find(cassette))
+
 
 func add_cassette_to_hand(cassette):
 	hand.append(cassette)
