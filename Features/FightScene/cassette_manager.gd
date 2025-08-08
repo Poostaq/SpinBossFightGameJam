@@ -2,7 +2,6 @@ extends Node2D
 
 const COLLISION_MASK_CASSETTE = 1
 const COLLISION_MASK_CASSETTE_SLOT = 2
-const COLLISION_MASK_PLAYER_DECK_AREA = 512
 const DEFAULT_CASSETTE_SPEED = 0.2
 const SLOT_POSITIONS = [
 						Vector2(773,1100),
@@ -26,16 +25,18 @@ const CASSETTE_SCALES_IN_SLOTS = [
 								  Vector2(0.77,0.77),
 								  Vector2(0.76,0.76),
 								  Vector2(0.75,0.75)]
+const CASSETTE_RATTLE = preload("res://sfx/652388__department64__cassette-tape-rattle-69.ogg")
+
 var screen_size
 var cassette_being_dragged: Cassette
-var is_hovering_on_cassette
-var cassette_hovered_on
-var draft_active = false
+var is_hovering_on_cassette: bool
+var cassette_hovered_on: Cassette
+var draft_active: bool = false
 
 @onready var player: Node = %"Player"
 @onready var commit_sequence_button = $"../UI/PlayerUI/CommitSequence"
 @onready var ui_animator: Node = $"../UIAnimator"
-@onready var drag_layer: Node2D = $"../DragLayer"
+#@onready var drag_layer: Node2D = $"../DragLayer"
 @onready var hand: Node2D = $"../UI/PlayerUI/Hand"
 
 
@@ -98,15 +99,17 @@ func _on_cassette_hovered_off(cassette: Cassette) -> void:
 
 
 func start_drag(cassette: Cassette):
-	cassette_being_dragged = cassette
-	deactivate_cassettes(true)
-	player.remove_cassette_from_hand(cassette)
-	ui_animator.activate_player_slots()
-	cassette.reparent($"../DragLayer")
-	cassette.set_state(cassette.STATE.DRAGGING)
-	for other_cassette: Cassette in hand.get_children():
-		if other_cassette.state == other_cassette.STATE.HOVERED_OVER:
-			other_cassette.set_state(other_cassette.STATE.IN_HAND)
+	if cassette.whose_cassette == GlobalEnums.PLAYER:
+		SfxManager.play_sfx(CASSETTE_RATTLE)
+		cassette_being_dragged = cassette
+		deactivate_cassettes(true)
+		player.remove_cassette_from_hand(cassette)
+		ui_animator.activate_player_slots()
+		cassette.reparent($"../DragLayer")
+		cassette.set_state(cassette.STATE.DRAGGING)
+		for other_cassette: Cassette in hand.get_children():
+			if other_cassette.state == other_cassette.STATE.HOVERED_OVER:
+				other_cassette.set_state(other_cassette.STATE.IN_HAND)
 	
 
 func finish_drag():
@@ -139,15 +142,6 @@ func raycast_check_for_slot():
 func on_left_click_released():
 	if cassette_being_dragged:
 		finish_drag()
-
-
-func switch_sides(cassette):
-	if cassette.current_side == "A":
-		cassette.current_side = "B"
-		cassette.switch_sides("B")
-	else:
-		cassette.current_side = "A"
-		cassette.switch_sides("A")
 
 
 func check_if_commit_sequence_button_should_be_activated():

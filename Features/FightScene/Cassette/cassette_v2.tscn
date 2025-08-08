@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bv0hep3nj7s5i"]
+[gd_scene load_steps=27 format=3 uid="uid://bv0hep3nj7s5i"]
 
 [ext_resource type="Script" uid="uid://c0g32ne6d7lqq" path="res://Features/FightScene/Cassette/cassette.gd" id="1_sndn0"]
 [ext_resource type="Texture2D" uid="uid://cvtclg7lpuej1" path="res://Images/cassette/cassette front/1 label.png" id="2_o2424"]
@@ -14,8 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://vc3k7cuctp21" path="res://Images/action_icons/attack.png" id="12_74lal"]
 [ext_resource type="Texture2D" uid="uid://dnbv1ykq1xen0" path="res://Images/action_icons/defence.png" id="13_u2054"]
 [ext_resource type="Texture2D" uid="uid://c64671rylr8jv" path="res://Images/action_icons/discard.png" id="14_ocsrf"]
-[ext_resource type="Texture2D" uid="uid://bx1gp3qdyw08t" path="res://Images/CardsPremade/boner/my_name_is_spike_a_side.png" id="15_k86ah"]
+[ext_resource type="Texture2D" uid="uid://dl4n0mxmk5m5l" path="res://Images/CardsPremade/wife/big_refill_a_side.png" id="15_o2424"]
 [ext_resource type="Texture2D" uid="uid://d2jiuwd0gc6pj" path="res://Images/cassette/cassette front/flip cassette tooltip.png" id="16_bm5ih"]
+[ext_resource type="PackedScene" uid="uid://be8fqjriwju25" path="res://Features/FightScene/Cassette/ActionValue.tscn" id="16_fk2f7"]
 
 [sub_resource type="FontVariation" id="FontVariation_avwf4"]
 base_font = ExtResource("5_ir5hr")
@@ -56,7 +57,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprites/SideA:visible")
+tracks/1/path = NodePath("Sprites/ActionData:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -155,7 +156,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Sprites/SideA:visible")
+tracks/4/path = NodePath("Sprites/ActionData:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -247,6 +248,18 @@ tracks/11/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, -640)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Sprites/Front/Gears:scale")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_1rwco"]
@@ -407,6 +420,35 @@ tracks/4/keys = {
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1, 1), Vector2(-1, 1)]
 }
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"update_elements"
+}, {
+"args": [true],
+"method": &"set_action_data_visibility"
+}]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sprites/ActionData:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [false, true]
+}
 
 [sub_resource type="Animation" id="Animation_sagpx"]
 resource_name = "SwitchToTopSide"
@@ -475,7 +517,6 @@ _data = {
 size = Vector2(442, 563.333)
 
 [node name="Cassette" type="Node2D"]
-position = Vector2(-1, 0)
 script = ExtResource("1_sndn0")
 
 [node name="Sprites" type="Node2D" parent="."]
@@ -491,6 +532,7 @@ texture = ExtResource("2_o2424")
 texture = ExtResource("3_fk2f7")
 
 [node name="Gears" type="Sprite2D" parent="Sprites/Front"]
+scale = Vector2(-1, 1)
 texture = ExtResource("4_dm7ik")
 
 [node name="CassetteName" type="Label" parent="Sprites/Front"]
@@ -506,7 +548,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="ASideLogo" type="Sprite2D" parent="Sprites/Front"]
+[node name="SideLogo" type="Sprite2D" parent="Sprites/Front"]
 light_mask = 524288
 visibility_layer = 524288
 position = Vector2(161, -90)
@@ -514,6 +556,7 @@ scale = Vector2(0.390625, 0.359375)
 texture = ExtResource("6_mmpey")
 
 [node name="Side" type="Node2D" parent="Sprites"]
+visible = false
 position = Vector2(-223, 0)
 scale = Vector2(1e-05, 1)
 
@@ -543,20 +586,20 @@ text = "SUPA DORIFTO"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SideA" type="Node2D" parent="Sprites"]
+[node name="ActionData" type="Node2D" parent="Sprites"]
 visible = false
 light_mask = 262144
 visibility_layer = 262144
 scale = Vector2(1.1, 1.1)
 
-[node name="Fuel" type="Sprite2D" parent="Sprites/SideA"]
+[node name="Fuel" type="Sprite2D" parent="Sprites/ActionData"]
 light_mask = 524288
 visibility_layer = 524288
 position = Vector2(-205, -95)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("10_2suj0")
 
-[node name="Label" type="Label" parent="Sprites/SideA/Fuel"]
+[node name="Label" type="Label" parent="Sprites/ActionData/Fuel"]
 light_mask = 524288
 visibility_layer = 524288
 anchors_preset = 15
@@ -577,23 +620,26 @@ text = "5"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Icon1" type="Sprite2D" parent="Sprites/SideA"]
+[node name="Icon1" type="Node2D" parent="Sprites/ActionData"]
+visible = false
 light_mask = 524288
 visibility_layer = 524288
 position = Vector2(-205, 0)
 scale = Vector2(0.5, 0.5)
+
+[node name="Sprite" type="Sprite2D" parent="Sprites/ActionData/Icon1"]
 texture = ExtResource("12_74lal")
 
-[node name="Label" type="Label" parent="Sprites/SideA/Icon1"]
+[node name="Label" type="Label" parent="Sprites/ActionData/Icon1"]
 light_mask = 524288
 visibility_layer = 524288
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -128.0
-offset_top = -128.0
-offset_right = -128.0
-offset_bottom = -128.0
+offset_left = -30.0
+offset_top = -85.0
+offset_right = 36.0
+offset_bottom = 86.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -605,23 +651,26 @@ text = "5"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Icon2" type="Sprite2D" parent="Sprites/SideA"]
+[node name="Icon2" type="Node2D" parent="Sprites/ActionData"]
+visible = false
 light_mask = 524288
 visibility_layer = 524288
 position = Vector2(-205, 100)
 scale = Vector2(0.5, 0.5)
+
+[node name="Sprite" type="Sprite2D" parent="Sprites/ActionData/Icon2"]
 texture = ExtResource("13_u2054")
 
-[node name="Label" type="Label" parent="Sprites/SideA/Icon2"]
+[node name="Label" type="Label" parent="Sprites/ActionData/Icon2"]
 light_mask = 524288
 visibility_layer = 524288
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -128.0
-offset_top = -128.0
-offset_right = -128.0
-offset_bottom = -128.0
+offset_left = -30.0
+offset_top = -85.0
+offset_right = 36.0
+offset_bottom = 86.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -633,7 +682,7 @@ text = "5"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AfterPlay" type="Sprite2D" parent="Sprites/SideA"]
+[node name="AfterPlay" type="Sprite2D" parent="Sprites/ActionData"]
 light_mask = 524288
 visibility_layer = 524288
 position = Vector2(181.818, 98.1818)
@@ -641,9 +690,13 @@ scale = Vector2(0.75, 0.75)
 texture = ExtResource("14_ocsrf")
 metadata/_edit_use_anchors_ = true
 
-[node name="Actions" type="Sprite2D" parent="Sprites/SideA"]
+[node name="Actions" type="Sprite2D" parent="Sprites/ActionData"]
 position = Vector2(0, 50)
-texture = ExtResource("15_k86ah")
+texture = ExtResource("15_o2424")
+
+[node name="Label" parent="Sprites/ActionData/Actions" instance=ExtResource("16_fk2f7")]
+offset_left = -6.0
+offset_right = -22.0
 
 [node name="FlipTooltip" type="Sprite2D" parent="."]
 visible = false
