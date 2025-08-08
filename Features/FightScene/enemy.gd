@@ -66,7 +66,7 @@ func create_cassette(cassette_name):
 	new_cassette.side_a_data = Database.cassettes["cassettes"][cassette_name]["side_a"]
 	new_cassette.side_b_data = Database.cassettes["cassettes"][cassette_name]["side_b"]
 	new_cassette.cassette_name = cassette_name
-	new_cassette.current_side = "A"
+	new_cassette.current_side = Cassette.Side.A
 	new_cassette.whose_cassette = GlobalEnums.PLAYER
 	cassette_manager.connect_cassette_signals(new_cassette)
 	new_cassette.state = new_cassette.STATE.IN_HAND
@@ -81,9 +81,9 @@ func select_cassettes_for_sequence():
 		var selected_cassette = hand[selected_cassette_index]
 		var side = rng.randi_range(0,1)
 		if side == 0:
-			selected_cassette.current_side = "A"
+			selected_cassette.current_side = Cassette.Side.A
 		else:
-			selected_cassette.current_side = "B"
+			selected_cassette.current_side = Cassette.Side.B
 		var current_slot = sequence.get_children()[i]
 		remove_cassette_from_hand(selected_cassette)
 		current_slot.add_child(selected_cassette)

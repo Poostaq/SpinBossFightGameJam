@@ -39,7 +39,7 @@ func create_cassette(cassette_name):
 			new_cassette.side_a_actions_path = cassette_info["image_a"]
 			new_cassette.side_b_actions_path = cassette_info["image_b"]
 	new_cassette.cassette_name = cassette_name
-	new_cassette.current_side = "A"
+	new_cassette.current_side = Cassette.Side.A
 	new_cassette.whose_cassette = GlobalEnums.PLAYER
 	cassette_manager.connect_cassette_signals(new_cassette)
 	return new_cassette

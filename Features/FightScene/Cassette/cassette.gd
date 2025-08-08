@@ -14,6 +14,7 @@ const TOP_Y = 40
 enum CASSETTE_SIDE_DATA {FUEL_COST, DESCRIPTION, ACTIONS_LIST, AFTER_PLAY, ACTION_ICON}
 enum ACTION {MOVE_TYPE, VALUE, MOVE_AREA, MOVE_INFO}
 enum STATE {INITIALIZING, IN_HAND, HOVERED_OVER, DRAGGING, IN_SLOT}
+enum Side { A, B }
 
 const ICON_BEHAVIORS = {
 	"attack": ["attack"],
@@ -30,7 +31,7 @@ var scale_in_hand
 var side_a_data
 var side_b_data
 var cassette_name
-var current_side
+var current_side: Side = Side.A
 var whose_cassette
 var side_a_actions_path
 var side_b_actions_path
@@ -70,19 +71,31 @@ func update_elements():
 
 
 
+func get_side_info(side: Side) -> Dictionary:
+	return {
+		"data": side == Side.A ? side_a_data : side_b_data,
+		"actions_path": side == Side.A ? side_a_actions_path : side_b_actions_path
+	}
+
+func get_current_info() -> Dictionary:
+	return get_side_info(current_side)
+
+func get_current_side_data() -> Dictionary:
+	return get_current_info().get("data", {})
+
+func get_actions_path(side: Side) -> String:
+	return get_side_info(side).get("actions_path", "")
+
+func get_current_actions_path() -> String:
+	return get_actions_path(current_side)
+
 func get_current_side_fuel():
-	if current_side == "A":
-			return side_a_data["fuel_cost"]
-	elif current_side == "B":
-			return side_b_data["fuel_cost"]
-	else:
-			return ""
+	return get_current_side_data().get("fuel_cost", "")
 
 func update_actions_texture() -> void:
-	if current_side == "A" and side_a_actions_path:
-			actions_sprite.texture = load(side_a_actions_path)
-	elif current_side == "B" and side_b_actions_path:
-			actions_sprite.texture = load(side_b_actions_path)
+	var path = get_current_actions_path()
+	if path:
+		actions_sprite.texture = load(path)
 
 
 func parse_cassette_actions(actions: Array) -> Dictionary:
@@ -169,13 +182,6 @@ func animate_cassette_to_position(new_position, speed = DEFAULT_CASSETTE_SPEED):
 	collision_shape_2d.disabled = false
 
 
-func get_current_side_data():
-	if current_side == "A":
-		return side_a_data
-	else:
-		return side_b_data
-
-
 func play_animation(anim_name: String, reversed: bool = false) -> void:
 	if animation_player.is_playing():
 		var old_name = animation_player.current_animation
@@ -212,29 +218,25 @@ func skip_animation(anim_name: String, reversed: bool = false) -> void:
 		animation_player.play(anim_name)
 		animation_player.seek(new_data.length, true)
 
-func switch_sides(current_preview_side):
+func switch_sides(current_preview_side: Side):
 	var tween = create_tween()
-	if current_preview_side == "A":
+	if current_preview_side == Side.A:
 			play_animation("SwitchToOtherSide", true)
-			if side_b_actions_path:
-					actions_sprite.texture = load(side_b_actions_path)
 			tween.tween_property(side_a, "scale", Vector2(1.1, 1.1), 0.1)
 			tween.parallel().tween_property(side_a, "modulate", Color(1,1,1,1),0.1)
 			tween.parallel().tween_property($Sprites/SideB, "scale", Vector2(0.8,0.8), 0.1)
 			tween.parallel().tween_property($Sprites/SideB, "modulate", Color(1,1,1,0.5),0.1)
-
 	else:
 			play_animation("SwitchToOtherSide")
-			if side_a_actions_path:
-					actions_sprite.texture = load(side_a_actions_path)
 			tween.tween_property($Sprites/SideB, "scale", Vector2(1.1, 1.1), 0.1)
 			tween.parallel().tween_property($Sprites/SideB, "modulate", Color(1,1,1,1),0.1)
 			tween.parallel().tween_property(side_a, "scale", Vector2(0.8,0.8), 0.1)
 			tween.parallel().tween_property(side_a, "modulate", Color(1,1,1,0.5),0.1)
+	update_actions_texture()
 
 
-func set_side(cassette_current_side):
-		if cassette_current_side == "A":
+func set_side(cassette_current_side: Side):
+		if cassette_current_side == Side.A:
 				side_a.scale= Vector2(1.1, 1.1)
 				side_a.modulate = Color(1,1,1,1)
 				$Sprites/SideB.scale = Vector2(0.8,0.8)
