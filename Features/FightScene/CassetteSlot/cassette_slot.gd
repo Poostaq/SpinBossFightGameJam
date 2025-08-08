@@ -14,7 +14,10 @@ func update_elements() -> void:
 	$Fuel_Amount.modulate = ACTIVE_COLOR if cassette_in_slot!=null else INACTIVE_COLOR
 	$Fuel_Amount.text     = str(cassette_in_slot.get_current_side_fuel()) if cassette_in_slot!=null  else ""
 	$Side.modulate        = ACTIVE_COLOR if cassette_in_slot!=null else INACTIVE_COLOR
-	$Side.text            = cassette_in_slot.current_side if cassette_in_slot!=null else ""
+	var side_text = ""
+	if cassette_in_slot != null:
+		side_text = "A" if cassette_in_slot.current_side == Cassette.Side.A else "B"
+	$Side.text = side_text
 
 func set_cover_state(closed):
 	if closed and cassette_in_slot == null:

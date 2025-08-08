@@ -31,7 +31,7 @@ func create_cassette(cassette_name):
 	new_cassette.side_a_data = cassette_data[1]
 	new_cassette.side_b_data = cassette_data[2]
 	new_cassette.cassette_name = cassette_data[0]
-	new_cassette.current_side = "A"
+	new_cassette.current_side = Cassette.Side.A
 	new_cassette.whose_cassette = GlobalEnums.ENEMY
 	cassette_manager.connect_cassette_signals(new_cassette)
 	deck_cassettes.append(new_cassette)

@@ -16,16 +16,16 @@ const SLOT_POSITIONS = [
 						Vector2(1179,965),
 						Vector2(1177,920)]
 const CASSETTE_SCALES_IN_SLOTS = [
-								  Vector2(0.79,0.79),
-								  Vector2(0.78,0.78),
-								  Vector2(0.77,0.77),
-								  Vector2(0.76,0.76),
-								  Vector2(0.75,0.75),
-								  Vector2(0.79,0.79),
-								  Vector2(0.78,0.78),
-								  Vector2(0.77,0.77),
-								  Vector2(0.76,0.76),
-								  Vector2(0.75,0.75)]
+									Vector2(0.79,0.79),
+									Vector2(0.78,0.78),
+									Vector2(0.77,0.77),
+									Vector2(0.76,0.76),
+									Vector2(0.75,0.75),
+									Vector2(0.79,0.79),
+									Vector2(0.78,0.78),
+									Vector2(0.77,0.77),
+									Vector2(0.76,0.76),
+									Vector2(0.75,0.75)]
 var screen_size
 var cassette_being_dragged: Cassette
 var is_hovering_on_cassette
@@ -144,12 +144,12 @@ func on_left_click_released():
 
 
 func switch_sides(cassette):
-	if cassette.current_side == "A":
-		cassette.current_side = "B"
-		cassette.switch_sides("B")
+	if cassette.current_side == Cassette.Side.A:
+		cassette.current_side = Cassette.Side.B
+		cassette.switch_sides(Cassette.Side.B)
 	else:
-		cassette.current_side = "A"
-		cassette.switch_sides("A")
+		cassette.current_side = Cassette.Side.A
+		cassette.switch_sides(Cassette.Side.A)
 
 
 func check_if_commit_sequence_button_should_be_activated():
