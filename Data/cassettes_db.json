@@ -21,7 +21,6 @@
 				"action_icons": [
 					{
 						"icon": "defence",
-						"value": 0
 					}
 				]
 			},
@@ -67,8 +66,8 @@
 						"icon": "special",
 						"value": -1,
 						"icon_parameters":{
-							"x_position": -5,
-							"y_position":  10,
+							"x_position": -23,
+							"y_position":  -6,
 							"scale": 0.3
 						}
 					}
@@ -90,7 +89,12 @@
 				"action_icons": [
 					{
 						"icon": "special",
-						"value": 3
+						"value": 3,
+						"icon_parameters":{
+							"x_position": -32,
+							"y_position":  -6,
+							"scale": 0.3
+						}
 					}
 				]
 			},
@@ -108,8 +112,8 @@
 					{
 						"action_type": 2,
 						"affected_target": 1,
-						"description": "Permanent +2 damage to attacks to the front.",
-						"effect_name": "permanent_buff_all_attacks",
+						"description": "Permanent +2 damage to attacks in the front",
+						"effect_name": "permanent_buff_all_attacks_front",
 						"target_area": "all sides",
 						"value": 2
 					}
@@ -119,7 +123,12 @@
 				"action_icons": [
 					{
 						"icon": "special",
-						"value": 2
+						"value": 2,
+						"icon_parameters":{
+							"x_position": 42,
+							"y_position":  -8,
+							"scale": 0.3
+						}
 					}
 				]
 			},
@@ -217,7 +226,12 @@
 				"action_icons": [
 					{
 						"icon": "special",
-						"value": 1
+						"value": 1,
+						"icon_parameters":{
+							"x_position": 38,
+							"y_position":  -8,
+							"scale": 0.3
+						}
 					}
 				]
 			},
@@ -244,7 +258,12 @@
 				"action_icons": [
 					{
 						"icon": "special",
-						"value": 1
+						"value": 1,
+						"icon_parameters":{
+							"x_position": 30,
+							"y_position":  -8,
+							"scale": 0.3
+						}
 					}
 				]
 			},
@@ -321,7 +340,7 @@
 						"value": 2
 					},
 					{
-						"icon": "defence",
+						"icon": "special",
 						"value": 0
 					}
 				]
@@ -402,7 +421,12 @@
 				"action_icons": [
 					{
 						"icon": "special",
-						"value": 2
+						"value": 2,
+						"icon_parameters":{
+							"x_position": -72,
+							"y_position":  -20,
+							"scale": 0.35
+						}
 					}
 				]
 			},
@@ -437,7 +461,12 @@
 					},
 					{
 						"icon": "special",
-						"value": 1
+						"value": 1,
+						"icon_parameters":{
+							"x_position": 19,
+							"y_position":  -22,
+							"scale": 0.35
+						}
 					}
 				]
 			},
@@ -491,7 +520,12 @@
 					},
 					{
 						"icon": "special",
-						"value": 2
+						"value": 2,
+						"icon_parameters":{
+							"x_position": 3,
+							"y_position":  -8,
+							"scale": 0.3
+						}
 					}
 				]
 			},
@@ -522,7 +556,12 @@
 					},
 					{
 						"icon": "special",
-						"value": 5
+						"value": 5,
+						"icon_parameters":{
+							"x_position": -20,
+							"y_position":  -8,
+							"scale": 0.3
+						}
 					}
 				]
 			},
@@ -577,9 +616,9 @@
 					{
 						"action_type": 2,
 						"affected_target": 1,
-						"description": "Damage reduction from all side attacks this turn.",
-						"effect_name": "this_turn_damage_reduction_side",
-						"target_area": "side",
+						"description": "Damage reduction this turn.",
+						"effect_name": "this_turn_damage_reduction",
+						"target_area": "all sides",
 						"value": 2
 					}
 				],
@@ -602,9 +641,9 @@
 					{
 						"action_type": 2,
 						"affected_target": 1,
-						"description": "Damage reduction from the attacks to the back this turn.",
-						"effect_name": "this_turn_damage_reduction_back",
-						"target_area": "back",
+						"description": "Damage reduction this turn.",
+						"effect_name": "this_turn_damage_reduction",
+						"target_area": "all sides",
 						"value": 2
 					}
 				],
@@ -717,11 +756,21 @@
 				"action_icons": [
 					{
 						"icon": "special",
-						"value": 3
+						"value": 3,
+						"icon_parameters":{
+							"x_position": -76,
+							"y_position":  -8,
+							"scale": 0.3
+						}
 					},
 					{
 						"icon": "special",
-						"value": 3
+						"value": 3,
+						"icon_parameters":{
+							"x_position": 11,
+							"y_position":  -8,
+							"scale": 0.3
+						}
 					}
 				]
 			},
@@ -780,7 +829,12 @@
 					},
 					{
 						"icon": "special",
-						"value": 2
+						"value": 2,
+						"icon_parameters":{
+							"x_position": -30,
+							"y_position":  -8,
+							"scale": 0.3
+						}
 					}
 				]
 			},
@@ -811,7 +865,12 @@
 					},
 					{
 						"icon": "special",
-						"value": 1
+						"value": 1,
+						"icon_parameters":{
+							"x_position": -29,
+							"y_position":  -8,
+							"scale": 0.3
+						}
 					}
 				]
 			},
@@ -849,12 +908,14 @@
 				"actions": [
 					{
 						"action_type": 1,
+						"description": "OVERTAKE.",
 						"target_area": "overtake",
 						"value": ""
 					},
 					{
 						"action_type": 2,
 						"affected_target": 0,
+						"description": "Avoid all enemy actions next turn",
 						"effect_name": "next_turn_avoid_all_actions",
 						"target_area": "all sides",
 						"value": ""
@@ -862,13 +923,13 @@
 					{
 						"action_type": 2,
 						"affected_target": 1,
+						"description": "Reduce your damage by 2",
 						"effect_name": "next_turn_debuff_player_less_damage",
 						"target_area": "all sides",
 						"value": 2
 					}
 				],
 				"after_play": "burn",
-				"description": "OVERTAKE. Avoid all enemy actions next turn and reduce your damage by 2. BURN.",
 				"fuel_cost": 1,
 				"action_icons": [
 					{
@@ -914,9 +975,9 @@
 					{
 						"action_type": 2,
 						"affected_target": 1,
-						"description": "Damage reduction from the attacks to the back this turn.",
-						"effect_name": "this_turn_damage_reduction_front",
-						"target_area": "front",
+						"description": "Damage reduction this turn.",
+						"effect_name": "this_turn_damage_reduction",
+						"target_area": "all sides",
 						"value": 1
 					},
 					{
@@ -936,8 +997,13 @@
 						"value": 1
 					},
 					{
-						"icon": "defence",
-						"value": 1
+						"icon": "special",
+						"value": 1,
+						"icon_parameters":{
+							"x_position": -13,
+							"y_position": -12,
+							"scale": 0.3
+						}
 					}
 				]
 			},
@@ -1022,9 +1088,9 @@
 					{
 						"action_type": 2,
 						"affected_target": 1,
-						"description": "LINE UP. Damage reduction from attacks to the side this turn.",
-						"effect_name": "this_turn_damage_reduction_side",
-						"target_area": "side",
+						"description": "Damage reduction this turn.",
+						"effect_name": "this_turn_damage_reduction",
+						"target_area": "all sides",
 						"value": 2
 					}
 				],
@@ -1051,7 +1117,7 @@
 					{
 						"action_type": 2,
 						"affected_target": 0,
-						"description": "OVERTAKE. Enemy can't move during their next action.",
+						"description": "Enemy can't move during their next action.",
 						"effect_name": "next_move_action_wont_work",
 						"target_area": "all sides"
 					}
@@ -1060,7 +1126,7 @@
 				"fuel_cost": 1,
 				"action_icons": [
 					{
-						"icon": "defence",
+						"icon": "special",
 						"value": 0
 					}
 				]
@@ -1120,7 +1186,7 @@
 						"value": 3
 					},
 					{
-						"icon": "special",
+						"icon": "defence",
 						"value": 3
 					}
 				]
@@ -1147,7 +1213,12 @@
 				"action_icons": [
 					{
 						"icon": "special",
-						"value": 1
+						"value": 1,
+						"icon_parameters":{
+							"x_position": -13,
+							"y_position": -12,
+							"scale": 0.3
+						}
 					}
 				]
 			},
@@ -1218,7 +1289,12 @@
 				"action_icons": [
 					{
 						"icon": "special",
-						"value": 2
+						"value": 2,
+						"icon_parameters":{
+							"x_position": -18,
+							"y_position":  -7,
+							"scale": 0.3
+						}
 					}
 				]
 			},
@@ -1249,7 +1325,12 @@
 					},
 					{
 						"icon": "special",
-						"value": 2
+						"value": 2,
+						"icon_parameters":{
+							"x_position": -18,
+							"y_position":  -7,
+							"scale": 0.3
+						}
 					}
 				]
 			},
@@ -1351,7 +1432,12 @@
 					},
 					{
 						"icon": "special",
-						"value": 1
+						"value": 1,
+						"icon_parameters":{
+							"x_position": -20,
+							"y_position":  -7,
+							"scale": 0.3
+						}
 					}
 				]
 			},
@@ -1390,8 +1476,8 @@
 						"action_type": 2,
 						"affected_target": 1,
 						"description": "Damage reduction this turn.",
-						"effect_name": "this_turn_damage_reduction_side",
-						"target_area": "side",
+						"effect_name": "this_turn_damage_reduction",
+						"target_area": "all sides",
 						"value": 3
 					}
 				],
@@ -1565,9 +1651,9 @@
 					{
 						"action_type": 2,
 						"affected_target": 1,
-						"description": "Damage reduction from attacks to the front this turn.",
-						"effect_name": "this_turn_damage_reduction_back",
-						"target_area": "back",
+						"description": "Damage reduction this turn.",
+						"effect_name": "this_turn_damage_reduction",
+						"target_area": "all sides",
 						"value": 3
 					}
 				],
@@ -1591,9 +1677,9 @@
 					{
 						"action_type": 2,
 						"affected_target": 1,
-						"description": "SLOW DOWN. Damage reduction from attacks to the back this turn.",
-						"effect_name": "this_turn_damage_reduction_front",
-						"target_area": "front",
+						"description": "Damage reduction this turn.",
+						"effect_name": "this_turn_damage_reduction",
+						"target_area": "all sides",
 						"value": 3
 					}
 				],
@@ -1645,7 +1731,12 @@
 				"action_icons": [
 					{
 						"icon": "special",
-						"value": 1
+						"value": 1,
+						"icon_parameters":{
+							"x_position": -15,
+							"y_position":  -6,
+							"scale": 0.3
+						}
 					}
 				]
 			},
@@ -1669,7 +1760,30 @@
 				"action_icons": [
 					{
 						"icon": "special",
-						"value": 2
+						"value": 2,
+						"icon_parameters":{
+							"x_position": -15,
+							"y_position":  -6,
+							"scale": 0.3
+						}
+					},
+					{
+						"icon": "none",
+						"value": 2,
+						"icon_parameters":{
+							"x_position": -15,
+							"y_position":  -6,
+							"scale": 0.3
+						}
+					},
+					{
+						"icon": "none",
+						"value": 2,
+						"icon_parameters":{
+							"x_position": -15,
+							"y_position":  -6,
+							"scale": 0.3
+						}
 					}
 				]
 			},
@@ -1689,7 +1803,12 @@
 				"action_icons": [
 					{
 						"icon": "special",
-						"value": 0
+						"value": 0,
+						"icon_parameters":{
+							"x_position": -18,
+							"y_position":  -7,
+							"scale": 0.3
+						}
 					}
 				]
 			},

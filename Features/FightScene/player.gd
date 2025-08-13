@@ -4,11 +4,11 @@ extends Node
 const CASSETTE_SCENE = "res://Features/FightScene/Cassette/cassette_v2.tscn"
 signal cassette_created(cassette)
 
-# Core cassette containers
-var deck: Array = []            # Full deck of cassettes
-var discard: Array = []         # Discarded cassettes
-var lost: Array = []            # Completely lost cassettes
-var hand: Array = []            # Cassettes currently in the player's (logical) hand
+
+var deck: Array = []
+var discard: Array = []
+var lost: Array = []
+var hand: Array = []
 
 @onready var cassette_manager: Node2D = %CassetteManager
 @onready var sequence: Node2D = $"../UI/PlayerUI/Sequence"

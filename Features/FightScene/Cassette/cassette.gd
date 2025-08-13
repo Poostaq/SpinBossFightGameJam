@@ -72,12 +72,12 @@ func setup_player_cassette(cassett_data_name, cassette_info):
 	whose_cassette = GlobalEnums.PLAYER
 
 
-func setup_enemy_cassette(cassette_name, cassette_info):
+func setup_enemy_cassette(new_cassette_name, cassette_info):
 	scale = SMALLER_CASSETTE_SIZE
-	name = cassette_name
+	name = new_cassette_name
 	side_a_data = cassette_info["side_a"]
 	side_b_data = cassette_info["side_b"]
-	cassette_name = cassette_name
+	cassette_name = new_cassette_name
 	current_side = "A"
 	whose_cassette = GlobalEnums.ENEMY
 	state = STATE.IN_HAND
