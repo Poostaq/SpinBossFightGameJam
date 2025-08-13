@@ -17,15 +17,6 @@ enum CASSETTE_SIDE_DATA {FUEL_COST, DESCRIPTION, ACTIONS_LIST, AFTER_PLAY, ACTIO
 enum ACTION {MOVE_TYPE, VALUE, MOVE_AREA, MOVE_INFO}
 enum STATE {INITIALIZING, IN_HAND, HOVERED_OVER, DRAGGING, IN_SLOT}
 
-#const ICON_BEHAVIORS = {
-	#"attack": ["attack"],
-	#"attack_special": ["attack", "special"],
-	#"attack_defence": ["attack", "defence"],
-	#"defence": ["defence"],
-	#"defence_special": ["defence", "special"],
-	#"special": ["special"]
-#}
-
 var position_in_hand
 var scale_in_hand
 var side_a_data
