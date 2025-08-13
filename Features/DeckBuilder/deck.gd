@@ -1,6 +1,6 @@
 extends Node2D
 
-const CARD_SCENE_PATH = "res://Scenes/cassette.tscn"
+#const CARD_SCENE_PATH = "res://Scenes/cassette.tscn"
 const CASSETTE_DRAW_SPEED = 0.1
 
 var player_deck_cassettes = ["EMP","EMP","Quick Attack","Emergency Brake","Regular Attack","Regular Attack","Nitro","Heavy Attack","Shoot'em up","Ram",]

@@ -5,7 +5,6 @@ signal left_mouse_button_released
 
 const COLLISION_MASK_CASSETTE = 1
 const COLLISION_MASK_DECK = 4
-const CASSETTE_RATTLE = preload("res://sfx/652388__department64__cassette-tape-rattle-69.ogg")
 enum SCREEN {MENU, STORY, BATTLE, DRAFT}
 
 @onready var cassette_manager: Node2D = %CassetteManager
@@ -31,11 +30,10 @@ func left_click_raycast(collision_mask):
 	parameters.collision_mask = collision_mask
 	var result = space_state.intersect_point(parameters)
 	if result.size() > 0:
-		var cassette_found = result[0].collider.get_parent()
+		var cassette_found: Cassette = result[0].collider.get_parent()
 		if cassette_found:
 			print("Cassette Found, start dragging")
 			cassette_manager.start_drag(cassette_found)
-			SfxManager.play_sfx(CASSETTE_RATTLE)
 		#
 
 func right_click_raycast():
@@ -49,5 +47,5 @@ func right_click_raycast():
 		if result_collision_mask == COLLISION_MASK_CASSETTE:
 			var cassette_found = result[0].collider.get_parent()
 			if cassette_found:
-				cassette_manager.switch_sides(cassette_found)
+				cassette_found.switch_sides()
 				

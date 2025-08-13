@@ -1221,7 +1221,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.001),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(692, 1148), Vector2(692, 1137)]
+"values": [Vector2(692, 1137), Vector2(692, 1137)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -1233,7 +1233,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.001),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 464), Vector2(61, 453)]
+"values": [Vector2(60, 454), Vector2(61, 453)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -1413,7 +1413,7 @@ tracks/17/keys = {
 "times": PackedFloat32Array(0, 0.001),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(609, 1255), Vector2(609, 1246)]
+"values": [Vector2(609, 1247), Vector2(609, 1246)]
 }
 
 [sub_resource type="Animation" id="Animation_fo5i8"]
@@ -1668,7 +1668,7 @@ script = ExtResource("1_vtqcu")
 
 [node name="Sky" type="Sprite2D" parent="Scenery"]
 z_index = -2
-position = Vector2(1211, -95)
+position = Vector2(1213, -95)
 texture = ExtResource("2_mfl0i")
 
 [node name="BackgroundTown" type="Sprite2D" parent="Scenery"]
@@ -1866,23 +1866,22 @@ mouse_filter = 1
 [node name="CommitSequence" type="Button" parent="UI/PlayerUI"]
 layout_mode = 1
 offset_left = 692.0
-offset_top = 1148.0
+offset_top = 1137.0
 offset_right = 783.0
-offset_bottom = 1211.0
+offset_bottom = 1200.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_4mno1")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_edu2d")
 theme_override_styles/hover = SubResource("StyleBoxTexture_q78nj")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_ichqw")
 theme_override_styles/normal = SubResource("StyleBoxTexture_36o6c")
 disabled = true
-metadata/_edit_use_anchors_ = true
 
 [node name="EjectButton" type="Button" parent="UI/PlayerUI"]
 layout_mode = 0
 offset_left = 609.0
-offset_top = 1255.0
+offset_top = 1247.0
 offset_right = 692.0
-offset_bottom = 1295.0
+offset_bottom = 1287.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_maiis")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_maiis")
 theme_override_styles/hover = SubResource("StyleBoxTexture_fo5i8")
@@ -1890,7 +1889,7 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_qtyoi")
 theme_override_styles/normal = SubResource("StyleBoxTexture_ev3f7")
 
 [node name="Sequence" type="Node2D" parent="UI/PlayerUI"]
-position = Vector2(0, 464)
+position = Vector2(60, 454)
 
 [node name="CassetteSlot" parent="UI/PlayerUI/Sequence" instance=ExtResource("29_err8r")]
 position = Vector2(955, 709)

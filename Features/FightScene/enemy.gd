@@ -2,24 +2,21 @@ extends Node
 class_name Enemy
 
 const CASSETTE_SCENE = "res://Features/FightScene/EnemyCassette/enemy_cassette.tscn"
-# Signals to notify others of changes
-signal deck_changed(new_deck)  # deck or hand changed
-signal slots_changed()         # slot cassettes changed
+
+signal deck_changed(new_deck)
+signal slots_changed()
 signal cassette_created
 
-# Core cassette containers
-var deck: Array = []           # Full deck of cassettes
-var discard: Array = []        # Discarded cassettes
-var lost: Array = []           # Completely lost cassettes
-var hand: Array = []           # Cassettes currently in the enemy's (logical) hand
-@onready var sequence: Node2D = $"../UI/EnemyUI/Sequence"
+var deck: Array = []
+var discard: Array = []
+var lost: Array = [] 
+var hand: Array = []
 
+@onready var sequence: Node2D = $"../UI/EnemyUI/Sequence"
 @onready var cassette_manager: Node2D = %CassetteManager
 
 var slot_cassettes: Array = [null, null, null]
-
 var health: int = 20
-
 var rng
 
 func _ready():
@@ -61,15 +58,9 @@ func prepare_hand(enemy_name):
 func create_cassette(cassette_name):
 	var cassette_scene = preload(CASSETTE_SCENE)
 	var new_cassette = cassette_scene.instantiate()
-	new_cassette.scale = new_cassette.REGULAR_CASSETTE_SIZE
-	new_cassette.name = cassette_name
-	new_cassette.side_a_data = Database.cassettes["cassettes"][cassette_name]["side_a"]
-	new_cassette.side_b_data = Database.cassettes["cassettes"][cassette_name]["side_b"]
-	new_cassette.cassette_name = cassette_name
-	new_cassette.current_side = Cassette.Side.A
-	new_cassette.whose_cassette = GlobalEnums.PLAYER
+	var cassette_info = Database.cassettes["cassettes"][cassette_name]
+	new_cassette.setup_enemy_cassette(cassette_name, cassette_info)
 	cassette_manager.connect_cassette_signals(new_cassette)
-	new_cassette.state = new_cassette.STATE.IN_HAND
 	return new_cassette
 
 func remove_cassette_from_hand(cassette):
@@ -81,9 +72,9 @@ func select_cassettes_for_sequence():
 		var selected_cassette = hand[selected_cassette_index]
 		var side = rng.randi_range(0,1)
 		if side == 0:
-			selected_cassette.current_side = Cassette.Side.A
+			selected_cassette.current_side = "A"
 		else:
-			selected_cassette.current_side = Cassette.Side.B
+			selected_cassette.current_side = "B"
 		var current_slot = sequence.get_children()[i]
 		remove_cassette_from_hand(selected_cassette)
 		current_slot.add_child(selected_cassette)

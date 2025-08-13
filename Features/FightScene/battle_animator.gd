@@ -128,7 +128,7 @@ func close_player_slots():
 
 func close_enemy_slots():
 	for slot in enemy.sequence.get_children():
-		slot.cassette_in_slot.play_animation("CassetteVanish")
+		slot.cassette_in_slot.play_animation("Cassette_vanish")
 	for slot in enemy.sequence.get_children():
 		slot.set_cover_state(true)
 		
