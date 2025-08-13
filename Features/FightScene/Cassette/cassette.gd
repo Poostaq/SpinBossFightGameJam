@@ -81,6 +81,7 @@ func update_elements():
 	action_data_fuel_label.text = str(int(side_data["fuel_cost"]))
 	update_actions_texture()
 	_display_action_icons(side_data)
+	_display_action_labels(side_data)
 	set_icon(side_data["after_play"], action_data_after_play)
 	set_side_icon()
 
@@ -129,24 +130,29 @@ func _get_value_text(info: Dictionary) -> String:
 
 func _display_action_icons(data: Dictionary) -> void:
 	var icons = _get_filtered_icons(data)
-	for child in actions_sprite.get_children():
-		child.queue_free()
-	for i in range(0, len(icons)):
+	for icon in action_icons:
+		icon.visible = false
+		icon.get_node("Label").text = ""
+	for i in range(0, min(len(icons), action_icons.size())):
 		action_icons[i].visible = true
 		var info = icons[i]
 		var texture = action_icons[i].get_node("Sprite")
 		texture.texture = load("res://Images/action_icons/%s.png" % info.get("icon", ""))
 		var label = action_icons[i].get_node("Label")
-		if info.get("icon_parameters", null) != null:
-			var icon_parameters = info.get("icon_parameters", "")
-			var new_label = ActionValue.instantiate()
-			actions_sprite.add_child(new_label)
-			new_label.text = str(int(info.get("value", "")))
-			new_label.position = Vector2(icon_parameters["x_position"],icon_parameters["y_position"])
-			new_label.scale = Vector2(icon_parameters["scale"], icon_parameters["scale"])
-			label.text = ""
-		else:
-			set_icon_value(info, label)
+		set_icon_value(info, label)
+
+
+func _display_action_labels(data: Dictionary) -> void:
+	for child in actions_sprite.get_children():
+		child.queue_free()
+	var labels = data.get("action_labels", [])
+	for info in labels:
+		var new_label = ActionValue.instantiate()
+		actions_sprite.add_child(new_label)
+		new_label.text = str(int(info.get("value", "")))
+		new_label.position = Vector2(info.get("x_position", 0), info.get("y_position", 0))
+		var scale_val = info.get("scale", 1)
+		new_label.scale = Vector2(scale_val, scale_val)
 
 
 #func array_join(arr: Array, sep: String) -> String:

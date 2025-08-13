@@ -1,1880 +1,1989 @@
 {
-	"cassettes": {
-		"Another One": {
-			"side_a": {
-				"actions": [
-					{
-						"action_type": 1,
-						"target_area": "slow_down",
-						"description": "Move to SLOW DOWN position"
-					},
-					{
-						"action_type": 2,
-						"affected_target": 0,
-						"description": "Avoid attacks to the back this turn",
-						"effect_name": "this_turn_target_attacks_behind_wont_work",
-						"target_area": "back"
-					}
-				],
-				"after_play": "burn",
-				"fuel_cost": 3,
-				"action_icons": [
-					{
-						"icon": "defence",
-					}
-				]
-			},
-			"side_b": {
-				"actions": [
-					{
-						"action_type": 2,
-						"affected_target": 1,
-						"description": "Damage reduction this turn.",
-						"effect_name": "this_turn_damage_reduction",
-						"target_area": "all sides",
-						"value": 3
-					}
-				],
-				"after_play": "discard",
-				"fuel_cost": 5,
-				"action_icons": [
-					{
-						"icon": "defence",
-						"value": 3
-					}
-				]
-			},
-			"image_a": "Images/CardsPremade/hound/another_one_a_side.png",
-			"image_b": "Images/CardsPremade/hound/another_one_b_side.png"
-		},
-		"Big Refill": {
-			"side_a": {
-				"actions": [
-					{
-						"action_type": 2,
-						"affected_target": 1,
-						"description": "Reduce all fuel costs by 1 permanently.",
-						"effect_name": "permanent_buff_fuel_cost_reduction",
-						"target_area": "all sides",
-						"value": 1
-					}
-				],
-				"after_play": "burn",
-				"fuel_cost": 1,
-				"action_icons": [
-					{
-						"icon": "special",
-						"value": -1,
-						"icon_parameters":{
-							"x_position": -23,
-							"y_position":  -6,
-							"scale": 0.3
-						}
-					}
-				]
-			},
-			"side_b": {
-				"actions": [
-					{
-						"action_type": 2,
-						"affected_target": 1,
-						"description": "Reduce the fuel cost of the next action by 3.",
-						"effect_name": "next_card_reduce_fuel",
-						"target_area": "all sides",
-						"value": 3
-					}
-				],
-				"after_play": "discard",
-				"fuel_cost": 1,
-				"action_icons": [
-					{
-						"icon": "special",
-						"value": 3,
-						"icon_parameters":{
-							"x_position": -32,
-							"y_position":  -6,
-							"scale": 0.3
-						}
-					}
-				]
-			},
-			"image_a": "Images/CardsPremade/wife/big_refill_a_side.png",
-			"image_b": "Images/CardsPremade/wife/big_refill_b_side.png"
-		},
-		"Bites the Dust": {
-			"side_a": {
-				"actions": [
-					{
-						"action_type": 1,
-						"description": "SLOW DOWN",
-						"target_area": "slow_down"
-					},
-					{
-						"action_type": 2,
-						"affected_target": 1,
-						"description": "Permanent +2 damage to attacks in the front",
-						"effect_name": "permanent_buff_all_attacks_front",
-						"target_area": "all sides",
-						"value": 2
-					}
-				],
-				"after_play": "burn",
-				"fuel_cost": 2,
-				"action_icons": [
-					{
-						"icon": "special",
-						"value": 2,
-						"icon_parameters":{
-							"x_position": 42,
-							"y_position":  -8,
-							"scale": 0.3
-						}
-					}
-				]
-			},
-			"side_b": {
-				"actions": [
-					{
-						"action_type": 2,
-						"affected_target": 0,
-						"description": "Attack in any direction. Add fuel spent so far as additional damage to this attack.",
-						"effect_name": "attack_deals_damage_plus_spent_fuel_as_bonus_damage_all_sides",
-						"target_area": "all sides",
-						"value": 1
-					}
-				],
-				"after_play": "discard",
-				"fuel_cost": 4,
-				"action_icons": [
-					{
-						"icon": "special",
-						"value": 1
-					}
-				]
-			},
-			"image_a": "Images/CardsPremade/hound/bites_the_dust_a_side.png",
-			"image_b": "Images/CardsPremade/hound/bites_the_dust_b_side.png"
-		},
-		"Burning Rubber": {
-			"side_a": {
-				"actions": [
-					{
-						"action_type": 0,
-						"animation_name": "shoot",
-						"description": "Attack to the back.",
-						"target_area": "back",
-						"value": 5
-					}
-				],
-				"after_play": "burn",
-				"fuel_cost": 3,
-				"action_icons": [
-					{
-						"icon": "attack",
-						"value": 5
-					}
-				]
-			},
-			"side_b": {
-				"actions": [
-					{
-						"action_type": 1,
-						"description": "OVERTAKE",
-						"target_area": "overtake"
-					},
-					{
-						"action_type": 2,
-						"affected_target": 1,
-						"description": "Avoid next enemy attack.",
-						"effect_name": "next_attack_wont_work",
-						"target_area": "all sides"
-					}
-				],
-				"after_play": "burn",
-				"fuel_cost": 1,
-				"action_icons": [
-					{
-						"icon": "defence",
-						"value": 0
-					}
-				]
-			},
-			"image_a": "Images/CardsPremade/wife/burning_rubber_a_side.png",
-			"image_b": "Images/CardsPremade/wife/burning_rubber_b_side.png"
-		},
-		"Drafting": {
-			"side_a": {
-				"actions": [
-					{
-						"action_type": 1,
-						"animation_name": "move",
-						"description": "SLOW DOWN",
-						"target_area": "slow_down",
-						"value": ""
-					},
-					{
-						"action_type": 2,
-						"affected_target": 1,
-						"description": " If you begin your next turn on a SLOW DOWN position, all actions in that turn cost 1 fuel.",
-						"effect_name": "next_turn_reduce_all_action_cost",
-						"target_area": "behind",
-						"value": 1
-					}
-				],
-				"after_play": "burn",
-				"fuel_cost": 2,
-				"action_icons": [
-					{
-						"icon": "special",
-						"value": 1,
-						"icon_parameters":{
-							"x_position": 38,
-							"y_position":  -8,
-							"scale": 0.3
-						}
-					}
-				]
-			},
-			"side_b": {
-				"actions": [
-					{
-						"action_type": 1,
-						"animation_name": "move",
-						"description": "SLOW DOWN",
-						"target_area": "slow_down",
-						"value": ""
-					},
-					{
-						"action_type": 2,
-						"affected_target": 1,
-						"effect_name": "next_turn_first_action_cost_less",
-						"description": "If you begin your next turn in a SLOW DOWN position, reduce the next action's fuel cost by 1.",
-						"target_area": "all sides",
-						"value": 1
-					}
-				],
-				"after_play": "discard",
-				"fuel_cost": 2,
-				"action_icons": [
-					{
-						"icon": "special",
-						"value": 1,
-						"icon_parameters":{
-							"x_position": 30,
-							"y_position":  -8,
-							"scale": 0.3
-						}
-					}
-				]
-			},
-			"image_a": "Images/CardsPremade/common cassettes/drafting_a_side.png",
-			"image_b": "Images/CardsPremade/common cassettes/drafting_b_side.png"
-		},
-		"Emergency Brake": {
-			"side_a": {
-				"actions": [
-					{
-						"action_type": 0,
-						"animation_name": "ram",
-						"description": "Attack to the back.",
-						"target_area": "back",
-						"value": 2
-					}
-				],
-				"after_play": "discard",
-				"fuel_cost": 3,
-				"action_icons": [
-					{
-						"icon": "attack",
-						"value": 2
-					}
-				]
-			},
-			"side_b": {
-				"actions": [
-					{
-						"action_type": 2,
-						"affected_target": 1,
-						"description": "Avoid an attack to the side.",
-						"effect_name": "this_turn_you_avoid_side_attacks",
-						"target_area": "side",
-						"value": ""
-					}
-				],
-				"after_play": "discard",
-				"fuel_cost": 4,
-				"action_icons": [
-					{
-						"icon": "defence",
-						"value": 0
-					}
-				]
-			},
-			"image_a": "Images/CardsPremade/wife/emergency_brake_a_side.png",
-			"image_b": "Images/CardsPremade/wife/emergency_brake_b_side.png"
-		},
-		"EMP": {
-			"side_a": {
-				"actions": [
-					{
-						"action_type": 0,
-						"animation_name": "shoot",
-						"description": "Attack to the front.",
-						"target_area": "front",
-						"value": 2
-					},
-					{
-						"action_type": 2,
-						"affected_target": 0,
-						"description": "Disable enemy next action.",
-						"effect_name": "next_cassette_wont_work",
-						"target_area": "front",
-						"value": ""
-					}
-				],
-				"after_play": "burn",
-				"fuel_cost": 3,
-				"action_icons": [
-					{
-						"icon": "attack",
-						"value": 2
-					},
-					{
-						"icon": "special",
-						"value": 0
-					}
-				]
-			},
-			"side_b": {
-				"actions": [
-					{
-						"action_type": 0,
-						"animation_name": "shoot",
-						"description": "Attack to the back.",
-						"target_area": "back",
-						"value": 1
-					},
-					{
-						"action_type": 2,
-						"affected_target": 0,
-						"description": "Enemy cant overtake next turn.",
-						"effect_name": "next_turn_target_debuff_no_position_change",
-						"target_area": "back",
-						"value": ""
-					}
-				],
-				"after_play": "discard",
-				"fuel_cost": 4,
-				"action_icons": [
-					{
-						"icon": "attack",
-						"value": 1
-					},
-					{
-						"icon": "special",
-						"value": 0
-					}
-				]
-			},
-			"image_a": "Images/CardsPremade/evans/emp_a_side.png",
-			"image_b": "Images/CardsPremade/evans/emp_b_side.png"
-		},
-		"Explosive Maneouver": {
-			"side_a": {
-				"actions": [
-					{
-						"action_type": 0,
-						"animation_name": "shoot",
-						"description": "A devastating attack to the side and back.",
-						"target_area": "side and back",
-						"value": 12
-					}
-				],
-				"after_play": "burn",
-				"fuel_cost": 14,
-				"action_icons": [
-					{
-						"icon": "attack",
-						"value": 12
-					}
-				]
-			},
-			"side_b": {
-				"actions": [
-					{
-						"action_type": 1,
-						"description": "OVERTAKE",
-						"target_area": "overtake",
-						"value": ""
-					},
-					{
-						"action_type": 2,
-						"affected_target": 1,
-						"description": "+2 to the next attack.",
-						"effect_name": "buff_next_attack",
-						"target_area": "all sides",
-						"value": 2
-					}
-				],
-				"after_play": "discard",
-				"fuel_cost": 3,
-				"action_icons": [
-					{
-						"icon": "special",
-						"value": 2,
-						"icon_parameters":{
-							"x_position": -72,
-							"y_position":  -20,
-							"scale": 0.35
-						}
-					}
-				]
-			},
-			"image_a": "Images/CardsPremade/railgrinder/explosive_manoeuvre_a_side.png",
-			"image_b": "Images/CardsPremade/railgrinder/explosive_manoeuvre_b_side.png"
-		},
-		"Gimme Fire": {
-			"side_a": {
-				"actions": [
-					{
-						"action_type": 0,
-						"animation_name": "shoot",
-						"description": "Attack to the back.",
-						"target_area": "back",
-						"value": 2
-					},
-					{
-						"action_type": 2,
-						"affected_target": 1,
-						"description": "Enemy suffers +1 extra damage until they overtake.",
-						"effect_name": "damage_behind_and_line_up_every_cassette_this_turn",
-						"target_area": "side and back",
-						"value": 1
-					}
-				],
-				"after_play": "discard",
-				"fuel_cost": 5,
-				"action_icons": [
-					{
-						"icon": "attack",
-						"value": 2
-					},
-					{
-						"icon": "special",
-						"value": 1,
-						"icon_parameters":{
-							"x_position": 19,
-							"y_position":  -22,
-							"scale": 0.35
-						}
-					}
-				]
-			},
-			"side_b": {
-				"actions": [
-					{
-						"action_type": 2,
-						"affected_target": 1,
-						"description": "Next turn your actions cost less per point of damage received this turn.",
-						"effect_name": "next_turn_player_cassettes_cost_less_per_damage",
-						"target_area": "all sides"
-					}
-				],
-				"after_play": "burn",
-				"fuel_cost": 1,
-				"action_icons": [
-					{
-						"icon": "special",
-						"value": 0
-					}
-				]
-			},
-			"image_a": "Images/CardsPremade/wife/gimme_fire_a_side.png",
-			"image_b": "Images/CardsPremade/wife/gimme_fire_b_side.png"
-		},
-		"Gimme Fuel": {
-			"side_a": {
-				"actions": [
-					{
-						"action_type": 0,
-						"animation_name": "shoot",
-						"description": "Attack to the front or side.",
-						"target_area": "side and front",
-						"value": 3
-					},
-					{
-						"action_type": 2,
-						"affected_target": 0,
-						"description": "Increase enemy fuel cost by 2 next turn.",
-						"effect_name": "next_turn_actions_cost_more_fuel",
-						"target_area": "all sides",
-						"value": 2
-					}
-				],
-				"after_play": "discard",
-				"fuel_cost": 7,
-				"action_icons": [
-					{
-						"icon": "attack",
-						"value": 3
-					},
-					{
-						"icon": "special",
-						"value": 2,
-						"icon_parameters":{
-							"x_position": 3,
-							"y_position":  -8,
-							"scale": 0.3
-						}
-					}
-				]
-			},
-			"side_b": {
-				"actions": [
-					{
-						"action_type": 0,
-						"animation_name": "shoot",
-						"description": "Attack to the front or side.",
-						"target_area": "side and front",
-						"value": 2
-					},
-					{
-						"action_type": 2,
-						"affected_target": 0,
-						"description": "Increase the fuel cost of the next enemy action by 5.",
-						"effect_name": "next_card_target_costs_more_fuel",
-						"target_area": "all sides",
-						"value": 5
-					}
-				],
-				"after_play": "discard",
-				"fuel_cost": 5,
-				"action_icons": [
-					{
-						"icon": "attack",
-						"value": 2
-					},
-					{
-						"icon": "special",
-						"value": 5,
-						"icon_parameters":{
-							"x_position": -20,
-							"y_position":  -8,
-							"scale": 0.3
-						}
-					}
-				]
-			},
-			"image_a": "Images/CardsPremade/common cassettes/gimme_fuel_a_side.png",
-			"image_b": "Images/CardsPremade/common cassettes/gimme_fuel_b_side.png"
-		},
-		"Heavy Attack": {
-			"side_a": {
-				"actions": [
-					{
-						"action_type": 0,
-						"animation_name": "shoot",
-						"description": "Example description for side A",
-						"target_area": "side",
-						"value": 2
-					}
-				],
-				"after_play": "discard",
-				"fuel_cost": 2,
-				"action_icons": [
-					{
-						"icon": "attack",
-						"value": 2
-					}
-				]
-			},
-			"side_b": {
-				"actions": [
-					{
-						"action_type": 1,
-						"animation_name": "",
-						"description": "Example description for side B",
-						"target_area": "overtake",
-						"value": ""
-					}
-				],
-				"after_play": "discard",
-				"fuel_cost": 3,
-				"action_icons": []
-			},
-			"image_a": null,
-			"image_b": null
-		},
-		"Hit me baby": {
-			"side_a": {
-				"actions": [
-					{
-						"action_type": 1,
-						"description": "LINE UP.",
-						"target_area": "line_up"
-					},
-					{
-						"action_type": 2,
-						"affected_target": 1,
-						"description": "Damage reduction this turn.",
-						"effect_name": "this_turn_damage_reduction",
-						"target_area": "all sides",
-						"value": 2
-					}
-				],
-				"after_play": "discard",
-				"fuel_cost": 3,
-				"action_icons": [
-					{
-						"icon": "defence",
-						"value": 2
-					}
-				]
-			},
-			"side_b": {
-				"actions": [
-					{
-						"action_type": 1,
-						"description": "SLOW DOWN.",
-						"target_area": "slow_down"
-					},
-					{
-						"action_type": 2,
-						"affected_target": 1,
-						"description": "Damage reduction this turn.",
-						"effect_name": "this_turn_damage_reduction",
-						"target_area": "all sides",
-						"value": 2
-					}
-				],
-				"after_play": "discard",
-				"fuel_cost": 1,
-				"action_icons": [
-					{
-						"icon": "defence",
-						"value": 2
-					}
-				]
-			},
-			"image_a": "Images/CardsPremade/common cassettes/hit_me_baby_a_side.png",
-			"image_b": "Images/CardsPremade/common cassettes/hit_me_baby_b_side.png"
-		},
-		"Hook, line and sinker": {
-			"side_a": {
-				"actions": [
-					{
-						"action_type": 1,
-						"description": "LINE UP.",
-						"target_area": "line_up",
-						"value": ""
-					},
-					{
-						"action_type": 2,
-						"affected_target": 1,
-						"description": "Damage reduction this turn.",
-						"effect_name": "acting_actor",
-						"target_area": "reduced_damage_taken_this_turn",
-						"value": 1
-					},
-					{
-						"action_type": 2,
-						"affected_target": 0,
-						"description": " Enemy can't move during their next action.",
-						"effect_name": "next_move_action_wont_work",
-						"target_area": "all sides",
-						"value": ""
-					}
-				],
-				"after_play": "discard",
-				"fuel_cost": 3,
-				"action_icons": [
-					{
-						"icon": "special",
-						"value": 1
-					},
-					{
-						"icon": "defence",
-						"value": 0
-					}
-				]
-			},
-			"side_b": {
-				"actions": [
-					{
-						"action_type": 1,
-						"description": "OVERTAKE.",
-						"target_area": "overtake",
-						"value": ""
-					},
-					{
-						"action_type": 2,
-						"affected_target": 0,
-						"description": "Your next action will not change your position.",
-						"effect_name": "next_action_target_debuff_no_position_change",
-						"target_area": "all sides",
-						"value": ""
-					}
-				],
-				"after_play": "discard",
-				"fuel_cost": 4,
-				"action_icons": [
-					{
-						"icon": "special",
-						"value": 0
-					}
-				]
-			},
-			"image_a": "Images/CardsPremade/railgrinder/hook_line_and_sinker_a_side.png",
-			"image_b": "Images/CardsPremade/railgrinder/hook_line_and_sinker_b_side.png"
-		},
-		"Kickdown": {
-			"side_a": {
-				"actions": [
-					{
-						"action_type": 1,
-						"description": "OVERTAKE.",
-						"target_area": "overtake"
-					},
-					{
-						"action_type": 2,
-						"affected_target": 1,
-						"description": "Increase your fuel cost 3 this turn.",
-						"effect_name": "debuff_this_turn_more_fuel_cost_you",
-						"target_area": "all sides",
-						"value": 3
-					},
-					{
-						"action_type": 2,
-						"affected_target": 1,
-						"description": "Increase your damage by 3 this turn.",
-						"effect_name": "+3_to_all_attacks",
-						"value": 3
-					}
-				],
-				"after_play": "discard",
-				"fuel_cost": 3,
-				"action_icons": [
-					{
-						"icon": "special",
-						"value": 3,
-						"icon_parameters":{
-							"x_position": -76,
-							"y_position":  -8,
-							"scale": 0.3
-						}
-					},
-					{
-						"icon": "special",
-						"value": 3,
-						"icon_parameters":{
-							"x_position": 11,
-							"y_position":  -8,
-							"scale": 0.3
-						}
-					}
-				]
-			},
-			"side_b": {
-				"actions": [
-					{
-						"action_type": 1,
-						"description": "LINE UP.",
-						"target_area": "line_up"
-					},
-					{
-						"action_type": 2,
-						"affected_target": 1,
-						"description": "Stay on the position this turn.",
-						"effect_name": "this_turn_enemy_move_skills_dont_work",
-						"target_area": "all sides"
-					}
-				],
-				"after_play": "discard",
-				"fuel_cost": 3,
-				"action_icons": [
-					{
-						"icon": "special",
-						"value": 0
-					}
-				]
-			},
-			"image_a": "Images/CardsPremade/common cassettes/kickdown_a_side.png",
-			"image_b": "Images/CardsPremade/common cassettes/kickdown_b_side.png"
-		},
-		"Launcher Gallery": {
-			"side_a": {
-				"actions": [
-					{
-						"action_type": 0,
-						"animation_name": "shoot",
-						"description": "Attack to the side.",
-						"target_area": "side",
-						"value": 5
-					},
-					{
-						"action_type": 2,
-						"affected_target": 1,
-						"description": "+2 damage to the next attack.",
-						"effect_name": "buff_next_attack",
-						"target_area": "all sides",
-						"value": 2
-					}
-				],
-				"after_play": "discard",
-				"fuel_cost": 7,
-				"action_icons": [
-					{
-						"icon": "attack",
-						"value": 5
-					},
-					{
-						"icon": "special",
-						"value": 2,
-						"icon_parameters":{
-							"x_position": -30,
-							"y_position":  -8,
-							"scale": 0.3
-						}
-					}
-				]
-			},
-			"side_b": {
-				"actions": [
-					{
-						"action_type": 0,
-						"animation_name": "shoot",
-						"description": "Attack to the back.",
-						"target_area": "back",
-						"value": 4
-					},
-					{
-						"action_type": 2,
-						"affected_target": 1,
-						"description": "+1 damage to the next attack.",
-						"effect_name": "buff_next_attack",
-						"target_area": "all sides",
-						"value": 1
-					}
-				],
-				"after_play": "discard",
-				"fuel_cost": 6,
-				"action_icons": [
-					{
-						"icon": "attack",
-						"value": 4
-					},
-					{
-						"icon": "special",
-						"value": 1,
-						"icon_parameters":{
-							"x_position": -29,
-							"y_position":  -8,
-							"scale": 0.3
-						}
-					}
-				]
-			},
-			"image_a": "Images/CardsPremade/railgrinder/launcher_gallery_a_side.png",
-			"image_b": "Images/CardsPremade/railgrinder/launcher_gallery_b_side.png"
-		},
-		"Letter D": {
-			"side_a": {
-				"actions": [
-					{
-						"action_type": 1,
-						"description": "LINE UP.",
-						"target_area": "line_up",
-						"value": ""
-					},
-					{
-						"action_type": 2,
-						"affected_target": 0,
-						"description": "Avoid next enemy action against you.",
-						"effect_name": "next_attack_or_debuff_wont_work",
-						"target_area": "all sides",
-						"value": ""
-					}
-				],
-				"after_play": "discard",
-				"fuel_cost": 3,
-				"action_icons": [
-					{
-						"icon": "defence",
-						"value": 0
-					}
-				]
-			},
-			"side_b": {
-				"actions": [
-					{
-						"action_type": 1,
-						"description": "OVERTAKE.",
-						"target_area": "overtake",
-						"value": ""
-					},
-					{
-						"action_type": 2,
-						"affected_target": 0,
-						"description": "Avoid all enemy actions next turn",
-						"effect_name": "next_turn_avoid_all_actions",
-						"target_area": "all sides",
-						"value": ""
-					},
-					{
-						"action_type": 2,
-						"affected_target": 1,
-						"description": "Reduce your damage by 2",
-						"effect_name": "next_turn_debuff_player_less_damage",
-						"target_area": "all sides",
-						"value": 2
-					}
-				],
-				"after_play": "burn",
-				"fuel_cost": 1,
-				"action_icons": [
-					{
-						"icon": "defence",
-						"value": 0
-					},
-					{
-						"icon": "special",
-						"value": 2
-					}
-				]
-			},
-			"image_a": "Images/CardsPremade/common cassettes/letter_d_a_side.png",
-			"image_b": "Images/CardsPremade/common cassettes/letter_d_b_side.png"
-		},
-		"My name is Spike": {
-			"side_a": {
-				"actions": [
-					{
-						"action_type": 2,
-						"affected_target": 0,
-						"effect_name": "reflect_half_damage_at_the_end",
-						"target_area": "side and back"
-					}
-				],
-				"after_play": "discard",
-				"description": "At the end of this turn reflect half of the damage taken back to the enemy.",
-				"fuel_cost": 4,
-				"action_icons": [
-					{
-						"icon": "defence",
-						"value": 0
-					}
-				]
-			},
-			"side_b": {
-				"actions": [
-					{
-						"action_type": 1,
-						"description": "SLOW DOWN.",
-						"target_area": "slow_down"
-					},
-					{
-						"action_type": 2,
-						"affected_target": 1,
-						"description": "Damage reduction this turn.",
-						"effect_name": "this_turn_damage_reduction",
-						"target_area": "all sides",
-						"value": 1
-					},
-					{
-						"action_type": 2,
-						"affected_target": 0,
-						"description": "Reflect 1 damage from enemy next attack back to them.",
-						"effect_name": "reflect_damage_on_next_attack",
-						"target_area": "all sides",
-						"value": 1
-					}
-				],
-				"after_play": "discard",
-				"fuel_cost": 3,
-				"action_icons": [
-					{
-						"icon": "defence",
-						"value": 1
-					},
-					{
-						"icon": "special",
-						"value": 1,
-						"icon_parameters":{
-							"x_position": -13,
-							"y_position": -12,
-							"scale": 0.3
-						}
-					}
-				]
-			},
-			"image_a": "Images/CardsPremade/boner/my_name_is_spike_a_side.png",
-			"image_b": "Images/CardsPremade/boner/my_name_is_spike_b_side.png"
-		},
-		"Nitro": {
-			"side_a": {
-				"actions": [
-					{
-						"action_type": 0,
-						"animation_name": "ram",
-						"description": "Attack to the back.",
-						"target_area": "back",
-						"value": 4
-					}
-				],
-				"after_play": "discard",
-				"fuel_cost": 5,
-				"action_icons": [
-					{
-						"icon": "attack",
-						"value": 4
-					}
-				]
-			},
-			"side_b": {
-				"actions": [
-					{
-						"action_type": 1,
-						"description": "Overtake.",
-						"target_area": "overtake"
-					},
-					{
-						"action_type": 2,
-						"affected_target": 0,
-						"description": "Enemy cant overtake next turn.",
-						"effect_name": "next_turn_target_debuff_no_position_change",
-						"target_area": "all sides",
-						"value": ""
-					}
-				],
-				"after_play": "discard",
-				"fuel_cost": 3,
-				"action_icons": [
-					{
-						"icon": "special",
-						"value": 0
-					}
-				]
-			},
-			"image_a": "Images/CardsPremade/wife/nitro_a_side.png",
-			"image_b": "Images/CardsPremade/wife/nitro_b_side.png"
-		},
-		"Offence is Defence": {
-			"side_a": {
-				"actions": [
-					{
-						"action_type": 0,
-						"animation_name": "shoot",
-						"description": "Attack to the side or back.",
-						"target_area": "side and back",
-						"value": 2
-					}
-				],
-				"after_play": "discard",
-				"fuel_cost": 5,
-				"action_icons": [
-					{
-						"icon": "attack",
-						"value": 2
-					}
-				]
-			},
-			"side_b": {
-				"actions": [
-					{
-						"action_type": 1,
-						"description": "LINE UP.",
-						"target_area": "line_up"
-					},
-					{
-						"action_type": 2,
-						"affected_target": 1,
-						"description": "Damage reduction this turn.",
-						"effect_name": "this_turn_damage_reduction",
-						"target_area": "all sides",
-						"value": 2
-					}
-				],
-				"after_play": "discard",
-				"fuel_cost": 2,
-				"action_icons": [
-					{
-						"icon": "defence",
-						"value": 2
-					}
-				]
-			},
-			"image_a": "Images/CardsPremade/common cassettes/offence_is_defence_a_side.png",
-			"image_b": "Images/CardsPremade/common cassettes/offence_is_defence_b_side.png"
-		},
-		"Oil Spill": {
-			"side_a": {
-				"actions": [
-					{
-						"action_type": 1,
-						"description": "OVERTAKE.",
-						"target_area": "overtake"
-					},
-					{
-						"action_type": 2,
-						"affected_target": 0,
-						"description": "Enemy can't move during their next action.",
-						"effect_name": "next_move_action_wont_work",
-						"target_area": "all sides"
-					}
-				],
-				"after_play": "discard",
-				"fuel_cost": 1,
-				"action_icons": [
-					{
-						"icon": "special",
-						"value": 0
-					}
-				]
-			},
-			"side_b": {
-				"actions": [
-					{
-						"action_type": 1,
-						"description": "OVERTAKE.",
-						"target_area": "overtake"
-					},
-					{
-						"action_type": 2,
-						"affected_target": 1,
-						"description": "Damage reduction this turn.",
-						"effect_name": "this_turn_damage_reduction",
-						"target_area": "all sides",
-						"value": 2
-					}
-				],
-				"after_play": "discard",
-				"fuel_cost": 3,
-				"action_icons": [
-					{
-						"icon": "defence",
-						"value": 2
-					}
-				]
-			},
-			"image_a": "Images/CardsPremade/wife/oil_spill_a_side.png",
-			"image_b": "Images/CardsPremade/wife/oil_spill_b_side.png"
-		},
-		"Perfectly Balanced": {
-			"side_a": {
-				"actions": [
-					{
-						"action_type": 0,
-						"animation_name": "ram",
-						"description": "Attack to the side.",
-						"target_area": "side",
-						"value": 3
-					},
-					{
-						"action_type": 2,
-						"affected_target": 1,
-						"description": "Damage reduction.",
-						"effect_name": "this_turn_reduce_damage_from_sides",
-						"target_area": "side",
-						"value": 3
-					}
-				],
-				"after_play": "discard",
-				"fuel_cost": 6,
-				"action_icons": [
-					{
-						"icon": "attack",
-						"value": 3
-					},
-					{
-						"icon": "defence",
-						"value": 3
-					}
-				]
-			},
-			"side_b": {
-				"actions": [
-					{
-						"action_type": 1,
-						"description": "LINE UP.",
-						"target_area": "line_up",
-						"value": ""
-					},
-					{
-						"action_type": 2,
-						"affected_target": 1,
-						"description": "Reduce fuel cost of the action by 1 when you LINE UP.",
-						"effect_name": "this_turn_reduce_fuel_cost_while_in_line_up",
-						"target_area": "all sides",
-						"value": 1
-					}
-				],
-				"after_play": "discard",
-				"fuel_cost": 3,
-				"action_icons": [
-					{
-						"icon": "special",
-						"value": 1,
-						"icon_parameters":{
-							"x_position": -13,
-							"y_position": -12,
-							"scale": 0.3
-						}
-					}
-				]
-			},
-			"image_a": "Images/CardsPremade/common cassettes/perfectly_balanced_a_side.png",
-			"image_b": "Images/CardsPremade/common cassettes/perfectly_balanced_b_side.png"
-		},
-		"Pew Pew": {
-			"side_a": {
-				"actions": [
-					{
-						"action_type": 0,
-						"animation_name": "shoot",
-						"description": "Attack to the side.",
-						"target_area": "side",
-						"value": 1
-					}
-				],
-				"after_play": "discard",
-				"fuel_cost": 2,
-				"action_icons": [
-					{
-						"icon": "attack",
-						"value": 1
-					}
-				]
-			},
-			"side_b": {
-				"actions": [
-					{
-						"action_type": 0,
-						"animation_name": "shoot",
-						"description": "Attack to the front.",
-						"target_area": "front",
-						"value": 1
-					}
-				],
-				"after_play": "discard",
-				"fuel_cost": 2,
-				"action_icons": [
-					{
-						"icon": "attack",
-						"value": 1
-					}
-				]
-			},
-			"image_a": "Images/CardsPremade/common cassettes/pew_pew_a_side.png",
-			"image_b": "Images/CardsPremade/common cassettes/pew_pew_b_side.png"
-		},
-		"Pit Maneouver": {
-			"side_a": {
-				"actions": [
-					{
-						"action_type": 1,
-						"description": "OVERTAKE.",
-						"target_area": "overtake"
-					},
-					{
-						"action_type": 2,
-						"affected_target": 0,
-						"description": "Enemy next action fuel cost is increased by 2.",
-						"effect_name": "next_enemy_cassette_cost_more",
-						"target_area": "all sides",
-						"value": 2
-					}
-				],
-				"after_play": "discard",
-				"fuel_cost": 6,
-				"action_icons": [
-					{
-						"icon": "special",
-						"value": 2,
-						"icon_parameters":{
-							"x_position": -18,
-							"y_position":  -7,
-							"scale": 0.3
-						}
-					}
-				]
-			},
-			"side_b": {
-				"actions": [
-					{
-						"action_type": 0,
-						"animation_name": "ram",
-						"description": "Attack to the side.",
-						"target_area": "side",
-						"value": 5
-					},
-					{
-						"action_type": 2,
-						"affected_target": 0,
-						"description": "Increase the fuel cost of the next enemy action by 2.",
-						"effect_name": "next_enemy_cassette_cost_more",
-						"target_area": "all sides",
-						"value": 2
-					}
-				],
-				"after_play": "discard",
-				"fuel_cost": 7,
-				"action_icons": [
-					{
-						"icon": "attack",
-						"value": 5
-					},
-					{
-						"icon": "special",
-						"value": 2,
-						"icon_parameters":{
-							"x_position": -18,
-							"y_position":  -7,
-							"scale": 0.3
-						}
-					}
-				]
-			},
-			"image_a": "Images/CardsPremade/evans/pit_manoeuvre_a_side.png",
-			"image_b": "Images/CardsPremade/evans/pit_manoeuvre_b_side.png"
-		},
-		"Quick Attack": {
-			"side_a": {
-				"actions": [
-					{
-						"action_type": 0,
-						"animation_name": "shoot",
-						"target_area": "side",
-						"value": 2
-					}
-				],
-				"after_play": "discard",
-				"description": "Example description for side A",
-				"fuel_cost": 2,
-				"action_icons": [
-					{
-						"icon": "attack",
-						"value": 2
-					}
-				]
-			},
-			"side_b": {
-				"actions": [
-					{
-						"action_type": 1,
-						"animation_name": "",
-						"target_area": "overtake",
-						"value": ""
-					}
-				],
-				"after_play": "discard",
-				"description": "Example description for side B",
-				"fuel_cost": 3,
-				"action_icons": []
-			},
-			"image_a": null,
-			"image_b": null
-		},
-		"Rail the Tail": {
-			"side_a": {
-				"actions": [
-					{
-						"action_type": 0,
-						"animation_name": "ram",
-						"description": "Attack to the front.",
-						"target_area": "front",
-						"value": 4
-					},
-					{
-						"action_type": 2,
-						"affected_target": 0,
-						"description": "Attack to the front. Enemy next OVERTAKE becomes LINE UP or the next LINE UP is ignored.",
-						"effect_name": "less_movement_to_back",
-						"target_area": "all sides"
-					}
-				],
-				"after_play": "discard",
-				"fuel_cost": 6,
-				"action_icons": [
-					{
-						"icon": "attack",
-						"value": 4
-					},
-					{
-						"icon": "special",
-						"value": 0
-					}
-				]
-			},
-			"side_b": {
-				"actions": [
-					{
-						"action_type": 0,
-						"animation_name": "ram",
-						"description": "Attack to the front.",
-						"target_area": "front",
-						"value": 1
-					},
-					{
-						"action_type": 2,
-						"affected_target": 0,
-						"description": "Fuel cost of enemy actions increased by 1 permanently.",
-						"effect_name": "until_end_all_cards_cost_more_fuel",
-						"target_area": "all sides",
-						"value": 1
-					}
-				],
-				"after_play": "burn",
-				"fuel_cost": 3,
-				"action_icons": [
-					{
-						"icon": "attack",
-						"value": 1
-					},
-					{
-						"icon": "special",
-						"value": 1,
-						"icon_parameters":{
-							"x_position": -20,
-							"y_position":  -7,
-							"scale": 0.3
-						}
-					}
-				]
-			},
-			"image_a": "Images/CardsPremade/boner/rail_the_tail_a_side.png",
-			"image_b": "Images/CardsPremade/boner/rail_the_tail_b_side.png"
-		},
-		"Ram": {
-			"side_a": {
-				"actions": [
-					{
-						"action_type": 0,
-						"animation_name": "ram",
-						"description": "Attack to the front or side.",
-						"target_area": "side and front",
-						"value": 4
-					}
-				],
-				"after_play": "discard",
-				"fuel_cost": 6,
-				"action_icons": [
-					{
-						"icon": "attack",
-						"value": 4
-					}
-				]
-			},
-			"side_b": {
-				"actions": [
-					{
-						"action_type": 1,
-						"description": "LINE UP.",
-						"target_area": "line_up",
-						"value": ""
-					},
-					{
-						"action_type": 2,
-						"affected_target": 1,
-						"description": "Damage reduction this turn.",
-						"effect_name": "this_turn_damage_reduction",
-						"target_area": "all sides",
-						"value": 3
-					}
-				],
-				"after_play": "discard",
-				"fuel_cost": 4,
-				"action_icons": [
-					{
-						"icon": "defence",
-						"value": 3
-					}
-				]
-			},
-			"image_a": "Images/CardsPremade/common cassettes/ram_a_side.png",
-			"image_b": "Images/CardsPremade/common cassettes/ram_b_side.png"
-		},
-		"Regular Attack": {
-			"side_a": {
-				"actions": [
-					{
-						"action_type": 0,
-						"animation_name": "shoot",
-						"target_area": "side",
-						"value": 2
-					}
-				],
-				"after_play": "discard",
-				"description": "Example description for side A",
-				"fuel_cost": 2,
-				"action_icons": [
-					{
-						"icon": "attack",
-						"value": 2
-					}
-				]
-			},
-			"side_b": {
-				"actions": [
-					{
-						"action_type": 1,
-						"animation_name": "",
-						"target_area": "overtake",
-						"value": ""
-					}
-				],
-				"after_play": "discard",
-				"description": "Example description for side B",
-				"fuel_cost": 3,
-				"action_icons": []
-			},
-			"image_a": null,
-			"image_b": null
-		},
-		"Road Rage": {
-			"side_a": {
-				"actions": [
-					{
-						"action_type": 0,
-						"animation_name": "ram",
-						"description": "Attack in any direction.",
-						"target_area": "all sides",
-						"value": 4
-					},
-					{
-						"action_type": 2,
-						"affected_target": 1,
-						"description": "Damage reduction for next enemy cassette.",
-						"effect_name": "next_attack_damage_reduction_any_side",
-						"target_area": "all sides",
-						"value": 2
-					}
-				],
-				"after_play": "discard",
-				"fuel_cost": 8,
-				"action_icons": [
-					{
-						"icon": "attack",
-						"value": 4
-					},
-					{
-						"icon": "defence",
-						"value": 2
-					}
-				]
-			},
-			"side_b": {
-				"actions": [
-					{
-						"action_type": 0,
-						"animation_name": "ram",
-						"description": "Attack in any direction. ",
-						"target_area": "all sides",
-						"value": 2
-					},
-					{
-						"action_type": 2,
-						"affected_target": 1,
-						"description": "Damage reduction this turn.",
-						"effect_name": "next_attack_damage_reduction_any_side",
-						"target_area": "all sides",
-						"value": 4
-					}
-				],
-				"after_play": "discard",
-				"fuel_cost": 8,
-				"action_icons": [
-					{
-						"icon": "attack",
-						"value": 2
-					},
-					{
-						"icon": "defence",
-						"value": 4
-					}
-				]
-			},
-			"image_a": "Images/CardsPremade/common cassettes/road_rage_a_side.png",
-			"image_b": "Images/CardsPremade/common cassettes/road_rage_b_side.png"
-		},
-		"Roadslinger": {
-			"side_a": {
-				"actions": [
-					{
-						"action_type": 0,
-						"animation_name": "ram",
-						"description": "Attack to the front or back.",
-						"target_area": "back and front",
-						"value": 3
-					}
-				],
-				"after_play": "discard",
-				"fuel_cost": 5,
-				"action_icons": [
-					{
-						"icon": "attack",
-						"value": 3
-					}
-				]
-			},
-			"side_b": {
-				"actions": [
-					{
-						"action_type": 0,
-						"animation_name": "shoot",
-						"description": "Attack to the side or back.",
-						"target_area": "side and back",
-						"value": 3
-					}
-				],
-				"after_play": "discard",
-				"fuel_cost": 5,
-				"action_icons": [
-					{
-						"icon": "attack",
-						"value": 3
-					}
-				]
-			},
-			"image_a": "Images/CardsPremade/common cassettes/roadslinger_a_side.png",
-			"image_b": "Images/CardsPremade/common cassettes/roadslinger_b_side.png"
-		},
-		"Run to Live": {
-			"side_a": {
-				"actions": [
-					{
-						"action_type": 1,
-						"animation_name": "move",
-						"description": "OVERTAKE.",
-						"target_area": "overtake",
-						"value": ""
-					},
-					{
-						"action_type": 2,
-						"affected_target": 1,
-						"description": "Damage reduction this turn.",
-						"effect_name": "this_turn_damage_reduction",
-						"target_area": "all sides",
-						"value": 3
-					}
-				],
-				"after_play": "discard",
-				"fuel_cost": 4,
-				"action_icons": [
-					{
-						"icon": "defence",
-						"value": 3
-					}
-				]
-			},
-			"side_b": {
-				"actions": [
-					{
-						"action_type": 1,
-						"description": "SLOW DOWN.",
-						"target_area": "slow_down",
-						"value": ""
-					},
-					{
-						"action_type": 2,
-						"affected_target": 1,
-						"description": "Damage reduction this turn.",
-						"effect_name": "this_turn_damage_reduction",
-						"target_area": "all sides",
-						"value": 3
-					}
-				],
-				"after_play": "discard",
-				"fuel_cost": 4,
-				"action_icons": [
-					{
-						"icon": "defence",
-						"value": 3
-					}
-				]
-			},
-			"image_a": "Images/CardsPremade/common cassettes/run_to_live_a_side.png",
-			"image_b": "Images/CardsPremade/common cassettes/run_to_live_b_side.png"
-		},
-		"Shoot em up": {
-			"side_a": {
-				"actions": [
-					{
-						"action_type": 0,
-						"animation_name": "shoot",
-						"description": "Attack in any direction.",
-						"target_area": "all sides",
-						"value": 2
-					}
-				],
-				"after_play": "discard",
-				"fuel_cost": 5,
-				"action_icons": [
-					{
-						"icon": "attack",
-						"value": 2
-					}
-				]
-			},
-			"side_b": {
-				"actions": [
-					{
-						"action_type": 2,
-						"affected_target": 1,
-						"description": "+1 damage to all attacks permanently.",
-						"effect_name": "permanent_buff_all_attacks",
-						"target_area": "all sides",
-						"value": 1
-					}
-				],
-				"after_play": "burn",
-				"fuel_cost": 3,
-				"action_icons": [
-					{
-						"icon": "special",
-						"value": 1,
-						"icon_parameters":{
-							"x_position": -15,
-							"y_position":  -6,
-							"scale": 0.3
-						}
-					}
-				]
-			},
-			"image_a": "Images/CardsPremade/common cassettes/shootem_up_a_side.png",
-			"image_b": "Images/CardsPremade/common cassettes/shootem_up_b_side.png"
-		},
-		"Whatever": {
-			"side_a": {
-				"actions": [
-					{
-						"action_type": 2,
-						"affected_target": 1,
-						"description": "Get a random buff: +2 damage, -2 fuel cost or +2 damage reduction.",
-						"effect_name": "random_buff_attack_fuel_defence",
-						"target_area": "all sides",
-						"value": 2
-					}
-				],
-				"after_play": "discard",
-				"fuel_cost": 1,
-				"action_icons": [
-					{
-						"icon": "special",
-						"value": 2,
-						"icon_parameters":{
-							"x_position": -15,
-							"y_position":  -6,
-							"scale": 0.3
-						}
-					},
-					{
-						"icon": "none",
-						"value": 2,
-						"icon_parameters":{
-							"x_position": -15,
-							"y_position":  -6,
-							"scale": 0.3
-						}
-					},
-					{
-						"icon": "none",
-						"value": 2,
-						"icon_parameters":{
-							"x_position": -15,
-							"y_position":  -6,
-							"scale": 0.3
-						}
-					}
-				]
-			},
-			"side_b": {
-				"actions": [
-					{
-						"action_type": 2,
-						"affected_target": 0,
-						"description": "Give a random debuff: enemy damage reduced by 2, fuel cost increased by 2.",
-						"effect_name": "random_debuff_attack_fuel",
-						"target_area": "all sides",
-						"value": ""
-					}
-				],
-				"after_play": "discard",
-				"fuel_cost": 1,
-				"action_icons": [
-					{
-						"icon": "special",
-						"value": 0,
-						"icon_parameters":{
-							"x_position": -18,
-							"y_position":  -7,
-							"scale": 0.3
-						}
-					}
-				]
-			},
-			"image_a": "Images/CardsPremade/wife/whatever_a_side.png",
-			"image_b": "Images/CardsPremade/wife/whatever_b_side.png"
-		},
-		"Honk Honk": {
-			"side_a": {
-				"actions": [
-					{
-						"action_type": 2,
-						"affected_target": 1,
-						"description": "+1 damage to the next attack.",
-						"effect_name": "buff_next_attack",
-						"target_area": "all sides",
-						"value": 1
-					},
-					{
-						"action_type": 2,
-						"affected_target": 1,
-						"description": "Next attack hits all directions.",
-						"effect_name": "next_attack_all_direction",
-						"target_area": "all sides",
-						"value": ""
-					}
-				],
-				"after_play": "discard",
-				"fuel_cost": 2,
-				"action_icons": [
-					{
-						"icon": "special",
-						"value": 1
-					},
-					{
-						"icon": "special",
-						"value": 0
-					}
-				]
-			},
-			"side_b": {
-				"actions": [
-					{
-						"action_type": 1,
-						"description": "OVERTAKE.",
-						"target_area": "overtake",
-						"value": ""
-					},
-					{
-						"action_type": 0,
-						"animation_name": "shoot",
-						"description": "Attack to the back.",
-						"target_area": "back",
-						"value": 1
-					}
-				],
-				"after_play": "discard",
-				"fuel_cost": 4,
-				"action_icons": [
-					{
-						"icon": "attack",
-						"value": 1
-					}
-				]
-			},
-			"image_a": "Images/CardsPremade/railgrinder/honk_honk_a_side.png",
-			"image_b": "Images/CardsPremade/railgrinder/honk_honk_b_side.png"
-		}
-	}
+    "cassettes": {
+        "Another One": {
+            "side_a": {
+                "actions": [
+                    {
+                        "action_type": 1,
+                        "target_area": "slow_down",
+                        "description": "Move to SLOW DOWN position"
+                    },
+                    {
+                        "action_type": 2,
+                        "affected_target": 0,
+                        "description": "Avoid attacks to the back this turn",
+                        "effect_name": "this_turn_target_attacks_behind_wont_work",
+                        "target_area": "back"
+                    }
+                ],
+                "after_play": "burn",
+                "fuel_cost": 3,
+                "action_icons": [
+                    {
+                        "icon": "defence"
+                    }
+                ],
+                "action_labels": []
+            },
+            "side_b": {
+                "actions": [
+                    {
+                        "action_type": 2,
+                        "affected_target": 1,
+                        "description": "Damage reduction this turn.",
+                        "effect_name": "this_turn_damage_reduction",
+                        "target_area": "all sides",
+                        "value": 3
+                    }
+                ],
+                "after_play": "discard",
+                "fuel_cost": 5,
+                "action_icons": [
+                    {
+                        "icon": "defence",
+                        "value": 3
+                    }
+                ],
+                "action_labels": []
+            },
+            "image_a": "Images/CardsPremade/hound/another_one_a_side.png",
+            "image_b": "Images/CardsPremade/hound/another_one_b_side.png"
+        },
+        "Big Refill": {
+            "side_a": {
+                "actions": [
+                    {
+                        "action_type": 2,
+                        "affected_target": 1,
+                        "description": "Reduce all fuel costs by 1 permanently.",
+                        "effect_name": "permanent_buff_fuel_cost_reduction",
+                        "target_area": "all sides",
+                        "value": 1
+                    }
+                ],
+                "after_play": "burn",
+                "fuel_cost": 1,
+                "action_icons": [
+                    {
+                        "icon": "special",
+                        "value": 0
+                    }
+                ],
+                "action_labels": [
+                    {
+                        "value": -1,
+                        "x_position": -23,
+                        "y_position": -6,
+                        "scale": 0.3
+                    }
+                ]
+            },
+            "side_b": {
+                "actions": [
+                    {
+                        "action_type": 2,
+                        "affected_target": 1,
+                        "description": "Reduce the fuel cost of the next action by 3.",
+                        "effect_name": "next_card_reduce_fuel",
+                        "target_area": "all sides",
+                        "value": 3
+                    }
+                ],
+                "after_play": "discard",
+                "fuel_cost": 1,
+                "action_icons": [
+                    {
+                        "icon": "special",
+                        "value": 0
+                    }
+                ],
+                "action_labels": [
+                    {
+                        "value": 3,
+                        "x_position": -32,
+                        "y_position": -6,
+                        "scale": 0.3
+                    }
+                ]
+            },
+            "image_a": "Images/CardsPremade/wife/big_refill_a_side.png",
+            "image_b": "Images/CardsPremade/wife/big_refill_b_side.png"
+        },
+        "Bites the Dust": {
+            "side_a": {
+                "actions": [
+                    {
+                        "action_type": 1,
+                        "description": "SLOW DOWN",
+                        "target_area": "slow_down"
+                    },
+                    {
+                        "action_type": 2,
+                        "affected_target": 1,
+                        "description": "Permanent +2 damage to attacks in the front",
+                        "effect_name": "permanent_buff_all_attacks_front",
+                        "target_area": "all sides",
+                        "value": 2
+                    }
+                ],
+                "after_play": "burn",
+                "fuel_cost": 2,
+                "action_icons": [
+                    {
+                        "icon": "special",
+                        "value": 0
+                    }
+                ],
+                "action_labels": [
+                    {
+                        "value": 2,
+                        "x_position": 42,
+                        "y_position": -8,
+                        "scale": 0.3
+                    }
+                ]
+            },
+            "side_b": {
+                "actions": [
+                    {
+                        "action_type": 2,
+                        "affected_target": 0,
+                        "description": "Attack in any direction. Add fuel spent so far as additional damage to this attack.",
+                        "effect_name": "attack_deals_damage_plus_spent_fuel_as_bonus_damage_all_sides",
+                        "target_area": "all sides",
+                        "value": 1
+                    }
+                ],
+                "after_play": "discard",
+                "fuel_cost": 4,
+                "action_icons": [
+                    {
+                        "icon": "special",
+                        "value": 1
+                    }
+                ],
+                "action_labels": []
+            },
+            "image_a": "Images/CardsPremade/hound/bites_the_dust_a_side.png",
+            "image_b": "Images/CardsPremade/hound/bites_the_dust_b_side.png"
+        },
+        "Burning Rubber": {
+            "side_a": {
+                "actions": [
+                    {
+                        "action_type": 0,
+                        "animation_name": "shoot",
+                        "description": "Attack to the back.",
+                        "target_area": "back",
+                        "value": 5
+                    }
+                ],
+                "after_play": "burn",
+                "fuel_cost": 3,
+                "action_icons": [
+                    {
+                        "icon": "attack",
+                        "value": 5
+                    }
+                ],
+                "action_labels": []
+            },
+            "side_b": {
+                "actions": [
+                    {
+                        "action_type": 1,
+                        "description": "OVERTAKE",
+                        "target_area": "overtake"
+                    },
+                    {
+                        "action_type": 2,
+                        "affected_target": 1,
+                        "description": "Avoid next enemy attack.",
+                        "effect_name": "next_attack_wont_work",
+                        "target_area": "all sides"
+                    }
+                ],
+                "after_play": "burn",
+                "fuel_cost": 1,
+                "action_icons": [
+                    {
+                        "icon": "defence",
+                        "value": 0
+                    }
+                ],
+                "action_labels": []
+            },
+            "image_a": "Images/CardsPremade/wife/burning_rubber_a_side.png",
+            "image_b": "Images/CardsPremade/wife/burning_rubber_b_side.png"
+        },
+        "Drafting": {
+            "side_a": {
+                "actions": [
+                    {
+                        "action_type": 1,
+                        "animation_name": "move",
+                        "description": "SLOW DOWN",
+                        "target_area": "slow_down",
+                        "value": ""
+                    },
+                    {
+                        "action_type": 2,
+                        "affected_target": 1,
+                        "description": " If you begin your next turn on a SLOW DOWN position, all actions in that turn cost 1 fuel.",
+                        "effect_name": "next_turn_reduce_all_action_cost",
+                        "target_area": "behind",
+                        "value": 1
+                    }
+                ],
+                "after_play": "burn",
+                "fuel_cost": 2,
+                "action_icons": [
+                    {
+                        "icon": "special",
+                        "value": 0
+                    }
+                ],
+                "action_labels": [
+                    {
+                        "value": 1,
+                        "x_position": 38,
+                        "y_position": -8,
+                        "scale": 0.3
+                    }
+                ]
+            },
+            "side_b": {
+                "actions": [
+                    {
+                        "action_type": 1,
+                        "animation_name": "move",
+                        "description": "SLOW DOWN",
+                        "target_area": "slow_down",
+                        "value": ""
+                    },
+                    {
+                        "action_type": 2,
+                        "affected_target": 1,
+                        "effect_name": "next_turn_first_action_cost_less",
+                        "description": "If you begin your next turn in a SLOW DOWN position, reduce the next action's fuel cost by 1.",
+                        "target_area": "all sides",
+                        "value": 1
+                    }
+                ],
+                "after_play": "discard",
+                "fuel_cost": 2,
+                "action_icons": [
+                    {
+                        "icon": "special",
+                        "value": 0
+                    }
+                ],
+                "action_labels": [
+                    {
+                        "value": 1,
+                        "x_position": 30,
+                        "y_position": -8,
+                        "scale": 0.3
+                    }
+                ]
+            },
+            "image_a": "Images/CardsPremade/common cassettes/drafting_a_side.png",
+            "image_b": "Images/CardsPremade/common cassettes/drafting_b_side.png"
+        },
+        "Emergency Brake": {
+            "side_a": {
+                "actions": [
+                    {
+                        "action_type": 0,
+                        "animation_name": "ram",
+                        "description": "Attack to the back.",
+                        "target_area": "back",
+                        "value": 2
+                    }
+                ],
+                "after_play": "discard",
+                "fuel_cost": 3,
+                "action_icons": [
+                    {
+                        "icon": "attack",
+                        "value": 2
+                    }
+                ],
+                "action_labels": []
+            },
+            "side_b": {
+                "actions": [
+                    {
+                        "action_type": 2,
+                        "affected_target": 1,
+                        "description": "Avoid an attack to the side.",
+                        "effect_name": "this_turn_you_avoid_side_attacks",
+                        "target_area": "side",
+                        "value": ""
+                    }
+                ],
+                "after_play": "discard",
+                "fuel_cost": 4,
+                "action_icons": [
+                    {
+                        "icon": "defence",
+                        "value": 0
+                    }
+                ],
+                "action_labels": []
+            },
+            "image_a": "Images/CardsPremade/wife/emergency_brake_a_side.png",
+            "image_b": "Images/CardsPremade/wife/emergency_brake_b_side.png"
+        },
+        "EMP": {
+            "side_a": {
+                "actions": [
+                    {
+                        "action_type": 0,
+                        "animation_name": "shoot",
+                        "description": "Attack to the front.",
+                        "target_area": "front",
+                        "value": 2
+                    },
+                    {
+                        "action_type": 2,
+                        "affected_target": 0,
+                        "description": "Disable enemy next action.",
+                        "effect_name": "next_cassette_wont_work",
+                        "target_area": "front",
+                        "value": ""
+                    }
+                ],
+                "after_play": "burn",
+                "fuel_cost": 3,
+                "action_icons": [
+                    {
+                        "icon": "attack",
+                        "value": 2
+                    },
+                    {
+                        "icon": "special",
+                        "value": 0
+                    }
+                ],
+                "action_labels": []
+            },
+            "side_b": {
+                "actions": [
+                    {
+                        "action_type": 0,
+                        "animation_name": "shoot",
+                        "description": "Attack to the back.",
+                        "target_area": "back",
+                        "value": 1
+                    },
+                    {
+                        "action_type": 2,
+                        "affected_target": 0,
+                        "description": "Enemy cant overtake next turn.",
+                        "effect_name": "next_turn_target_debuff_no_position_change",
+                        "target_area": "back",
+                        "value": ""
+                    }
+                ],
+                "after_play": "discard",
+                "fuel_cost": 4,
+                "action_icons": [
+                    {
+                        "icon": "attack",
+                        "value": 1
+                    },
+                    {
+                        "icon": "special",
+                        "value": 0
+                    }
+                ],
+                "action_labels": []
+            },
+            "image_a": "Images/CardsPremade/evans/emp_a_side.png",
+            "image_b": "Images/CardsPremade/evans/emp_b_side.png"
+        },
+        "Explosive Maneouver": {
+            "side_a": {
+                "actions": [
+                    {
+                        "action_type": 0,
+                        "animation_name": "shoot",
+                        "description": "A devastating attack to the side and back.",
+                        "target_area": "side and back",
+                        "value": 12
+                    }
+                ],
+                "after_play": "burn",
+                "fuel_cost": 14,
+                "action_icons": [
+                    {
+                        "icon": "attack",
+                        "value": 12
+                    }
+                ],
+                "action_labels": []
+            },
+            "side_b": {
+                "actions": [
+                    {
+                        "action_type": 1,
+                        "description": "OVERTAKE",
+                        "target_area": "overtake",
+                        "value": ""
+                    },
+                    {
+                        "action_type": 2,
+                        "affected_target": 1,
+                        "description": "+2 to the next attack.",
+                        "effect_name": "buff_next_attack",
+                        "target_area": "all sides",
+                        "value": 2
+                    }
+                ],
+                "after_play": "discard",
+                "fuel_cost": 3,
+                "action_icons": [
+                    {
+                        "icon": "special",
+                        "value": 0
+                    }
+                ],
+                "action_labels": [
+                    {
+                        "value": 2,
+                        "x_position": -72,
+                        "y_position": -20,
+                        "scale": 0.35
+                    }
+                ]
+            },
+            "image_a": "Images/CardsPremade/railgrinder/explosive_manoeuvre_a_side.png",
+            "image_b": "Images/CardsPremade/railgrinder/explosive_manoeuvre_b_side.png"
+        },
+        "Gimme Fire": {
+            "side_a": {
+                "actions": [
+                    {
+                        "action_type": 0,
+                        "animation_name": "shoot",
+                        "description": "Attack to the back.",
+                        "target_area": "back",
+                        "value": 2
+                    },
+                    {
+                        "action_type": 2,
+                        "affected_target": 1,
+                        "description": "Enemy suffers +1 extra damage until they overtake.",
+                        "effect_name": "damage_behind_and_line_up_every_cassette_this_turn",
+                        "target_area": "side and back",
+                        "value": 1
+                    }
+                ],
+                "after_play": "discard",
+                "fuel_cost": 5,
+                "action_icons": [
+                    {
+                        "icon": "attack",
+                        "value": 2
+                    },
+                    {
+                        "icon": "special",
+                        "value": 0
+                    }
+                ],
+                "action_labels": [
+                    {
+                        "value": 1,
+                        "x_position": 19,
+                        "y_position": -22,
+                        "scale": 0.35
+                    }
+                ]
+            },
+            "side_b": {
+                "actions": [
+                    {
+                        "action_type": 2,
+                        "affected_target": 1,
+                        "description": "Next turn your actions cost less per point of damage received this turn.",
+                        "effect_name": "next_turn_player_cassettes_cost_less_per_damage",
+                        "target_area": "all sides"
+                    }
+                ],
+                "after_play": "burn",
+                "fuel_cost": 1,
+                "action_icons": [
+                    {
+                        "icon": "special",
+                        "value": 0
+                    }
+                ],
+                "action_labels": []
+            },
+            "image_a": "Images/CardsPremade/wife/gimme_fire_a_side.png",
+            "image_b": "Images/CardsPremade/wife/gimme_fire_b_side.png"
+        },
+        "Gimme Fuel": {
+            "side_a": {
+                "actions": [
+                    {
+                        "action_type": 0,
+                        "animation_name": "shoot",
+                        "description": "Attack to the front or side.",
+                        "target_area": "side and front",
+                        "value": 3
+                    },
+                    {
+                        "action_type": 2,
+                        "affected_target": 0,
+                        "description": "Increase enemy fuel cost by 2 next turn.",
+                        "effect_name": "next_turn_actions_cost_more_fuel",
+                        "target_area": "all sides",
+                        "value": 2
+                    }
+                ],
+                "after_play": "discard",
+                "fuel_cost": 7,
+                "action_icons": [
+                    {
+                        "icon": "attack",
+                        "value": 3
+                    },
+                    {
+                        "icon": "special",
+                        "value": 0
+                    }
+                ],
+                "action_labels": [
+                    {
+                        "value": 2,
+                        "x_position": 3,
+                        "y_position": -8,
+                        "scale": 0.3
+                    }
+                ]
+            },
+            "side_b": {
+                "actions": [
+                    {
+                        "action_type": 0,
+                        "animation_name": "shoot",
+                        "description": "Attack to the front or side.",
+                        "target_area": "side and front",
+                        "value": 2
+                    },
+                    {
+                        "action_type": 2,
+                        "affected_target": 0,
+                        "description": "Increase the fuel cost of the next enemy action by 5.",
+                        "effect_name": "next_card_target_costs_more_fuel",
+                        "target_area": "all sides",
+                        "value": 5
+                    }
+                ],
+                "after_play": "discard",
+                "fuel_cost": 5,
+                "action_icons": [
+                    {
+                        "icon": "attack",
+                        "value": 2
+                    },
+                    {
+                        "icon": "special",
+                        "value": 0
+                    }
+                ],
+                "action_labels": [
+                    {
+                        "value": 5,
+                        "x_position": -20,
+                        "y_position": -8,
+                        "scale": 0.3
+                    }
+                ]
+            },
+            "image_a": "Images/CardsPremade/common cassettes/gimme_fuel_a_side.png",
+            "image_b": "Images/CardsPremade/common cassettes/gimme_fuel_b_side.png"
+        },
+        "Heavy Attack": {
+            "side_a": {
+                "actions": [
+                    {
+                        "action_type": 0,
+                        "animation_name": "shoot",
+                        "description": "Example description for side A",
+                        "target_area": "side",
+                        "value": 2
+                    }
+                ],
+                "after_play": "discard",
+                "fuel_cost": 2,
+                "action_icons": [
+                    {
+                        "icon": "attack",
+                        "value": 2
+                    }
+                ],
+                "action_labels": []
+            },
+            "side_b": {
+                "actions": [
+                    {
+                        "action_type": 1,
+                        "animation_name": "",
+                        "description": "Example description for side B",
+                        "target_area": "overtake",
+                        "value": ""
+                    }
+                ],
+                "after_play": "discard",
+                "fuel_cost": 3,
+                "action_icons": [],
+                "action_labels": []
+            },
+            "image_a": null,
+            "image_b": null
+        },
+        "Hit me baby": {
+            "side_a": {
+                "actions": [
+                    {
+                        "action_type": 1,
+                        "description": "LINE UP.",
+                        "target_area": "line_up"
+                    },
+                    {
+                        "action_type": 2,
+                        "affected_target": 1,
+                        "description": "Damage reduction this turn.",
+                        "effect_name": "this_turn_damage_reduction",
+                        "target_area": "all sides",
+                        "value": 2
+                    }
+                ],
+                "after_play": "discard",
+                "fuel_cost": 3,
+                "action_icons": [
+                    {
+                        "icon": "defence",
+                        "value": 2
+                    }
+                ],
+                "action_labels": []
+            },
+            "side_b": {
+                "actions": [
+                    {
+                        "action_type": 1,
+                        "description": "SLOW DOWN.",
+                        "target_area": "slow_down"
+                    },
+                    {
+                        "action_type": 2,
+                        "affected_target": 1,
+                        "description": "Damage reduction this turn.",
+                        "effect_name": "this_turn_damage_reduction",
+                        "target_area": "all sides",
+                        "value": 2
+                    }
+                ],
+                "after_play": "discard",
+                "fuel_cost": 1,
+                "action_icons": [
+                    {
+                        "icon": "defence",
+                        "value": 2
+                    }
+                ],
+                "action_labels": []
+            },
+            "image_a": "Images/CardsPremade/common cassettes/hit_me_baby_a_side.png",
+            "image_b": "Images/CardsPremade/common cassettes/hit_me_baby_b_side.png"
+        },
+        "Hook, line and sinker": {
+            "side_a": {
+                "actions": [
+                    {
+                        "action_type": 1,
+                        "description": "LINE UP.",
+                        "target_area": "line_up",
+                        "value": ""
+                    },
+                    {
+                        "action_type": 2,
+                        "affected_target": 1,
+                        "description": "Damage reduction this turn.",
+                        "effect_name": "acting_actor",
+                        "target_area": "reduced_damage_taken_this_turn",
+                        "value": 1
+                    },
+                    {
+                        "action_type": 2,
+                        "affected_target": 0,
+                        "description": " Enemy can't move during their next action.",
+                        "effect_name": "next_move_action_wont_work",
+                        "target_area": "all sides",
+                        "value": ""
+                    }
+                ],
+                "after_play": "discard",
+                "fuel_cost": 3,
+                "action_icons": [
+                    {
+                        "icon": "special",
+                        "value": 1
+                    },
+                    {
+                        "icon": "defence",
+                        "value": 0
+                    }
+                ],
+                "action_labels": []
+            },
+            "side_b": {
+                "actions": [
+                    {
+                        "action_type": 1,
+                        "description": "OVERTAKE.",
+                        "target_area": "overtake",
+                        "value": ""
+                    },
+                    {
+                        "action_type": 2,
+                        "affected_target": 0,
+                        "description": "Your next action will not change your position.",
+                        "effect_name": "next_action_target_debuff_no_position_change",
+                        "target_area": "all sides",
+                        "value": ""
+                    }
+                ],
+                "after_play": "discard",
+                "fuel_cost": 4,
+                "action_icons": [
+                    {
+                        "icon": "special",
+                        "value": 0
+                    }
+                ],
+                "action_labels": []
+            },
+            "image_a": "Images/CardsPremade/railgrinder/hook_line_and_sinker_a_side.png",
+            "image_b": "Images/CardsPremade/railgrinder/hook_line_and_sinker_b_side.png"
+        },
+        "Kickdown": {
+            "side_a": {
+                "actions": [
+                    {
+                        "action_type": 1,
+                        "description": "OVERTAKE.",
+                        "target_area": "overtake"
+                    },
+                    {
+                        "action_type": 2,
+                        "affected_target": 1,
+                        "description": "Increase your fuel cost 3 this turn.",
+                        "effect_name": "debuff_this_turn_more_fuel_cost_you",
+                        "target_area": "all sides",
+                        "value": 3
+                    },
+                    {
+                        "action_type": 2,
+                        "affected_target": 1,
+                        "description": "Increase your damage by 3 this turn.",
+                        "effect_name": "+3_to_all_attacks",
+                        "value": 3
+                    }
+                ],
+                "after_play": "discard",
+                "fuel_cost": 3,
+                "action_icons": [
+                    {
+                        "icon": "special",
+                        "value": 0
+                    },
+                    {
+                        "icon": "special",
+                        "value": 0
+                    }
+                ],
+                "action_labels": [
+                    {
+                        "value": 3,
+                        "x_position": -76,
+                        "y_position": -8,
+                        "scale": 0.3
+                    },
+                    {
+                        "value": 3,
+                        "x_position": 11,
+                        "y_position": -8,
+                        "scale": 0.3
+                    }
+                ]
+            },
+            "side_b": {
+                "actions": [
+                    {
+                        "action_type": 1,
+                        "description": "LINE UP.",
+                        "target_area": "line_up"
+                    },
+                    {
+                        "action_type": 2,
+                        "affected_target": 1,
+                        "description": "Stay on the position this turn.",
+                        "effect_name": "this_turn_enemy_move_skills_dont_work",
+                        "target_area": "all sides"
+                    }
+                ],
+                "after_play": "discard",
+                "fuel_cost": 3,
+                "action_icons": [
+                    {
+                        "icon": "special",
+                        "value": 0
+                    }
+                ],
+                "action_labels": []
+            },
+            "image_a": "Images/CardsPremade/common cassettes/kickdown_a_side.png",
+            "image_b": "Images/CardsPremade/common cassettes/kickdown_b_side.png"
+        },
+        "Launcher Gallery": {
+            "side_a": {
+                "actions": [
+                    {
+                        "action_type": 0,
+                        "animation_name": "shoot",
+                        "description": "Attack to the side.",
+                        "target_area": "side",
+                        "value": 5
+                    },
+                    {
+                        "action_type": 2,
+                        "affected_target": 1,
+                        "description": "+2 damage to the next attack.",
+                        "effect_name": "buff_next_attack",
+                        "target_area": "all sides",
+                        "value": 2
+                    }
+                ],
+                "after_play": "discard",
+                "fuel_cost": 7,
+                "action_icons": [
+                    {
+                        "icon": "attack",
+                        "value": 5
+                    },
+                    {
+                        "icon": "special",
+                        "value": 0
+                    }
+                ],
+                "action_labels": [
+                    {
+                        "value": 2,
+                        "x_position": -30,
+                        "y_position": -8,
+                        "scale": 0.3
+                    }
+                ]
+            },
+            "side_b": {
+                "actions": [
+                    {
+                        "action_type": 0,
+                        "animation_name": "shoot",
+                        "description": "Attack to the back.",
+                        "target_area": "back",
+                        "value": 4
+                    },
+                    {
+                        "action_type": 2,
+                        "affected_target": 1,
+                        "description": "+1 damage to the next attack.",
+                        "effect_name": "buff_next_attack",
+                        "target_area": "all sides",
+                        "value": 1
+                    }
+                ],
+                "after_play": "discard",
+                "fuel_cost": 6,
+                "action_icons": [
+                    {
+                        "icon": "attack",
+                        "value": 4
+                    },
+                    {
+                        "icon": "special",
+                        "value": 0
+                    }
+                ],
+                "action_labels": [
+                    {
+                        "value": 1,
+                        "x_position": -29,
+                        "y_position": -8,
+                        "scale": 0.3
+                    }
+                ]
+            },
+            "image_a": "Images/CardsPremade/railgrinder/launcher_gallery_a_side.png",
+            "image_b": "Images/CardsPremade/railgrinder/launcher_gallery_b_side.png"
+        },
+        "Letter D": {
+            "side_a": {
+                "actions": [
+                    {
+                        "action_type": 1,
+                        "description": "LINE UP.",
+                        "target_area": "line_up",
+                        "value": ""
+                    },
+                    {
+                        "action_type": 2,
+                        "affected_target": 0,
+                        "description": "Avoid next enemy action against you.",
+                        "effect_name": "next_attack_or_debuff_wont_work",
+                        "target_area": "all sides",
+                        "value": ""
+                    }
+                ],
+                "after_play": "discard",
+                "fuel_cost": 3,
+                "action_icons": [
+                    {
+                        "icon": "defence",
+                        "value": 0
+                    }
+                ],
+                "action_labels": []
+            },
+            "side_b": {
+                "actions": [
+                    {
+                        "action_type": 1,
+                        "description": "OVERTAKE.",
+                        "target_area": "overtake",
+                        "value": ""
+                    },
+                    {
+                        "action_type": 2,
+                        "affected_target": 0,
+                        "description": "Avoid all enemy actions next turn",
+                        "effect_name": "next_turn_avoid_all_actions",
+                        "target_area": "all sides",
+                        "value": ""
+                    },
+                    {
+                        "action_type": 2,
+                        "affected_target": 1,
+                        "description": "Reduce your damage by 2",
+                        "effect_name": "next_turn_debuff_player_less_damage",
+                        "target_area": "all sides",
+                        "value": 2
+                    }
+                ],
+                "after_play": "burn",
+                "fuel_cost": 1,
+                "action_icons": [
+                    {
+                        "icon": "defence",
+                        "value": 0
+                    },
+                    {
+                        "icon": "special",
+                        "value": 2
+                    }
+                ],
+                "action_labels": []
+            },
+            "image_a": "Images/CardsPremade/common cassettes/letter_d_a_side.png",
+            "image_b": "Images/CardsPremade/common cassettes/letter_d_b_side.png"
+        },
+        "My name is Spike": {
+            "side_a": {
+                "actions": [
+                    {
+                        "action_type": 2,
+                        "affected_target": 0,
+                        "effect_name": "reflect_half_damage_at_the_end",
+                        "target_area": "side and back"
+                    }
+                ],
+                "after_play": "discard",
+                "description": "At the end of this turn reflect half of the damage taken back to the enemy.",
+                "fuel_cost": 4,
+                "action_icons": [
+                    {
+                        "icon": "defence",
+                        "value": 0
+                    }
+                ],
+                "action_labels": []
+            },
+            "side_b": {
+                "actions": [
+                    {
+                        "action_type": 1,
+                        "description": "SLOW DOWN.",
+                        "target_area": "slow_down"
+                    },
+                    {
+                        "action_type": 2,
+                        "affected_target": 1,
+                        "description": "Damage reduction this turn.",
+                        "effect_name": "this_turn_damage_reduction",
+                        "target_area": "all sides",
+                        "value": 1
+                    },
+                    {
+                        "action_type": 2,
+                        "affected_target": 0,
+                        "description": "Reflect 1 damage from enemy next attack back to them.",
+                        "effect_name": "reflect_damage_on_next_attack",
+                        "target_area": "all sides",
+                        "value": 1
+                    }
+                ],
+                "after_play": "discard",
+                "fuel_cost": 3,
+                "action_icons": [
+                    {
+                        "icon": "defence",
+                        "value": 1
+                    },
+                    {
+                        "icon": "special",
+                        "value": 0
+                    }
+                ],
+                "action_labels": [
+                    {
+                        "value": 1,
+                        "x_position": -13,
+                        "y_position": -12,
+                        "scale": 0.3
+                    }
+                ]
+            },
+            "image_a": "Images/CardsPremade/boner/my_name_is_spike_a_side.png",
+            "image_b": "Images/CardsPremade/boner/my_name_is_spike_b_side.png"
+        },
+        "Nitro": {
+            "side_a": {
+                "actions": [
+                    {
+                        "action_type": 0,
+                        "animation_name": "ram",
+                        "description": "Attack to the back.",
+                        "target_area": "back",
+                        "value": 4
+                    }
+                ],
+                "after_play": "discard",
+                "fuel_cost": 5,
+                "action_icons": [
+                    {
+                        "icon": "attack",
+                        "value": 4
+                    }
+                ],
+                "action_labels": []
+            },
+            "side_b": {
+                "actions": [
+                    {
+                        "action_type": 1,
+                        "description": "Overtake.",
+                        "target_area": "overtake"
+                    },
+                    {
+                        "action_type": 2,
+                        "affected_target": 0,
+                        "description": "Enemy cant overtake next turn.",
+                        "effect_name": "next_turn_target_debuff_no_position_change",
+                        "target_area": "all sides",
+                        "value": ""
+                    }
+                ],
+                "after_play": "discard",
+                "fuel_cost": 3,
+                "action_icons": [
+                    {
+                        "icon": "special",
+                        "value": 0
+                    }
+                ],
+                "action_labels": []
+            },
+            "image_a": "Images/CardsPremade/wife/nitro_a_side.png",
+            "image_b": "Images/CardsPremade/wife/nitro_b_side.png"
+        },
+        "Offence is Defence": {
+            "side_a": {
+                "actions": [
+                    {
+                        "action_type": 0,
+                        "animation_name": "shoot",
+                        "description": "Attack to the side or back.",
+                        "target_area": "side and back",
+                        "value": 2
+                    }
+                ],
+                "after_play": "discard",
+                "fuel_cost": 5,
+                "action_icons": [
+                    {
+                        "icon": "attack",
+                        "value": 2
+                    }
+                ],
+                "action_labels": []
+            },
+            "side_b": {
+                "actions": [
+                    {
+                        "action_type": 1,
+                        "description": "LINE UP.",
+                        "target_area": "line_up"
+                    },
+                    {
+                        "action_type": 2,
+                        "affected_target": 1,
+                        "description": "Damage reduction this turn.",
+                        "effect_name": "this_turn_damage_reduction",
+                        "target_area": "all sides",
+                        "value": 2
+                    }
+                ],
+                "after_play": "discard",
+                "fuel_cost": 2,
+                "action_icons": [
+                    {
+                        "icon": "defence",
+                        "value": 2
+                    }
+                ],
+                "action_labels": []
+            },
+            "image_a": "Images/CardsPremade/common cassettes/offence_is_defence_a_side.png",
+            "image_b": "Images/CardsPremade/common cassettes/offence_is_defence_b_side.png"
+        },
+        "Oil Spill": {
+            "side_a": {
+                "actions": [
+                    {
+                        "action_type": 1,
+                        "description": "OVERTAKE.",
+                        "target_area": "overtake"
+                    },
+                    {
+                        "action_type": 2,
+                        "affected_target": 0,
+                        "description": "Enemy can't move during their next action.",
+                        "effect_name": "next_move_action_wont_work",
+                        "target_area": "all sides"
+                    }
+                ],
+                "after_play": "discard",
+                "fuel_cost": 1,
+                "action_icons": [
+                    {
+                        "icon": "special",
+                        "value": 0
+                    }
+                ],
+                "action_labels": []
+            },
+            "side_b": {
+                "actions": [
+                    {
+                        "action_type": 1,
+                        "description": "OVERTAKE.",
+                        "target_area": "overtake"
+                    },
+                    {
+                        "action_type": 2,
+                        "affected_target": 1,
+                        "description": "Damage reduction this turn.",
+                        "effect_name": "this_turn_damage_reduction",
+                        "target_area": "all sides",
+                        "value": 2
+                    }
+                ],
+                "after_play": "discard",
+                "fuel_cost": 3,
+                "action_icons": [
+                    {
+                        "icon": "defence",
+                        "value": 2
+                    }
+                ],
+                "action_labels": []
+            },
+            "image_a": "Images/CardsPremade/wife/oil_spill_a_side.png",
+            "image_b": "Images/CardsPremade/wife/oil_spill_b_side.png"
+        },
+        "Perfectly Balanced": {
+            "side_a": {
+                "actions": [
+                    {
+                        "action_type": 0,
+                        "animation_name": "ram",
+                        "description": "Attack to the side.",
+                        "target_area": "side",
+                        "value": 3
+                    },
+                    {
+                        "action_type": 2,
+                        "affected_target": 1,
+                        "description": "Damage reduction.",
+                        "effect_name": "this_turn_reduce_damage_from_sides",
+                        "target_area": "side",
+                        "value": 3
+                    }
+                ],
+                "after_play": "discard",
+                "fuel_cost": 6,
+                "action_icons": [
+                    {
+                        "icon": "attack",
+                        "value": 3
+                    },
+                    {
+                        "icon": "defence",
+                        "value": 3
+                    }
+                ],
+                "action_labels": []
+            },
+            "side_b": {
+                "actions": [
+                    {
+                        "action_type": 1,
+                        "description": "LINE UP.",
+                        "target_area": "line_up",
+                        "value": ""
+                    },
+                    {
+                        "action_type": 2,
+                        "affected_target": 1,
+                        "description": "Reduce fuel cost of the action by 1 when you LINE UP.",
+                        "effect_name": "this_turn_reduce_fuel_cost_while_in_line_up",
+                        "target_area": "all sides",
+                        "value": 1
+                    }
+                ],
+                "after_play": "discard",
+                "fuel_cost": 3,
+                "action_icons": [
+                    {
+                        "icon": "special",
+                        "value": 0
+                    }
+                ],
+                "action_labels": [
+                    {
+                        "value": 1,
+                        "x_position": -13,
+                        "y_position": -12,
+                        "scale": 0.3
+                    }
+                ]
+            },
+            "image_a": "Images/CardsPremade/common cassettes/perfectly_balanced_a_side.png",
+            "image_b": "Images/CardsPremade/common cassettes/perfectly_balanced_b_side.png"
+        },
+        "Pew Pew": {
+            "side_a": {
+                "actions": [
+                    {
+                        "action_type": 0,
+                        "animation_name": "shoot",
+                        "description": "Attack to the side.",
+                        "target_area": "side",
+                        "value": 1
+                    }
+                ],
+                "after_play": "discard",
+                "fuel_cost": 2,
+                "action_icons": [
+                    {
+                        "icon": "attack",
+                        "value": 1
+                    }
+                ],
+                "action_labels": []
+            },
+            "side_b": {
+                "actions": [
+                    {
+                        "action_type": 0,
+                        "animation_name": "shoot",
+                        "description": "Attack to the front.",
+                        "target_area": "front",
+                        "value": 1
+                    }
+                ],
+                "after_play": "discard",
+                "fuel_cost": 2,
+                "action_icons": [
+                    {
+                        "icon": "attack",
+                        "value": 1
+                    }
+                ],
+                "action_labels": []
+            },
+            "image_a": "Images/CardsPremade/common cassettes/pew_pew_a_side.png",
+            "image_b": "Images/CardsPremade/common cassettes/pew_pew_b_side.png"
+        },
+        "Pit Maneouver": {
+            "side_a": {
+                "actions": [
+                    {
+                        "action_type": 1,
+                        "description": "OVERTAKE.",
+                        "target_area": "overtake"
+                    },
+                    {
+                        "action_type": 2,
+                        "affected_target": 0,
+                        "description": "Enemy next action fuel cost is increased by 2.",
+                        "effect_name": "next_enemy_cassette_cost_more",
+                        "target_area": "all sides",
+                        "value": 2
+                    }
+                ],
+                "after_play": "discard",
+                "fuel_cost": 6,
+                "action_icons": [
+                    {
+                        "icon": "special",
+                        "value": 0
+                    }
+                ],
+                "action_labels": [
+                    {
+                        "value": 2,
+                        "x_position": -18,
+                        "y_position": -7,
+                        "scale": 0.3
+                    }
+                ]
+            },
+            "side_b": {
+                "actions": [
+                    {
+                        "action_type": 0,
+                        "animation_name": "ram",
+                        "description": "Attack to the side.",
+                        "target_area": "side",
+                        "value": 5
+                    },
+                    {
+                        "action_type": 2,
+                        "affected_target": 0,
+                        "description": "Increase the fuel cost of the next enemy action by 2.",
+                        "effect_name": "next_enemy_cassette_cost_more",
+                        "target_area": "all sides",
+                        "value": 2
+                    }
+                ],
+                "after_play": "discard",
+                "fuel_cost": 7,
+                "action_icons": [
+                    {
+                        "icon": "attack",
+                        "value": 5
+                    },
+                    {
+                        "icon": "special",
+                        "value": 0
+                    }
+                ],
+                "action_labels": [
+                    {
+                        "value": 2,
+                        "x_position": -18,
+                        "y_position": -7,
+                        "scale": 0.3
+                    }
+                ]
+            },
+            "image_a": "Images/CardsPremade/evans/pit_manoeuvre_a_side.png",
+            "image_b": "Images/CardsPremade/evans/pit_manoeuvre_b_side.png"
+        },
+        "Quick Attack": {
+            "side_a": {
+                "actions": [
+                    {
+                        "action_type": 0,
+                        "animation_name": "shoot",
+                        "target_area": "side",
+                        "value": 2
+                    }
+                ],
+                "after_play": "discard",
+                "description": "Example description for side A",
+                "fuel_cost": 2,
+                "action_icons": [
+                    {
+                        "icon": "attack",
+                        "value": 2
+                    }
+                ],
+                "action_labels": []
+            },
+            "side_b": {
+                "actions": [
+                    {
+                        "action_type": 1,
+                        "animation_name": "",
+                        "target_area": "overtake",
+                        "value": ""
+                    }
+                ],
+                "after_play": "discard",
+                "description": "Example description for side B",
+                "fuel_cost": 3,
+                "action_icons": [],
+                "action_labels": []
+            },
+            "image_a": null,
+            "image_b": null
+        },
+        "Rail the Tail": {
+            "side_a": {
+                "actions": [
+                    {
+                        "action_type": 0,
+                        "animation_name": "ram",
+                        "description": "Attack to the front.",
+                        "target_area": "front",
+                        "value": 4
+                    },
+                    {
+                        "action_type": 2,
+                        "affected_target": 0,
+                        "description": "Attack to the front. Enemy next OVERTAKE becomes LINE UP or the next LINE UP is ignored.",
+                        "effect_name": "less_movement_to_back",
+                        "target_area": "all sides"
+                    }
+                ],
+                "after_play": "discard",
+                "fuel_cost": 6,
+                "action_icons": [
+                    {
+                        "icon": "attack",
+                        "value": 4
+                    },
+                    {
+                        "icon": "special",
+                        "value": 0
+                    }
+                ],
+                "action_labels": []
+            },
+            "side_b": {
+                "actions": [
+                    {
+                        "action_type": 0,
+                        "animation_name": "ram",
+                        "description": "Attack to the front.",
+                        "target_area": "front",
+                        "value": 1
+                    },
+                    {
+                        "action_type": 2,
+                        "affected_target": 0,
+                        "description": "Fuel cost of enemy actions increased by 1 permanently.",
+                        "effect_name": "until_end_all_cards_cost_more_fuel",
+                        "target_area": "all sides",
+                        "value": 1
+                    }
+                ],
+                "after_play": "burn",
+                "fuel_cost": 3,
+                "action_icons": [
+                    {
+                        "icon": "attack",
+                        "value": 1
+                    },
+                    {
+                        "icon": "special",
+                        "value": 0
+                    }
+                ],
+                "action_labels": [
+                    {
+                        "value": 1,
+                        "x_position": -20,
+                        "y_position": -7,
+                        "scale": 0.3
+                    }
+                ]
+            },
+            "image_a": "Images/CardsPremade/boner/rail_the_tail_a_side.png",
+            "image_b": "Images/CardsPremade/boner/rail_the_tail_b_side.png"
+        },
+        "Ram": {
+            "side_a": {
+                "actions": [
+                    {
+                        "action_type": 0,
+                        "animation_name": "ram",
+                        "description": "Attack to the front or side.",
+                        "target_area": "side and front",
+                        "value": 4
+                    }
+                ],
+                "after_play": "discard",
+                "fuel_cost": 6,
+                "action_icons": [
+                    {
+                        "icon": "attack",
+                        "value": 4
+                    }
+                ],
+                "action_labels": []
+            },
+            "side_b": {
+                "actions": [
+                    {
+                        "action_type": 1,
+                        "description": "LINE UP.",
+                        "target_area": "line_up",
+                        "value": ""
+                    },
+                    {
+                        "action_type": 2,
+                        "affected_target": 1,
+                        "description": "Damage reduction this turn.",
+                        "effect_name": "this_turn_damage_reduction",
+                        "target_area": "all sides",
+                        "value": 3
+                    }
+                ],
+                "after_play": "discard",
+                "fuel_cost": 4,
+                "action_icons": [
+                    {
+                        "icon": "defence",
+                        "value": 3
+                    }
+                ],
+                "action_labels": []
+            },
+            "image_a": "Images/CardsPremade/common cassettes/ram_a_side.png",
+            "image_b": "Images/CardsPremade/common cassettes/ram_b_side.png"
+        },
+        "Regular Attack": {
+            "side_a": {
+                "actions": [
+                    {
+                        "action_type": 0,
+                        "animation_name": "shoot",
+                        "target_area": "side",
+                        "value": 2
+                    }
+                ],
+                "after_play": "discard",
+                "description": "Example description for side A",
+                "fuel_cost": 2,
+                "action_icons": [
+                    {
+                        "icon": "attack",
+                        "value": 2
+                    }
+                ],
+                "action_labels": []
+            },
+            "side_b": {
+                "actions": [
+                    {
+                        "action_type": 1,
+                        "animation_name": "",
+                        "target_area": "overtake",
+                        "value": ""
+                    }
+                ],
+                "after_play": "discard",
+                "description": "Example description for side B",
+                "fuel_cost": 3,
+                "action_icons": [],
+                "action_labels": []
+            },
+            "image_a": null,
+            "image_b": null
+        },
+        "Road Rage": {
+            "side_a": {
+                "actions": [
+                    {
+                        "action_type": 0,
+                        "animation_name": "ram",
+                        "description": "Attack in any direction.",
+                        "target_area": "all sides",
+                        "value": 4
+                    },
+                    {
+                        "action_type": 2,
+                        "affected_target": 1,
+                        "description": "Damage reduction for next enemy cassette.",
+                        "effect_name": "next_attack_damage_reduction_any_side",
+                        "target_area": "all sides",
+                        "value": 2
+                    }
+                ],
+                "after_play": "discard",
+                "fuel_cost": 8,
+                "action_icons": [
+                    {
+                        "icon": "attack",
+                        "value": 4
+                    },
+                    {
+                        "icon": "defence",
+                        "value": 2
+                    }
+                ],
+                "action_labels": []
+            },
+            "side_b": {
+                "actions": [
+                    {
+                        "action_type": 0,
+                        "animation_name": "ram",
+                        "description": "Attack in any direction. ",
+                        "target_area": "all sides",
+                        "value": 2
+                    },
+                    {
+                        "action_type": 2,
+                        "affected_target": 1,
+                        "description": "Damage reduction this turn.",
+                        "effect_name": "next_attack_damage_reduction_any_side",
+                        "target_area": "all sides",
+                        "value": 4
+                    }
+                ],
+                "after_play": "discard",
+                "fuel_cost": 8,
+                "action_icons": [
+                    {
+                        "icon": "attack",
+                        "value": 2
+                    },
+                    {
+                        "icon": "defence",
+                        "value": 4
+                    }
+                ],
+                "action_labels": []
+            },
+            "image_a": "Images/CardsPremade/common cassettes/road_rage_a_side.png",
+            "image_b": "Images/CardsPremade/common cassettes/road_rage_b_side.png"
+        },
+        "Roadslinger": {
+            "side_a": {
+                "actions": [
+                    {
+                        "action_type": 0,
+                        "animation_name": "ram",
+                        "description": "Attack to the front or back.",
+                        "target_area": "back and front",
+                        "value": 3
+                    }
+                ],
+                "after_play": "discard",
+                "fuel_cost": 5,
+                "action_icons": [
+                    {
+                        "icon": "attack",
+                        "value": 3
+                    }
+                ],
+                "action_labels": []
+            },
+            "side_b": {
+                "actions": [
+                    {
+                        "action_type": 0,
+                        "animation_name": "shoot",
+                        "description": "Attack to the side or back.",
+                        "target_area": "side and back",
+                        "value": 3
+                    }
+                ],
+                "after_play": "discard",
+                "fuel_cost": 5,
+                "action_icons": [
+                    {
+                        "icon": "attack",
+                        "value": 3
+                    }
+                ],
+                "action_labels": []
+            },
+            "image_a": "Images/CardsPremade/common cassettes/roadslinger_a_side.png",
+            "image_b": "Images/CardsPremade/common cassettes/roadslinger_b_side.png"
+        },
+        "Run to Live": {
+            "side_a": {
+                "actions": [
+                    {
+                        "action_type": 1,
+                        "animation_name": "move",
+                        "description": "OVERTAKE.",
+                        "target_area": "overtake",
+                        "value": ""
+                    },
+                    {
+                        "action_type": 2,
+                        "affected_target": 1,
+                        "description": "Damage reduction this turn.",
+                        "effect_name": "this_turn_damage_reduction",
+                        "target_area": "all sides",
+                        "value": 3
+                    }
+                ],
+                "after_play": "discard",
+                "fuel_cost": 4,
+                "action_icons": [
+                    {
+                        "icon": "defence",
+                        "value": 3
+                    }
+                ],
+                "action_labels": []
+            },
+            "side_b": {
+                "actions": [
+                    {
+                        "action_type": 1,
+                        "description": "SLOW DOWN.",
+                        "target_area": "slow_down",
+                        "value": ""
+                    },
+                    {
+                        "action_type": 2,
+                        "affected_target": 1,
+                        "description": "Damage reduction this turn.",
+                        "effect_name": "this_turn_damage_reduction",
+                        "target_area": "all sides",
+                        "value": 3
+                    }
+                ],
+                "after_play": "discard",
+                "fuel_cost": 4,
+                "action_icons": [
+                    {
+                        "icon": "defence",
+                        "value": 3
+                    }
+                ],
+                "action_labels": []
+            },
+            "image_a": "Images/CardsPremade/common cassettes/run_to_live_a_side.png",
+            "image_b": "Images/CardsPremade/common cassettes/run_to_live_b_side.png"
+        },
+        "Shoot em up": {
+            "side_a": {
+                "actions": [
+                    {
+                        "action_type": 0,
+                        "animation_name": "shoot",
+                        "description": "Attack in any direction.",
+                        "target_area": "all sides",
+                        "value": 2
+                    }
+                ],
+                "after_play": "discard",
+                "fuel_cost": 5,
+                "action_icons": [
+                    {
+                        "icon": "attack",
+                        "value": 2
+                    }
+                ],
+                "action_labels": []
+            },
+            "side_b": {
+                "actions": [
+                    {
+                        "action_type": 2,
+                        "affected_target": 1,
+                        "description": "+1 damage to all attacks permanently.",
+                        "effect_name": "permanent_buff_all_attacks",
+                        "target_area": "all sides",
+                        "value": 1
+                    }
+                ],
+                "after_play": "burn",
+                "fuel_cost": 3,
+                "action_icons": [
+                    {
+                        "icon": "special",
+                        "value": 0
+                    }
+                ],
+                "action_labels": [
+                    {
+                        "value": 1,
+                        "x_position": -15,
+                        "y_position": -6,
+                        "scale": 0.3
+                    }
+                ]
+            },
+            "image_a": "Images/CardsPremade/common cassettes/shootem_up_a_side.png",
+            "image_b": "Images/CardsPremade/common cassettes/shootem_up_b_side.png"
+        },
+        "Whatever": {
+            "side_a": {
+                "actions": [
+                    {
+                        "action_type": 2,
+                        "affected_target": 1,
+                        "description": "Get a random buff: +2 damage, -2 fuel cost or +2 damage reduction.",
+                        "effect_name": "random_buff_attack_fuel_defence",
+                        "target_area": "all sides",
+                        "value": 2
+                    }
+                ],
+                "after_play": "discard",
+                "fuel_cost": 1,
+                "action_icons": [
+                    {
+                        "icon": "special",
+                        "value": 0
+                    },
+                    {
+                        "icon": "none",
+                        "value": 0
+                    },
+                    {
+                        "icon": "none",
+                        "value": 0
+                    }
+                ],
+                "action_labels": [
+                    {
+                        "value": 2,
+                        "x_position": -15,
+                        "y_position": -6,
+                        "scale": 0.3
+                    },
+                    {
+                        "value": 2,
+                        "x_position": -15,
+                        "y_position": -6,
+                        "scale": 0.3
+                    },
+                    {
+                        "value": 2,
+                        "x_position": -15,
+                        "y_position": -6,
+                        "scale": 0.3
+                    }
+                ]
+            },
+            "side_b": {
+                "actions": [
+                    {
+                        "action_type": 2,
+                        "affected_target": 0,
+                        "description": "Give a random debuff: enemy damage reduced by 2, fuel cost increased by 2.",
+                        "effect_name": "random_debuff_attack_fuel",
+                        "target_area": "all sides",
+                        "value": ""
+                    }
+                ],
+                "after_play": "discard",
+                "fuel_cost": 1,
+                "action_icons": [
+                    {
+                        "icon": "special",
+                        "value": 0
+                    }
+                ],
+                "action_labels": [
+                    {
+                        "value": 0,
+                        "x_position": -18,
+                        "y_position": -7,
+                        "scale": 0.3
+                    }
+                ]
+            },
+            "image_a": "Images/CardsPremade/wife/whatever_a_side.png",
+            "image_b": "Images/CardsPremade/wife/whatever_b_side.png"
+        },
+        "Honk Honk": {
+            "side_a": {
+                "actions": [
+                    {
+                        "action_type": 2,
+                        "affected_target": 1,
+                        "description": "+1 damage to the next attack.",
+                        "effect_name": "buff_next_attack",
+                        "target_area": "all sides",
+                        "value": 1
+                    },
+                    {
+                        "action_type": 2,
+                        "affected_target": 1,
+                        "description": "Next attack hits all directions.",
+                        "effect_name": "next_attack_all_direction",
+                        "target_area": "all sides",
+                        "value": ""
+                    }
+                ],
+                "after_play": "discard",
+                "fuel_cost": 2,
+                "action_icons": [
+                    {
+                        "icon": "special",
+                        "value": 1
+                    },
+                    {
+                        "icon": "special",
+                        "value": 0
+                    }
+                ],
+                "action_labels": []
+            },
+            "side_b": {
+                "actions": [
+                    {
+                        "action_type": 1,
+                        "description": "OVERTAKE.",
+                        "target_area": "overtake",
+                        "value": ""
+                    },
+                    {
+                        "action_type": 0,
+                        "animation_name": "shoot",
+                        "description": "Attack to the back.",
+                        "target_area": "back",
+                        "value": 1
+                    }
+                ],
+                "after_play": "discard",
+                "fuel_cost": 4,
+                "action_icons": [
+                    {
+                        "icon": "attack",
+                        "value": 1
+                    }
+                ],
+                "action_labels": []
+            },
+            "image_a": "Images/CardsPremade/railgrinder/honk_honk_a_side.png",
+            "image_b": "Images/CardsPremade/railgrinder/honk_honk_b_side.png"
+        }
+    }
 }
