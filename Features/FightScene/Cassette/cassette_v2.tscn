@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://vc3k7cuctp21" path="res://Images/action_icons/attack.png" id="12_74lal"]
 [ext_resource type="Texture2D" uid="uid://dnbv1ykq1xen0" path="res://Images/action_icons/defence.png" id="13_u2054"]
 [ext_resource type="Texture2D" uid="uid://c64671rylr8jv" path="res://Images/action_icons/discard.png" id="14_ocsrf"]
-[ext_resource type="Texture2D" uid="uid://dl4n0mxmk5m5l" path="res://Images/CardsPremade/wife/big_refill_a_side.png" id="15_o2424"]
+[ext_resource type="Texture2D" uid="uid://ca6g2m2fx8gbw" path="res://Images/CardsPremade/wife/whatever_a_side.png" id="15_o2424"]
 [ext_resource type="Texture2D" uid="uid://d2jiuwd0gc6pj" path="res://Images/cassette/cassette front/flip cassette tooltip.png" id="16_bm5ih"]
 [ext_resource type="PackedScene" uid="uid://be8fqjriwju25" path="res://Features/FightScene/Cassette/ActionValue.tscn" id="16_fk2f7"]
 
@@ -691,12 +691,30 @@ texture = ExtResource("14_ocsrf")
 metadata/_edit_use_anchors_ = true
 
 [node name="Actions" type="Sprite2D" parent="Sprites/ActionData"]
-position = Vector2(0, 50)
+position = Vector2(0, 35.4545)
+scale = Vector2(0.85, 0.85)
 texture = ExtResource("15_o2424")
 
 [node name="Label" parent="Sprites/ActionData/Actions" instance=ExtResource("16_fk2f7")]
-offset_left = -6.0
-offset_right = -22.0
+offset_left = -126.0
+offset_top = -6.0
+offset_right = -0.999664
+offset_bottom = 182.0
+text = "2"
+
+[node name="Label2" parent="Sprites/ActionData/Actions" instance=ExtResource("16_fk2f7")]
+offset_left = -34.0
+offset_top = -6.0
+offset_right = 91.0003
+offset_bottom = 182.0
+text = "2"
+
+[node name="Label3" parent="Sprites/ActionData/Actions" instance=ExtResource("16_fk2f7")]
+offset_left = 54.0
+offset_top = -6.0
+offset_right = 179.0
+offset_bottom = 182.0
+text = "2"
 
 [node name="FlipTooltip" type="Sprite2D" parent="."]
 visible = false

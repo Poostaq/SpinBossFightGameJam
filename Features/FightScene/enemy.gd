@@ -2,24 +2,21 @@ extends Node
 class_name Enemy
 
 const CASSETTE_SCENE = "res://Features/FightScene/EnemyCassette/enemy_cassette.tscn"
-# Signals to notify others of changes
-signal deck_changed(new_deck)  # deck or hand changed
-signal slots_changed()         # slot cassettes changed
+
+signal deck_changed(new_deck)
+signal slots_changed()
 signal cassette_created
 
-# Core cassette containers
-var deck: Array = []           # Full deck of cassettes
-var discard: Array = []        # Discarded cassettes
-var lost: Array = []           # Completely lost cassettes
-var hand: Array = []           # Cassettes currently in the enemy's (logical) hand
-@onready var sequence: Node2D = $"../UI/EnemyUI/Sequence"
+var deck: Array = []
+var discard: Array = []
+var lost: Array = [] 
+var hand: Array = []
 
+@onready var sequence: Node2D = $"../UI/EnemyUI/Sequence"
 @onready var cassette_manager: Node2D = %CassetteManager
 
 var slot_cassettes: Array = [null, null, null]
-
 var health: int = 20
-
 var rng
 
 func _ready():
