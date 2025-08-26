@@ -44,14 +44,8 @@ func fill_icons(side_data: Dictionary) -> void:
 				label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 				label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 				sprite.add_child(label)
-
-<<<<<<< HEAD
 		icons_container.add_child(sprite)
 		idx += 1
-=======
-			icons_container.add_child(sprite)
-			idx += 1
->>>>>>> a9571e50c43350fa52589cfd94da8288ad8dc5c0
 
 
 func set_cover_state(closed):

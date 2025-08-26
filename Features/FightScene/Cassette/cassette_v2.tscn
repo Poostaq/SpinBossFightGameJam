@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://vc3k7cuctp21" path="res://Images/action_icons/attack.png" id="12_74lal"]
 [ext_resource type="Texture2D" uid="uid://dnbv1ykq1xen0" path="res://Images/action_icons/defence.png" id="13_u2054"]
 [ext_resource type="Texture2D" uid="uid://c64671rylr8jv" path="res://Images/action_icons/discard.png" id="14_ocsrf"]
-[ext_resource type="Texture2D" uid="uid://ca6g2m2fx8gbw" path="res://Images/CardsPremade/wife/whatever_a_side.png" id="15_o2424"]
+[ext_resource type="Texture2D" uid="uid://dhpj5ddbsg5d5" path="res://Images/CardsPremade/wife/whatever_b_side.png" id="15_o2424"]
 [ext_resource type="Texture2D" uid="uid://d2jiuwd0gc6pj" path="res://Images/cassette/cassette front/flip cassette tooltip.png" id="16_bm5ih"]
 [ext_resource type="PackedScene" uid="uid://be8fqjriwju25" path="res://Features/FightScene/Cassette/ActionValue.tscn" id="16_fk2f7"]
 
@@ -427,27 +427,24 @@ tracks/5/path = NodePath(".")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.15, 0.3),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.15),
+"transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"update_elements"
-}, {
-"args": [true],
-"method": &"set_action_data_visibility"
 }]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/path = NodePath("Sprites/ActionData:visible")
-tracks/6/interp = 1
+tracks/6/interp = 2
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.298101, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [false, true]
+"values": [false, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_sagpx"]
@@ -517,6 +514,7 @@ _data = {
 size = Vector2(442, 563.333)
 
 [node name="Cassette" type="Node2D"]
+scale = Vector2(0.7, 0.7)
 script = ExtResource("1_sndn0")
 
 [node name="Sprites" type="Node2D" parent="."]
@@ -557,7 +555,7 @@ texture = ExtResource("6_mmpey")
 
 [node name="Side" type="Node2D" parent="Sprites"]
 visible = false
-position = Vector2(-223, 0)
+position = Vector2(223, 3)
 scale = Vector2(1e-05, 1)
 
 [node name="Frame" type="Sprite2D" parent="Sprites/Side"]
@@ -590,7 +588,6 @@ vertical_alignment = 1
 visible = false
 light_mask = 262144
 visibility_layer = 262144
-scale = Vector2(1.1, 1.1)
 
 [node name="Fuel" type="Sprite2D" parent="Sprites/ActionData"]
 light_mask = 524288
@@ -691,30 +688,32 @@ texture = ExtResource("14_ocsrf")
 metadata/_edit_use_anchors_ = true
 
 [node name="Actions" type="Sprite2D" parent="Sprites/ActionData"]
-position = Vector2(0, 35.4545)
-scale = Vector2(0.85, 0.85)
+position = Vector2(0, 30)
 texture = ExtResource("15_o2424")
 
 [node name="Label" parent="Sprites/ActionData/Actions" instance=ExtResource("16_fk2f7")]
-offset_left = -126.0
-offset_top = -6.0
-offset_right = -0.999664
-offset_bottom = 182.0
-text = "2"
+offset_left = -46.0
+offset_top = 22.0
+offset_right = -128.0
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "1"
 
 [node name="Label2" parent="Sprites/ActionData/Actions" instance=ExtResource("16_fk2f7")]
-offset_left = -34.0
-offset_top = -6.0
-offset_right = 91.0003
-offset_bottom = 182.0
-text = "2"
-
-[node name="Label3" parent="Sprites/ActionData/Actions" instance=ExtResource("16_fk2f7")]
-offset_left = 54.0
-offset_top = -6.0
-offset_right = 179.0
-offset_bottom = 182.0
-text = "2"
+offset_left = 68.0
+offset_top = 22.0
+offset_right = -14.0
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "1"
 
 [node name="FlipTooltip" type="Sprite2D" parent="."]
 visible = false

@@ -1,9 +1,9 @@
 extends Node
 
-var cassettes = {}       # Holds all cassette definitions (replacing CassetteDatabase.cassettes)
-var effects = {}         # Holds all status effect definitions (replacing StatusEffectDatabase.effects)
-var boss_decks = {}      # Holds boss decks if needed (can pull from your existing boss_decks)
-var player_deck = {}      # Holds boss decks if needed (can pull from your existing boss_decks)
+var cassettes = {}
+var effects = {}
+var boss_decks = {}
+var player_deck = {}
 
 func _ready():
 	load_all_data()

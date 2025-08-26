@@ -11,7 +11,6 @@ var lost: Array = []
 var hand: Array = []
 
 @onready var cassette_manager: Node2D = %CassetteManager
-@onready var sequence: Node2D = $"../UI/PlayerUI/Sequence"
 
 var health: int = 20
 
@@ -27,7 +26,7 @@ func prepare_hand():
 func create_cassette(cassette_name):
 	var cassette_scene = preload(CASSETTE_SCENE)
 	var new_cassette = cassette_scene.instantiate()
-	var cassette_info = Database.cassettes["cassettes"][cassette_name]
+	var cassette_info = Database.cassettes["cassettes"][cassette_name]	
 	new_cassette.setup_player_cassette(cassette_name, cassette_info)
 	cassette_manager.connect_cassette_signals(new_cassette)
 	return new_cassette

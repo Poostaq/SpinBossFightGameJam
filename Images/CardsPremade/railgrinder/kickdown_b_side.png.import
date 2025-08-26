@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c082jnpe2o331"
-path="res://.godot/imported/pit_manoeuvre_b_side.png-62997987609f9431ce434a2dfd80e496.ctex"
+uid="uid://7dde3a6n80x8"
+path="res://.godot/imported/kickdown_b_side.png-6cb27bdeaf91a3ae6cb8134302afb557.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/CardsPremade/evans/pit_manoeuvre_b_side.png"
-dest_files=["res://.godot/imported/pit_manoeuvre_b_side.png-62997987609f9431ce434a2dfd80e496.ctex"]
+source_file="res://Images/CardsPremade/railgrinder/kickdown_b_side.png"
+dest_files=["res://.godot/imported/kickdown_b_side.png-6cb27bdeaf91a3ae6cb8134302afb557.ctex"]
 
 [params]
 

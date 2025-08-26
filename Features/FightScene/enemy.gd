@@ -47,7 +47,6 @@ func remove_cassette_from_slot(slot_index: int) -> void:
 		slot_cassettes[slot_index] = null
 		emit_signal("slots_changed")
 
-
 func prepare_hand(enemy_name):
 	var enemy_cassettes = Database.boss_decks[enemy_name]
 	for cassette in enemy_cassettes:
@@ -72,9 +71,9 @@ func select_cassettes_for_sequence():
 		var selected_cassette = hand[selected_cassette_index]
 		var side = rng.randi_range(0,1)
 		if side == 0:
-			selected_cassette.current_side = "A"
+			selected_cassette.current_side = selected_cassette.Side.A
 		else:
-			selected_cassette.current_side = "B"
+			selected_cassette.current_side = selected_cassette.Side.B
 		var current_slot = sequence.get_children()[i]
 		remove_cassette_from_hand(selected_cassette)
 		current_slot.add_child(selected_cassette)

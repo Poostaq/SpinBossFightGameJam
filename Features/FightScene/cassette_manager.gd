@@ -36,12 +36,11 @@ var draft_active: bool = false
 @onready var player: Node = %"Player"
 @onready var commit_sequence_button = $"../UI/PlayerUI/CommitSequence"
 @onready var ui_animator: Node = $"../UIAnimator"
-#@onready var drag_layer: Node2D = $"../DragLayer"
-@onready var hand: Node2D = $"../UI/PlayerUI/Hand"
+@onready var player_hand: Node2D = $"../UI/PlayerUI/Hand"
 
 
 func _ready() -> void:
-	player.cassette_created.connect(move_cassette_to_hand)
+	player.cassette_created.connect(move_cassette_to_player_hand)
 	screen_size = get_viewport_rect().size
 	$"../InputManager".left_mouse_button_released.connect(on_left_click_released)
 
@@ -107,7 +106,7 @@ func start_drag(cassette: Cassette):
 		ui_animator.activate_player_slots()
 		cassette.reparent($"../DragLayer")
 		cassette.set_state(cassette.STATE.DRAGGING)
-		for other_cassette: Cassette in hand.get_children():
+		for other_cassette: Cassette in player_hand.get_children():
 			if other_cassette.state == other_cassette.STATE.HOVERED_OVER:
 				other_cassette.set_state(other_cassette.STATE.IN_HAND)
 	
@@ -125,8 +124,8 @@ func finish_drag():
 			commit_sequence_button.disabled = false
 	else:
 		cassette_being_dragged.set_state(cassette_being_dragged.STATE.IN_HAND)
-		player.hand.append(cassette_being_dragged)
-		move_cassette_to_hand(cassette_being_dragged)
+		player.player_hand.append(cassette_being_dragged)
+		move_cassette_to_player_hand(cassette_being_dragged)
 	cassette_being_dragged = null
 	await ui_animator.deactivate_player_slots()
 	deactivate_cassettes(false)
@@ -161,13 +160,13 @@ func _raycast_point(pos: Vector2, collision_mask: int) -> Array:
 	return space_state.intersect_point(parameters)
 
 
-func move_cassette_to_hand(cassette):
-	if cassette not in hand.get_children():
+func move_cassette_to_player_hand(cassette):
+	if cassette not in player_hand.get_children():
 		if cassette.get_parent() == null:
-			hand.add_child(cassette)
+			player_hand.add_child(cassette)
 			print("ADDED CASSETTE TO HAND")
 		else:
-			cassette.reparent(hand, true)
+			cassette.reparent(player_hand, true)
 			print("CHANGED PARENT FOR CASSETTE TO HAND")
 		
 		cassette.update_elements()
@@ -176,22 +175,22 @@ func move_cassette_to_hand(cassette):
 		cassette.animate_cassette_to_position(cassette.position_in_hand)
 		
 func update_hand_positions(speed):
-	for i in range(player.hand.size()):
-		var cassette = player.hand[i]
-		cassette.position_in_hand = SLOT_POSITIONS[player.hand.size()-1-i]
-		cassette.scale_in_hand = CASSETTE_SCALES_IN_SLOTS[player.hand.size()-1-i]
+	for i in range(player.player_hand.size()):
+		var cassette = player.player_hand[i]
+		cassette.position_in_hand = SLOT_POSITIONS[player.player_hand.size()-1-i]
+		cassette.scale_in_hand = CASSETTE_SCALES_IN_SLOTS[player.player_hand.size()-1-i]
 		cassette.animate_cassette_to_position(cassette.position_in_hand,speed)
 
 
 func deactivate_cassettes(disabled: bool) -> void:
-	for cassette in hand.get_children():
+	for cassette in player_hand.get_children():
 		cassette.collision_shape_2d.disabled = disabled
 
 func _on_eject_button_pressed() -> void:
 	for slot in player.sequence.get_children():
 		if slot.cassette_in_slot:
 			player.add_cassette_to_hand(slot.cassette_in_slot)
-			move_cassette_to_hand(slot.cassette_in_slot)
+			move_cassette_to_player_hand(slot.cassette_in_slot)
 			slot.cassette_in_slot.set_state(slot.cassette_in_slot.STATE.IN_HAND)
 			slot.cassette_in_slot = null
 			slot.set_cover_state(true)

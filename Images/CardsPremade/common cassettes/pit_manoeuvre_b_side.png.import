@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhpj5ddbsg5d5"
-path="res://.godot/imported/whatever_b_side.png-c4b504e52f508a6425f300c3706808f3.ctex"
+uid="uid://c082jnpe2o331"
+path="res://.godot/imported/pit_manoeuvre_b_side.png-435f784a0a55cf56ac535a9929aafd1e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/CardsPremade/wife/whatever_b_side.png"
-dest_files=["res://.godot/imported/whatever_b_side.png-c4b504e52f508a6425f300c3706808f3.ctex"]
+source_file="res://Images/CardsPremade/common cassettes/pit_manoeuvre_b_side.png"
+dest_files=["res://.godot/imported/pit_manoeuvre_b_side.png-435f784a0a55cf56ac535a9929aafd1e.ctex"]
 
 [params]
 

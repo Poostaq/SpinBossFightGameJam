@@ -45,6 +45,7 @@ func _on_commit_sequence_pressed() -> void:
 
 func start_acting_phase():
 	current_phase = BattlePhase.ACTING
+	
 	ui_animator.present_mini_cassettes()
 
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7dde3a6n80x8"
-path="res://.godot/imported/kickdown_b_side.png-67a195ad1b8c95576bdaba32bd0cd6bc.ctex"
+uid="uid://b5wweb8xro7yh"
+path="res://.godot/imported/empty tooltip.png-90187bf08e9b2bb0c4583db82054b530.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/CardsPremade/common cassettes/kickdown_b_side.png"
-dest_files=["res://.godot/imported/kickdown_b_side.png-67a195ad1b8c95576bdaba32bd0cd6bc.ctex"]
+source_file="res://Images/Dashboard/empty tooltip.png"
+dest_files=["res://.godot/imported/empty tooltip.png-90187bf08e9b2bb0c4583db82054b530.ctex"]
 
 [params]
 
