@@ -37,6 +37,7 @@ var draft_active: bool = false
 @onready var commit_sequence_button = $"../UI/PlayerUI/CommitSequence"
 @onready var ui_animator: Node = $"../UIAnimator"
 @onready var player_hand: Node2D = $"../UI/PlayerUI/Hand"
+@onready var sequence: Node2D = $"../UI/PlayerUI/Sequence"
 
 
 func _ready() -> void:
@@ -119,12 +120,11 @@ func finish_drag():
 		cassette_slot_found.cassette_in_slot = cassette_being_dragged
 		cassette_slot_found.update_elements()
 		update_hand_positions(DEFAULT_CASSETTE_SPEED)
-		update_hand_positions(DEFAULT_CASSETTE_SPEED)
 		if check_if_commit_sequence_button_should_be_activated():
 			commit_sequence_button.disabled = false
 	else:
 		cassette_being_dragged.set_state(cassette_being_dragged.STATE.IN_HAND)
-		player.player_hand.append(cassette_being_dragged)
+		player.hand.append(cassette_being_dragged)
 		move_cassette_to_player_hand(cassette_being_dragged)
 	cassette_being_dragged = null
 	await ui_animator.deactivate_player_slots()
@@ -144,7 +144,7 @@ func on_left_click_released():
 
 
 func check_if_commit_sequence_button_should_be_activated():
-	for slot in player.sequence.get_children():
+	for slot in sequence.get_children():
 		if slot.cassette_in_slot == null:
 			return false
 	return true
@@ -175,10 +175,10 @@ func move_cassette_to_player_hand(cassette):
 		cassette.animate_cassette_to_position(cassette.position_in_hand)
 		
 func update_hand_positions(speed):
-	for i in range(player.player_hand.size()):
-		var cassette = player.player_hand[i]
-		cassette.position_in_hand = SLOT_POSITIONS[player.player_hand.size()-1-i]
-		cassette.scale_in_hand = CASSETTE_SCALES_IN_SLOTS[player.player_hand.size()-1-i]
+	for i in range(player.hand.size()):
+		var cassette = player.hand[i]
+		cassette.position_in_hand = SLOT_POSITIONS[player.hand.size()-1-i]
+		cassette.scale_in_hand = CASSETTE_SCALES_IN_SLOTS[player.hand.size()-1-i]
 		cassette.animate_cassette_to_position(cassette.position_in_hand,speed)
 
 
@@ -187,7 +187,7 @@ func deactivate_cassettes(disabled: bool) -> void:
 		cassette.collision_shape_2d.disabled = disabled
 
 func _on_eject_button_pressed() -> void:
-	for slot in player.sequence.get_children():
+	for slot in sequence.get_children():
 		if slot.cassette_in_slot:
 			player.add_cassette_to_hand(slot.cassette_in_slot)
 			move_cassette_to_player_hand(slot.cassette_in_slot)

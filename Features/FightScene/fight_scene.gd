@@ -7,13 +7,15 @@ extends Node
 @onready var player_ui = $"UI/PlayerUI"
 @onready var enemy_ui = $"UI/EnemyUI"
 @onready var cassette_manager: Node2D = %CassetteManager
+@onready var eject_button = $"UI/PlayerUI/EjectButton"
+@onready var commit_button = $"UI/PlayerUI/CommitSequence"
 
 enum BattlePhase { SELECTION, COMMIT, ACTING, RESOLUTION }
 var current_phase: BattlePhase = BattlePhase.SELECTION
 
 func _ready():
 	print("Starting the fight")
-	player.prepare_hand()
+	player.prepare_hand()	
 	enemy.prepare_hand("hound")
 	start_selection_phase()
 
@@ -23,16 +25,18 @@ func start_selection_phase():
 	enemy.select_cassettes_for_sequence()
 
 
-func check_if_ready():
-	if player.has_selected_required_cassettes() and enemy.has_selected_required_cassettes():
-		enable_commit_button(true)
-	else:
-		enable_commit_button(false)
+# func check_if_ready():
+# 	if player.has_selected_required_cassettes() and enemy.has_selected_required_cassettes():
+# 		disable_commit_button(false)
+# 	else:
+# 		disable_commit_button(true)
 
 
-func enable_commit_button(enable: bool):
-	player_ui.commit_button.disabled = not enable
+func disable_commit_button(disabled: bool):
+	commit_button.disabled = disabled
 
+func disable_eject_button(disabled: bool):
+	eject_button.disabled = disabled
 
 func _on_commit_sequence_pressed() -> void:
 	print("[BattleManager] Commit pressed!")
@@ -40,12 +44,13 @@ func _on_commit_sequence_pressed() -> void:
 	ui_animator.close_slots()
 	ui_animator.close_enemy_slots()
 	cassette_manager.deactivate_cassettes(true)
+	disable_commit_button(true)
+	disable_eject_button(true)
 	start_acting_phase()
 
 
 func start_acting_phase():
 	current_phase = BattlePhase.ACTING
-	
 	ui_animator.present_mini_cassettes()
 
 

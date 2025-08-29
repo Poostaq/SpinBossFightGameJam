@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bv0hep3nj7s5i"]
+[gd_scene load_steps=25 format=3 uid="uid://bv0hep3nj7s5i"]
 
 [ext_resource type="Script" uid="uid://c0g32ne6d7lqq" path="res://Features/FightScene/Cassette/cassette.gd" id="1_sndn0"]
 [ext_resource type="Texture2D" uid="uid://cvtclg7lpuej1" path="res://Images/cassette/cassette front/1 label.png" id="2_o2424"]
@@ -12,7 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://sv0sakk6sx8w" path="res://Images/cassette/cassette front/fuel.png" id="10_2suj0"]
 [ext_resource type="FontFile" uid="uid://dtn7qee5h51x5" path="res://Font/atwriter.ttf" id="11_i25h6"]
 [ext_resource type="Texture2D" uid="uid://vc3k7cuctp21" path="res://Images/action_icons/attack.png" id="12_74lal"]
-[ext_resource type="Texture2D" uid="uid://dnbv1ykq1xen0" path="res://Images/action_icons/defence.png" id="13_u2054"]
 [ext_resource type="Texture2D" uid="uid://c64671rylr8jv" path="res://Images/action_icons/discard.png" id="14_ocsrf"]
 [ext_resource type="Texture2D" uid="uid://bx1gp3qdyw08t" path="res://Images/CardsPremade/boner/my_name_is_spike_a_side.png" id="15_k86ah"]
 [ext_resource type="Texture2D" uid="uid://d2jiuwd0gc6pj" path="res://Images/cassette/cassette front/flip cassette tooltip.png" id="16_bm5ih"]
@@ -557,11 +556,14 @@ text = "5"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Icon1" type="Sprite2D" parent="Sprites/ActionData"]
+[node name="Icon1" type="Node2D" parent="Sprites/ActionData"]
 light_mask = 524288
 visibility_layer = 524288
 position = Vector2(-205, 0)
 scale = Vector2(0.5, 0.5)
+
+[node name="Sprite" type="Sprite2D" parent="Sprites/ActionData/Icon1"]
+position = Vector2(0, -190)
 texture = ExtResource("12_74lal")
 
 [node name="Label" type="Label" parent="Sprites/ActionData/Icon1"]
@@ -585,12 +587,15 @@ text = "5"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Icon2" type="Sprite2D" parent="Sprites/ActionData"]
+[node name="Icon2" type="Node2D" parent="Sprites/ActionData"]
 light_mask = 524288
 visibility_layer = 524288
 position = Vector2(-205, 100)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("13_u2054")
+
+[node name="Sprite" type="Sprite2D" parent="Sprites/ActionData/Icon2"]
+position = Vector2(0, -390)
+texture = ExtResource("12_74lal")
 
 [node name="Label" type="Label" parent="Sprites/ActionData/Icon2"]
 light_mask = 524288

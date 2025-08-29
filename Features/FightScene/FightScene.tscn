@@ -1,4 +1,4 @@
-[gd_scene load_steps=117 format=3 uid="uid://fikkqra1yci7"]
+[gd_scene load_steps=118 format=3 uid="uid://fikkqra1yci7"]
 
 [ext_resource type="Script" uid="uid://fhix1yj1p6lr" path="res://Features/FightScene/fight_scene.gd" id="1_vtqcu"]
 [ext_resource type="Texture2D" uid="uid://b5a8s5h0oecfi" path="res://Images/background/sky.png" id="2_mfl0i"]
@@ -45,6 +45,7 @@
 [ext_resource type="Texture2D" uid="uid://c7d46g83rm7qw" path="res://Images/portraits/enemy life gauge v2.png" id="41_da1b6"]
 [ext_resource type="Texture2D" uid="uid://sv0sakk6sx8w" path="res://Images/cassette/cassette front/fuel.png" id="42_5k73a"]
 [ext_resource type="Texture2D" uid="uid://bmjkrsp0x1vdo" path="res://Images/cars/hound/boss 1 v30001.png" id="43_fagvr"]
+[ext_resource type="PackedScene" uid="uid://fx04ttno2vnu" path="res://Features/FightScene/MiniCassette/EnemyMiniCassette/enemy_mini_cassette.tscn" id="44_01fas"]
 [ext_resource type="Texture2D" uid="uid://d3hmpmeal1gfn" path="res://Images/cars/hound/boss 1 v30002.png" id="44_ljrsv"]
 [ext_resource type="Texture2D" uid="uid://b0o4s2lheclen" path="res://Images/cars/hound/boss 1 v30003.png" id="45_cne5d"]
 [ext_resource type="Texture2D" uid="uid://v64620hcumhb" path="res://Images/vfx/impact/impact v2 5.png" id="46_erhan"]
@@ -2067,21 +2068,15 @@ script = ExtResource("36_sjuo1")
 
 [node name="MiniCassetteSequence" type="Node2D" parent="UI/EnemyUI"]
 
-[node name="ThirdCassette" parent="UI/EnemyUI/MiniCassetteSequence" instance=ExtResource("35_4yj0q")]
-light_mask = 1024
-visibility_layer = 1024
+[node name="ThirdCassette" parent="UI/EnemyUI/MiniCassetteSequence" instance=ExtResource("44_01fas")]
 position = Vector2(2068, 340)
 scale = Vector2(0.6, 0.6)
 
-[node name="SecondCassette" parent="UI/EnemyUI/MiniCassetteSequence" instance=ExtResource("35_4yj0q")]
-light_mask = 1024
-visibility_layer = 1024
+[node name="SecondCassette" parent="UI/EnemyUI/MiniCassetteSequence" instance=ExtResource("44_01fas")]
 position = Vector2(2068, 390)
 scale = Vector2(0.6, 0.6)
 
-[node name="FirstCassette" parent="UI/EnemyUI/MiniCassetteSequence" instance=ExtResource("35_4yj0q")]
-light_mask = 1024
-visibility_layer = 1024
+[node name="FirstCassette" parent="UI/EnemyUI/MiniCassetteSequence" instance=ExtResource("44_01fas")]
 position = Vector2(2068, 440)
 scale = Vector2(0.6, 0.6)
 

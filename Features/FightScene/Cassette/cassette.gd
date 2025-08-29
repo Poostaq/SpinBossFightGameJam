@@ -88,12 +88,7 @@ func update_elements():
 
 
 func get_current_side_fuel():
-	if current_side == Side.A:
-		return side_a_data["fuel_cost"]
-	elif current_side == Side.B:
-		return side_b_data["fuel_cost"]
-	else:
-		return ""
+	return int(get_current_side_data().get("fuel_cost", 0))
 
 
 func update_actions_texture() -> void:
@@ -130,7 +125,7 @@ func _get_value_text(info: Dictionary) -> String:
 
 
 func _display_action_icons(data: Dictionary) -> void:
-	var icons = _get_filtered_icons(data)
+	var icons = data.get("action_icons", [])
 	for icon in action_icons:
 		icon.visible = false
 		icon.get_node("Label").text = ""

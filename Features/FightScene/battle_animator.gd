@@ -9,6 +9,19 @@ signal ui_ready_for_battle
 @onready var hand: Node2D = $"../UI/PlayerUI/Hand"
 @onready var sequence: Node2D = $"../UI/PlayerUI/Sequence"
 @onready var animation_player: AnimationPlayer = $"../AnimationPlayer"
+@onready var enemy_sequence = $"../UI/EnemyUI/Sequence"
+
+@onready var player_mini_cassette1 = $"../UI/PlayerUI/MiniCassetteSequence/FirstCassette"
+@onready var player_mini_cassette2 = $"../UI/PlayerUI/MiniCassetteSequence/SecondCassette"
+@onready var player_mini_cassette3 = $"../UI/PlayerUI/MiniCassetteSequence/ThirdCassette"
+
+@onready var player_mini_cassettes = [player_mini_cassette1, player_mini_cassette2, player_mini_cassette3]
+
+@onready var enemy_mini_cassette1 = $"../UI/EnemyUI/MiniCassetteSequence/FirstCassette"
+@onready var enemy_mini_cassette2 = $"../UI/EnemyUI/MiniCassetteSequence/SecondCassette"
+@onready var enemy_mini_cassette3 = $"../UI/EnemyUI/MiniCassetteSequence/ThirdCassette"
+
+@onready var enemy_mini_cassettes = [enemy_mini_cassette1, enemy_mini_cassette2, enemy_mini_cassette3]
 
 const DEFAULT_CASSETTE_SPEED = 0.2
 const SLOT_POSITIONS = [
@@ -142,5 +155,18 @@ func close_slots():
 
 
 func present_mini_cassettes():
-	pass
+	present_participant_mini_cassettes(sequence, player_mini_cassettes)
+	present_participant_mini_cassettes(enemy_sequence, enemy_mini_cassettes)
+
 	
+func present_participant_mini_cassettes(sequence_node: Node2D, mini_cassette_nodes: Array) -> void:
+	var slots = sequence_node.get_children()
+	for i in range(slots.size()):
+		var cassette = slots[i].cassette_in_slot
+		if cassette:
+			var mini_cassette = mini_cassette_nodes[i]
+			mini_cassette.set_cassette_data(cassette)
+			mini_cassette.visible = true
+			mini_cassette.highlight_cassette(false)
+			if i == 0:
+				mini_cassette.show_icons()
