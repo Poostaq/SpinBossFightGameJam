@@ -17,6 +17,7 @@ var hand: Array = []
 
 var slot_cassettes: Array = [null, null, null]
 var health: int = 20
+var fuel_spent_this_round: int = 0
 var rng
 
 func _ready():

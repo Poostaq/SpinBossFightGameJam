@@ -38,6 +38,7 @@ var state: int = STATE.INITIALIZING
 @onready var actions_sprite: Sprite2D = $Sprites/ActionData/Actions
 @onready var action_icon1: Node2D = $Sprites/ActionData/Icon1
 @onready var action_icon2: Node2D = $Sprites/ActionData/Icon2
+@onready var fuel_icon: Sprite2D = $Sprites/ActionData/Fuel
 @onready var action_data_after_play: Sprite2D = $Sprites/ActionData/AfterPlay
 @onready var collision_shape_2d: CollisionShape2D = $Area2D/CollisionShape2D
 @onready var side_logo: Sprite2D = $Sprites/Front/SideLogo

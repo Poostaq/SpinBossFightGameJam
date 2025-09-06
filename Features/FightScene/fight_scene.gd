@@ -1,7 +1,7 @@
 extends Node
 
 @onready var player: Node = %Player
-@onready var enemy = $"Enemy"
+@onready var enemy: Node = $"Enemy"
 @onready var ui_animator = $"UIAnimator"
 
 @onready var player_ui = $"UI/PlayerUI"
@@ -12,6 +12,7 @@ extends Node
 
 enum BattlePhase { SELECTION, COMMIT, ACTING, RESOLUTION }
 var current_phase: BattlePhase = BattlePhase.SELECTION
+
 
 func _ready():
 	print("Starting the fight")
@@ -25,18 +26,13 @@ func start_selection_phase():
 	enemy.select_cassettes_for_sequence()
 
 
-# func check_if_ready():
-# 	if player.has_selected_required_cassettes() and enemy.has_selected_required_cassettes():
-# 		disable_commit_button(false)
-# 	else:
-# 		disable_commit_button(true)
-
-
 func disable_commit_button(disabled: bool):
 	commit_button.disabled = disabled
 
+
 func disable_eject_button(disabled: bool):
 	eject_button.disabled = disabled
+
 
 func _on_commit_sequence_pressed() -> void:
 	print("[BattleManager] Commit pressed!")
@@ -51,32 +47,44 @@ func _on_commit_sequence_pressed() -> void:
 
 func start_acting_phase():
 	current_phase = BattlePhase.ACTING
-	ui_animator.present_mini_cassettes()
+	await ui_animator.present_mini_cassettes()
+	await get_tree().create_timer(0.8).timeout
+	var current_player_cassette = 0
+	var current_enemy_cassette = 0
+	for i in range(6):
+		if current_player_cassette == 3 and current_enemy_cassette != 3:
+			ui_animator.animate_next_cassette(ui_animator.enemy_mini_cassettes[current_enemy_cassette], GlobalEnums.ENEMY)
+		elif current_enemy_cassette == 3 and current_player_cassette != 3:
+			ui_animator.animate_next_cassette(ui_animator.player_mini_cassettes[current_player_cassette], GlobalEnums.PLAYER)
+		else:
+			var winner = get_winner_for_next_cassette_comparison(
+				ui_animator.player_mini_cassettes[current_player_cassette], 
+				ui_animator.enemy_mini_cassettes[current_enemy_cassette])
+			await ui_animator.compare_mini_cassette_fuel(ui_animator.player_mini_cassettes[current_player_cassette], ui_animator.enemy_mini_cassettes[current_enemy_cassette], winner)
 
+			#perform winner actions
+			
+			if winner == GlobalEnums.PLAYER:
+				player.fuel_spent_this_turn += ui_animator.player_mini_cassettes[current_player_cassette].fuel_label.text.to_int()
+				current_player_cassette += 1
+				if current_player_cassette < 3:
+					ui_animator.player_mini_cassettes[current_player_cassette].show_icons()
+			else:
+				enemy.fuel_spent_this_round += ui_animator.enemy_mini_cassettes[current_enemy_cassette].fuel_label.text.to_int()
+				current_enemy_cassette += 1
+				if current_enemy_cassette < 3:
+					ui_animator.enemy_mini_cassettes[current_enemy_cassette].show_icons()
+			await get_tree().create_timer(0.8).timeout
+		
 
-func _on_cassettes_presentation_finished():
-	print("[BattleManager] Cassettes presentation done. Now resolve actions.")
-	resolve_actions()
-
-
-func resolve_actions():
-	current_phase = BattlePhase.RESOLUTION
-	apply_cassette_effects()
-	if fight_is_over():
-		end_fight()
+func get_winner_for_next_cassette_comparison(player_cassette: Node, enemy_cassette: Node) -> int:
+	var player_fuel_amount = int(player_cassette.fuel_label.text)
+	var enemy_fuel_amount = int(enemy_cassette.fuel_label.text)
+	var player_counter_amount = player.fuel_spent_this_turn
+	var enemy_counter_amount = enemy.fuel_spent_this_round
+	if player_fuel_amount+player_counter_amount < enemy_fuel_amount+enemy_counter_amount:
+		return GlobalEnums.PLAYER
+	elif enemy_fuel_amount+enemy_counter_amount < player_fuel_amount+player_counter_amount:
+		return GlobalEnums.ENEMY
 	else:
-		start_selection_phase()
-
-
-func apply_cassette_effects():
-	pass
-
-
-func fight_is_over() -> bool:
-	if player.health <= 0 or enemy.health <= 0:
-		return true
-	return false
-
-
-func end_fight():
-	print("[BattleManager] Fight is over!")
+		return GlobalEnums.PLAYER

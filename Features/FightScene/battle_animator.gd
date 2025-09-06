@@ -23,6 +23,9 @@ signal ui_ready_for_battle
 
 @onready var enemy_mini_cassettes = [enemy_mini_cassette1, enemy_mini_cassette2, enemy_mini_cassette3]
 
+@onready var player_fuel_counter = $"../UI/FuelSpent/PlayerFuelSpent"
+@onready var enemy_fuel_counter = $"../UI/FuelSpent/EnemyFuelSpent"
+
 const DEFAULT_CASSETTE_SPEED = 0.2
 const SLOT_POSITIONS = [
 						Vector2(773,1085),
@@ -62,6 +65,8 @@ const BATTLE_POSITIONS = {
 	}
 }
 
+const PLAYER_FUEL_COMPARISON_POSITION = Vector2(790, 563)
+const ENEMY_FUEL_COMPARISON_POSITION = Vector2(1080, 563)
 
 func _ready() -> void:
 	animation_player.play("ShowCockpit")
@@ -155,8 +160,8 @@ func close_slots():
 
 
 func present_mini_cassettes():
-	present_participant_mini_cassettes(sequence, player_mini_cassettes)
-	present_participant_mini_cassettes(enemy_sequence, enemy_mini_cassettes)
+	await present_participant_mini_cassettes(sequence, player_mini_cassettes)
+	await present_participant_mini_cassettes(enemy_sequence, enemy_mini_cassettes)
 
 	
 func present_participant_mini_cassettes(sequence_node: Node2D, mini_cassette_nodes: Array) -> void:
@@ -167,6 +172,190 @@ func present_participant_mini_cassettes(sequence_node: Node2D, mini_cassette_nod
 			var mini_cassette = mini_cassette_nodes[i]
 			mini_cassette.set_cassette_data(cassette)
 			mini_cassette.visible = true
-			mini_cassette.highlight_cassette(false)
+			await mini_cassette.highlight_cassette(false)
 			if i == 0:
 				mini_cassette.show_icons()
+
+func compare_mini_cassette_fuel(player_minicassette: MiniCassette, enemy_minicassette: MiniCassette, who_wins: int):
+	
+	var player_cassette_fuel = player_minicassette.fuel_icon
+	var enemy_cassette_fuel = enemy_minicassette.fuel_icon
+
+	await enlarge_cassettes_for_comparison(player_minicassette, enemy_minicassette)
+	await get_tree().create_timer(0.8).timeout
+
+	var player_fuel_global_pos = player_minicassette.fuel_icon.global_position
+	var enemy_fuel_global_pos = enemy_minicassette.fuel_icon.global_position
+
+	if not SettingsManager.get_setting("skip_fuel_comparison"):
+		await move_mini_cassettes_fuel_to_middle(player_cassette_fuel, enemy_cassette_fuel)
+		await get_tree().create_timer(0.8).timeout
+		await move_fuel_counters_for_summation(player_cassette_fuel, enemy_cassette_fuel)
+	await add_fuel_to_counters(player_cassette_fuel, enemy_cassette_fuel)
+
+	await get_tree().create_timer(0.8).timeout
+
+	var winner_cassette_fuel = player_cassette_fuel if who_wins == GlobalEnums.PLAYER else enemy_cassette_fuel
+	var loser_cassette_fuel = enemy_cassette_fuel if who_wins == GlobalEnums.PLAYER else player_cassette_fuel
+	var winner_position = player_fuel_global_pos if who_wins == GlobalEnums.PLAYER else enemy_fuel_global_pos
+	var loser_position = enemy_fuel_global_pos if who_wins == GlobalEnums.PLAYER else player_fuel_global_pos
+	var winner_fuel_counter = player_fuel_counter if who_wins == GlobalEnums.PLAYER else enemy_fuel_counter
+	var loser_fuel_counter = enemy_fuel_counter if who_wins == GlobalEnums.PLAYER else player_fuel_counter
+	var winner_minicassette = player_minicassette if who_wins == GlobalEnums.PLAYER else enemy_minicassette
+	var loser_minicassette = enemy_minicassette if who_wins == GlobalEnums.PLAYER else player_minicassette
+	var winner_vector = Vector2(-40,0) if who_wins == GlobalEnums.PLAYER else Vector2(40,0)
+	var loser_vector = Vector2(40,0) if who_wins == GlobalEnums.PLAYER else Vector2(-40,0)
+	await show_winner_and_loser_mini_cassettes(winner_fuel_counter, loser_fuel_counter)
+	await remove_fuel_from_loser_counter(loser_fuel_counter, loser_cassette_fuel)
+	if not SettingsManager.get_setting("skip_fuel_comparison"):	
+		await return_loser_fuel_to_original_position(loser_cassette_fuel, loser_position)
+	await restore_cassette_to_original_scale(loser_minicassette, loser_vector)
+	await restore_cassette_to_original_scale(winner_minicassette, winner_vector)
+	
+	if not SettingsManager.get_setting("skip_fuel_comparison"):	
+		winner_cassette_fuel.global_position = winner_position
+	await get_tree().create_timer(1).timeout
+	winner_minicassette.hide_icons()
+	await winner_minicassette.highlight_cassette(true)
+
+func enlarge_cassettes_for_comparison(player_minicassette: MiniCassette, enemy_minicassette: MiniCassette):
+	var tweener = create_tween()
+	tweener.tween_property(player_minicassette, "scale", player_minicassette.scale + Vector2(0.2, 0.2), 0.3).set_trans(Tween.TRANS_SINE)
+	tweener.parallel().tween_property(player_minicassette, "position", player_minicassette.position + Vector2(40,0), 0.3).set_trans(Tween.TRANS_SINE)
+	tweener.parallel().tween_property(enemy_minicassette, "scale", enemy_minicassette.scale + Vector2(0.2, 0.2,), 0.3).set_trans(Tween.TRANS_SINE)
+	tweener.parallel().tween_property(enemy_minicassette, "position", enemy_minicassette.position + Vector2(-40,0), 0.3).set_trans(Tween.TRANS_SINE)
+
+
+func move_mini_cassettes_fuel_to_middle(player_fuel: Sprite2D, enemy_fuel: Sprite2D):
+	var tweener = create_tween()
+	player_fuel.z_index += 10
+	enemy_fuel.z_index += 10
+	tweener.tween_property(player_fuel, "global_position", PLAYER_FUEL_COMPARISON_POSITION, 0.6).set_trans(Tween.TRANS_SINE)
+	tweener.parallel().tween_property(enemy_fuel, "global_position", ENEMY_FUEL_COMPARISON_POSITION, 0.6).set_trans(Tween.TRANS_SINE)
+	await tweener.finished
+	player_fuel.z_index -= 10
+	enemy_fuel.z_index -= 10
+
+
+func move_fuel_counters_for_summation(player_fuel: Sprite2D, enemy_fuel: Sprite2D):
+	var tweener = create_tween()
+	tweener.tween_property(player_fuel, "global_position", player_fuel_counter.global_position, 0.4).set_trans(Tween.TRANS_SINE)
+	tweener.parallel().tween_property(player_fuel, "modulate", Color(1,1,1,0), 0.4).set_trans(Tween.TRANS_SINE)
+	tweener.parallel().tween_property(enemy_fuel, "global_position", enemy_fuel_counter.global_position, 0.4).set_trans(Tween.TRANS_SINE)
+	tweener.parallel().tween_property(enemy_fuel, "modulate", Color(1,1,1,0), 0.4).set_trans(Tween.TRANS_SINE)
+	await tweener.finished
+
+
+func add_fuel_to_counters(player_cassette_fuel, enemy_cassette_fuel):
+	var player_fuel_amount = player_cassette_fuel.get_node("Label")
+	var player_counter_amount = player_fuel_counter.get_node("FuelSpent")
+	var enemy_fuel_amount = enemy_cassette_fuel.get_node("Label")
+	var enemy_counter_amount = enemy_fuel_counter.get_node("FuelSpent")
+
+	var bigger_value = max(int(player_fuel_amount.text), int(enemy_fuel_amount.text))
+	for i in range(bigger_value):
+		if i < int(player_fuel_amount.text):
+			player_counter_amount.text = str(int(player_counter_amount.text)+1)
+		if i < int(enemy_fuel_amount.text):
+			enemy_counter_amount.text = str(int(enemy_counter_amount.text)+1)
+		await get_tree().create_timer(0.1).timeout	
+
+
+func show_winner_and_loser_mini_cassettes(winner: Sprite2D, loser: Sprite2D):
+	var loser_label = loser.get_node("FuelSpent") as Label
+	var tweener = create_tween()
+	tweener.tween_property(winner, "scale", winner.scale + Vector2(0.05, 0.05), 0.55).set_trans(Tween.TRANS_SINE)
+	tweener.parallel().tween_property(loser, "scale", loser.scale - Vector2(0.05, 0.05), 0.55).set_trans(Tween.TRANS_SINE)
+	tweener.parallel().tween_property(winner, "self_modulate", Color(1.3,1.3,0.3,1), 0.55).set_trans(Tween.TRANS_SINE)
+	tweener.parallel().tween_property(loser, "self_modulate", Color(0.5,0.5,0.5,0.3), 0.55).set_trans(Tween.TRANS_SINE)
+	tweener.parallel().tween_property(loser_label, "modulate", Color(0.3,0.3,0.3,0.6), 0.55).set_trans(Tween.TRANS_SINE)
+	await tweener.finished
+	await get_tree().create_timer(0.2).timeout
+
+	tweener = create_tween()
+	tweener.tween_property(winner, "scale", winner.scale - Vector2(0.05, 0.05), 0.3).set_trans(Tween.TRANS_SINE)
+	tweener.parallel().tween_property(loser, "scale", loser.scale + Vector2(0.05, 0.05), 0.3).set_trans(Tween.TRANS_SINE)
+	tweener.parallel().tween_property(winner, "self_modulate", Color(1,1,1,1), 0.3).set_trans(Tween.TRANS_SINE)
+	tweener.parallel().tween_property(loser, "self_modulate", Color(1,1,1,1), 0.3).set_trans(Tween.TRANS_SINE)
+	tweener.parallel().tween_property(loser_label, "modulate", Color(1,1,1,1), 0.3).set_trans(Tween.TRANS_SINE)
+	await tweener.finished
+
+
+func remove_fuel_from_loser_counter(loser_counter: Sprite2D, loser_fuel: Sprite2D):
+	print("Removing fuel from loser counter")
+	var loser_counter_amount = int(loser_fuel.get_node("Label").text)
+	var fuel_spent_label = loser_counter.get_node("FuelSpent") as Label
+	for i in range(loser_counter_amount):
+		fuel_spent_label.text = str(int(fuel_spent_label.text) - 1)
+		await get_tree().create_timer(0.1).timeout
+
+
+func return_loser_fuel_to_original_position(loser: Sprite2D, original_global_pos: Vector2):
+	print("Returning loser fuel to original position")
+	var tweener = create_tween()
+	loser.z_index += 10
+	tweener.tween_property(loser, "global_position", original_global_pos, 0.6).set_trans(Tween.TRANS_SINE)
+	tweener.parallel().tween_property(loser, "modulate", Color(1,1,1,1),0.3).set_trans(Tween.TRANS_SINE)
+
+	await tweener.finished
+	loser.z_index -= 10
+
+
+func restore_cassette_to_original_scale(minicassette: MiniCassette, moving_vector: Vector2):
+	print("Restoring loser cassette to original scale")
+	var tweener = create_tween()
+	tweener.tween_property(minicassette, "scale", minicassette.scale - Vector2(0.2, 0.2), 0.3).set_trans(Tween.TRANS_SINE)
+	tweener.parallel().tween_property(minicassette, "position", minicassette.position + moving_vector, 0.3).set_trans(Tween.TRANS_SINE)
+	await tweener.finished
+
+
+func animate_next_cassette(minicassette: MiniCassette, whose_cassette: int):
+
+	var cassette_fuel = minicassette.fuel_icon
+	var move_target: Vector2
+	var fuel_counter: Sprite2D
+	var moving_vector: Vector2
+	var original_position = minicassette.global_position
+
+	if whose_cassette == GlobalEnums.PLAYER:
+		move_target = PLAYER_FUEL_COMPARISON_POSITION
+		fuel_counter = player_fuel_counter
+		moving_vector = Vector2(40,0)
+	else:
+		move_target = ENEMY_FUEL_COMPARISON_POSITION
+		fuel_counter = enemy_fuel_counter
+		moving_vector = Vector2(-40,0)
+
+
+	var tweener = create_tween()
+	tweener.tween_property(minicassette, "scale", minicassette.scale + Vector2(0.2, 0.2), 0.3).set_trans(Tween.TRANS_SINE)
+	tweener.parallel().tween_property(minicassette, "position", minicassette.position + moving_vector, 0.3).set_trans(Tween.TRANS_SINE)
+
+
+	if not SettingsManager.get_setting("skip_fuel_comparison"):	
+		cassette_fuel.z_index += 10
+
+		tweener = create_tween()
+		tweener.tween_property(cassette_fuel, "global_position", move_target, 0.6).set_trans(Tween.TRANS_SINE)
+		await tweener.finished
+
+		cassette_fuel.z_index -= 10
+
+		tweener = create_tween()
+		tweener.tween_property(cassette_fuel, "global_position", fuel_counter.global_position, 0.4).set_trans(Tween.TRANS_SINE)
+		tweener.parallel().tween_property(cassette_fuel, "modulate", Color(1,1,1,0), 0.4).set_trans(Tween.TRANS_SINE)
+		await tweener.finished
+
+	var fuel_amount = minicassette.fuel_icon.get_node("Label")
+	var counter_amount = fuel_counter.get_node("FuelSpent")
+	
+	for i in range(int(fuel_amount.text)):
+		counter_amount.text = str(int(counter_amount.text)+1)
+		await get_tree().create_timer(0.1).timeout
+	
+	
+	if not SettingsManager.get_setting("skip_fuel_comparison"):	
+		cassette_fuel.global_position = original_position
+	await restore_cassette_to_original_scale(minicassette, -moving_vector)
+	minicassette.hide_icons()
+	await minicassette.highlight_cassette(true)

@@ -24,6 +24,7 @@ config/icon="res://icon.svg"
 GlobalEnums="*res://Features/global_enums.gd"
 Database="*res://Features/Database.gd"
 SfxManager="*res://Features/SFXManager.gd"
+SettingsManager="*res://Features/settings.gd"
 
 [display]
 

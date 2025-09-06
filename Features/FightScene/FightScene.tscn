@@ -1792,9 +1792,8 @@ mouse_filter = 1
 
 [node name="CockPit" type="TextureRect" parent="UI/Cockpit"]
 layout_mode = 0
-offset_top = -1.0
 offset_right = 3840.0
-offset_bottom = 2159.0
+offset_bottom = 2160.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("18_23j1h")
 
@@ -2090,12 +2089,12 @@ offset_right = 1025.0
 offset_bottom = 631.0
 texture = SubResource("PlaceholderTexture2D_gj375")
 
-[node name="Sprite2D" type="Sprite2D" parent="UI/FuelSpent"]
+[node name="PlayerFuelSpent" type="Sprite2D" parent="UI/FuelSpent"]
 position = Vector2(40, 70)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("42_5k73a")
 
-[node name="FuelSpent" type="Label" parent="UI/FuelSpent/Sprite2D"]
+[node name="FuelSpent" type="Label" parent="UI/FuelSpent/PlayerFuelSpent"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -2114,12 +2113,12 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Sprite2D2" type="Sprite2D" parent="UI/FuelSpent"]
+[node name="EnemyFuelSpent" type="Sprite2D" parent="UI/FuelSpent"]
 position = Vector2(140, 70)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("42_5k73a")
 
-[node name="FuelSpent" type="Label" parent="UI/FuelSpent/Sprite2D2"]
+[node name="FuelSpent" type="Label" parent="UI/FuelSpent/EnemyFuelSpent"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

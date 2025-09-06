@@ -1,5 +1,5 @@
 extends Node2D
-
+class_name MiniCassette
 
 @onready var actions_sprite: Sprite2D = $Node2D/ActionData/Actions
 @onready var cassette_name: Label = $Node2D/Front/CassetteName

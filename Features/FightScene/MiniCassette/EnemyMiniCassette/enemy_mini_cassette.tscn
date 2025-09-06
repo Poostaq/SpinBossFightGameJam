@@ -200,11 +200,8 @@ texture = ExtResource("6_f8lk2")
 
 [node name="Icons" type="Node2D" parent="Node2D/ActionData"]
 
-[node name="Actions" type="Sprite2D" parent="Node2D/ActionData/Icons"]
-position = Vector2(0, 60)
-texture = ExtResource("6_f8lk2")
-
 [node name="Fuel" type="Sprite2D" parent="Node2D/ActionData/Icons"]
+visible = false
 position = Vector2(-280, -90)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("8_41hgg")
@@ -230,6 +227,7 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Icon1" type="Sprite2D" parent="Node2D/ActionData/Icons"]
+visible = false
 position = Vector2(-280, 20)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("9_m5c5p")
@@ -255,6 +253,7 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Icon2" type="Sprite2D" parent="Node2D/ActionData/Icons"]
+visible = false
 position = Vector2(-280, 135)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("9_m5c5p")

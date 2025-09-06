@@ -13,6 +13,7 @@ var hand: Array = []
 @onready var cassette_manager: Node2D = %CassetteManager
 
 var health: int = 20
+var fuel_spent_this_turn: int = 0
 
 func prepare_hand():
 	var player_cassettes = Database.player_deck["player_deck"]
