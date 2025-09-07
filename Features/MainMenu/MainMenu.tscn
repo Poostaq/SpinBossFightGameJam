@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://basbt252t041a"]
+[gd_scene load_steps=22 format=3 uid="uid://basbt252t041a"]
 
 [ext_resource type="Script" uid="uid://bqg0oe3b0n1wo" path="res://Features/MainMenu/main_menu.gd" id="1_hw7sd"]
 [ext_resource type="Texture2D" uid="uid://cdevedgkhsjrl" path="res://Images/MainMenu/frame 1.png" id="2_7n3s7"]
@@ -66,6 +66,13 @@ texture_margin_right = 5.0
 texture_margin_bottom = 5.0
 region_rect = Rect2(108, 211, 297, 90)
 
+[sub_resource type="Theme" id="Theme_pp4sb"]
+LineEdit/colors/font_color = Color(0, 0, 0, 1)
+LineEdit/colors/font_outline_color = Color(1, 1, 1, 1)
+LineEdit/constants/outline_size = 10
+LineEdit/font_sizes/font_size = 48
+LineEdit/fonts/font = ExtResource("12_xj0b2")
+
 [node name="MainMenu" type="Node2D"]
 z_index = 20
 script = ExtResource("1_hw7sd")
@@ -87,6 +94,7 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="MainMenuButtons" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -170,7 +178,6 @@ text = "Exit
 metadata/_edit_use_anchors_ = true
 
 [node name="OptionsMenu" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -184,6 +191,7 @@ grow_vertical = 2
 
 [node name="GrayoutForButtons" type="TextureRect" parent="OptionsMenu"]
 modulate = Color(0.122, 0.122, 0.122, 0.961)
+layout_mode = 0
 offset_left = -37.0
 offset_top = -43.0
 offset_right = 963.0
@@ -216,9 +224,9 @@ bus_name = "Master"
 [node name="MusicVolumeLabel" type="Label" parent="OptionsMenu"]
 layout_mode = 0
 offset_left = 150.0
-offset_top = 200.0
+offset_top = 230.0
 offset_right = 480.0
-offset_bottom = 323.0
+offset_bottom = 353.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 10
@@ -231,17 +239,17 @@ vertical_alignment = 1
 [node name="MusicSlider" parent="OptionsMenu" instance=ExtResource("11_wmbnk")]
 layout_mode = 0
 offset_left = 1450.0
-offset_top = 200.0
+offset_top = 230.0
 offset_right = 1764.0
-offset_bottom = 287.0
+offset_bottom = 317.0
 bus_name = "Music"
 
 [node name="SFXVolumeLabel" type="Label" parent="OptionsMenu"]
 layout_mode = 0
 offset_left = 150.0
-offset_top = 300.0
+offset_top = 360.0
 offset_right = 480.0
-offset_bottom = 360.0
+offset_bottom = 420.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 10
@@ -253,9 +261,9 @@ vertical_alignment = 1
 [node name="SFXSlider" parent="OptionsMenu" instance=ExtResource("11_wmbnk")]
 layout_mode = 0
 offset_left = 1450.0
-offset_top = 300.0
+offset_top = 360.0
 offset_right = 1764.0
-offset_bottom = 387.0
+offset_bottom = 447.0
 bus_name = "Effects"
 
 [node name="BackToMenu" type="Button" parent="OptionsMenu"]
@@ -298,9 +306,9 @@ text = "Save"
 [node name="SkipFuelComparisonLabel" type="Label" parent="OptionsMenu"]
 layout_mode = 0
 offset_left = 150.0
-offset_top = 400.0
-offset_right = 480.0
-offset_bottom = 460.0
+offset_top = 490.0
+offset_right = 652.0
+offset_bottom = 550.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 10
@@ -312,11 +320,59 @@ vertical_alignment = 1
 
 [node name="SkipFuelComparisonToggle" type="CheckButton" parent="OptionsMenu"]
 layout_mode = 0
-offset_left = 1492.0
-offset_top = 383.0
-offset_right = 1536.0
-offset_bottom = 407.0
-scale = Vector2(5, 5)
+offset_left = 1600.0
+offset_top = 490.0
+offset_right = 1644.0
+offset_bottom = 514.0
+scale = Vector2(4, 4)
+
+[node name="BattleSpeedLabel" type="Label" parent="OptionsMenu"]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 620.0
+offset_right = 652.0
+offset_bottom = 680.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("12_xj0b2")
+theme_override_font_sizes/font_size = 48
+text = "Battle Speed"
+vertical_alignment = 1
+
+[node name="SpinBox" type="SpinBox" parent="OptionsMenu"]
+layout_mode = 0
+offset_left = 1620.0
+offset_top = 620.0
+offset_right = 1762.0
+offset_bottom = 688.0
+theme = SubResource("Theme_pp4sb")
+min_value = 1.0
+max_value = 4.0
+value = 4.0
+
+[node name="ShowTooltipsLabel" type="Label" parent="OptionsMenu"]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 750.0
+offset_right = 652.0
+offset_bottom = 810.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("12_xj0b2")
+theme_override_font_sizes/font_size = 48
+text = "Show Tooltips"
+vertical_alignment = 1
+
+[node name="ShowTooltipsToggle" type="CheckButton" parent="OptionsMenu"]
+layout_mode = 0
+offset_left = 1600.0
+offset_top = 750.0
+offset_right = 1644.0
+offset_bottom = 774.0
+scale = Vector2(4, 4)
+button_pressed = true
 
 [connection signal="pressed" from="MainMenuButtons/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="MainMenuButtons/Options" to="." method="_on_options_button_pressed"]
@@ -324,3 +380,5 @@ scale = Vector2(5, 5)
 [connection signal="pressed" from="OptionsMenu/BackToMenu" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="OptionsMenu/Save" to="." method="_on_save_button_pressed"]
 [connection signal="toggled" from="OptionsMenu/SkipFuelComparisonToggle" to="." method="_on_skip_fuel_comparison_toggle_toggled"]
+[connection signal="value_changed" from="OptionsMenu/SpinBox" to="." method="_on_spin_box_value_changed"]
+[connection signal="toggled" from="OptionsMenu/ShowTooltipsToggle" to="." method="_on_show_tooltips_toggle_toggled"]

@@ -22,6 +22,8 @@ func show_options_menu():
     $OptionsMenu/MusicSlider.value = settings.get_setting("music_volume", true)
     $OptionsMenu/SFXSlider.value = settings.get_setting("sfx_volume", true)
     $OptionsMenu/SkipFuelComparisonToggle.pressed = settings.get_setting("skip_fuel_comparison", true)
+    $OptionsMenu/SpinBox.value = settings.get_setting("battle_speed", true)
+    $OptionsMenu/ShowTooltipsToggle.pressed = settings.get_setting("show_tooltip", true)  # Load tooltip setting
 
 func _on_options_button_pressed():
     show_options_menu()
@@ -53,3 +55,9 @@ func _on_sfx_slider_value_changed(value: float) -> void:
 
 func _on_skip_fuel_comparison_toggle_toggled(toggled_on: bool) -> void:
     settings.set_setting("skip_fuel_comparison", toggled_on, true)
+
+func _on_spin_box_value_changed(value: float) -> void:
+    settings.set_setting("battle_speed", value, true)
+
+func _on_show_tooltips_toggle_toggled(toggled_on: bool) -> void:
+    settings.set_setting("show_tooltip", toggled_on, true)

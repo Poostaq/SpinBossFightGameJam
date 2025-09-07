@@ -177,23 +177,23 @@ func present_participant_mini_cassettes(sequence_node: Node2D, mini_cassette_nod
 				mini_cassette.show_icons()
 
 func compare_mini_cassette_fuel(player_minicassette: MiniCassette, enemy_minicassette: MiniCassette, who_wins: int):
-	
+
 	var player_cassette_fuel = player_minicassette.fuel_icon
 	var enemy_cassette_fuel = enemy_minicassette.fuel_icon
 
 	await enlarge_cassettes_for_comparison(player_minicassette, enemy_minicassette)
-	await get_tree().create_timer(0.8).timeout
+	await get_tree().create_timer(0.8/SettingsManager.battle_speed).timeout
 
 	var player_fuel_global_pos = player_minicassette.fuel_icon.global_position
 	var enemy_fuel_global_pos = enemy_minicassette.fuel_icon.global_position
 
 	if not SettingsManager.get_setting("skip_fuel_comparison"):
 		await move_mini_cassettes_fuel_to_middle(player_cassette_fuel, enemy_cassette_fuel)
-		await get_tree().create_timer(0.8).timeout
+		await get_tree().create_timer(0.8/SettingsManager.battle_speed).timeout
 		await move_fuel_counters_for_summation(player_cassette_fuel, enemy_cassette_fuel)
 	await add_fuel_to_counters(player_cassette_fuel, enemy_cassette_fuel)
 
-	await get_tree().create_timer(0.8).timeout
+	await get_tree().create_timer(0.8/SettingsManager.battle_speed).timeout
 
 	var winner_cassette_fuel = player_cassette_fuel if who_wins == GlobalEnums.PLAYER else enemy_cassette_fuel
 	var loser_cassette_fuel = enemy_cassette_fuel if who_wins == GlobalEnums.PLAYER else player_cassette_fuel
@@ -214,24 +214,24 @@ func compare_mini_cassette_fuel(player_minicassette: MiniCassette, enemy_minicas
 	
 	if not SettingsManager.get_setting("skip_fuel_comparison"):	
 		winner_cassette_fuel.global_position = winner_position
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(1/SettingsManager.battle_speed).timeout
 	winner_minicassette.hide_icons()
 	await winner_minicassette.highlight_cassette(true)
 
 func enlarge_cassettes_for_comparison(player_minicassette: MiniCassette, enemy_minicassette: MiniCassette):
 	var tweener = create_tween()
-	tweener.tween_property(player_minicassette, "scale", player_minicassette.scale + Vector2(0.2, 0.2), 0.3).set_trans(Tween.TRANS_SINE)
-	tweener.parallel().tween_property(player_minicassette, "position", player_minicassette.position + Vector2(40,0), 0.3).set_trans(Tween.TRANS_SINE)
-	tweener.parallel().tween_property(enemy_minicassette, "scale", enemy_minicassette.scale + Vector2(0.2, 0.2,), 0.3).set_trans(Tween.TRANS_SINE)
-	tweener.parallel().tween_property(enemy_minicassette, "position", enemy_minicassette.position + Vector2(-40,0), 0.3).set_trans(Tween.TRANS_SINE)
+	tweener.tween_property(player_minicassette, "scale", player_minicassette.scale + Vector2(0.2, 0.2), 0.3/SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
+	tweener.parallel().tween_property(player_minicassette, "position", player_minicassette.position + Vector2(40,0), 0.3/SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
+	tweener.parallel().tween_property(enemy_minicassette, "scale", enemy_minicassette.scale + Vector2(0.2, 0.2,), 0.3/SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
+	tweener.parallel().tween_property(enemy_minicassette, "position", enemy_minicassette.position + Vector2(-40,0), 0.3/SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
 
 
 func move_mini_cassettes_fuel_to_middle(player_fuel: Sprite2D, enemy_fuel: Sprite2D):
 	var tweener = create_tween()
 	player_fuel.z_index += 10
 	enemy_fuel.z_index += 10
-	tweener.tween_property(player_fuel, "global_position", PLAYER_FUEL_COMPARISON_POSITION, 0.6).set_trans(Tween.TRANS_SINE)
-	tweener.parallel().tween_property(enemy_fuel, "global_position", ENEMY_FUEL_COMPARISON_POSITION, 0.6).set_trans(Tween.TRANS_SINE)
+	tweener.tween_property(player_fuel, "global_position", PLAYER_FUEL_COMPARISON_POSITION, 0.6/SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
+	tweener.parallel().tween_property(enemy_fuel, "global_position", ENEMY_FUEL_COMPARISON_POSITION, 0.6/SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
 	await tweener.finished
 	player_fuel.z_index -= 10
 	enemy_fuel.z_index -= 10
@@ -258,26 +258,26 @@ func add_fuel_to_counters(player_cassette_fuel, enemy_cassette_fuel):
 			player_counter_amount.text = str(int(player_counter_amount.text)+1)
 		if i < int(enemy_fuel_amount.text):
 			enemy_counter_amount.text = str(int(enemy_counter_amount.text)+1)
-		await get_tree().create_timer(0.1).timeout	
+		await get_tree().create_timer(0.1/SettingsManager.battle_speed).timeout	
 
 
 func show_winner_and_loser_mini_cassettes(winner: Sprite2D, loser: Sprite2D):
 	var loser_label = loser.get_node("FuelSpent") as Label
 	var tweener = create_tween()
-	tweener.tween_property(winner, "scale", winner.scale + Vector2(0.05, 0.05), 0.55).set_trans(Tween.TRANS_SINE)
-	tweener.parallel().tween_property(loser, "scale", loser.scale - Vector2(0.05, 0.05), 0.55).set_trans(Tween.TRANS_SINE)
-	tweener.parallel().tween_property(winner, "self_modulate", Color(1.3,1.3,0.3,1), 0.55).set_trans(Tween.TRANS_SINE)
-	tweener.parallel().tween_property(loser, "self_modulate", Color(0.5,0.5,0.5,0.3), 0.55).set_trans(Tween.TRANS_SINE)
-	tweener.parallel().tween_property(loser_label, "modulate", Color(0.3,0.3,0.3,0.6), 0.55).set_trans(Tween.TRANS_SINE)
+	tweener.tween_property(winner, "scale", winner.scale + Vector2(0.05, 0.05), 0.55/SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
+	tweener.parallel().tween_property(loser, "scale", loser.scale - Vector2(0.05, 0.05), 0.55/SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
+	tweener.parallel().tween_property(winner, "self_modulate", Color(1.3,1.3,0.3,1), 0.55/SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
+	tweener.parallel().tween_property(loser, "self_modulate", Color(0.5,0.5,0.5,0.3), 0.55/SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
+	tweener.parallel().tween_property(loser_label, "modulate", Color(0.3,0.3,0.3,0.6), 0.55/SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
 	await tweener.finished
-	await get_tree().create_timer(0.2).timeout
+	await get_tree().create_timer(0.2/SettingsManager.battle_speed).timeout
 
 	tweener = create_tween()
-	tweener.tween_property(winner, "scale", winner.scale - Vector2(0.05, 0.05), 0.3).set_trans(Tween.TRANS_SINE)
-	tweener.parallel().tween_property(loser, "scale", loser.scale + Vector2(0.05, 0.05), 0.3).set_trans(Tween.TRANS_SINE)
-	tweener.parallel().tween_property(winner, "self_modulate", Color(1,1,1,1), 0.3).set_trans(Tween.TRANS_SINE)
-	tweener.parallel().tween_property(loser, "self_modulate", Color(1,1,1,1), 0.3).set_trans(Tween.TRANS_SINE)
-	tweener.parallel().tween_property(loser_label, "modulate", Color(1,1,1,1), 0.3).set_trans(Tween.TRANS_SINE)
+	tweener.tween_property(winner, "scale", winner.scale - Vector2(0.05, 0.05), 0.3/SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
+	tweener.parallel().tween_property(loser, "scale", loser.scale + Vector2(0.05, 0.05), 0.3/SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
+	tweener.parallel().tween_property(winner, "self_modulate", Color(1,1,1,1), 0.3/SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
+	tweener.parallel().tween_property(loser, "self_modulate", Color(1,1,1,1), 0.3/SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
+	tweener.parallel().tween_property(loser_label, "modulate", Color(1,1,1,1), 0.3/SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
 	await tweener.finished
 
 
@@ -287,7 +287,7 @@ func remove_fuel_from_loser_counter(loser_counter: Sprite2D, loser_fuel: Sprite2
 	var fuel_spent_label = loser_counter.get_node("FuelSpent") as Label
 	for i in range(loser_counter_amount):
 		fuel_spent_label.text = str(int(fuel_spent_label.text) - 1)
-		await get_tree().create_timer(0.1).timeout
+		await get_tree().create_timer(0.1/SettingsManager.battle_speed).timeout
 
 
 func return_loser_fuel_to_original_position(loser: Sprite2D, original_global_pos: Vector2):
@@ -304,8 +304,8 @@ func return_loser_fuel_to_original_position(loser: Sprite2D, original_global_pos
 func restore_cassette_to_original_scale(minicassette: MiniCassette, moving_vector: Vector2):
 	print("Restoring loser cassette to original scale")
 	var tweener = create_tween()
-	tweener.tween_property(minicassette, "scale", minicassette.scale - Vector2(0.2, 0.2), 0.3).set_trans(Tween.TRANS_SINE)
-	tweener.parallel().tween_property(minicassette, "position", minicassette.position + moving_vector, 0.3).set_trans(Tween.TRANS_SINE)
+	tweener.tween_property(minicassette, "scale", minicassette.scale - Vector2(0.2, 0.2), 0.3/SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
+	tweener.parallel().tween_property(minicassette, "position", minicassette.position + moving_vector, 0.3/SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
 	await tweener.finished
 
 
@@ -328,22 +328,22 @@ func animate_next_cassette(minicassette: MiniCassette, whose_cassette: int):
 
 
 	var tweener = create_tween()
-	tweener.tween_property(minicassette, "scale", minicassette.scale + Vector2(0.2, 0.2), 0.3).set_trans(Tween.TRANS_SINE)
-	tweener.parallel().tween_property(minicassette, "position", minicassette.position + moving_vector, 0.3).set_trans(Tween.TRANS_SINE)
+	tweener.tween_property(minicassette, "scale", minicassette.scale + Vector2(0.2, 0.2), 0.3/SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
+	tweener.parallel().tween_property(minicassette, "position", minicassette.position + moving_vector, 0.3/SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
 
 
 	if not SettingsManager.get_setting("skip_fuel_comparison"):	
 		cassette_fuel.z_index += 10
 
 		tweener = create_tween()
-		tweener.tween_property(cassette_fuel, "global_position", move_target, 0.6).set_trans(Tween.TRANS_SINE)
+		tweener.tween_property(cassette_fuel, "global_position", move_target, 0.6/SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
 		await tweener.finished
 
 		cassette_fuel.z_index -= 10
 
 		tweener = create_tween()
-		tweener.tween_property(cassette_fuel, "global_position", fuel_counter.global_position, 0.4).set_trans(Tween.TRANS_SINE)
-		tweener.parallel().tween_property(cassette_fuel, "modulate", Color(1,1,1,0), 0.4).set_trans(Tween.TRANS_SINE)
+		tweener.tween_property(cassette_fuel, "global_position", fuel_counter.global_position, 0.4/SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
+		tweener.parallel().tween_property(cassette_fuel, "modulate", Color(1,1,1,0), 0.4/SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
 		await tweener.finished
 
 	var fuel_amount = minicassette.fuel_icon.get_node("Label")
@@ -351,7 +351,7 @@ func animate_next_cassette(minicassette: MiniCassette, whose_cassette: int):
 	
 	for i in range(int(fuel_amount.text)):
 		counter_amount.text = str(int(counter_amount.text)+1)
-		await get_tree().create_timer(0.1).timeout
+		await get_tree().create_timer(0.1/SettingsManager.battle_speed).timeout
 	
 	
 	if not SettingsManager.get_setting("skip_fuel_comparison"):	

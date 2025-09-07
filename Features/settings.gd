@@ -9,12 +9,18 @@ var music_volume: float = 1.0
 var sfx_volume: float = 1.0
 @export
 var skip_fuel_comparison: bool = true
+@export
+var battle_speed: float = 4.0
+@export
+var show_tooltip: bool = true
 
-# Temporary settings for changes
+
 var temp_master_volume: float = 1.0
 var temp_music_volume: float = 1.0
 var temp_sfx_volume: float = 1.0
 var temp_skip_fuel_comparison: bool = false
+var temp_battle_speed: float = 4.0
+var temp_show_tooltip: bool = true
 
 func set_setting(key: String, value, use_temp: bool = false) -> void:
     if use_temp:
@@ -27,6 +33,10 @@ func set_setting(key: String, value, use_temp: bool = false) -> void:
                 temp_sfx_volume = value
             "skip_fuel_comparison":
                 temp_skip_fuel_comparison = value
+            "battle_speed":
+                temp_battle_speed = value
+            "show_tooltip":
+                temp_show_tooltip = value
             _:
                 print("Invalid setting key: %s" % key)
     else:
@@ -39,6 +49,10 @@ func set_setting(key: String, value, use_temp: bool = false) -> void:
                 sfx_volume = value
             "skip_fuel_comparison":
                 skip_fuel_comparison = value
+            "battle_speed":
+                battle_speed = value
+            "show_tooltip":
+                show_tooltip = value
             _:
                 print("Invalid setting key: %s" % key)
 
@@ -53,6 +67,10 @@ func get_setting(key: String, use_temp: bool = false):
                 return temp_sfx_volume
             "skip_fuel_comparison":
                 return temp_skip_fuel_comparison
+            "battle_speed":
+                return temp_battle_speed
+            "show_tooltip":
+                return temp_show_tooltip
             _:
                 print("Invalid setting key: %s" % key)
                 return null
@@ -66,22 +84,29 @@ func get_setting(key: String, use_temp: bool = false):
                 return sfx_volume
             "skip_fuel_comparison":
                 return skip_fuel_comparison
+            "battle_speed":
+                return battle_speed
+            "show_tooltip":
+                return show_tooltip
             _:
                 print("Invalid setting key: %s" % key)
                 return null
 
 func save_settings(file_path: String = "user://settings.cfg") -> void:
-    # Save the temporary settings as the actual settings
     master_volume = temp_master_volume
     music_volume = temp_music_volume
     sfx_volume = temp_sfx_volume
     skip_fuel_comparison = temp_skip_fuel_comparison
+    battle_speed = temp_battle_speed
+    show_tooltip = temp_show_tooltip
 
     var config = ConfigFile.new()
     config.set_value("settings", "master_volume", master_volume)
     config.set_value("settings", "music_volume", music_volume)
     config.set_value("settings", "sfx_volume", sfx_volume)
     config.set_value("settings", "skip_fuel_comparison", skip_fuel_comparison)
+    config.set_value("settings", "battle_speed", battle_speed)
+    config.set_value("settings", "show_tooltip", show_tooltip)
     config.save(file_path)
 
 func load_settings(file_path: String = "user://settings.cfg") -> void:
@@ -91,18 +116,22 @@ func load_settings(file_path: String = "user://settings.cfg") -> void:
         music_volume = config.get_value("settings", "music_volume", music_volume)
         sfx_volume = config.get_value("settings", "sfx_volume", sfx_volume)
         skip_fuel_comparison = config.get_value("settings", "skip_fuel_comparison", skip_fuel_comparison)
+        battle_speed = config.get_value("settings", "battle_speed", battle_speed)
+        show_tooltip = config.get_value("settings", "show_tooltip", show_tooltip)
 
-        # Initialize temporary settings with loaded values
         temp_master_volume = master_volume
         temp_music_volume = music_volume
         temp_sfx_volume = sfx_volume
         temp_skip_fuel_comparison = skip_fuel_comparison
+        temp_battle_speed = battle_speed
+        temp_show_tooltip = show_tooltip
     else:
         print("Failed to load settings file.")
 
 func revert_temp_settings() -> void:
-    # Revert temporary settings to the actual settings
     temp_master_volume = master_volume
     temp_music_volume = music_volume
     temp_sfx_volume = sfx_volume
     temp_skip_fuel_comparison = skip_fuel_comparison
+    temp_battle_speed = battle_speed
+    temp_show_tooltip = show_tooltip

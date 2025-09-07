@@ -54,8 +54,10 @@ func start_acting_phase():
 	for i in range(6):
 		if current_player_cassette == 3 and current_enemy_cassette != 3:
 			ui_animator.animate_next_cassette(ui_animator.enemy_mini_cassettes[current_enemy_cassette], GlobalEnums.ENEMY)
+			current_enemy_cassette += 1
 		elif current_enemy_cassette == 3 and current_player_cassette != 3:
 			ui_animator.animate_next_cassette(ui_animator.player_mini_cassettes[current_player_cassette], GlobalEnums.PLAYER)
+			current_player_cassette += 1
 		else:
 			var winner = get_winner_for_next_cassette_comparison(
 				ui_animator.player_mini_cassettes[current_player_cassette], 
@@ -74,7 +76,7 @@ func start_acting_phase():
 				current_enemy_cassette += 1
 				if current_enemy_cassette < 3:
 					ui_animator.enemy_mini_cassettes[current_enemy_cassette].show_icons()
-			await get_tree().create_timer(0.8).timeout
+			await get_tree().create_timer(0.8/SettingsManager.battle_speed).timeout
 		
 
 func get_winner_for_next_cassette_comparison(player_cassette: Node, enemy_cassette: Node) -> int:

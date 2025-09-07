@@ -4,19 +4,19 @@ class_name Cassette
 signal hovered(cassette: Cassette)
 signal hovered_off(cassette: Cassette)
 
-const ENLARGED_CASSETTE_SIZE: Vector2 = Vector2(0.85,0.85)
-const REGULAR_CASSETTE_SIZE: Vector2  = Vector2(0.70,0.70)
-const SMALLER_CASSETTE_SIZE: Vector2 = Vector2(0.5,0.5)
-const DEFAULT_CASSETTE_SPEED: float  = 0.2
-const TOP_Y: int                    = 40
-const A_ICON                   = preload("res://Images/action_icons/a_side.png")
-const B_ICON                   = preload("res://Images/action_icons/b_side.png")
+const ENLARGED_CASSETTE_SIZE: Vector2 = Vector2(0.85, 0.85)
+const REGULAR_CASSETTE_SIZE: Vector2 = Vector2(0.70, 0.70)
+const SMALLER_CASSETTE_SIZE: Vector2 = Vector2(0.5, 0.5)
+const DEFAULT_CASSETTE_SPEED: float = 0.2
+const TOP_Y: int = 40
+const A_ICON = preload("res://Images/action_icons/a_side.png")
+const B_ICON = preload("res://Images/action_icons/b_side.png")
 const ActionValue: PackedScene = preload("res://Features/FightScene/Cassette/ActionValue.tscn")
 
 enum CASSETTE_SIDE_DATA {FUEL_COST, DESCRIPTION, ACTIONS_LIST, AFTER_PLAY, ACTION_ICON}
 enum ACTION {MOVE_TYPE, VALUE, MOVE_AREA, MOVE_INFO}
 enum STATE {INITIALIZING, IN_HAND, HOVERED_OVER, DRAGGING, IN_SLOT}
-enum Side {A,B}
+enum Side {A, B}
 
 var position_in_hand
 var scale_in_hand
@@ -87,6 +87,12 @@ func update_elements():
 	set_icon(side_data["after_play"], action_data_after_play)
 	set_side_icon()
 
+	# Update ActionTooltip RichTextLabel with description
+	if side_data.has("description"):
+		$ActionTooltip/RichTextLabel.text = side_data["description"]
+	else:
+		$ActionTooltip/RichTextLabel.text = ""
+
 
 func get_current_side_fuel():
 	return int(get_current_side_data().get("fuel_cost", 0))
@@ -147,23 +153,12 @@ func _display_action_labels(data: Dictionary) -> void:
 		var new_label = ActionValue.instantiate()
 		actions_sprite.add_child(new_label)
 		new_label.text = str(int(info.get("value", "")))
-		new_label.set_deferred("size", Vector2(190,190))
+		new_label.set_deferred("size", Vector2(190, 190))
 		new_label.set_deferred("position", Vector2(info.get("x_position", 0), info.get("y_position", 0)))
-		# new_label.size = Vector2(190,190)
-		# new_label.position = Vector2(info.get("x_position", 0), info.get("y_position", 0))
 		var scale_val = info.get("scale", 1)
 		new_label.scale = Vector2(scale_val, scale_val)
 
-
-#func array_join(arr: Array, sep: String) -> String:
-	#var result := ""
-	#for i in range(arr.size()):
-		#if i > 0:
-			#result += sep
-		#result += str(arr[i])
-	#return result
 	
-
 func animate_cassette_to_position(new_position, speed = DEFAULT_CASSETTE_SPEED):
 	collision_shape_2d.disabled = true
 	var tween = get_tree().create_tween()
@@ -229,7 +224,7 @@ func switch_sides():
 
 
 func set_icon(icon_name, element):
-	element.texture = load("res://Images/action_icons/"+icon_name+".png")
+	element.texture = load("res://Images/action_icons/" + icon_name + ".png")
 
 
 func set_side_icon():
@@ -246,19 +241,19 @@ func set_state(new_state: STATE) -> void:
 		return
 
 	match state:
-		STATE.INITIALIZING:_exit_initializing()
-		STATE.IN_HAND:     _exit_in_hand()
-		STATE.HOVERED_OVER:_exit_hovered_over()
-		STATE.DRAGGING:    _exit_dragging()
-		STATE.IN_SLOT:     _exit_in_slot()
+		STATE.INITIALIZING: _exit_initializing()
+		STATE.IN_HAND: _exit_in_hand()
+		STATE.HOVERED_OVER: _exit_hovered_over()
+		STATE.DRAGGING: _exit_dragging()
+		STATE.IN_SLOT: _exit_in_slot()
 
 	state = new_state
 
 	match state:
-		STATE.IN_HAND:     _enter_in_hand()
-		STATE.HOVERED_OVER:_enter_hovered_over()
-		STATE.DRAGGING:    _enter_dragging()
-		STATE.IN_SLOT:     _enter_in_slot()
+		STATE.IN_HAND: _enter_in_hand()
+		STATE.HOVERED_OVER: _enter_hovered_over()
+		STATE.DRAGGING: _enter_dragging()
+		STATE.IN_SLOT: _enter_in_slot()
 
 
 func _can_transition(from: STATE, to: STATE) -> bool:
@@ -266,13 +261,13 @@ func _can_transition(from: STATE, to: STATE) -> bool:
 		STATE.INITIALIZING:
 			return to == STATE.IN_HAND
 		STATE.IN_HAND:
-			return to in [ STATE.HOVERED_OVER, STATE.DRAGGING ]
+			return to in [STATE.HOVERED_OVER, STATE.DRAGGING]
 		STATE.HOVERED_OVER:
-			return to in [ STATE.IN_HAND, STATE.DRAGGING ]
+			return to in [STATE.IN_HAND, STATE.DRAGGING]
 		STATE.DRAGGING:
-			return to in [ STATE.IN_SLOT, STATE.IN_HAND ]
+			return to in [STATE.IN_SLOT, STATE.IN_HAND]
 		STATE.IN_SLOT:
-			return to in [ STATE.DRAGGING, STATE.IN_HAND ]
+			return to in [STATE.DRAGGING, STATE.IN_HAND]
 		_:
 			return false
 
@@ -290,10 +285,15 @@ func _exit_in_hand():
 
 func _enter_hovered_over():
 	z_index = 4
+	if SettingsManager.get_setting("show_tooltip", false): # Check if ShowTooltip is enabled
+		$ActionTooltip.visible = true
+		$FlipTooltip.visible = true
 	play_animation("Hover_over")
 
 
 func _exit_hovered_over():
+	$ActionTooltip.visible = false
+	$FlipTooltip.visible = false
 	play_animation("Hover_over", true)
 
 
@@ -308,10 +308,11 @@ func _exit_dragging():
 
 
 func _enter_in_slot():
-	flip_tooltip.visible = false
+	if SettingsManager.get_setting("show_tooltip", false): # Check if ShowTooltip is enabled
+		$FlipTooltip.visible = false
 	z_index = 0
 	skip_animation("SwitchToFront", true)
-	self.position = Vector2(0,0)
+	self.position = Vector2(0, 0)
 
 
 func _exit_in_slot():
