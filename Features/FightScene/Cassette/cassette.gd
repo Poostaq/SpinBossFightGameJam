@@ -70,6 +70,8 @@ func setup_enemy_cassette(new_cassette_name, cassette_info):
 	name = new_cassette_name
 	side_a_data = cassette_info["side_a"]
 	side_b_data = cassette_info["side_b"]
+	side_a_actions_path = cassette_info["image_a"]
+	side_b_actions_path = cassette_info["image_b"]
 	cassette_name = new_cassette_name
 	current_side = Side.A
 	whose_cassette = GlobalEnums.ENEMY
@@ -87,12 +89,18 @@ func update_elements():
 	set_icon(side_data["after_play"], action_data_after_play)
 	set_side_icon()
 
-	# Update ActionTooltip RichTextLabel with description
 	if side_data.has("description"):
 		$ActionTooltip/RichTextLabel.text = side_data["description"]
 	else:
 		$ActionTooltip/RichTextLabel.text = ""
 
+func update_enemy_elements():
+	var side_data = get_current_side_data()
+	update_actions_texture()
+	_display_action_icons(side_data)
+	_display_action_labels(side_data)
+	set_icon(side_data["after_play"], action_data_after_play)
+	set_side_icon()
 
 func get_current_side_fuel():
 	return int(get_current_side_data().get("fuel_cost", 0))

@@ -49,8 +49,10 @@ func start_acting_phase():
 	current_phase = BattlePhase.ACTING
 	await ui_animator.present_mini_cassettes()
 	await get_tree().create_timer(0.8).timeout
+
 	var current_player_cassette = 0
 	var current_enemy_cassette = 0
+
 	for i in range(6):
 		if current_player_cassette == 3 and current_enemy_cassette != 3:
 			ui_animator.animate_next_cassette(ui_animator.enemy_mini_cassettes[current_enemy_cassette], GlobalEnums.ENEMY)
@@ -59,24 +61,45 @@ func start_acting_phase():
 			ui_animator.animate_next_cassette(ui_animator.player_mini_cassettes[current_player_cassette], GlobalEnums.PLAYER)
 			current_player_cassette += 1
 		else:
-			var winner = get_winner_for_next_cassette_comparison(
-				ui_animator.player_mini_cassettes[current_player_cassette], 
-				ui_animator.enemy_mini_cassettes[current_enemy_cassette])
-			await ui_animator.compare_mini_cassette_fuel(ui_animator.player_mini_cassettes[current_player_cassette], ui_animator.enemy_mini_cassettes[current_enemy_cassette], winner)
+			var player_minicassette = ui_animator.player_mini_cassettes[current_player_cassette]
+			var enemy_minicassette = ui_animator.enemy_mini_cassettes[current_enemy_cassette]
+			print("Player minicassette fuel global pos: %s" % player_minicassette.fuel_icon.global_position)
+			var winner = get_winner_for_next_cassette_comparison(player_minicassette, enemy_minicassette)
+			await ui_animator.enlarge_cassettes_for_comparison(player_minicassette, enemy_minicassette)
 
-			#perform winner actions
-			
+			var player_fuel_original_pos = player_minicassette.fuel_icon.global_position
+			print("Player fuel original pos: %s" % player_fuel_original_pos)
+			var enemy_fuel_original_pos = enemy_minicassette.fuel_icon.global_position
+
+			await ui_animator.compare_mini_cassette_fuel(
+				player_minicassette,
+				enemy_minicassette,
+				winner,
+				player_fuel_original_pos,
+				enemy_fuel_original_pos
+			)
+
+			var winner_minicassette = player_minicassette if winner == GlobalEnums.PLAYER else enemy_minicassette
+			await perform_cassette_actions(winner_minicassette, winner)
+			await ui_animator.restore_and_hide_winning_minicassette(
+				winner_minicassette,
+				winner,
+				player_fuel_original_pos,
+				enemy_fuel_original_pos
+			)
+
 			if winner == GlobalEnums.PLAYER:
-				player.fuel_spent_this_turn += ui_animator.player_mini_cassettes[current_player_cassette].fuel_label.text.to_int()
+				player.fuel_spent_this_turn += player_minicassette.fuel_label.text.to_int()
 				current_player_cassette += 1
 				if current_player_cassette < 3:
 					ui_animator.player_mini_cassettes[current_player_cassette].show_icons()
 			else:
-				enemy.fuel_spent_this_round += ui_animator.enemy_mini_cassettes[current_enemy_cassette].fuel_label.text.to_int()
+				enemy.fuel_spent_this_round += enemy_minicassette.fuel_label.text.to_int()
 				current_enemy_cassette += 1
 				if current_enemy_cassette < 3:
 					ui_animator.enemy_mini_cassettes[current_enemy_cassette].show_icons()
-			await get_tree().create_timer(0.8/SettingsManager.battle_speed).timeout
+
+			await get_tree().create_timer(0.8 / SettingsManager.battle_speed).timeout
 		
 
 func get_winner_for_next_cassette_comparison(player_cassette: Node, enemy_cassette: Node) -> int:
@@ -90,3 +113,46 @@ func get_winner_for_next_cassette_comparison(player_cassette: Node, enemy_casset
 		return GlobalEnums.ENEMY
 	else:
 		return GlobalEnums.PLAYER
+
+func perform_cassette_actions(cassette: Node, whose_cassette: int) -> void:
+	# var actor = player if whose_cassette == GlobalEnums.PLAYER else enemy
+	# var target = enemy if whose_cassette == GlobalEnums.PLAYER else player
+	print("Performing actions for cassette %s" % [cassette.original_cassette.cassette_name])
+	var side_data = cassette.original_cassette.get_current_side_data()
+
+	for action in side_data["actions"]:
+		match int(action["action_type"]):
+			GlobalEnums.ACTION_TYPE.ATTACK:
+				pass
+			GlobalEnums.ACTION_TYPE.MOVE:
+				var position_key = action["target_area"]
+				await ui_animator.animate_move_to_position(position_key, whose_cassette)
+				if whose_cassette == GlobalEnums.PLAYER:
+					player.battle_position = GlobalEnums.BATTLE_POSITIONS[position_key.to_upper()]
+					enemy.battle_position = get_opposite_position(GlobalEnums.BATTLE_POSITIONS[position_key.to_upper()])
+				else:
+					enemy.battle_position = GlobalEnums.BATTLE_POSITIONS[position_key.to_upper()]
+					player.battle_position = get_opposite_position(GlobalEnums.BATTLE_POSITIONS[position_key.to_upper()])
+			GlobalEnums.ACTION_TYPE.SPECIAL:
+				pass
+
+
+func get_opposite_position(position: int) -> int:
+	match position:
+		GlobalEnums.BATTLE_POSITIONS.OVERTAKE:
+			return GlobalEnums.BATTLE_POSITIONS.SLOW_DOWN
+		GlobalEnums.BATTLE_POSITIONS.SLOW_DOWN:
+			return GlobalEnums.BATTLE_POSITIONS.OVERTAKE
+		GlobalEnums.BATTLE_POSITIONS.LINE_UP:
+			return GlobalEnums.BATTLE_POSITIONS.LINE_UP
+		_:
+			return position
+
+func _on_DEBUG_Overtake_pressed():
+	ui_animator.animate_move_to_position("overtake", GlobalEnums.PLAYER)
+
+func _on_DEBUG_LineUp_pressed():
+	ui_animator.animate_move_to_position("line_up", GlobalEnums.PLAYER)
+
+func _on_DEBUG_Slow_Down_pressed():
+	ui_animator.animate_move_to_position("slow_down", GlobalEnums.PLAYER)

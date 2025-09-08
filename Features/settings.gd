@@ -8,9 +8,9 @@ var music_volume: float = 1.0
 @export
 var sfx_volume: float = 1.0
 @export
-var skip_fuel_comparison: bool = true
+var skip_fuel_comparison: bool = false
 @export
-var battle_speed: float = 4.0
+var battle_speed: float = 2.0
 @export
 var show_tooltip: bool = true
 
@@ -19,7 +19,7 @@ var temp_master_volume: float = 1.0
 var temp_music_volume: float = 1.0
 var temp_sfx_volume: float = 1.0
 var temp_skip_fuel_comparison: bool = false
-var temp_battle_speed: float = 4.0
+var temp_battle_speed: float = 2.0
 var temp_show_tooltip: bool = true
 
 func set_setting(key: String, value, use_temp: bool = false) -> void:

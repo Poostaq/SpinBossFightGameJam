@@ -1690,7 +1690,6 @@ scale = Vector2(0.5, 0.5)
 texture = SubResource("AnimatedTexture_xnwa8")
 
 [node name="HelperLines" type="Sprite2D" parent="Scenery"]
-visible = false
 position = Vector2(962, 545)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("11_srqcu")
@@ -1707,33 +1706,7 @@ libraries = {
 }
 autoplay = "BackgroundSway"
 
-[node name="DEBUG_BUTTONS" type="Node" parent="."]
-
-[node name="DEBUG_Overtake" type="Button" parent="DEBUG_BUTTONS"]
-visible = false
-offset_left = 285.0
-offset_top = 14.0
-offset_right = 432.0
-offset_bottom = 93.0
-text = "Overtake"
-
-[node name="DEBUG_LineUp" type="Button" parent="DEBUG_BUTTONS"]
-visible = false
-offset_left = 449.0
-offset_top = 16.0
-offset_right = 596.0
-offset_bottom = 95.0
-text = "Line Up"
-
-[node name="DEBUG_Slow Down" type="Button" parent="DEBUG_BUTTONS"]
-visible = false
-offset_left = 608.0
-offset_top = 15.0
-offset_right = 755.0
-offset_bottom = 94.0
-text = "Slow Down"
-
-[node name="DEBUG_PresentMinicassettes" type="Button" parent="DEBUG_BUTTONS"]
+[node name="DEBUG_PresentMinicassettes" type="Button" parent="Scenery"]
 visible = false
 offset_left = 332.0
 offset_top = 532.0
@@ -1741,7 +1714,7 @@ offset_right = 533.0
 offset_bottom = 611.0
 text = "PRESENT MINICASSETTES"
 
-[node name="DEBUG_PerformActions" type="Button" parent="DEBUG_BUTTONS"]
+[node name="DEBUG_PerformActions" type="Button" parent="Scenery"]
 visible = false
 offset_left = 557.0
 offset_top = 531.0
@@ -1749,13 +1722,15 @@ offset_right = 724.0
 offset_bottom = 610.0
 text = "PERFORM ACTIONS"
 
-[node name="DEBUG_CleanUp" type="Button" parent="DEBUG_BUTTONS"]
+[node name="DEBUG_CleanUp" type="Button" parent="Scenery"]
 visible = false
 offset_left = 748.0
 offset_top = 532.0
 offset_right = 915.0
 offset_bottom = 611.0
 text = "CLEAN UP"
+
+[node name="DEBUG_BUTTONS" type="Node" parent="."]
 
 [node name="Player" type="Node" parent="."]
 unique_name_in_owner = true
@@ -2320,6 +2295,30 @@ libraries = {
 &"": SubResource("AnimationLibrary_fo5i8")
 }
 
+[node name="DEBUG_Overtake" type="Button" parent="."]
+offset_left = 285.0
+offset_top = 14.0
+offset_right = 432.0
+offset_bottom = 93.0
+text = "Overtake"
+
+[node name="DEBUG_LineUp" type="Button" parent="."]
+offset_left = 449.0
+offset_top = 16.0
+offset_right = 596.0
+offset_bottom = 95.0
+text = "Line Up"
+
+[node name="DEBUG_Slow Down" type="Button" parent="."]
+offset_left = 608.0
+offset_top = 15.0
+offset_right = 755.0
+offset_bottom = 94.0
+text = "Slow Down"
+
 [connection signal="pressed" from="UI/PlayerUI/CommitSequence" to="." method="_on_commit_sequence_pressed"]
 [connection signal="pressed" from="UI/PlayerUI/EjectButton" to="CassetteManager" method="_on_eject_button_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="UIAnimator" method="_on_animation_player_animation_finished"]
+[connection signal="pressed" from="DEBUG_Overtake" to="." method="_on_DEBUG_Overtake_pressed"]
+[connection signal="pressed" from="DEBUG_LineUp" to="." method="_on_DEBUG_LineUp_pressed"]
+[connection signal="pressed" from="DEBUG_Slow Down" to="." method="_on_DEBUG_Slow_Down_pressed"]

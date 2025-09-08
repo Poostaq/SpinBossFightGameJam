@@ -9,6 +9,7 @@ class_name MiniCassette
 @onready var fuel_label: Label = $Node2D/ActionData/Icons/Fuel/Label
 @onready var action_icon1: Sprite2D = $Node2D/ActionData/Icons/Icon1
 @onready var action_icon2: Sprite2D = $Node2D/ActionData/Icons/Icon2
+@onready var side_icon: Sprite2D = $Node2D/Front/SideLogo
 
 @onready var action_icons: Array[Variant] = [action_icon1, action_icon2]
 
@@ -19,6 +20,7 @@ func set_cassette_data(base_cassette: Cassette):
 	actions_sprite.texture = base_cassette.actions_sprite.texture.duplicate()
 	cassette_name.text = base_cassette.cassette_name
 	after_turn_icon.texture = base_cassette.action_data_after_play.texture.duplicate()
+	side_icon.texture = base_cassette.side_logo.texture.duplicate()
 	_display_action_icons(base_cassette.get_current_side_data())
 	set_up_action_labels(base_cassette)
 	hide_icons()

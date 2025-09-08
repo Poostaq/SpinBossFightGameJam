@@ -18,6 +18,7 @@ var hand: Array = []
 var slot_cassettes: Array = [null, null, null]
 var health: int = 20
 var fuel_spent_this_round: int = 0
+var battle_position: int = GlobalEnums.BATTLE_POSITIONS.LINE_UP
 var rng
 
 func _ready():
@@ -78,6 +79,7 @@ func select_cassettes_for_sequence():
 		var current_slot = sequence.get_children()[i]
 		remove_cassette_from_hand(selected_cassette)
 		current_slot.add_child(selected_cassette)
+		selected_cassette.update_enemy_elements()
 		current_slot.set_cover_state(false)
 		current_slot.cassette_in_slot = selected_cassette
 		selected_cassette.animate_cassette_to_position(Vector2(0,0))

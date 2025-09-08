@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://fx04ttno2vnu"]
+[gd_scene load_steps=22 format=3 uid="uid://fx04ttno2vnu"]
 
 [ext_resource type="Script" uid="uid://citurvnablksk" path="res://Features/FightScene/MiniCassette/mini_cassette.gd" id="1_rtd3k"]
 [ext_resource type="Texture2D" uid="uid://cvtclg7lpuej1" path="res://Images/cassette/cassette front/1 label.png" id="2_hs8h2"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://1jexkvbes2ne" path="res://Images/cassette/cassette front/3 gears v2.png" id="4_osl6m"]
 [ext_resource type="FontFile" uid="uid://bf27d738cuys7" path="res://Font/RockSalt-Regular.ttf" id="5_r0d8t"]
 [ext_resource type="Texture2D" uid="uid://dl4n0mxmk5m5l" path="res://Images/CardsPremade/wife/big_refill_a_side.png" id="6_f8lk2"]
+[ext_resource type="Texture2D" uid="uid://bc66jvhfkucid" path="res://Images/cassette/cassette front/A side.png" id="6_m5c5p"]
 [ext_resource type="FontFile" uid="uid://dtn7qee5h51x5" path="res://Font/atwriter.ttf" id="7_gbcgt"]
 [ext_resource type="Texture2D" uid="uid://sv0sakk6sx8w" path="res://Images/cassette/cassette front/fuel.png" id="8_41hgg"]
 [ext_resource type="Texture2D" uid="uid://x3fcdafib402" path="res://Images/cassette/cassette front/attack.png" id="9_m5c5p"]
@@ -183,6 +184,13 @@ text = "SUPA DORIFTO"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="SideLogo" type="Sprite2D" parent="Node2D/Front"]
+light_mask = 524288
+visibility_layer = 524288
+position = Vector2(166, -51)
+scale = Vector2(0.390625, 0.359375)
+texture = ExtResource("6_m5c5p")
 
 [node name="Area2D" type="Area2D" parent="Node2D"]
 collision_layer = 256

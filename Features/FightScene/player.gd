@@ -14,6 +14,7 @@ var hand: Array = []
 
 var health: int = 20
 var fuel_spent_this_turn: int = 0
+var battle_position: int = GlobalEnums.BATTLE_POSITIONS.LINE_UP
 
 func prepare_hand():
 	var player_cassettes = Database.player_deck["player_deck"]
