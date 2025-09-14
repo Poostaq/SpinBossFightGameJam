@@ -6,6 +6,7 @@ signal ui_ready_for_battle
 @onready var player: Node = $"../Player"
 @onready var enemy: Enemy = $"../Enemy"
 @onready var player_ui: Control = $"../UI/PlayerUI"
+@onready var enemy_ui: Control = $"../UI/EnemyUI"
 @onready var hand: Node2D = $"../UI/PlayerUI/Hand"
 @onready var sequence: Node2D = $"../UI/PlayerUI/Sequence"
 @onready var animation_player: AnimationPlayer = $"../AnimationPlayer"
@@ -77,21 +78,29 @@ func _ready() -> void:
 
 func animate_move_to_position(position_key: String, whose_cassette: int, speed := 2.0) -> void:
 	print("Animating move to position: %s for %s" % [position_key, whose_cassette])
+
+	# Adjust position_key for the enemy's perspective
 	if whose_cassette == GlobalEnums.ENEMY:
-		match position_key:
-			"slow_down":
-				position_key = "overtake"
-			"overtake":
-				position_key = "slow_down"
-			"line_up":
-				position_key = "line_up"
+		position_key = get_opposite_position(position_key)
 
-	var current_position = player.battle_position if whose_cassette == GlobalEnums.PLAYER else enemy.battle_position
+	# Get the current positions of the player and enemy
+	var current_player_position = player.battle_position
+	var current_enemy_position = enemy.battle_position
 
+	# Get the target positions
+	var target_player_position = GlobalEnums.BATTLE_POSITIONS[position_key.to_upper()]
+	var target_enemy_position = GlobalEnums.BATTLE_POSITIONS[get_opposite_position(position_key).to_upper()]
+
+	# Check if the player and enemy are already in the correct positions
+	if current_player_position == target_player_position and current_enemy_position == target_enemy_position:
+		print("Player and enemy are already in correct positions. Skipping movement.")
+		return
+
+	# Perform the movement
 	var intermediate_positions = []
-	if current_position == GlobalEnums.BATTLE_POSITIONS.SLOW_DOWN and position_key == "overtake":
+	if current_player_position == GlobalEnums.BATTLE_POSITIONS.SLOW_DOWN and position_key == "overtake":
 		intermediate_positions = ["line_up", "overtake"]
-	elif current_position == GlobalEnums.BATTLE_POSITIONS.OVERTAKE and position_key == "slow_down":
+	elif current_player_position == GlobalEnums.BATTLE_POSITIONS.OVERTAKE and position_key == "slow_down":
 		intermediate_positions = ["line_up", "slow_down"]
 	else:
 		intermediate_positions = [position_key]
@@ -102,16 +111,28 @@ func animate_move_to_position(position_key: String, whose_cassette: int, speed :
 		var player_data = BATTLE_POSITIONS[intermediate_position]["player"]
 		var enemy_data = BATTLE_POSITIONS[intermediate_position]["enemy"]
 
-		tweener.tween_property(player_battle_sprite, "position", player_data[0], speed/SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
-		tweener.parallel().tween_property(player_battle_sprite, "scale", player_data[1], speed/SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
-		tweener.parallel().tween_property(player_battle_sprite, "rotation_degrees", player_data[2], speed/SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
-		tweener.parallel().tween_property(player_battle_sprite, "z_index", 1 if intermediate_position in ["overtake", "line_up"] else 0, speed/SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
+		tweener.tween_property(player_battle_sprite, "position", player_data[0], speed / SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
+		tweener.parallel().tween_property(player_battle_sprite, "scale", player_data[1], speed / SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
+		tweener.parallel().tween_property(player_battle_sprite, "rotation_degrees", player_data[2], speed / SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
+		tweener.parallel().tween_property(player_battle_sprite, "z_index", 1 if intermediate_position in ["overtake", "line_up"] else 0, speed / SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
 
-		tweener.parallel().tween_property(enemy_battle_sprite, "position", enemy_data[0], speed/SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
-		tweener.parallel().tween_property(enemy_battle_sprite, "scale", enemy_data[1], speed/SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
-		tweener.parallel().tween_property(enemy_battle_sprite, "rotation_degrees", enemy_data[2], speed/SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
-		tweener.parallel().tween_property(enemy_battle_sprite, "z_index", 0 if intermediate_position in ["overtake", "line_up"] else 1, speed/SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
+		tweener.parallel().tween_property(enemy_battle_sprite, "position", enemy_data[0], speed / SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
+		tweener.parallel().tween_property(enemy_battle_sprite, "scale", enemy_data[1], speed / SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
+		tweener.parallel().tween_property(enemy_battle_sprite, "rotation_degrees", enemy_data[2], speed / SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
+		tweener.parallel().tween_property(enemy_battle_sprite, "z_index", 0 if intermediate_position in ["overtake", "line_up"] else 1, speed / SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
 		await tweener.finished
+
+
+func get_opposite_position(position: String) -> String:
+	match position:
+		"slow_down":
+			return "overtake"
+		"overtake":
+			return "slow_down"
+		"line_up":
+			return "line_up"  # LINE_UP is neutral, so it remains the same
+		_:
+			return position  # Default case, return the same position
 
 func play_attack_animation(attacker, target, animation_type: String) -> void:
 	var animation_suffix = _get_position_suffix(target.battle_position)
@@ -393,3 +414,10 @@ func animate_next_cassette(minicassette: MiniCassette, whose_cassette: int):
 	await restore_cassette_to_original_scale(minicassette, -moving_vector)
 	minicassette.hide_icons()
 	await minicassette.highlight_cassette(true)
+
+func animate_life_gauge_change(target: Node, new_value: int):
+	var portrait_area = target.get_node("PortraitArea")
+	var life_gauge = portrait_area.get_node("LifeGauge")
+	var tweener = create_tween()
+	tweener.tween_property(life_gauge, "value", new_value, 0.5).set_trans(Tween.TRANS_SINE)
+	await tweener.finished

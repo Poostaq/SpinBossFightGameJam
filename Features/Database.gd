@@ -1,7 +1,7 @@
 extends Node
 
 var cassettes = {}
-var effects = {}
+var status_effect_data = {}
 var boss_decks = {}
 var player_deck = {}
 
@@ -24,7 +24,7 @@ func load_cassettes():
 func load_status_effects():
 	var file = FileAccess.open("res://Data/status_effect.json", FileAccess.READ)
 	if file:
-		effects = JSON.parse_string(file.get_as_text())
+		status_effect_data = JSON.parse_string(file.get_as_text())
 	else:
 		push_error("Failed to load status_effects.json")
 
@@ -42,6 +42,7 @@ func load_player_deck():
 	else:
 		push_error("Failed to load player_deck.json")
 
+
 # Convenience methods
 func get_cassette(cassette_name: String):
 	if "cassettes" in cassettes:
@@ -49,7 +50,7 @@ func get_cassette(cassette_name: String):
 	return null
 
 func get_effect(effect_name: String):
-	return effects.get(effect_name)
+	return status_effect_data.get(effect_name, null)
 
 func get_boss_deck(boss_name: String):
 	return boss_decks.get(boss_name)

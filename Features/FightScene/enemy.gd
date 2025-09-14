@@ -17,7 +17,7 @@ var hand: Array = []
 
 var slot_cassettes: Array = [null, null, null]
 var health: int = 20
-var fuel_spent_this_round: int = 0
+var fuel_spent_this_turn: int = 0
 var battle_position: int = GlobalEnums.BATTLE_POSITIONS.LINE_UP
 var rng
 

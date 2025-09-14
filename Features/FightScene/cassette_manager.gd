@@ -129,6 +129,7 @@ func finish_drag():
 	cassette_being_dragged = null
 	await ui_animator.deactivate_player_slots()
 	deactivate_cassettes(false)
+	is_hovering_on_cassette = false
 
 
 func raycast_check_for_slot():

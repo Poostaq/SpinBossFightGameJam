@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://6flwhvcst3ef"]
+[gd_scene load_steps=3 format=3 uid="uid://6flwhvcst3ef"]
 
 [ext_resource type="Texture2D" uid="uid://cpaby6xubb2ch" path="res://Images/vfx/Icons/attack block.png" id="1_rqeh5"]
+[ext_resource type="Script" uid="uid://b52kxntbfuig8" path="res://Features/FightScene/StatusEffects/effect_icon.gd" id="2_ap5h0"]
 
 [node name="BuffDebuffElement" type="TextureRect"]
 custom_minimum_size = Vector2(50, 50)
@@ -10,3 +11,4 @@ tooltip_text = "Next Card won't work."
 texture = ExtResource("1_rqeh5")
 expand_mode = 1
 stretch_mode = 5
+script = ExtResource("2_ap5h0")

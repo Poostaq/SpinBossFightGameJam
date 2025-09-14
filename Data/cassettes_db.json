@@ -11,6 +11,7 @@
                         "action_type": 2.0,
                         "affected_target": 0.0,
                         "effect_name": "this_turn_target_attacks_behind_wont_work",
+                        "animation_name": "getting_debuff",
                         "target_area": "back"
                     }
                 ],
@@ -31,6 +32,7 @@
                         "affected_target": 1.0,
                         "effect_name": "this_turn_damage_reduction",
                         "target_area": "all sides",
+                        "animation_name": "getting_buff",
                         "value": 3.0
                     }
                 ],
@@ -184,7 +186,7 @@
                     }
                 ],
                 "action_labels": [],
-                "description": "Attack to the back.."
+                "description": "Attack to the back."
             },
             "side_b": {
                 "actions": [
@@ -259,7 +261,7 @@
                     {
                         "action_type": 2.0,
                         "affected_target": 1.0,
-                        "effect_name": "next_turn_first_action_cost_less",
+                        "effect_name": "next_turn_first_action_cost_less_if_you_start_in_slow_down",
                         "target_area": "all sides",
                         "value": 1.0
                     }
@@ -311,7 +313,7 @@
                     {
                         "action_type": 2.0,
                         "affected_target": 1.0,
-                        "effect_name": "this_turn_you_avoid_side_attacks",
+                        "effect_name": "this_turn_you_avoid_side_attacks_enemy_cant_move",
                         "target_area": "side",
                         "value": ""
                     }
@@ -391,7 +393,7 @@
                     }
                 ],
                 "action_labels": [],
-                "description": "Attack to the back. Enemy cant overtake next turn."
+                "description": "Attack to the back. Enemy cant move next turn."
             },
             "image_a": "Images/CardsPremade/evans/emp_a_side.png",
             "image_b": "Images/CardsPremade/evans/emp_b_side.png"
@@ -402,7 +404,7 @@
                     {
                         "action_type": 0.0,
                         "animation_name": "shoot",
-                        "target_area": "side and back",
+                        "target_area": "back,side",
                         "value": 12.0
                     }
                 ],
@@ -466,7 +468,7 @@
                         "action_type": 2.0,
                         "affected_target": 1.0,
                         "effect_name": "damage_behind_and_line_up_every_cassette_this_turn",
-                        "target_area": "side and back",
+                        "target_area": "back,side",
                         "value": 1.0
                     }
                 ],
@@ -528,7 +530,7 @@
                     {
                         "action_type": 0.0,
                         "animation_name": "shoot",
-                        "target_area": "side and front",
+                        "target_area": "side,front",
                         "value": 3.0
                     },
                     {
@@ -566,7 +568,7 @@
                     {
                         "action_type": 0.0,
                         "animation_name": "shoot",
-                        "target_area": "side and front",
+                        "target_area": "side,front",
                         "value": 2.0
                     },
                     {
@@ -992,7 +994,7 @@
                         "action_type": 2.0,
                         "affected_target": 0.0,
                         "effect_name": "reflect_half_damage_at_the_end",
-                        "target_area": "side and back"
+                        "target_area": "back,side"
                     }
                 ],
                 "after_play": "discard",
@@ -1096,7 +1098,7 @@
                     }
                 ],
                 "action_labels": [],
-                "description": "Overtake. Enemy can't overtake you next turn."
+                "description": "Overtake. Enemy can't move next turn."
             },
             "image_a": "Images/CardsPremade/wife/nitro_a_side.png",
             "image_b": "Images/CardsPremade/wife/nitro_b_side.png"
@@ -1107,7 +1109,7 @@
                     {
                         "action_type": 0.0,
                         "animation_name": "shoot",
-                        "target_area": "side and back",
+                        "target_area": "back,side",
                         "value": 2.0
                     }
                 ],
@@ -1506,7 +1508,7 @@
                     {
                         "action_type": 0.0,
                         "animation_name": "ram",
-                        "target_area": "side and front",
+                        "target_area": "side,front",
                         "value": 4.0
                     }
                 ],
@@ -1661,7 +1663,7 @@
                     {
                         "action_type": 0.0,
                         "animation_name": "ram",
-                        "target_area": "back and front",
+                        "target_area": "back,front",
                         "value": 3.0
                     }
                 ],
@@ -1681,7 +1683,7 @@
                     {
                         "action_type": 0.0,
                         "animation_name": "shoot",
-                        "target_area": "side and back",
+                        "target_area": "back,side",
                         "value": 3.0
                     }
                 ],

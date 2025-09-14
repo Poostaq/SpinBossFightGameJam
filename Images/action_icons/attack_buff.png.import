@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bov3yifnmc57r"
-path="res://.godot/imported/next turn.png-de0eba52c66374810d90475b17f6e0f4.ctex"
+uid="uid://be8eipyeylar7"
+path="res://.godot/imported/attack_buff.png-45bfc26e4017212b3006dbd72b1e3589.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/action_icons/next turn.png"
-dest_files=["res://.godot/imported/next turn.png-de0eba52c66374810d90475b17f6e0f4.ctex"]
+source_file="res://Images/action_icons/attack_buff.png"
+dest_files=["res://.godot/imported/attack_buff.png-45bfc26e4017212b3006dbd72b1e3589.ctex"]
 
 [params]
 

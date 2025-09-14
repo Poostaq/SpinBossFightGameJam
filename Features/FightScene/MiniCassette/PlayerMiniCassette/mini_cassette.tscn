@@ -10,7 +10,7 @@
 [ext_resource type="FontFile" uid="uid://dtn7qee5h51x5" path="res://Font/atwriter.ttf" id="7_glsqt"]
 [ext_resource type="Texture2D" uid="uid://sv0sakk6sx8w" path="res://Images/cassette/cassette front/fuel.png" id="8_kkqes"]
 [ext_resource type="Texture2D" uid="uid://x3fcdafib402" path="res://Images/cassette/cassette front/attack.png" id="9_qgi02"]
-[ext_resource type="Texture2D" uid="uid://dub8iyna426y" path="res://Images/action_icons/burn icon.png" id="10_laig8"]
+[ext_resource type="Texture2D" uid="uid://dub8iyna426y" path="res://Images/action_icons/burn_icon.png" id="10_laig8"]
 [ext_resource type="Texture2D" uid="uid://bcftnty1uwy66" path="res://Images/vfx/impact/impact v2 1.png" id="10_n20ew"]
 [ext_resource type="Texture2D" uid="uid://lcwp3cphcr4u" path="res://Images/vfx/impact/impact v2 2.png" id="11_bpqfy"]
 [ext_resource type="Texture2D" uid="uid://bcf84idexm0d6" path="res://Images/vfx/impact/impact v2 3.png" id="12_abslf"]
