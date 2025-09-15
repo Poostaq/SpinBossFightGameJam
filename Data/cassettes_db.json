@@ -931,7 +931,7 @@
                     {
                         "action_type": 2.0,
                         "affected_target": 0.0,
-                        "effect_name": "next_attack_or_debuff_wont_work",
+                        "effect_name": "this_turn_next_attack_or_debuff_wont_work",
                         "target_area": "all sides",
                         "value": ""
                     }

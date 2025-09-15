@@ -15,6 +15,7 @@ var hand: Array = []
 @onready var sequence: Node2D = $"../UI/EnemyUI/Sequence"
 @onready var cassette_manager: Node2D = %CassetteManager
 
+var screen_size
 var slot_cassettes: Array = [null, null, null]
 var health: int = 20
 var fuel_spent_this_turn: int = 0
@@ -87,3 +88,17 @@ func select_cassettes_for_sequence():
 		current_slot.fill_icons(side_data)
 		await get_tree().create_timer(0.5).timeout
 	return true
+
+func clear_slots_after_turn():
+	screen_size = cassette_manager.screen_size
+	for slot in sequence.get_children():
+		var cassette = slot.cassette_in_slot
+		var target_node = discard if cassette.get_current_side_data()["after_play"] == "discard" else lost
+		cassette.reparent(target_node)
+		hand.remove_at(hand.find(cassette))
+		discard.append(cassette)
+		cassette.global_position = Vector2(screen_size.x+500, screen_size.y/2)
+		cassette.play_animation("RESET")
+		slot.cassette_in_slot = null
+		slot.update_elements()
+	fuel_spent_this_turn = 0

@@ -31,13 +31,14 @@ var screen_size
 var cassette_being_dragged: Cassette
 var is_hovering_on_cassette: bool
 var cassette_hovered_on: Cassette
-var draft_active: bool = false
 
 @onready var player: Node = %"Player"
 @onready var commit_sequence_button = $"../UI/PlayerUI/CommitSequence"
 @onready var ui_animator: Node = $"../UIAnimator"
 @onready var player_hand: Node2D = $"../UI/PlayerUI/Hand"
 @onready var sequence: Node2D = $"../UI/PlayerUI/Sequence"
+@onready var lost: Node2D = $"../UI/PlayerUI/Lost"
+@onready var discard: Node2D = $"../UI/PlayerUI/Discard"
 
 
 func _ready() -> void:
@@ -197,3 +198,18 @@ func _on_eject_button_pressed() -> void:
 			slot.set_cover_state(true)
 			slot.update_elements()
 			slot.animation_player.play("RESET")
+
+func clear_slots_after_turn():
+	for slot in sequence.get_children():
+		var cassette = slot.cassette_in_slot
+		var target_node = discard if cassette.get_current_side_data()["after_play"] == "discard" else lost
+		cassette.reparent(target_node)
+		player.hand.remove_at(player.hand.find(cassette))
+		player.discard.append(cassette)
+		cassette.global_position = Vector2(screen_size.x/2, screen_size.y+500)
+		cassette.play_animation("RESET")
+		slot.cassette_in_slot = null
+		slot.update_elements()
+	player.fuel_spent_this_turn = 0
+
+	#TODO SPRAWDZIĆ CZY TO DOBRZE DZIAŁA I W ENEMY TEŻ

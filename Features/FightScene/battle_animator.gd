@@ -421,3 +421,7 @@ func animate_life_gauge_change(target: Node, new_value: int):
 	var tweener = create_tween()
 	tweener.tween_property(life_gauge, "value", new_value, 0.5).set_trans(Tween.TRANS_SINE)
 	await tweener.finished
+
+func clean_up_fuel_counters():
+	player_fuel_counter.get_node("FuelSpent").text = "0"
+	enemy_fuel_counter.get_node("FuelSpent").text = "0"

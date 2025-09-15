@@ -58,16 +58,19 @@ func start_acting_phase():
 	var current_enemy_cassette = 0
 
 	for i in range(6):
+		#If player has already played all 3 cassettes, just play the remaining ones for enemy
 		if current_player_cassette == 3 and current_enemy_cassette != 3:
 			var minicassette = ui_animator.enemy_mini_cassettes[current_enemy_cassette]
 			await ui_animator.animate_next_cassette(minicassette, GlobalEnums.ENEMY)
 			current_enemy_cassette += 1
 			await perform_cassette_actions(minicassette, GlobalEnums.ENEMY)
+		#If enemy has already played all 3 cassettes, just play the remaining ones for player
 		elif current_enemy_cassette == 3 and current_player_cassette != 3:
 			var minicassette = ui_animator.player_mini_cassettes[current_player_cassette]
 			await ui_animator.animate_next_cassette(minicassette, GlobalEnums.PLAYER)
 			current_player_cassette += 1
 			await perform_cassette_actions(minicassette, GlobalEnums.PLAYER)
+		#If both still have cassettes, compare them
 		else:
 			var player_minicassette = ui_animator.player_mini_cassettes[current_player_cassette]
 			var enemy_minicassette = ui_animator.enemy_mini_cassettes[current_enemy_cassette]
@@ -106,7 +109,8 @@ func start_acting_phase():
 					ui_animator.enemy_mini_cassettes[current_enemy_cassette].show_icons()
 
 			await get_tree().create_timer(0.8 / SettingsManager.battle_speed).timeout
-		
+	clean_up_cassettes_from_slots()
+	ui_animator.clean_up_fuel_counters()
 
 func get_winner_for_next_cassette_comparison(player_cassette: Node, enemy_cassette: Node) -> int:
 	var player_fuel_amount = int(player_cassette.fuel_label.text)
@@ -121,8 +125,8 @@ func get_winner_for_next_cassette_comparison(player_cassette: Node, enemy_casset
 		return GlobalEnums.PLAYER
 
 func perform_cassette_actions(cassette: Node, whose_cassette: int) -> void:
-	var actor = player if whose_cassette == GlobalEnums.PLAYER else enemy
-	var target = enemy if whose_cassette == GlobalEnums.PLAYER else player
+	var actor_node = player if whose_cassette == GlobalEnums.PLAYER else enemy
+	var target_node = enemy if whose_cassette == GlobalEnums.PLAYER else player
 	print("Performing actions for cassette %s" % [cassette.original_cassette.cassette_name])
 	var side_data = cassette.original_cassette.get_current_side_data()
 	var actor_car = $"CarLayer/PlayerCar" if whose_cassette == GlobalEnums.PLAYER else $"CarLayer/EnemyCar"
@@ -140,23 +144,23 @@ func perform_cassette_actions(cassette: Node, whose_cassette: int) -> void:
 				for target_area in target_areas:
 					match target_area:
 						"back":
-							if actor.battle_position == GlobalEnums.BATTLE_POSITIONS.OVERTAKE and target.battle_position == GlobalEnums.BATTLE_POSITIONS.SLOW_DOWN:
+							if actor_node.battle_position == GlobalEnums.BATTLE_POSITIONS.OVERTAKE and target_node.battle_position == GlobalEnums.BATTLE_POSITIONS.SLOW_DOWN:
 								correct_position_found = true
 								correct_target_area = target_area
 								break
 						"side":
-							if actor.battle_position == GlobalEnums.BATTLE_POSITIONS.LINE_UP and target.battle_position == GlobalEnums.BATTLE_POSITIONS.LINE_UP:
+							if actor_node.battle_position == GlobalEnums.BATTLE_POSITIONS.LINE_UP and target_node.battle_position == GlobalEnums.BATTLE_POSITIONS.LINE_UP:
 								correct_position_found = true
 								correct_target_area = target_area
 								break
 						"front":
-							if actor.battle_position == GlobalEnums.BATTLE_POSITIONS.SLOW_DOWN and target.battle_position == GlobalEnums.BATTLE_POSITIONS.OVERTAKE:
+							if actor_node.battle_position == GlobalEnums.BATTLE_POSITIONS.SLOW_DOWN and target_node.battle_position == GlobalEnums.BATTLE_POSITIONS.OVERTAKE:
 								correct_position_found = true
 								correct_target_area = target_area
 								break
 						"all sides":
 							correct_position_found = true
-							match actor.battle_position:
+							match actor_node.battle_position:
 								GlobalEnums.BATTLE_POSITIONS.SLOW_DOWN:
 									correct_target_area = "front"
 								GlobalEnums.BATTLE_POSITIONS.LINE_UP:
@@ -176,13 +180,13 @@ func perform_cassette_actions(cassette: Node, whose_cassette: int) -> void:
 
 				# Reduce target health if the attack hit
 				if correct_position_found:
-					target.health -= attack_value
-					print("Target health reduced by %d. New health: %d" % [attack_value, target.health])
+					target_node.health -= attack_value
+					print("Target health reduced by %d. New health: %d" % [attack_value, target_node.health])
 
 					var target_ui = enemy_ui if whose_cassette == GlobalEnums.PLAYER else player_ui
 					print(target_ui)
-					ui_animator.animate_life_gauge_change(target_ui, target.health)
-					target_ui.get_node("PortraitArea/Label").text = "HP: " + str(target.health)
+					ui_animator.animate_life_gauge_change(target_ui, target_node.health)
+					target_ui.get_node("PortraitArea/Label").text = "HP: " + str(target_node.health)
 
 
 			GlobalEnums.ACTION_TYPE.MOVE:
@@ -196,21 +200,23 @@ func perform_cassette_actions(cassette: Node, whose_cassette: int) -> void:
 					player.battle_position = get_opposite_position(GlobalEnums.BATTLE_POSITIONS[position_key.to_upper()])
 			GlobalEnums.ACTION_TYPE.SPECIAL:
 				if action.get("effect_name", "") == "attack_deals_damage_plus_spent_fuel_as_bonus_damage_all_sides":
-					var bonus_damage = actor.fuel_spent_this_turn
+					var bonus_damage = actor_node.fuel_spent_this_turn
 					var total_damage = action.get("value", 0) + bonus_damage
-					target.health -= total_damage
-					print("Special attack deals %d damage (including %d bonus damage from spent fuel). New health: %d" % [total_damage, bonus_damage, target.health])
+					target_node.health -= total_damage
+					print("Special attack deals %d damage (including %d bonus damage from spent fuel). New health: %d" % [total_damage, bonus_damage, target_node.health])
 					var target_ui = enemy_ui if whose_cassette == GlobalEnums.PLAYER else player_ui
-					ui_animator.animate_life_gauge_change(target_ui, target.health)
-					target_ui.get_node("PortraitArea/Label").text = "HP: " + str(target.health)
+					ui_animator.animate_life_gauge_change(target_ui, target_node.health)
+					target_ui.get_node("PortraitArea/Label").text = "HP: " + str(target_node.health)
 				else:
-					var effect_target = "player" if action.get("affected_target", 0) == 1 else "enemy"
+					var enemy_enum = GlobalEnums.ENEMY if whose_cassette == GlobalEnums.PLAYER else GlobalEnums.PLAYER
+					var target = whose_cassette if action.get("affected_target", 0) == GlobalEnums.AFFECTED_TARGET.ACTING_ACTOR else enemy_enum
 					var effect_name = action.get("effect_name", "")
 					var effect_data = Database.get_effect(effect_name)
 					if not effect_data:
 						print("Failed to fetch status effect data for:", effect_name)
 						continue
-					status_effect_manager.create_status_effect_element(action, effect_data, effect_target)
+					status_effect_manager.create_status_effect_element(action, effect_data, target)
+
 
 
 func get_opposite_position(position: int) -> int:
@@ -232,3 +238,8 @@ func _on_DEBUG_LineUp_pressed():
 
 func _on_DEBUG_Slow_Down_pressed():
 	ui_animator.animate_move_to_position("slow_down", GlobalEnums.PLAYER)
+
+
+func clean_up_cassettes_from_slots():
+	cassette_manager.clear_slots_after_turn()
+	enemy.clear_slots_after_turn()
