@@ -1,14 +1,33 @@
-[gd_scene load_steps=3 format=3 uid="uid://6flwhvcst3ef"]
+[gd_scene load_steps=6 format=3 uid="uid://6flwhvcst3ef"]
 
-[ext_resource type="Texture2D" uid="uid://cpaby6xubb2ch" path="res://Images/vfx/Icons/attack block.png" id="1_rqeh5"]
+[ext_resource type="StyleBox" uid="uid://bx3x7gfgdyjk6" path="res://Features/FightScene/StatusEffects/status_tooltip_borders.tres" id="1_eaqyr"]
 [ext_resource type="Script" uid="uid://b52kxntbfuig8" path="res://Features/FightScene/StatusEffects/effect_icon.gd" id="2_ap5h0"]
+[ext_resource type="Texture2D" uid="uid://haje5paf64gr" path="res://Images/action_icons/back_and_front.png" id="2_eaqyr"]
+
+[sub_resource type="Theme" id="Theme_ap5h0"]
+TooltipPanel/styles/panel = ExtResource("1_eaqyr")
+
+[sub_resource type="Environment" id="Environment_ap5h0"]
+glow_enabled = true
+glow_bloom = 0.4
+glow_blend_mode = 1
 
 [node name="BuffDebuffElement" type="TextureRect"]
-custom_minimum_size = Vector2(50, 50)
+self_modulate = Color(1.4896104, 1.4896104, 1.4896104, 1)
+custom_minimum_size = Vector2(35, 35)
+offset_right = 50.0
+offset_bottom = 50.0
+scale = Vector2(0.5, 0.5)
 size_flags_horizontal = 3
 size_flags_vertical = 3
 tooltip_text = "Next Card won't work."
-texture = ExtResource("1_rqeh5")
+theme = SubResource("Theme_ap5h0")
+texture = ExtResource("2_eaqyr")
 expand_mode = 1
-stretch_mode = 5
+stretch_mode = 4
 script = ExtResource("2_ap5h0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ap5h0")

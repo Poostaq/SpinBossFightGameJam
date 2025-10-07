@@ -8,6 +8,11 @@
 
 config_version=5
 
+[accessibility]
+
+general/enabled=false
+general/hdr_2d=true
+
 [animation]
 
 warnings/check_invalid_track_paths=false
@@ -16,7 +21,7 @@ warnings/check_invalid_track_paths=false
 
 config/name="Im Coming, Hub"
 run/main_scene="res://Features/main.tscn"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -44,3 +49,7 @@ textures/vram_compression/import_etc2_astc=true
 viewport/hdr_2d=true
 anti_aliasing/quality/msaa_2d=2
 anti_aliasing/quality/screen_space_aa=1
+
+[xr]
+
+shaders/enabled=true

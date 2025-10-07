@@ -1,8 +1,6 @@
 extends Node
 
 
-signal ui_ready_for_battle
-
 @onready var player: Node = $"../Player"
 @onready var enemy: Enemy = $"../Enemy"
 @onready var player_ui: Control = $"../UI/PlayerUI"
@@ -24,11 +22,14 @@ signal ui_ready_for_battle
 
 @onready var enemy_mini_cassettes = [enemy_mini_cassette1, enemy_mini_cassette2, enemy_mini_cassette3]
 
-@onready var player_fuel_counter = $"../UI/FuelSpent/PlayerFuelSpent"
-@onready var enemy_fuel_counter = $"../UI/FuelSpent/EnemyFuelSpent"
+@onready var player_fuel_counter = $"../UI/FuelUI/PlayerFuelMeter/FuelAmount"
+@onready var enemy_fuel_counter = $"../UI/FuelUI/EnemyFuelMeter/FuelAmount"
 
 @onready var player_battle_sprite = $"../CarLayer/PlayerCar"
 @onready var enemy_battle_sprite = $"../CarLayer/EnemyCar"
+
+@onready var player_fuel_gauge_needle = $"../UI/FuelUI/PlayerFuelMeter/Needle"
+@onready var enemy_fuel_gauge_needle = $"../UI/FuelUI/EnemyFuelMeter/Needle"
 
 const DEFAULT_CASSETTE_SPEED = 0.2
 const SLOT_POSITIONS = [
@@ -69,34 +70,38 @@ const BATTLE_POSITIONS = {
 	}
 }
 
-const PLAYER_FUEL_COMPARISON_POSITION = Vector2(790, 563)
-const ENEMY_FUEL_COMPARISON_POSITION = Vector2(1080, 563)
+const PLAYER_FUEL_COMPARISON_POSITION = Vector2(820.0, 450.0)
+const ENEMY_FUEL_COMPARISON_POSITION = Vector2(1120.0, 450.0)
 
-func _ready() -> void:
+func battle_ui_preparation() -> void:
 	animation_player.play("ShowCockpit")
+	await animation_player.animation_finished
+	animation_player.play("ShowPortraits")
+	await animation_player.animation_finished
+	animation_player.play("ShowCars")
+	await animation_player.animation_finished
+	# animation_player.play("ShowFuelCounter")
+	# await animation_player.animation_finished
+	animation_player.play("ShowCassettes")
+	await animation_player.animation_finished
 
-
+	
 func animate_move_to_position(position_key: String, whose_cassette: int, speed := 2.0) -> void:
 	print("Animating move to position: %s for %s" % [position_key, whose_cassette])
 
-	# Adjust position_key for the enemy's perspective
 	if whose_cassette == GlobalEnums.ENEMY:
 		position_key = get_opposite_position(position_key)
 
-	# Get the current positions of the player and enemy
 	var current_player_position = player.battle_position
 	var current_enemy_position = enemy.battle_position
 
-	# Get the target positions
 	var target_player_position = GlobalEnums.BATTLE_POSITIONS[position_key.to_upper()]
 	var target_enemy_position = GlobalEnums.BATTLE_POSITIONS[get_opposite_position(position_key).to_upper()]
 
-	# Check if the player and enemy are already in the correct positions
 	if current_player_position == target_player_position and current_enemy_position == target_enemy_position:
 		print("Player and enemy are already in correct positions. Skipping movement.")
 		return
 
-	# Perform the movement
 	var intermediate_positions = []
 	if current_player_position == GlobalEnums.BATTLE_POSITIONS.SLOW_DOWN and position_key == "overtake":
 		intermediate_positions = ["line_up", "overtake"]
@@ -130,20 +135,14 @@ func get_opposite_position(position: String) -> String:
 		"overtake":
 			return "slow_down"
 		"line_up":
-			return "line_up"  # LINE_UP is neutral, so it remains the same
+			return "line_up"
 		_:
-			return position  # Default case, return the same position
+			return position
 
 func play_attack_animation(attacker, target, animation_type: String) -> void:
 	var animation_suffix = _get_position_suffix(target.battle_position)
 	var full_animation_name = animation_type + "_" + animation_suffix
 	attacker.animation_player.play(full_animation_name)
-
-func play_malfunction_animation(actor) -> void:
-	actor.animation_player.play("malfunction")
-
-func play_special_animation(actor, effect_name: String) -> void:
-	actor.animation_player.play("special_" + effect_name)
 
 func _get_position_suffix(battle_position):
 	match battle_position:
@@ -171,18 +170,6 @@ func reset_player_slots():
 	for slot in sequence.get_children():
 		slot.animation_player.play("RESET")
 
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	match anim_name:
-		"ShowCars":
-			animation_player.play("ShowFuelCounter")
-		"ShowCockpit":
-			animation_player.play("ShowPortraits")
-		"ShowPortraits":
-			animation_player.play("ShowCars")
-		"ShowFuelCounter":
-			animation_player.play("ShowCassettes")
-		"ShowCassettes":
-			ui_ready_for_battle.emit()
 
 func close_player_slots():
 	for slot in sequence.get_children():
@@ -247,9 +234,10 @@ func compare_mini_cassette_fuel(
 	var loser_fuel_counter = enemy_fuel_counter if who_wins == GlobalEnums.PLAYER else player_fuel_counter
 	var loser_minicassette = enemy_minicassette if who_wins == GlobalEnums.PLAYER else player_minicassette
 	var loser_vector = Vector2(40, 0) if who_wins == GlobalEnums.PLAYER else Vector2(-40, 0)
+	var loser_needle = enemy_fuel_gauge_needle if who_wins == GlobalEnums.PLAYER else player_fuel_gauge_needle
 
 	await show_winner_and_loser_mini_cassettes(winner_fuel_counter, loser_fuel_counter)
-	await remove_fuel_from_loser_counter(loser_fuel_counter, loser_cassette_fuel)
+	await remove_fuel_from_loser_counter(loser_fuel_counter, loser_cassette_fuel, loser_needle)
 	if not SettingsManager.get_setting("skip_fuel_comparison"):
 		await return_loser_fuel_to_original_position(loser_cassette_fuel, loser_position)
 	await restore_cassette_to_original_scale(loser_minicassette, loser_vector)
@@ -263,7 +251,7 @@ func restore_and_hide_winning_minicassette(
 		):
 	var winner_cassette_fuel = winner_minicassette.fuel_icon
 	var winner_position = player_fuel_original_pos if who_wins == GlobalEnums.PLAYER else enemy_fuel_original_pos
-	var winner_vector = Vector2(-40, 0) if who_wins == GlobalEnums.PLAYER else Vector2(40, 0)
+	var winner_vector = -(get_enlarge_vector(who_wins))
 	await restore_cassette_to_original_scale(winner_minicassette, winner_vector)
 
 	if not SettingsManager.get_setting("skip_fuel_comparison"):
@@ -273,6 +261,14 @@ func restore_and_hide_winning_minicassette(
 	await winner_minicassette.highlight_cassette(true)
 
 
+func enlarge_one_cassette(minicassette: MiniCassette, whose_cassette: int):
+	var move_vector = get_enlarge_vector(whose_cassette)
+
+	var tweener = create_tween()
+	tweener.tween_property(minicassette, "scale", minicassette.scale + Vector2(0.2, 0.2), 0.3/SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
+	tweener.parallel().tween_property(minicassette, "position", minicassette.position + move_vector, 0.3/SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
+	await tweener.finished
+
 func enlarge_cassettes_for_comparison(player_minicassette: MiniCassette, enemy_minicassette: MiniCassette):
 	var tweener = create_tween()
 	tweener.tween_property(player_minicassette, "scale", player_minicassette.scale + Vector2(0.2, 0.2), 0.3/SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
@@ -281,6 +277,7 @@ func enlarge_cassettes_for_comparison(player_minicassette: MiniCassette, enemy_m
 	tweener.parallel().tween_property(enemy_minicassette, "position", enemy_minicassette.position + Vector2(-40,0), 0.3/SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
 	await tweener.finished
 
+
 func move_mini_cassettes_fuel_to_middle(player_fuel: Sprite2D, enemy_fuel: Sprite2D):
 	var tweener = create_tween()
 	player_fuel.z_index += 10
@@ -288,60 +285,58 @@ func move_mini_cassettes_fuel_to_middle(player_fuel: Sprite2D, enemy_fuel: Sprit
 	tweener.tween_property(player_fuel, "global_position", PLAYER_FUEL_COMPARISON_POSITION, 0.6/SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
 	tweener.parallel().tween_property(enemy_fuel, "global_position", ENEMY_FUEL_COMPARISON_POSITION, 0.6/SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
 	await tweener.finished
-	player_fuel.z_index -= 10
-	enemy_fuel.z_index -= 10
 
 
 func move_fuel_counters_for_summation(player_fuel: Sprite2D, enemy_fuel: Sprite2D):
 	var tweener = create_tween()
-	tweener.tween_property(player_fuel, "global_position", player_fuel_counter.global_position, 0.4).set_trans(Tween.TRANS_SINE)
+	tweener.tween_property(player_fuel, "global_position", player_fuel_counter.global_position + Vector2(45, 45), 0.4).set_trans(Tween.TRANS_SINE)
 	tweener.parallel().tween_property(player_fuel, "modulate", Color(1,1,1,0), 0.4).set_trans(Tween.TRANS_SINE)
-	tweener.parallel().tween_property(enemy_fuel, "global_position", enemy_fuel_counter.global_position, 0.4).set_trans(Tween.TRANS_SINE)
+	tweener.parallel().tween_property(enemy_fuel, "global_position", enemy_fuel_counter.global_position + Vector2(45, 45), 0.4).set_trans(Tween.TRANS_SINE)
 	tweener.parallel().tween_property(enemy_fuel, "modulate", Color(1,1,1,0), 0.4).set_trans(Tween.TRANS_SINE)
 	await tweener.finished
+	player_fuel.z_index -= 10
+	enemy_fuel.z_index -= 10
 
 
 func add_fuel_to_counters(player_cassette_fuel, enemy_cassette_fuel):
 	var player_fuel_amount = player_cassette_fuel.get_node("Label")
-	var player_counter_amount = player_fuel_counter.get_node("FuelSpent")
 	var enemy_fuel_amount = enemy_cassette_fuel.get_node("Label")
-	var enemy_counter_amount = enemy_fuel_counter.get_node("FuelSpent")
 
 	var bigger_value = max(int(player_fuel_amount.text), int(enemy_fuel_amount.text))
 	for i in range(bigger_value):
 		if i < int(player_fuel_amount.text):
-			player_counter_amount.text = str(int(player_counter_amount.text)+1)
+			player_fuel_counter.text = str(int(player_fuel_counter.text)+1)
+			rotate_fuel_gauge(player_fuel_gauge_needle,1)
 		if i < int(enemy_fuel_amount.text):
-			enemy_counter_amount.text = str(int(enemy_counter_amount.text)+1)
+			enemy_fuel_counter.text = str(int(enemy_fuel_counter.text)+1)
+			rotate_fuel_gauge(enemy_fuel_gauge_needle,1)
 		await get_tree().create_timer(0.1/SettingsManager.battle_speed).timeout	
 
 
-func show_winner_and_loser_mini_cassettes(winner: Sprite2D, loser: Sprite2D):
-	var loser_label = loser.get_node("FuelSpent") as Label
+func show_winner_and_loser_mini_cassettes(winner: Label, loser: Label):
 	var tweener = create_tween()
 	tweener.tween_property(winner, "scale", winner.scale + Vector2(0.05, 0.05), 0.55/SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
 	tweener.parallel().tween_property(loser, "scale", loser.scale - Vector2(0.05, 0.05), 0.55/SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
-	tweener.parallel().tween_property(winner, "self_modulate", Color(1.3,1.3,0.3,1), 0.55/SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
-	tweener.parallel().tween_property(loser, "self_modulate", Color(0.5,0.5,0.5,0.3), 0.55/SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
-	tweener.parallel().tween_property(loser_label, "modulate", Color(0.3,0.3,0.3,0.6), 0.55/SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
+	tweener.parallel().tween_property(winner, "self_modulate", Color(1,1,1,1), 0.55/SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
+	tweener.parallel().tween_property(loser, "self_modulate", Color(1,1,1,0.05), 0.55/SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
 	await tweener.finished
 	await get_tree().create_timer(0.2/SettingsManager.battle_speed).timeout
 
 	tweener = create_tween()
 	tweener.tween_property(winner, "scale", winner.scale - Vector2(0.05, 0.05), 0.3/SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
 	tweener.parallel().tween_property(loser, "scale", loser.scale + Vector2(0.05, 0.05), 0.3/SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
-	tweener.parallel().tween_property(winner, "self_modulate", Color(1,1,1,1), 0.3/SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
-	tweener.parallel().tween_property(loser, "self_modulate", Color(1,1,1,1), 0.3/SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
-	tweener.parallel().tween_property(loser_label, "modulate", Color(1,1,1,1), 0.3/SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
+	tweener.parallel().tween_property(winner, "self_modulate", Color(1,1,1,0.3), 0.3/SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
+	tweener.parallel().tween_property(loser, "self_modulate", Color(1,1,1,0.3), 0.3/SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
 	await tweener.finished
 
 
-func remove_fuel_from_loser_counter(loser_counter: Sprite2D, loser_fuel: Sprite2D):
+func remove_fuel_from_loser_counter(loser_counter: Label, loser_fuel: Sprite2D, loser_needle: TextureRect):
 	print("Removing fuel from loser counter")
 	var loser_counter_amount = int(loser_fuel.get_node("Label").text)
-	var fuel_spent_label = loser_counter.get_node("FuelSpent") as Label
+	var fuel_spent_label = loser_counter as Label
 	for i in range(loser_counter_amount):
 		fuel_spent_label.text = str(int(fuel_spent_label.text) - 1)
+		rotate_fuel_gauge(loser_needle,-1)
 		await get_tree().create_timer(0.1/SettingsManager.battle_speed).timeout
 
 
@@ -368,24 +363,27 @@ func animate_next_cassette(minicassette: MiniCassette, whose_cassette: int):
 
 	var cassette_fuel = minicassette.fuel_icon
 	var move_target: Vector2
-	var fuel_counter: Sprite2D
+	var fuel_counter: Label
 	var moving_vector: Vector2
 	var original_position = minicassette.global_position
+	var needle: TextureRect
 
 	if whose_cassette == GlobalEnums.PLAYER:
 		move_target = PLAYER_FUEL_COMPARISON_POSITION
 		fuel_counter = player_fuel_counter
 		moving_vector = Vector2(40,0)
+		needle = player_fuel_gauge_needle
 	else:
 		move_target = ENEMY_FUEL_COMPARISON_POSITION
 		fuel_counter = enemy_fuel_counter
 		moving_vector = Vector2(-40,0)
+		needle = enemy_fuel_gauge_needle
 
 
 	var tweener = create_tween()
 	tweener.tween_property(minicassette, "scale", minicassette.scale + Vector2(0.2, 0.2), 0.3/SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
 	tweener.parallel().tween_property(minicassette, "position", minicassette.position + moving_vector, 0.3/SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)
-
+	await tweener.finished
 
 	if not SettingsManager.get_setting("skip_fuel_comparison"):	
 		cassette_fuel.z_index += 10
@@ -402,12 +400,11 @@ func animate_next_cassette(minicassette: MiniCassette, whose_cassette: int):
 		await tweener.finished
 
 	var fuel_amount = minicassette.fuel_icon.get_node("Label")
-	var counter_amount = fuel_counter.get_node("FuelSpent")
 	
 	for i in range(int(fuel_amount.text)):
-		counter_amount.text = str(int(counter_amount.text)+1)
+		fuel_counter.text = str(int(fuel_counter.text)+1)
+		rotate_fuel_gauge(needle,1)
 		await get_tree().create_timer(0.1/SettingsManager.battle_speed).timeout
-	
 	
 	if not SettingsManager.get_setting("skip_fuel_comparison"):	
 		cassette_fuel.global_position = original_position
@@ -422,6 +419,31 @@ func animate_life_gauge_change(target: Node, new_value: int):
 	tweener.tween_property(life_gauge, "value", new_value, 0.5).set_trans(Tween.TRANS_SINE)
 	await tweener.finished
 
+
 func clean_up_fuel_counters():
-	player_fuel_counter.get_node("FuelSpent").text = "0"
-	enemy_fuel_counter.get_node("FuelSpent").text = "0"
+	for i in range(player_fuel_counter.text.to_int()):
+		player_fuel_counter.text = str(int(player_fuel_counter.text) - 1)
+		rotate_fuel_gauge(player_fuel_gauge_needle,-1)
+		await get_tree().create_timer(0.1/SettingsManager.battle_speed).timeout
+	for i in range(enemy_fuel_counter.text.to_int()):
+		enemy_fuel_counter.text = str(int(enemy_fuel_counter.text) - 1)
+		rotate_fuel_gauge(enemy_fuel_gauge_needle,-1)
+		await get_tree().create_timer(0.1/SettingsManager.battle_speed).timeout
+
+
+func get_enlarge_vector(whose_cassette: int) -> Vector2:
+	if whose_cassette == GlobalEnums.PLAYER:
+		return Vector2(40, 0)
+	else:
+		return Vector2(-40, 0)
+
+
+func rotate_fuel_gauge(needle: TextureRect, angle_points: float):
+	print("Rotation degrees before: %s" % needle.rotation_degrees)
+	if needle.rotation_degrees+(angle_points * 6) > 0.1:
+		return
+	if needle.rotation_degrees+(angle_points * 6) < -90.1:
+		return
+	print("Rotating fuel gauge by %s points" % angle_points)
+	var tweener = create_tween()
+	tweener.tween_property(needle, "rotation_degrees", needle.rotation_degrees + (angle_points * 6), 0.1/SettingsManager.battle_speed).set_trans(Tween.TRANS_SINE)

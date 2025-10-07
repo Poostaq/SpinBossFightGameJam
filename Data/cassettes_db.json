@@ -10,8 +10,8 @@
                     {
                         "action_type": 2.0,
                         "affected_target": 0.0,
-                        "effect_name": "this_turn_target_attacks_behind_wont_work",
-                        "animation_name": "getting_debuff",
+                        "effect_name": "this_turn_avoid_front_attacks",
+                        "animation_name": "getting_buff",
                         "target_area": "back"
                     }
                 ],
@@ -313,7 +313,7 @@
                     {
                         "action_type": 2.0,
                         "affected_target": 1.0,
-                        "effect_name": "this_turn_you_avoid_side_attacks_enemy_cant_move",
+                        "effect_name": "this_turn_avoid_side_attacks",
                         "target_area": "side",
                         "value": ""
                     }
@@ -1603,7 +1603,7 @@
                     {
                         "action_type": 2.0,
                         "affected_target": 1.0,
-                        "effect_name": "next_attack_damage_reduction_any_side",
+                        "effect_name": "next_attack_damage_reduction",
                         "target_area": "all sides",
                         "value": 2.0
                     }

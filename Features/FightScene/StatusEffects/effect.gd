@@ -1,5 +1,4 @@
 class_name StatusEffect
-extends Node2D
 
 var effect_name: String
 var icon_name: String

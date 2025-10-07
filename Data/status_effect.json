@@ -1,21 +1,108 @@
 {
-	"this_turn_you_avoid_side_attacks_enemy_cant_move": [["defence_buff", "this_turn", "Avoid Side Attacks this turn"]],
-	"permanent_buff_all_attacks": ["attack_buff", "permanent", "%s to Attack Damage"],
-	"buff_next_attack": ["attack_buff", "next_attack", "+%s to Next Attack Damage"],
-	"this_turn_attacks_from_front_wont_work": ["defence_buff", "this_turn", "This Turn attacks enemy attacks from front wont work"],
-	"next_turn_first_action_cost_less_if_you_start_in_slow_down": ["special_buff", "next_turn", "Next Turn first action cost less if you start turn in SLOW DOWN"],
-	"next_cassette_cost_less": ["fuel_buff", "next_cassette", "Next cassette cost less"],
-	"next_turn_cassettes_cost_less_if_you_stay_in_slow_down": ["special_buff", "next_turn", "Next Turn actions cost less if you start turn in SLOW DOWN"],
-	"this_turn_cassettes_cost_less": ["fuel_buff", "this_turn", "This turn Cassettes cost less"],
-	"this_turn_damage_reduction": ["defence_buff", "this_turn", "Reduce damage from attacks by %s"],
-	"next_attack_damage_reduction_any_side": ["defence_buff", "next_attack", "Reduce next attack damage by %s"],
-	"next_cassette_wont_work": ["cassette_debuff", "next_cassette", "Next Cassette wont work."],
-	"next_turn_target_debuff_no_position_change": ["cassette_debuff", "next_turn", "Next Turn move actions wont work"],
-	"this_turn_target_attacks_behind_wont_work": ["attack_block", "this_turn", "This Turn attacks behind wont work"],
-	"next_card_target_costs_more_fuel": ["fuel_debuff", "next_cassette", "Next Cassette actions costs %s more fuel."],
-	"next_turn_actions_cost_more_fuel": ["fuel_debuff", "next_turn", "Next Turn actions cost more fuel."],
-	"permanent_buff_fuel_cost_reduction": ["fuel_buff", "permanent", "%s to Fuel Cost Reduction."],
-	"next_turn_reduce_all_action_cost": ["fuel_buff", "next_turn", "Next Turn reduce all action cost by %s."],
-	"permanent_buff_all_attacks_front": ["attack_buff", "permanent", "%s to Attack Damage from Front."],
-	"this_turn_next_attack_or_debuff_wont_work": ["cassette_debuff", "this_turn", "Next Attack or Debuff wont work."]
+	"buff_next_attack": [
+		"attack_buff",
+		"next_attack",
+		"+%s to Next Attack Damage",
+		"***DONE***"
+	],
+	"less_movement_to_back": [
+		"special_debuff",
+		"this_turn",
+		"Slow Down becomes Line Up. Line Up doesn't work.",
+		"***DONE***"
+	],
+	"next_attack_damage_reduction": [
+		"defence_buff",
+		"next_attack",
+		"Reduce next attack damage by %s",
+		"***DONE***"
+	],
+	"next_card_target_costs_more_fuel": [
+		"fuel_debuff",
+		"next_cassette",
+		"Next Cassette actions costs %s more fuel."
+	],
+	"next_cassette_cost_less": [
+		"fuel_buff",
+		"next_cassette",
+		"Next cassette cost less"
+	],
+	"next_cassette_wont_work": [
+		"cassette_debuff",
+		"next_cassette",
+		"Next Cassette wont work.",
+		"***DONE***"
+	],
+	"next_turn_actions_cost_more_fuel": [
+		"fuel_debuff",
+		"next_turn",
+		"Next Turn actions cost more fuel."
+	],
+	"next_turn_cassettes_cost_less_if_you_stay_in_slow_down": [
+		"special_buff",
+		"next_turn",
+		"Next Turn actions cost less if you start turn in SLOW DOWN"
+	],
+	"next_turn_first_action_cost_less_if_you_start_in_slow_down": [
+		"special_buff",
+		"next_turn",
+		"Next Turn first action cost less if you start turn in SLOW DOWN"
+	],
+	"next_turn_reduce_all_action_cost": [
+		"fuel_buff",
+		"next_turn",
+		"Next Turn reduce all action cost by %s."
+	],
+	"next_turn_target_debuff_no_position_change": [
+		"cassette_debuff",
+		"next_turn",
+		"Next Turn move actions wont work",
+		"***DONE***"
+	],
+	"permanent_buff_all_attacks": [
+		"attack_buff",
+		"permanent",
+		"%s to Attack Damage",
+		"***DONE***"
+	],
+	"permanent_buff_all_attacks_front": [
+		"attack_buff",
+		"permanent",
+		"%s to Attack Damage from Front.",
+		"***DONE***"
+	],
+	"permanent_buff_fuel_cost_reduction": [
+		"fuel_buff",
+		"permanent",
+		"%s to Fuel Cost Reduction."
+	],
+	"this_turn_avoid_front_attacks": [
+		"defence_buff",
+		"this_turn",
+		"This Turn enemy attacks from front wont work",
+		"***DONE***"
+	],
+	"this_turn_avoid_side_attacks": [
+		"defence_buff",
+		"this_turn",
+		"Avoid Side Attacks this turn",
+		"***DONE***"
+	],
+	"this_turn_cassettes_cost_less": [
+		"fuel_buff",
+		"this_turn",
+		"This turn Cassettes cost less"
+	],
+	"this_turn_damage_reduction": [
+		"defence_buff",
+		"this_turn",
+		"Reduce damage from attacks by %s",
+		"***DONE***"
+	],
+	"this_turn_next_attack_or_debuff_wont_work": [
+		"cassette_debuff",
+		"this_turn",
+		"Next Attack or Debuff wont work.",
+		"***DONE***"
+	]
 }

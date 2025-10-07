@@ -25,6 +25,7 @@ const CASSETTE_SCALES_IN_SLOTS = [
 								  Vector2(0.77,0.77),
 								  Vector2(0.76,0.76),
 								  Vector2(0.75,0.75)]
+
 const CASSETTE_RATTLE = preload("res://sfx/652388__department64__cassette-tape-rattle-69.ogg")
 
 var screen_size
@@ -103,7 +104,7 @@ func start_drag(cassette: Cassette):
 	if cassette.whose_cassette == GlobalEnums.PLAYER:
 		SfxManager.play_sfx(CASSETTE_RATTLE)
 		cassette_being_dragged = cassette
-		deactivate_cassettes(true)
+		set_disabled_for_all_cassettes_in_hand(true)
 		player.remove_cassette_from_hand(cassette)
 		ui_animator.activate_player_slots()
 		cassette.reparent($"../DragLayer")
@@ -129,7 +130,7 @@ func finish_drag():
 		move_cassette_to_player_hand(cassette_being_dragged)
 	cassette_being_dragged = null
 	await ui_animator.deactivate_player_slots()
-	deactivate_cassettes(false)
+	set_disabled_for_all_cassettes_in_hand(false)
 	is_hovering_on_cassette = false
 
 
@@ -175,7 +176,8 @@ func move_cassette_to_player_hand(cassette):
 		update_hand_positions(DEFAULT_CASSETTE_SPEED)
 	else:
 		cassette.animate_cassette_to_position(cassette.position_in_hand)
-		
+
+
 func update_hand_positions(speed):
 	for i in range(player.hand.size()):
 		var cassette = player.hand[i]
@@ -184,7 +186,7 @@ func update_hand_positions(speed):
 		cassette.animate_cassette_to_position(cassette.position_in_hand,speed)
 
 
-func deactivate_cassettes(disabled: bool) -> void:
+func set_disabled_for_all_cassettes_in_hand(disabled: bool) -> void:
 	for cassette in player_hand.get_children():
 		cassette.collision_shape_2d.disabled = disabled
 
@@ -204,12 +206,22 @@ func clear_slots_after_turn():
 		var cassette = slot.cassette_in_slot
 		var target_node = discard if cassette.get_current_side_data()["after_play"] == "discard" else lost
 		cassette.reparent(target_node)
-		player.hand.remove_at(player.hand.find(cassette))
-		player.discard.append(cassette)
+		var target_array = player.discard if cassette.get_current_side_data()["after_play"] == "discard" else player.lost
+		target_array.append(cassette)
 		cassette.global_position = Vector2(screen_size.x/2, screen_size.y+500)
 		cassette.play_animation("RESET")
 		slot.cassette_in_slot = null
 		slot.update_elements()
 	player.fuel_spent_this_turn = 0
 
-	#TODO SPRAWDZIĆ CZY TO DOBRZE DZIAŁA I W ENEMY TEŻ
+
+func shuffle_discard_into_hand() -> void:
+	if player.discard.size() == 0:
+		return
+	for cassette in player.discard:
+		player.hand.append(cassette)
+		cassette.global_position = Vector2(screen_size.x/2, screen_size.y+500)
+		cassette.play_animation("RESET")
+		cassette.set_state(cassette.STATE.IN_HAND)
+		move_cassette_to_player_hand(cassette)
+	player.discard = []

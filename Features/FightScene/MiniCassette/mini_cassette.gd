@@ -59,6 +59,8 @@ func _get_value_text(info: Dictionary) -> String:
 
 
 func set_up_action_labels(base_cassette: Cassette):
+	for label in actions_sprite.get_children():
+		label.queue_free()
 	var action_labels = base_cassette.actions_sprite.get_children()
 	for i in range(action_labels.size()):
 		var label_node = action_labels[i] as Label

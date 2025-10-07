@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://dk76gbg2b4lxr"]
+
+[ext_resource type="Texture2D" uid="uid://b5wweb8xro7yh" path="res://Images/Dashboard/empty tooltip.png" id="1_k7uoj"]
+[ext_resource type="FontFile" uid="uid://dtn7qee5h51x5" path="res://Font/atwriter.ttf" id="2_jxq42"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jxq42"]
+texture = ExtResource("1_k7uoj")
+texture_margin_left = 47.0
+texture_margin_top = 43.0
+texture_margin_right = 44.0
+texture_margin_bottom = 44.0
+region_rect = Rect2(44, 409, 936, 206)
+
+[node name="Label" type="RichTextLabel"]
+clip_contents = false
+offset_right = 980.0
+offset_bottom = 76.0
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_fonts/normal_font = ExtResource("2_jxq42")
+theme_override_fonts/bold_font = ExtResource("2_jxq42")
+theme_override_fonts/bold_italics_font = ExtResource("2_jxq42")
+theme_override_fonts/italics_font = ExtResource("2_jxq42")
+theme_override_fonts/mono_font = ExtResource("2_jxq42")
+theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/bold_font_size = 48
+theme_override_font_sizes/bold_italics_font_size = 48
+theme_override_font_sizes/italics_font_size = 48
+theme_override_font_sizes/mono_font_size = 48
+text = "TESTASDASDASSADAASDASDASDASDASDAASD
+"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 426.0
+offset_bottom = 117.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_jxq42")
